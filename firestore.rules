@@ -1,0 +1,18 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /users/{uid} {
+      function owner() { return request.auth != null && request.auth.uid == uid; }
+      allow read: if owner();
+      allow create: if owner()
+        && request.resource.data.keys().hasOnly(['level','sanity','gold','renown','class','name'])
+        && request.resource.data.level == 1 && request.resource.data.sanity == 100
+        && request.resource.data.gold == 0 && request.resource.data.renown == 0
+        && request.resource.data.class == 'Wandering Soul' && request.resource.data.name == '';
+      allow update: if owner()
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['name'])
+        && request.resource.data.name is string
+        && request.resource.data.name.size() > 0 && request.resource.data.name.size() <= 32;
+    }
+  }
+}
