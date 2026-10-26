@@ -1,0 +1,4264 @@
+{
+  "schemaVersion": 1,
+  "pack": "aethelgard",
+  "source": {
+    "file": "Dark Fantasy RPG Tileset Collection.png",
+    "width": 1536,
+    "height": 1024
+  },
+  "processing": {
+    "resampled": false,
+    "backgroundRemoval": "Boundary-connected near-black RGB channels <=12 removed; other pixels preserved",
+    "reviewRequired": true
+  },
+  "assets": [
+    {
+      "id": "terrain-stone-stone-r01-c01",
+      "name": "stone-r01-c01",
+      "path": "assets/terrain/stone/stone-r01-c01.png",
+      "width": 53,
+      "height": 54,
+      "category": "terrain/stone",
+      "sourceRect": {
+        "x": 19,
+        "y": 29,
+        "width": 53,
+        "height": 54
+      },
+      "seamless": false,
+      "status": "needs-visual-review",
+      "notes": "Not grid-normalized; seamless tiling unverified.",
+      "sha256": "8e6f0efdbaaefc15dd720bfe9a8a631166ccad4f2785108027cbe22faa0965a9"
+    },
+    {
+      "id": "terrain-stone-stone-r01-c02",
+      "name": "stone-r01-c02",
+      "path": "assets/terrain/stone/stone-r01-c02.png",
+      "width": 53,
+      "height": 54,
+      "category": "terrain/stone",
+      "sourceRect": {
+        "x": 78,
+        "y": 29,
+        "width": 53,
+        "height": 54
+      },
+      "seamless": false,
+      "status": "needs-visual-review",
+      "notes": "Not grid-normalized; seamless tiling unverified.",
+      "sha256": "1e18fb35552b8fe07086ec56266de6e169e4407819ef3b97636b346c430c5e83"
+    },
+    {
+      "id": "terrain-stone-stone-r01-c03",
+      "name": "stone-r01-c03",
+      "path": "assets/terrain/stone/stone-r01-c03.png",
+      "width": 54,
+      "height": 55,
+      "category": "terrain/stone",
+      "sourceRect": {
+        "x": 137,
+        "y": 29,
+        "width": 54,
+        "height": 55
+      },
+      "seamless": false,
+      "status": "needs-visual-review",
+      "notes": "Not grid-normalized; seamless tiling unverified.",
+      "sha256": "f46f473ca8be777511932c41296b979b3e2cf4ae7d50639747c2f8834b6b2e84"
+    },
+    {
+      "id": "terrain-stone-stone-r01-c04",
+      "name": "stone-r01-c04",
+      "path": "assets/terrain/stone/stone-r01-c04.png",
+      "width": 54,
+      "height": 56,
+      "category": "terrain/stone",
+      "sourceRect": {
+        "x": 195,
+        "y": 28,
+        "width": 54,
+        "height": 56
+      },
+      "seamless": false,
+      "status": "needs-visual-review",
+      "notes": "Not grid-normalized; seamless tiling unverified.",
+      "sha256": "c672d010b554518c8e44840f1d5809aa5c4e55cc359fe6d7d23f9d4c7b6fb418"
+    },
+    {
+      "id": "terrain-stone-stone-r01-c05",
+      "name": "stone-r01-c05",
+      "path": "assets/terrain/stone/stone-r01-c05.png",
+      "width": 52,
+      "height": 55,
+      "category": "terrain/stone",
+      "sourceRect": {
+        "x": 253,
+        "y": 29,
+        "width": 52,
+        "height": 55
+      },
+      "seamless": false,
+      "status": "needs-visual-review",
+      "notes": "Not grid-normalized; seamless tiling unverified.",
+      "sha256": "9b17434a0aaad04e319cce284eb7cce2e5051c3096f22e424152dee2b3017604"
+    },
+    {
+      "id": "terrain-stone-stone-r01-c06",
+      "name": "stone-r01-c06",
+      "path": "assets/terrain/stone/stone-r01-c06.png",
+      "width": 49,
+      "height": 55,
+      "category": "terrain/stone",
+      "sourceRect": {
+        "x": 308,
+        "y": 29,
+        "width": 49,
+        "height": 55
+      },
+      "seamless": false,
+      "status": "needs-visual-review",
+      "notes": "Not grid-normalized; seamless tiling unverified.",
+      "sha256": "c87153fd9de04c90ca9ed4932ed4d53a9c626b6bbdb0bf1b7a4d02329fa18741"
+    },
+    {
+      "id": "terrain-stone-stone-r01-c07",
+      "name": "stone-r01-c07",
+      "path": "assets/terrain/stone/stone-r01-c07.png",
+      "width": 49,
+      "height": 55,
+      "category": "terrain/stone",
+      "sourceRect": {
+        "x": 361,
+        "y": 29,
+        "width": 49,
+        "height": 55
+      },
+      "seamless": false,
+      "status": "needs-visual-review",
+      "notes": "Not grid-normalized; seamless tiling unverified.",
+      "sha256": "69d4a06e865c13bbc1a283f8f4bace64f1ed6da46a4a09b6b52c561463848b53"
+    },
+    {
+      "id": "terrain-stone-stone-r01-c08",
+      "name": "stone-r01-c08",
+      "path": "assets/terrain/stone/stone-r01-c08.png",
+      "width": 53,
+      "height": 56,
+      "category": "terrain/stone",
+      "sourceRect": {
+        "x": 414,
+        "y": 28,
+        "width": 53,
+        "height": 56
+      },
+      "seamless": false,
+      "status": "needs-visual-review",
+      "notes": "Not grid-normalized; seamless tiling unverified.",
+      "sha256": "ad9a4aebba6152ec1eb3f9325a7ee26c375befd4268c6ecb604f96ea4d79e560"
+    },
+    {
+      "id": "terrain-stone-stone-r02-c01",
+      "name": "stone-r02-c01",
+      "path": "assets/terrain/stone/stone-r02-c01.png",
+      "width": 53,
+      "height": 54,
+      "category": "terrain/stone",
+      "sourceRect": {
+        "x": 19,
+        "y": 88,
+        "width": 53,
+        "height": 54
+      },
+      "seamless": false,
+      "status": "needs-visual-review",
+      "notes": "Not grid-normalized; seamless tiling unverified.",
+      "sha256": "3f29fdf13bf75cb43f3d2201ba2997f750f7809d21b1145a09fb0bed5a5786ae"
+    },
+    {
+      "id": "terrain-stone-stone-r02-c02",
+      "name": "stone-r02-c02",
+      "path": "assets/terrain/stone/stone-r02-c02.png",
+      "width": 53,
+      "height": 54,
+      "category": "terrain/stone",
+      "sourceRect": {
+        "x": 78,
+        "y": 88,
+        "width": 53,
+        "height": 54
+      },
+      "seamless": false,
+      "status": "needs-visual-review",
+      "notes": "Not grid-normalized; seamless tiling unverified.",
+      "sha256": "58929d6622b6af805ff3e11c08858fb2318cddba9eba9929b53e689e627f0b20"
+    },
+    {
+      "id": "terrain-stone-stone-r02-c03",
+      "name": "stone-r02-c03",
+      "path": "assets/terrain/stone/stone-r02-c03.png",
+      "width": 54,
+      "height": 55,
+      "category": "terrain/stone",
+      "sourceRect": {
+        "x": 137,
+        "y": 87,
+        "width": 54,
+        "height": 55
+      },
+      "seamless": false,
+      "status": "needs-visual-review",
+      "notes": "Not grid-normalized; seamless tiling unverified.",
+      "sha256": "2bce8ca9157323713bcf92460eca2e3c2a7fd24f84613b293a8ba8a25c46b051"
+    },
+    {
+      "id": "terrain-stone-stone-r02-c04",
+      "name": "stone-r02-c04",
+      "path": "assets/terrain/stone/stone-r02-c04.png",
+      "width": 55,
+      "height": 55,
+      "category": "terrain/stone",
+      "sourceRect": {
+        "x": 194,
+        "y": 87,
+        "width": 55,
+        "height": 55
+      },
+      "seamless": false,
+      "status": "needs-visual-review",
+      "notes": "Not grid-normalized; seamless tiling unverified.",
+      "sha256": "1dda530ca11ad767d1e294f8c95c12d255f69d940f80dfbae067322ba7b895b4"
+    },
+    {
+      "id": "terrain-stone-stone-r02-c05",
+      "name": "stone-r02-c05",
+      "path": "assets/terrain/stone/stone-r02-c05.png",
+      "width": 52,
+      "height": 53,
+      "category": "terrain/stone",
+      "sourceRect": {
+        "x": 253,
+        "y": 90,
+        "width": 52,
+        "height": 53
+      },
+      "seamless": false,
+      "status": "needs-visual-review",
+      "notes": "Not grid-normalized; seamless tiling unverified.",
+      "sha256": "780f7944d884bc2c3a6a804d2c4674a3e9fda268f2f21b5b0ac65533a4e641f3"
+    },
+    {
+      "id": "terrain-stone-stone-r02-c06",
+      "name": "stone-r02-c06",
+      "path": "assets/terrain/stone/stone-r02-c06.png",
+      "width": 49,
+      "height": 53,
+      "category": "terrain/stone",
+      "sourceRect": {
+        "x": 308,
+        "y": 90,
+        "width": 49,
+        "height": 53
+      },
+      "seamless": false,
+      "status": "needs-visual-review",
+      "notes": "Not grid-normalized; seamless tiling unverified.",
+      "sha256": "2d6ecee13729845076bf5c63e2f743a7955946d4bb1259fd631d19def8dece05"
+    },
+    {
+      "id": "terrain-stone-stone-r02-c07",
+      "name": "stone-r02-c07",
+      "path": "assets/terrain/stone/stone-r02-c07.png",
+      "width": 50,
+      "height": 53,
+      "category": "terrain/stone",
+      "sourceRect": {
+        "x": 360,
+        "y": 90,
+        "width": 50,
+        "height": 53
+      },
+      "seamless": false,
+      "status": "needs-visual-review",
+      "notes": "Not grid-normalized; seamless tiling unverified.",
+      "sha256": "459152f3f94088280fdd4431f21d684174bcd958c9c7e3aca2597d6bdfe14c7a"
+    },
+    {
+      "id": "terrain-stone-stone-r02-c08",
+      "name": "stone-r02-c08",
+      "path": "assets/terrain/stone/stone-r02-c08.png",
+      "width": 54,
+      "height": 53,
+      "category": "terrain/stone",
+      "sourceRect": {
+        "x": 413,
+        "y": 90,
+        "width": 54,
+        "height": 53
+      },
+      "seamless": false,
+      "status": "needs-visual-review",
+      "notes": "Not grid-normalized; seamless tiling unverified.",
+      "sha256": "0fb47a394b9bb21b2531c7efa191cfa55d824040d3d53870905b42244bb62ca1"
+    },
+    {
+      "id": "terrain-mixed-earth",
+      "name": "earth",
+      "path": "assets/terrain/mixed/earth.png",
+      "width": 112,
+      "height": 51,
+      "category": "terrain/mixed",
+      "sourceRect": {
+        "x": 19,
+        "y": 147,
+        "width": 112,
+        "height": 51
+      },
+      "seamless": false,
+      "status": "needs-visual-review",
+      "notes": "Tile/cluster crop; no seamless guarantee; fragments remain grouped.",
+      "sha256": "f23da42689d5f9911b25c59a86f263c173fb67061dbf19b48277d63a2f1ff55b"
+    },
+    {
+      "id": "terrain-mixed-snow-a",
+      "name": "snow-a",
+      "path": "assets/terrain/mixed/snow-a.png",
+      "width": 54,
+      "height": 54,
+      "category": "terrain/mixed",
+      "sourceRect": {
+        "x": 137,
+        "y": 146,
+        "width": 54,
+        "height": 54
+      },
+      "seamless": false,
+      "status": "needs-visual-review",
+      "notes": "Tile/cluster crop; no seamless guarantee; fragments remain grouped.",
+      "sha256": "a8c3c5437cc6807c4b9cad111f345684f917afb924df39de40da7df9635a6ea8"
+    },
+    {
+      "id": "terrain-mixed-snow-b",
+      "name": "snow-b",
+      "path": "assets/terrain/mixed/snow-b.png",
+      "width": 54,
+      "height": 54,
+      "category": "terrain/mixed",
+      "sourceRect": {
+        "x": 195,
+        "y": 146,
+        "width": 54,
+        "height": 54
+      },
+      "seamless": false,
+      "status": "needs-visual-review",
+      "notes": "Tile/cluster crop; no seamless guarantee; fragments remain grouped.",
+      "sha256": "e2535ff5d1add3ab4c10741c18b9572f1cfe8f8cfac56756030a70908afc713e"
+    },
+    {
+      "id": "terrain-mixed-moss-a",
+      "name": "moss-a",
+      "path": "assets/terrain/mixed/moss-a.png",
+      "width": 52,
+      "height": 54,
+      "category": "terrain/mixed",
+      "sourceRect": {
+        "x": 253,
+        "y": 146,
+        "width": 52,
+        "height": 54
+      },
+      "seamless": false,
+      "status": "needs-visual-review",
+      "notes": "Tile/cluster crop; no seamless guarantee; fragments remain grouped.",
+      "sha256": "93de3bb3129dee7cd2f531285af1c2f8ba438e6edc0e7dd0c2a438c3f4afdc27"
+    },
+    {
+      "id": "terrain-mixed-moss-b",
+      "name": "moss-b",
+      "path": "assets/terrain/mixed/moss-b.png",
+      "width": 44,
+      "height": 54,
+      "category": "terrain/mixed",
+      "sourceRect": {
+        "x": 308,
+        "y": 146,
+        "width": 44,
+        "height": 54
+      },
+      "seamless": false,
+      "status": "needs-visual-review",
+      "notes": "Tile/cluster crop; no seamless guarantee; fragments remain grouped.",
+      "sha256": "38928f0c626378caa2d9cef6713b0497d598e147fcfafddf390a588ca8d3b2ba"
+    },
+    {
+      "id": "terrain-mixed-grass-strip",
+      "name": "grass-strip",
+      "path": "assets/terrain/mixed/grass-strip.png",
+      "width": 113,
+      "height": 53,
+      "category": "terrain/mixed",
+      "sourceRect": {
+        "x": 19,
+        "y": 203,
+        "width": 113,
+        "height": 53
+      },
+      "seamless": false,
+      "status": "needs-visual-review",
+      "notes": "Tile/cluster crop; no seamless guarantee; fragments remain grouped.",
+      "sha256": "a60a43a5e2f69bf480ccdff4415f5519634511c76f5e5b68b36d021de8331d2a"
+    },
+    {
+      "id": "terrain-mixed-grass-a",
+      "name": "grass-a",
+      "path": "assets/terrain/mixed/grass-a.png",
+      "width": 55,
+      "height": 53,
+      "category": "terrain/mixed",
+      "sourceRect": {
+        "x": 137,
+        "y": 203,
+        "width": 55,
+        "height": 53
+      },
+      "seamless": false,
+      "status": "needs-visual-review",
+      "notes": "Tile/cluster crop; no seamless guarantee; fragments remain grouped.",
+      "sha256": "b86ee5945f0cc6438fd4f0c2028f48d3f25086d7c3f0b4fd59306fcb2a51ead2"
+    },
+    {
+      "id": "terrain-mixed-bush-tile",
+      "name": "bush-tile",
+      "path": "assets/terrain/mixed/bush-tile.png",
+      "width": 54,
+      "height": 48,
+      "category": "terrain/mixed",
+      "sourceRect": {
+        "x": 195,
+        "y": 207,
+        "width": 54,
+        "height": 48
+      },
+      "seamless": false,
+      "status": "needs-visual-review",
+      "notes": "Tile/cluster crop; no seamless guarantee; fragments remain grouped.",
+      "sha256": "9000cab9d3bc6ca8e3be451d5f51a9e1e155f24fc668c75dc2a5bdc6fd5224be"
+    },
+    {
+      "id": "terrain-mixed-cliff-grass-a",
+      "name": "cliff-grass-a",
+      "path": "assets/terrain/mixed/cliff-grass-a.png",
+      "width": 53,
+      "height": 52,
+      "category": "terrain/mixed",
+      "sourceRect": {
+        "x": 253,
+        "y": 204,
+        "width": 53,
+        "height": 52
+      },
+      "seamless": false,
+      "status": "needs-visual-review",
+      "notes": "Tile/cluster crop; no seamless guarantee; fragments remain grouped.",
+      "sha256": "9f93a4a07f09beaf51b9b3e336857aa83f9f0591418821099a1fe152a935af87"
+    },
+    {
+      "id": "terrain-mixed-cliff-grass-b",
+      "name": "cliff-grass-b",
+      "path": "assets/terrain/mixed/cliff-grass-b.png",
+      "width": 48,
+      "height": 51,
+      "category": "terrain/mixed",
+      "sourceRect": {
+        "x": 309,
+        "y": 204,
+        "width": 48,
+        "height": 51
+      },
+      "seamless": false,
+      "status": "needs-visual-review",
+      "notes": "Tile/cluster crop; no seamless guarantee; fragments remain grouped.",
+      "sha256": "b8755519f1a268e4f9c0de6395058394b063afd13276e9cf504ed28bdc338dd9"
+    },
+    {
+      "id": "terrain-mixed-snow-c",
+      "name": "snow-c",
+      "path": "assets/terrain/mixed/snow-c.png",
+      "width": 54,
+      "height": 56,
+      "category": "terrain/mixed",
+      "sourceRect": {
+        "x": 19,
+        "y": 260,
+        "width": 54,
+        "height": 56
+      },
+      "seamless": false,
+      "status": "needs-visual-review",
+      "notes": "Tile/cluster crop; no seamless guarantee; fragments remain grouped.",
+      "sha256": "f127f943adb617d0adc08bd1352e26eabb47114004925c6f917e5aa306039e71"
+    },
+    {
+      "id": "terrain-mixed-water-a",
+      "name": "water-a",
+      "path": "assets/terrain/mixed/water-a.png",
+      "width": 53,
+      "height": 55,
+      "category": "terrain/mixed",
+      "sourceRect": {
+        "x": 78,
+        "y": 260,
+        "width": 53,
+        "height": 55
+      },
+      "seamless": false,
+      "status": "needs-visual-review",
+      "notes": "Tile/cluster crop; no seamless guarantee; fragments remain grouped.",
+      "sha256": "f7c4e7aebe3032940cd34dcd838f200835336b5aba3c270c537c204d2bcea39b"
+    },
+    {
+      "id": "terrain-mixed-waterfall",
+      "name": "waterfall",
+      "path": "assets/terrain/mixed/waterfall.png",
+      "width": 54,
+      "height": 108,
+      "category": "terrain/mixed",
+      "sourceRect": {
+        "x": 137,
+        "y": 260,
+        "width": 54,
+        "height": 108
+      },
+      "seamless": false,
+      "status": "needs-visual-review",
+      "notes": "Tile/cluster crop; no seamless guarantee; fragments remain grouped.",
+      "sha256": "b24e405a1331b2f815fd5fb5c472fee0e56539ca8b4ddc5a593d5e93fb20a0a6"
+    },
+    {
+      "id": "terrain-mixed-stone-c",
+      "name": "stone-c",
+      "path": "assets/terrain/mixed/stone-c.png",
+      "width": 52,
+      "height": 56,
+      "category": "terrain/mixed",
+      "sourceRect": {
+        "x": 196,
+        "y": 260,
+        "width": 52,
+        "height": 56
+      },
+      "seamless": false,
+      "status": "needs-visual-review",
+      "notes": "Tile/cluster crop; no seamless guarantee; fragments remain grouped.",
+      "sha256": "50c65a451f08f8142af226af8fde1dce40bb201587065cb4734373d27d3e74f6"
+    },
+    {
+      "id": "terrain-mixed-cliff-large-a",
+      "name": "cliff-large-a",
+      "path": "assets/terrain/mixed/cliff-large-a.png",
+      "width": 65,
+      "height": 110,
+      "category": "terrain/mixed",
+      "sourceRect": {
+        "x": 253,
+        "y": 260,
+        "width": 65,
+        "height": 110
+      },
+      "seamless": false,
+      "status": "needs-visual-review",
+      "notes": "Tile/cluster crop; no seamless guarantee; fragments remain grouped.",
+      "sha256": "eef2bb9d629dc297916b025112242edf2a9d74c84faa65ce50874cb29aa55b54"
+    },
+    {
+      "id": "terrain-mixed-cliff-large-b",
+      "name": "cliff-large-b",
+      "path": "assets/terrain/mixed/cliff-large-b.png",
+      "width": 66,
+      "height": 110,
+      "category": "terrain/mixed",
+      "sourceRect": {
+        "x": 325,
+        "y": 260,
+        "width": 66,
+        "height": 110
+      },
+      "seamless": false,
+      "status": "needs-visual-review",
+      "notes": "Tile/cluster crop; no seamless guarantee; fragments remain grouped.",
+      "sha256": "55852ae302ae750d9f77b0f2b3020762623620455625b6faf8a6bd4724e0bf09"
+    },
+    {
+      "id": "terrain-mixed-water-b",
+      "name": "water-b",
+      "path": "assets/terrain/mixed/water-b.png",
+      "width": 54,
+      "height": 48,
+      "category": "terrain/mixed",
+      "sourceRect": {
+        "x": 19,
+        "y": 320,
+        "width": 54,
+        "height": 48
+      },
+      "seamless": false,
+      "status": "needs-visual-review",
+      "notes": "Tile/cluster crop; no seamless guarantee; fragments remain grouped.",
+      "sha256": "e7c216ab6afb6f5983d104f37fe3235179d842a99ea338f9af0dd940b0d2ddde"
+    },
+    {
+      "id": "terrain-mixed-water-c",
+      "name": "water-c",
+      "path": "assets/terrain/mixed/water-c.png",
+      "width": 53,
+      "height": 48,
+      "category": "terrain/mixed",
+      "sourceRect": {
+        "x": 78,
+        "y": 320,
+        "width": 53,
+        "height": 48
+      },
+      "seamless": false,
+      "status": "needs-visual-review",
+      "notes": "Tile/cluster crop; no seamless guarantee; fragments remain grouped.",
+      "sha256": "109c5f718c1e5adad7a93a7b2dc625f34998b23226581b866f0ee7a8a52e9761"
+    },
+    {
+      "id": "terrain-mixed-cliff-small",
+      "name": "cliff-small",
+      "path": "assets/terrain/mixed/cliff-small.png",
+      "width": 46,
+      "height": 52,
+      "category": "terrain/mixed",
+      "sourceRect": {
+        "x": 199,
+        "y": 320,
+        "width": 46,
+        "height": 52
+      },
+      "seamless": false,
+      "status": "needs-visual-review",
+      "notes": "Tile/cluster crop; no seamless guarantee; fragments remain grouped.",
+      "sha256": "167828689b20812850066e5ceeafb94eb951ebde0e30d9a1719cb40478abe42e"
+    },
+    {
+      "id": "terrain-mixed-rock-fragments",
+      "name": "rock-fragments",
+      "path": "assets/terrain/mixed/rock-fragments.png",
+      "width": 66,
+      "height": 111,
+      "category": "terrain/mixed",
+      "sourceRect": {
+        "x": 399,
+        "y": 260,
+        "width": 66,
+        "height": 111
+      },
+      "seamless": false,
+      "status": "needs-visual-review",
+      "notes": "Tile/cluster crop; no seamless guarantee; fragments remain grouped.",
+      "sha256": "bd4f5c5a27b9d5e64d9f35c61c0a270e28ae10e497ce2d307996b1953738f6aa"
+    },
+    {
+      "id": "terrain-mixed-wall-fragments-a",
+      "name": "wall-fragments-a",
+      "path": "assets/terrain/mixed/wall-fragments-a.png",
+      "width": 108,
+      "height": 50,
+      "category": "terrain/mixed",
+      "sourceRect": {
+        "x": 358,
+        "y": 147,
+        "width": 108,
+        "height": 50
+      },
+      "seamless": false,
+      "status": "needs-visual-review",
+      "notes": "Tile/cluster crop; no seamless guarantee; fragments remain grouped.",
+      "sha256": "bfc302ab4d65213e4efb3fb58f0bd2f523eea357dd1296331ebe2fa41d4fdd31"
+    },
+    {
+      "id": "terrain-mixed-wall-fragments-b",
+      "name": "wall-fragments-b",
+      "path": "assets/terrain/mixed/wall-fragments-b.png",
+      "width": 107,
+      "height": 49,
+      "category": "terrain/mixed",
+      "sourceRect": {
+        "x": 358,
+        "y": 205,
+        "width": 107,
+        "height": 49
+      },
+      "seamless": false,
+      "status": "needs-visual-review",
+      "notes": "Tile/cluster crop; no seamless guarantee; fragments remain grouped.",
+      "sha256": "de33d96056fd4461c3f6bdfd6407730d3d56ca698829dc3de4ee6e4eb59afc3f"
+    },
+    {
+      "id": "architecture-ruins-ruined-colonnade",
+      "name": "ruined-colonnade",
+      "path": "assets/architecture/ruins/ruined-colonnade.png",
+      "width": 245,
+      "height": 240,
+      "category": "architecture/ruins",
+      "sourceRect": {
+        "x": 507,
+        "y": 32,
+        "width": 245,
+        "height": 240
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "e39daaf0fadbf377c8fb5ea093f974d69f2941b43ce01187387c277ff4b7b476"
+    },
+    {
+      "id": "architecture-ruins-wall-upper",
+      "name": "wall-upper",
+      "path": "assets/architecture/ruins/wall-upper.png",
+      "width": 98,
+      "height": 88,
+      "category": "architecture/ruins",
+      "sourceRect": {
+        "x": 721,
+        "y": 30,
+        "width": 98,
+        "height": 88
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "e1523b5f1edc596b7b1803978dfe3d208f056560ce8caf209ff9eca001b5ce37"
+    },
+    {
+      "id": "architecture-ruins-wall-right",
+      "name": "wall-right",
+      "path": "assets/architecture/ruins/wall-right.png",
+      "width": 69,
+      "height": 96,
+      "category": "architecture/ruins",
+      "sourceRect": {
+        "x": 752,
+        "y": 126,
+        "width": 69,
+        "height": 96
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "553d12deb847580addf2cd11225d57f77abf82f010de2dbb0b08788209175b80"
+    },
+    {
+      "id": "architecture-ruins-gothic-gateway",
+      "name": "gothic-gateway",
+      "path": "assets/architecture/ruins/gothic-gateway.png",
+      "width": 162,
+      "height": 214,
+      "category": "architecture/ruins",
+      "sourceRect": {
+        "x": 842,
+        "y": 8,
+        "width": 162,
+        "height": 214
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "95264bbd865f195591f9880fdc04ae5077ffbce1f40a232fc7199822ad1483d7"
+    },
+    {
+      "id": "architecture-ruins-broken-wall",
+      "name": "broken-wall",
+      "path": "assets/architecture/ruins/broken-wall.png",
+      "width": 173,
+      "height": 111,
+      "category": "architecture/ruins",
+      "sourceRect": {
+        "x": 508,
+        "y": 265,
+        "width": 173,
+        "height": 111
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "0ce0370ee2f1511dca102f4c13bbb0859b9a3c9afa4e754df950ce71bdb2930f"
+    },
+    {
+      "id": "architecture-ruins-stairs",
+      "name": "stairs",
+      "path": "assets/architecture/ruins/stairs.png",
+      "width": 133,
+      "height": 141,
+      "category": "architecture/ruins",
+      "sourceRect": {
+        "x": 690,
+        "y": 233,
+        "width": 133,
+        "height": 141
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "697e12c6f9521af54a19a10a12a3484c3b891cc07636c4ce43c2d828e0fa17be"
+    },
+    {
+      "id": "architecture-ruins-stone-arch",
+      "name": "stone-arch",
+      "path": "assets/architecture/ruins/stone-arch.png",
+      "width": 172,
+      "height": 139,
+      "category": "architecture/ruins",
+      "sourceRect": {
+        "x": 841,
+        "y": 234,
+        "width": 172,
+        "height": 139
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "8f27af8e0d5e56a17ce33e99c10dc94656a61b8ca3ee282ba5ac12fb1f98f51e"
+    },
+    {
+      "id": "architecture-buildings-cottage",
+      "name": "cottage",
+      "path": "assets/architecture/buildings/cottage.png",
+      "width": 163,
+      "height": 155,
+      "category": "architecture/buildings",
+      "sourceRect": {
+        "x": 1024,
+        "y": 31,
+        "width": 163,
+        "height": 155
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "bb499d17dd6281d25b38e3b1dc9135eba73da699766ae0aceb2327cee078b880"
+    },
+    {
+      "id": "architecture-buildings-tall-house",
+      "name": "tall-house",
+      "path": "assets/architecture/buildings/tall-house.png",
+      "width": 131,
+      "height": 169,
+      "category": "architecture/buildings",
+      "sourceRect": {
+        "x": 1189,
+        "y": 17,
+        "width": 131,
+        "height": 169
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "331b048faf87d9a61b08f68af854e8a513e5dbf8939e402f9a65529d13e3935a"
+    },
+    {
+      "id": "architecture-buildings-timber-house",
+      "name": "timber-house",
+      "path": "assets/architecture/buildings/timber-house.png",
+      "width": 203,
+      "height": 169,
+      "category": "architecture/buildings",
+      "sourceRect": {
+        "x": 1316,
+        "y": 17,
+        "width": 203,
+        "height": 169
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "57651addb282b9f3c876210b3e139499e83ddbc6b161cbad0b969aa87877bff5"
+    },
+    {
+      "id": "architecture-buildings-tavern",
+      "name": "tavern",
+      "path": "assets/architecture/buildings/tavern.png",
+      "width": 164,
+      "height": 187,
+      "category": "architecture/buildings",
+      "sourceRect": {
+        "x": 1029,
+        "y": 195,
+        "width": 164,
+        "height": 187
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "08c2f1546372947249521708414b2c22ab002bf8065f5eb978dcee30efb3a9db"
+    },
+    {
+      "id": "architecture-buildings-shop-stall",
+      "name": "shop-stall",
+      "path": "assets/architecture/buildings/shop-stall.png",
+      "width": 63,
+      "height": 74,
+      "category": "architecture/buildings",
+      "sourceRect": {
+        "x": 1201,
+        "y": 310,
+        "width": 63,
+        "height": 74
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "9d4205614afdd315987baf452fedbebfc756622a01fe825e4216d51753ca2ca6"
+    },
+    {
+      "id": "architecture-buildings-watchtower",
+      "name": "watchtower",
+      "path": "assets/architecture/buildings/watchtower.png",
+      "width": 63,
+      "height": 196,
+      "category": "architecture/buildings",
+      "sourceRect": {
+        "x": 1270,
+        "y": 194,
+        "width": 63,
+        "height": 196
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "0fb37651f959810d107a23f187c62c20e3dae7b24b002204ce30a153a703d8c6"
+    },
+    {
+      "id": "architecture-buildings-cathedral",
+      "name": "cathedral",
+      "path": "assets/architecture/buildings/cathedral.png",
+      "width": 174,
+      "height": 203,
+      "category": "architecture/buildings",
+      "sourceRect": {
+        "x": 1346,
+        "y": 193,
+        "width": 174,
+        "height": 203
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "14371ad36446784f421141de10db2322c8e40f559d6f0e99606341154c0bfc25"
+    },
+    {
+      "id": "nature-trees-dead-tree",
+      "name": "dead-tree",
+      "path": "assets/nature/trees/dead-tree.png",
+      "width": 155,
+      "height": 140,
+      "category": "nature/trees",
+      "sourceRect": {
+        "x": 19,
+        "y": 409,
+        "width": 155,
+        "height": 140
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "b256830d684f0bef0afc406385e090e3c9616f16ed17b6c63afd07df8d5b49bb"
+    },
+    {
+      "id": "nature-trees-green-tree",
+      "name": "green-tree",
+      "path": "assets/nature/trees/green-tree.png",
+      "width": 132,
+      "height": 139,
+      "category": "nature/trees",
+      "sourceRect": {
+        "x": 164,
+        "y": 404,
+        "width": 132,
+        "height": 139
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "11b72411e04244abeb868cede27ca24615b5a4b9c6fd80894e7d6cd9f297fee8"
+    },
+    {
+      "id": "nature-trees-red-tree",
+      "name": "red-tree",
+      "path": "assets/nature/trees/red-tree.png",
+      "width": 101,
+      "height": 102,
+      "category": "nature/trees",
+      "sourceRect": {
+        "x": 298,
+        "y": 406,
+        "width": 101,
+        "height": 102
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "78876f9446c00edda2cbe99287132887589fbbf2bf8b1cd85008bc1ec341957f"
+    },
+    {
+      "id": "nature-trees-pine",
+      "name": "pine",
+      "path": "assets/nature/trees/pine.png",
+      "width": 82,
+      "height": 123,
+      "category": "nature/trees",
+      "sourceRect": {
+        "x": 404,
+        "y": 395,
+        "width": 82,
+        "height": 123
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "931f6fee240df69317aa7188e9e4ee9360d8e2e53727600b7553a54cb9c1cd93"
+    },
+    {
+      "id": "nature-plants-ivy",
+      "name": "ivy",
+      "path": "assets/nature/plants/ivy.png",
+      "width": 71,
+      "height": 92,
+      "category": "nature/plants",
+      "sourceRect": {
+        "x": 496,
+        "y": 429,
+        "width": 71,
+        "height": 92
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "0f0347aa59b21b1b28854df2414b25af9dc2c4b89d75acc5768658ed41ad5381"
+    },
+    {
+      "id": "nature-plants-bush",
+      "name": "bush",
+      "path": "assets/nature/plants/bush.png",
+      "width": 85,
+      "height": 44,
+      "category": "nature/plants",
+      "sourceRect": {
+        "x": 262,
+        "y": 497,
+        "width": 85,
+        "height": 44
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "5000a955cba14509b2e5e711bc65fbcdc6e21a146c8f53f57adfe94915c389d0"
+    },
+    {
+      "id": "nature-plants-white-flowers",
+      "name": "white-flowers",
+      "path": "assets/nature/plants/white-flowers.png",
+      "width": 59,
+      "height": 37,
+      "category": "nature/plants",
+      "sourceRect": {
+        "x": 356,
+        "y": 507,
+        "width": 59,
+        "height": 37
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "16af5b9619ac154d03d278189a76343a0dec84cb298f5ca7c3f6534930829494"
+    },
+    {
+      "id": "nature-plants-fern",
+      "name": "fern",
+      "path": "assets/nature/plants/fern.png",
+      "width": 61,
+      "height": 27,
+      "category": "nature/plants",
+      "sourceRect": {
+        "x": 427,
+        "y": 517,
+        "width": 61,
+        "height": 27
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "b7271f2293f0e2f75aef3f87025e69a3e951d18f33459078f0c54067f463803b"
+    },
+    {
+      "id": "nature-plants-shrubs",
+      "name": "shrubs",
+      "path": "assets/nature/plants/shrubs.png",
+      "width": 68,
+      "height": 47,
+      "category": "nature/plants",
+      "sourceRect": {
+        "x": 19,
+        "y": 560,
+        "width": 68,
+        "height": 47
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "61bef4e5447974e7893b86e2d012f7e1a66ef982bc2c96cef04ac9b540a603d1"
+    },
+    {
+      "id": "nature-plants-log",
+      "name": "log",
+      "path": "assets/nature/plants/log.png",
+      "width": 93,
+      "height": 50,
+      "category": "nature/plants",
+      "sourceRect": {
+        "x": 120,
+        "y": 553,
+        "width": 93,
+        "height": 50
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "60aebd885b07bcd381103ceb26f05909a2c0f7ef853299e236a85098d0211574"
+    },
+    {
+      "id": "nature-plants-grass",
+      "name": "grass",
+      "path": "assets/nature/plants/grass.png",
+      "width": 66,
+      "height": 41,
+      "category": "nature/plants",
+      "sourceRect": {
+        "x": 220,
+        "y": 558,
+        "width": 66,
+        "height": 41
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "fe68525acc287cb3eda774737fbe69aedf80aaf6bada6acfb7a9fd806ab25f1e"
+    },
+    {
+      "id": "nature-plants-flowers",
+      "name": "flowers",
+      "path": "assets/nature/plants/flowers.png",
+      "width": 56,
+      "height": 50,
+      "category": "nature/plants",
+      "sourceRect": {
+        "x": 285,
+        "y": 555,
+        "width": 56,
+        "height": 50
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "e7ea546742b4f66cb8ca3778b0a9bfa743ebe5e86164175c6596035d814fcd7c"
+    },
+    {
+      "id": "nature-plants-purple-flowers",
+      "name": "purple-flowers",
+      "path": "assets/nature/plants/purple-flowers.png",
+      "width": 38,
+      "height": 41,
+      "category": "nature/plants",
+      "sourceRect": {
+        "x": 342,
+        "y": 559,
+        "width": 38,
+        "height": 41
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "e0359866d3ee09fb758f57221b1fbe92245e600329335b0405597050e0007fb0"
+    },
+    {
+      "id": "nature-plants-grass-border",
+      "name": "grass-border",
+      "path": "assets/nature/plants/grass-border.png",
+      "width": 191,
+      "height": 31,
+      "category": "nature/plants",
+      "sourceRect": {
+        "x": 19,
+        "y": 732,
+        "width": 191,
+        "height": 31
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "1ff0ef10c4ea7104f6e9d8541802db898aca72eeb0f6f57ad2bac07ac06f49bb"
+    },
+    {
+      "id": "props-outdoor-well",
+      "name": "well",
+      "path": "assets/props/outdoor/well.png",
+      "width": 103,
+      "height": 117,
+      "category": "props/outdoor",
+      "sourceRect": {
+        "x": 384,
+        "y": 557,
+        "width": 103,
+        "height": 117
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "0c9f23f31dc53f8e4da325aa5dccb75c1e167b995ba9b72fd1b2b23fb4d22dbb"
+    },
+    {
+      "id": "props-outdoor-sign-lantern",
+      "name": "sign-lantern",
+      "path": "assets/props/outdoor/sign-lantern.png",
+      "width": 53,
+      "height": 154,
+      "category": "props/outdoor",
+      "sourceRect": {
+        "x": 491,
+        "y": 513,
+        "width": 53,
+        "height": 154
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "5af69ff0f7d12764d8e49f766ed9d6fca961bba6b695707c5bd87adf247c9fdf"
+    },
+    {
+      "id": "props-outdoor-fence-a",
+      "name": "fence-a",
+      "path": "assets/props/outdoor/fence-a.png",
+      "width": 62,
+      "height": 48,
+      "category": "props/outdoor",
+      "sourceRect": {
+        "x": 211,
+        "y": 608,
+        "width": 62,
+        "height": 48
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "a5ccbfa4c9f2241412dfb69066a000b1833682753b824c1ffe4d1ba1ad53eaca"
+    },
+    {
+      "id": "props-outdoor-fence-b",
+      "name": "fence-b",
+      "path": "assets/props/outdoor/fence-b.png",
+      "width": 98,
+      "height": 47,
+      "category": "props/outdoor",
+      "sourceRect": {
+        "x": 274,
+        "y": 615,
+        "width": 98,
+        "height": 47
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "27b951759027e96c51c97ff94b7a946e0072e31fe045c2cec5a04e11fae08a15"
+    },
+    {
+      "id": "props-outdoor-hay",
+      "name": "hay",
+      "path": "assets/props/outdoor/hay.png",
+      "width": 69,
+      "height": 73,
+      "category": "props/outdoor",
+      "sourceRect": {
+        "x": 338,
+        "y": 663,
+        "width": 69,
+        "height": 73
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "76b305145ca85ec67c82b93744dc9af1cd0cc3f787dc734a3b6b6f789cc7c576"
+    },
+    {
+      "id": "props-outdoor-cart",
+      "name": "cart",
+      "path": "assets/props/outdoor/cart.png",
+      "width": 126,
+      "height": 71,
+      "category": "props/outdoor",
+      "sourceRect": {
+        "x": 422,
+        "y": 668,
+        "width": 126,
+        "height": 71
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "deba7bcc2da0509c997733f7a3f8650bedcfd759f3ae5adea099c33423a9c52c"
+    },
+    {
+      "id": "props-outdoor-fence-c",
+      "name": "fence-c",
+      "path": "assets/props/outdoor/fence-c.png",
+      "width": 117,
+      "height": 51,
+      "category": "props/outdoor",
+      "sourceRect": {
+        "x": 216,
+        "y": 712,
+        "width": 117,
+        "height": 51
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "2933da6bd6c44bbb4b51e7901fe6cdd22ad6c2284c91bcd36a9facede21c27e5"
+    },
+    {
+      "id": "props-outdoor-wooden-crate",
+      "name": "wooden-crate",
+      "path": "assets/props/outdoor/wooden-crate.png",
+      "width": 61,
+      "height": 38,
+      "category": "props/outdoor",
+      "sourceRect": {
+        "x": 241,
+        "y": 666,
+        "width": 61,
+        "height": 38
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "f93d36ec9963ed5bf66c11b6f72c278a81dce53bf8c0ed67d80ab52e1f7d615e"
+    },
+    {
+      "id": "props-outdoor-signpost",
+      "name": "signpost",
+      "path": "assets/props/outdoor/signpost.png",
+      "width": 25,
+      "height": 42,
+      "category": "props/outdoor",
+      "sourceRect": {
+        "x": 308,
+        "y": 662,
+        "width": 25,
+        "height": 42
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "603d09538b82168f1468d651710249bb9b342b82413529a2d5932d1c37785cb5"
+    },
+    {
+      "id": "nature-rocks-rocks-a",
+      "name": "rocks-a",
+      "path": "assets/nature/rocks/rocks-a.png",
+      "width": 66,
+      "height": 45,
+      "category": "nature/rocks",
+      "sourceRect": {
+        "x": 22,
+        "y": 617,
+        "width": 66,
+        "height": 45
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "2d1d4d1c0860dda616399c1ab0701fd646f8c99e1f3ca4c083311ddaf6e5f810"
+    },
+    {
+      "id": "nature-rocks-rocks-b",
+      "name": "rocks-b",
+      "path": "assets/nature/rocks/rocks-b.png",
+      "width": 52,
+      "height": 53,
+      "category": "nature/rocks",
+      "sourceRect": {
+        "x": 91,
+        "y": 609,
+        "width": 52,
+        "height": 53
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "105619f0520328f108f087e07c0ba3dee74e236e0e3c7263d45605bd5a060de2"
+    },
+    {
+      "id": "nature-rocks-crystals",
+      "name": "crystals",
+      "path": "assets/nature/rocks/crystals.png",
+      "width": 53,
+      "height": 54,
+      "category": "nature/rocks",
+      "sourceRect": {
+        "x": 149,
+        "y": 608,
+        "width": 53,
+        "height": 54
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "3d13171d4aa99cd6492dd333f73209884bc1576d47222edbdd3a5d8a393afbcd"
+    },
+    {
+      "id": "nature-rocks-rocks-c",
+      "name": "rocks-c",
+      "path": "assets/nature/rocks/rocks-c.png",
+      "width": 50,
+      "height": 39,
+      "category": "nature/rocks",
+      "sourceRect": {
+        "x": 20,
+        "y": 685,
+        "width": 50,
+        "height": 39
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "e7f41d5f626983d0a57aee2c9f5090d2cb2d098ebf80a843f5b8b78482350416"
+    },
+    {
+      "id": "nature-rocks-rocks-d",
+      "name": "rocks-d",
+      "path": "assets/nature/rocks/rocks-d.png",
+      "width": 67,
+      "height": 66,
+      "category": "nature/rocks",
+      "sourceRect": {
+        "x": 72,
+        "y": 662,
+        "width": 67,
+        "height": 66
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "9e57f1b474513d62a7880c944af03c626d3699f8f59919e0a9e6afe7913e1e3f"
+    },
+    {
+      "id": "nature-rocks-rocks-e",
+      "name": "rocks-e",
+      "path": "assets/nature/rocks/rocks-e.png",
+      "width": 66,
+      "height": 69,
+      "category": "nature/rocks",
+      "sourceRect": {
+        "x": 141,
+        "y": 660,
+        "width": 66,
+        "height": 69
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "472740a7239e5c3d18eb71abc0298844ba00f926366e5a4a3aa2633b3d2ac56a"
+    },
+    {
+      "id": "props-interior-door",
+      "name": "door",
+      "path": "assets/props/interior/door.png",
+      "width": 40,
+      "height": 72,
+      "category": "props/interior",
+      "sourceRect": {
+        "x": 596,
+        "y": 424,
+        "width": 40,
+        "height": 72
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "037a2ffe060835d041d3e16fc8172006fa344ab93be2c703a8321677b71166eb"
+    },
+    {
+      "id": "props-interior-noticeboard",
+      "name": "noticeboard",
+      "path": "assets/props/interior/noticeboard.png",
+      "width": 88,
+      "height": 78,
+      "category": "props/interior",
+      "sourceRect": {
+        "x": 627,
+        "y": 521,
+        "width": 88,
+        "height": 78
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "11ddf39d53ce0ecea6482e50a7a176abc2217808e8c49b9564e0f16c706fada6"
+    },
+    {
+      "id": "props-interior-bench",
+      "name": "bench",
+      "path": "assets/props/interior/bench.png",
+      "width": 88,
+      "height": 57,
+      "category": "props/interior",
+      "sourceRect": {
+        "x": 585,
+        "y": 607,
+        "width": 88,
+        "height": 57
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "436a8315091ba33c6e6ce184c5ea09b9d7cf11d88765e90f50111042b485fa4e"
+    },
+    {
+      "id": "props-interior-bookcase",
+      "name": "bookcase",
+      "path": "assets/props/interior/bookcase.png",
+      "width": 78,
+      "height": 81,
+      "category": "props/interior",
+      "sourceRect": {
+        "x": 682,
+        "y": 615,
+        "width": 78,
+        "height": 81
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "0dac84355d8fc2200a4acba4e2319186fb4c14a0cef72648d0858c2df8e8c5c6"
+    },
+    {
+      "id": "props-interior-alchemy-shelf",
+      "name": "alchemy-shelf",
+      "path": "assets/props/interior/alchemy-shelf.png",
+      "width": 63,
+      "height": 82,
+      "category": "props/interior",
+      "sourceRect": {
+        "x": 768,
+        "y": 616,
+        "width": 63,
+        "height": 82
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "cc47fa247a6e4920c420653dc9f610828b3a585c815bfefbfefec2996f470e1f"
+    },
+    {
+      "id": "props-interior-coffin",
+      "name": "coffin",
+      "path": "assets/props/interior/coffin.png",
+      "width": 42,
+      "height": 69,
+      "category": "props/interior",
+      "sourceRect": {
+        "x": 591,
+        "y": 658,
+        "width": 42,
+        "height": 69
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "0a3454f91eefc13df9e391edffc285aab4ff6e71e4bf8dcb5ca1097189fbaee1"
+    },
+    {
+      "id": "props-interior-map-table",
+      "name": "map-table",
+      "path": "assets/props/interior/map-table.png",
+      "width": 115,
+      "height": 72,
+      "category": "props/interior",
+      "sourceRect": {
+        "x": 645,
+        "y": 682,
+        "width": 115,
+        "height": 72
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "1c09ad4544a092601db4e3258226b691017d347090cecb0ebc6bd10d4a1a528f"
+    },
+    {
+      "id": "props-interior-stool",
+      "name": "stool",
+      "path": "assets/props/interior/stool.png",
+      "width": 45,
+      "height": 47,
+      "category": "props/interior",
+      "sourceRect": {
+        "x": 773,
+        "y": 700,
+        "width": 45,
+        "height": 47
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "6ff4910f46152a6308f077b31b0192c310fabcaf2bd65ed7319b0aa3288b0d09"
+    },
+    {
+      "id": "props-interior-bed",
+      "name": "bed",
+      "path": "assets/props/interior/bed.png",
+      "width": 102,
+      "height": 90,
+      "category": "props/interior",
+      "sourceRect": {
+        "x": 820,
+        "y": 674,
+        "width": 102,
+        "height": 90
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "d5d0e49c34902427ba1fea6a2be0ca7dd9a133e8324793df26795637eefb683d"
+    },
+    {
+      "id": "props-interior-barrel",
+      "name": "barrel",
+      "path": "assets/props/interior/barrel.png",
+      "width": 31,
+      "height": 37,
+      "category": "props/interior",
+      "sourceRect": {
+        "x": 552,
+        "y": 690,
+        "width": 31,
+        "height": 37
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "15ec275cfc7d0f59d027a01367f072eef5abc9736b03acdb60ab44f9332a52fc"
+    },
+    {
+      "id": "props-interior-chest-wood",
+      "name": "chest-wood",
+      "path": "assets/props/interior/chest-wood.png",
+      "width": 53,
+      "height": 28,
+      "category": "props/interior",
+      "sourceRect": {
+        "x": 434,
+        "y": 737,
+        "width": 53,
+        "height": 28
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "e2153c0f78e956bab09e79dc6d27a190f9a2c33d0ea8316ec95f32feffbd5184"
+    },
+    {
+      "id": "props-interior-chest-small",
+      "name": "chest-small",
+      "path": "assets/props/interior/chest-small.png",
+      "width": 42,
+      "height": 35,
+      "category": "props/interior",
+      "sourceRect": {
+        "x": 502,
+        "y": 729,
+        "width": 42,
+        "height": 35
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "646902423a350f6d0d8eda78f134cdf0706cc8487de9f118197451f19fc752b2"
+    },
+    {
+      "id": "props-interior-chest-long",
+      "name": "chest-long",
+      "path": "assets/props/interior/chest-long.png",
+      "width": 61,
+      "height": 33,
+      "category": "props/interior",
+      "sourceRect": {
+        "x": 561,
+        "y": 731,
+        "width": 61,
+        "height": 33
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "b38b768846200ecfd2683fef99b15d1ff9a82469d96a5c887e9be46e4089bf89"
+    },
+    {
+      "id": "props-dungeon-brazier-orange",
+      "name": "brazier-orange",
+      "path": "assets/props/dungeon/brazier-orange.png",
+      "width": 36,
+      "height": 97,
+      "category": "props/dungeon",
+      "sourceRect": {
+        "x": 651,
+        "y": 416,
+        "width": 36,
+        "height": 97
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "d3b8ccf5c5168e21baa85fbebece5a5944b80b20bf8c174715d4da9a43b4bb04"
+    },
+    {
+      "id": "props-dungeon-brazier-purple",
+      "name": "brazier-purple",
+      "path": "assets/props/dungeon/brazier-purple.png",
+      "width": 48,
+      "height": 93,
+      "category": "props/dungeon",
+      "sourceRect": {
+        "x": 711,
+        "y": 414,
+        "width": 48,
+        "height": 93
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "2266f489342d0e320ee5b13c43cb01a09cdc53a0867c1697fc10cc8a076e7b1d"
+    },
+    {
+      "id": "props-dungeon-hanging-brazier",
+      "name": "hanging-brazier",
+      "path": "assets/props/dungeon/hanging-brazier.png",
+      "width": 42,
+      "height": 83,
+      "category": "props/dungeon",
+      "sourceRect": {
+        "x": 787,
+        "y": 415,
+        "width": 42,
+        "height": 83
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "edb6da8201fd984588cce8248a398b1df965a2dbcd11ce9753e2ddf8c661b42c"
+    },
+    {
+      "id": "props-dungeon-angel-statue",
+      "name": "angel-statue",
+      "path": "assets/props/dungeon/angel-statue.png",
+      "width": 95,
+      "height": 189,
+      "category": "props/dungeon",
+      "sourceRect": {
+        "x": 840,
+        "y": 404,
+        "width": 95,
+        "height": 189
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "b9a9636efc7e625b70a48a927471ac80207464bfe277e77691d4f7fca95cd772"
+    },
+    {
+      "id": "props-dungeon-portal",
+      "name": "portal",
+      "path": "assets/props/dungeon/portal.png",
+      "width": 72,
+      "height": 95,
+      "category": "props/dungeon",
+      "sourceRect": {
+        "x": 756,
+        "y": 504,
+        "width": 72,
+        "height": 95
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "bd583d10bbe1ca392243e1e01d6bc5cc6bae40367b0cd8b6dd53ae5461c7b337"
+    },
+    {
+      "id": "props-dungeon-grave-a",
+      "name": "grave-a",
+      "path": "assets/props/dungeon/grave-a.png",
+      "width": 35,
+      "height": 77,
+      "category": "props/dungeon",
+      "sourceRect": {
+        "x": 941,
+        "y": 540,
+        "width": 35,
+        "height": 77
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "12b90a8aa52559c296c87c0af3f574a4e3e867a4aaf6008dc1253076df8dc799"
+    },
+    {
+      "id": "props-dungeon-grave-b",
+      "name": "grave-b",
+      "path": "assets/props/dungeon/grave-b.png",
+      "width": 48,
+      "height": 75,
+      "category": "props/dungeon",
+      "sourceRect": {
+        "x": 992,
+        "y": 543,
+        "width": 48,
+        "height": 75
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "deb66d7bee08bf2d2b03d687f3c04720ba7967b08099196e68850f0bea59fd91"
+    },
+    {
+      "id": "props-dungeon-altar",
+      "name": "altar",
+      "path": "assets/props/dungeon/altar.png",
+      "width": 80,
+      "height": 72,
+      "category": "props/dungeon",
+      "sourceRect": {
+        "x": 937,
+        "y": 621,
+        "width": 80,
+        "height": 72
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "2a3343643511174dacbb85bf078a674da5c54928d47b0165b14b2978eec2103a"
+    },
+    {
+      "id": "props-dungeon-cross-grave",
+      "name": "cross-grave",
+      "path": "assets/props/dungeon/cross-grave.png",
+      "width": 61,
+      "height": 91,
+      "category": "props/dungeon",
+      "sourceRect": {
+        "x": 1031,
+        "y": 602,
+        "width": 61,
+        "height": 91
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "bdc7413dcb85b0efeabb708dbd420bfdcf2eb22f8e73ba2fbd0d8dc200b34a94"
+    },
+    {
+      "id": "props-dungeon-chest-iron",
+      "name": "chest-iron",
+      "path": "assets/props/dungeon/chest-iron.png",
+      "width": 62,
+      "height": 49,
+      "category": "props/dungeon",
+      "sourceRect": {
+        "x": 940,
+        "y": 708,
+        "width": 62,
+        "height": 49
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "ed0123eb1cf5954caf0123ab98c13119797c2f2cbdc1e32595744a624ac71739"
+    },
+    {
+      "id": "props-dungeon-chest-gold",
+      "name": "chest-gold",
+      "path": "assets/props/dungeon/chest-gold.png",
+      "width": 56,
+      "height": 45,
+      "category": "props/dungeon",
+      "sourceRect": {
+        "x": 1027,
+        "y": 708,
+        "width": 56,
+        "height": 45
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "d987b4f941001a518ca3e76348c78e0b3c19e7571e32c39c645d6f75a7ece160"
+    },
+    {
+      "id": "props-banners-red-pennant",
+      "name": "red-pennant",
+      "path": "assets/props/banners/red-pennant.png",
+      "width": 39,
+      "height": 66,
+      "category": "props/banners",
+      "sourceRect": {
+        "x": 1208,
+        "y": 231,
+        "width": 39,
+        "height": 66
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "011d460e08f00eedcd018a082524ac8f48db9a84efdb04cfcde3bd8e5949abc9"
+    },
+    {
+      "id": "props-banners-wall-banner",
+      "name": "wall-banner",
+      "path": "assets/props/banners/wall-banner.png",
+      "width": 48,
+      "height": 89,
+      "category": "props/banners",
+      "sourceRect": {
+        "x": 564,
+        "y": 509,
+        "width": 48,
+        "height": 89
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "3e964ef0d06cc8ff7f36113348677d96c55294113907c72d33e77d5eaf6585f7"
+    },
+    {
+      "id": "props-banners-red-banner",
+      "name": "red-banner",
+      "path": "assets/props/banners/red-banner.png",
+      "width": 47,
+      "height": 141,
+      "category": "props/banners",
+      "sourceRect": {
+        "x": 960,
+        "y": 403,
+        "width": 47,
+        "height": 141
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "cfbe07421771845c82d94ea489d923aae68aeccb66c4cc4af7d7363b53c9a6d1"
+    },
+    {
+      "id": "props-banners-dark-banner",
+      "name": "dark-banner",
+      "path": "assets/props/banners/dark-banner.png",
+      "width": 45,
+      "height": 76,
+      "category": "props/banners",
+      "sourceRect": {
+        "x": 1054,
+        "y": 518,
+        "width": 45,
+        "height": 76
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Composite retained where parts touch; inspect crop and shadows.",
+      "sha256": "d4ef172a464b7784c5b475c9aebb7ea5b517aef5ee8aad56518ea292159e37a0"
+    },
+    {
+      "id": "equipment-weapons-weapon-top-01",
+      "name": "weapon-top-01",
+      "path": "assets/equipment/weapons/weapon-top-01.png",
+      "width": 35,
+      "height": 140,
+      "category": "equipment/weapons",
+      "sourceRect": {
+        "x": 1120,
+        "y": 428,
+        "width": 35,
+        "height": 140
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "848308bf98c220645a0aa927919669c728969fb34fe54337b5c9f9c31cd6f05b"
+    },
+    {
+      "id": "equipment-weapons-weapon-top-02",
+      "name": "weapon-top-02",
+      "path": "assets/equipment/weapons/weapon-top-02.png",
+      "width": 40,
+      "height": 138,
+      "category": "equipment/weapons",
+      "sourceRect": {
+        "x": 1156,
+        "y": 430,
+        "width": 40,
+        "height": 138
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "43b9f535acf6e6696652e66ed6fb9393072de0842410cb1c8e54c161457c429b"
+    },
+    {
+      "id": "equipment-weapons-weapon-top-03",
+      "name": "weapon-top-03",
+      "path": "assets/equipment/weapons/weapon-top-03.png",
+      "width": 39,
+      "height": 140,
+      "category": "equipment/weapons",
+      "sourceRect": {
+        "x": 1197,
+        "y": 428,
+        "width": 39,
+        "height": 140
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "cb7e59d0b61a13da8388ef57ebdc762d35d76e0a7a5af001e2e74e06ff394936"
+    },
+    {
+      "id": "equipment-weapons-weapon-top-04",
+      "name": "weapon-top-04",
+      "path": "assets/equipment/weapons/weapon-top-04.png",
+      "width": 32,
+      "height": 134,
+      "category": "equipment/weapons",
+      "sourceRect": {
+        "x": 1237,
+        "y": 434,
+        "width": 32,
+        "height": 134
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "0a27c79a6ea22bc43d5fb20e3098612478e0354a6461071793ac7e9a0aca2a11"
+    },
+    {
+      "id": "equipment-weapons-weapon-top-05",
+      "name": "weapon-top-05",
+      "path": "assets/equipment/weapons/weapon-top-05.png",
+      "width": 31,
+      "height": 138,
+      "category": "equipment/weapons",
+      "sourceRect": {
+        "x": 1279,
+        "y": 430,
+        "width": 31,
+        "height": 138
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "462a3661500bca9d0aab5711c317923cb03908596b7e3b236c3ec0bab502a1d3"
+    },
+    {
+      "id": "equipment-weapons-weapon-top-06",
+      "name": "weapon-top-06",
+      "path": "assets/equipment/weapons/weapon-top-06.png",
+      "width": 30,
+      "height": 138,
+      "category": "equipment/weapons",
+      "sourceRect": {
+        "x": 1321,
+        "y": 430,
+        "width": 30,
+        "height": 138
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "6fa7f652a22b1671006a62a52650a7797959273dd3a5a3d6202eab0f3ba41544"
+    },
+    {
+      "id": "equipment-weapons-weapon-top-07",
+      "name": "weapon-top-07",
+      "path": "assets/equipment/weapons/weapon-top-07.png",
+      "width": 36,
+      "height": 147,
+      "category": "equipment/weapons",
+      "sourceRect": {
+        "x": 1353,
+        "y": 421,
+        "width": 36,
+        "height": 147
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "838f8864f2addc69e7962e59ad1246d7b020689f28288833b60c2a143c44f0b6"
+    },
+    {
+      "id": "equipment-weapons-weapon-top-08",
+      "name": "weapon-top-08",
+      "path": "assets/equipment/weapons/weapon-top-08.png",
+      "width": 34,
+      "height": 139,
+      "category": "equipment/weapons",
+      "sourceRect": {
+        "x": 1402,
+        "y": 426,
+        "width": 34,
+        "height": 139
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "02229dfec117175718b5fa685ddc2795b6ee0f695213b4a9dfb82575aa8b5d49"
+    },
+    {
+      "id": "equipment-weapons-weapon-top-09",
+      "name": "weapon-top-09",
+      "path": "assets/equipment/weapons/weapon-top-09.png",
+      "width": 22,
+      "height": 139,
+      "category": "equipment/weapons",
+      "sourceRect": {
+        "x": 1447,
+        "y": 426,
+        "width": 22,
+        "height": 139
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "9c84e504e5a64ed3190c1aa41252d0a927278c5dfc5ec5571242cbdf0c82e3df"
+    },
+    {
+      "id": "equipment-weapons-weapon-top-10",
+      "name": "weapon-top-10",
+      "path": "assets/equipment/weapons/weapon-top-10.png",
+      "width": 33,
+      "height": 139,
+      "category": "equipment/weapons",
+      "sourceRect": {
+        "x": 1479,
+        "y": 425,
+        "width": 33,
+        "height": 139
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "d3138e512c2a3bd5511758586f8be40700fb2af4c2a3c378cb2eff0f2b2d074e"
+    },
+    {
+      "id": "equipment-weapons-axe",
+      "name": "axe",
+      "path": "assets/equipment/weapons/axe.png",
+      "width": 48,
+      "height": 113,
+      "category": "equipment/weapons",
+      "sourceRect": {
+        "x": 1117,
+        "y": 559,
+        "width": 48,
+        "height": 113
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "4a79ae76c9c0ecacd77476cae1150210eeb81b97014ffc392ca622df5e7b0c79"
+    },
+    {
+      "id": "equipment-weapons-mace",
+      "name": "mace",
+      "path": "assets/equipment/weapons/mace.png",
+      "width": 39,
+      "height": 112,
+      "category": "equipment/weapons",
+      "sourceRect": {
+        "x": 1173,
+        "y": 559,
+        "width": 39,
+        "height": 112
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "4bc2cd1a38c82e8b053448ec520e348e3c704eb3c83340f3a2976084499066f4"
+    },
+    {
+      "id": "equipment-weapons-hammer",
+      "name": "hammer",
+      "path": "assets/equipment/weapons/hammer.png",
+      "width": 43,
+      "height": 111,
+      "category": "equipment/weapons",
+      "sourceRect": {
+        "x": 1220,
+        "y": 560,
+        "width": 43,
+        "height": 111
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "f02fc4c691f5c21b2e11370b25b91d24d1f4a4f192db1cb48505c845e85813a8"
+    },
+    {
+      "id": "equipment-weapons-sickle",
+      "name": "sickle",
+      "path": "assets/equipment/weapons/sickle.png",
+      "width": 39,
+      "height": 108,
+      "category": "equipment/weapons",
+      "sourceRect": {
+        "x": 1267,
+        "y": 562,
+        "width": 39,
+        "height": 108
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "2b7d20dda971b4558fa12cfade7604293ab639d778fc5a1dae39b61ac28dedf1"
+    },
+    {
+      "id": "equipment-weapons-bow",
+      "name": "bow",
+      "path": "assets/equipment/weapons/bow.png",
+      "width": 57,
+      "height": 197,
+      "category": "equipment/weapons",
+      "sourceRect": {
+        "x": 1313,
+        "y": 566,
+        "width": 57,
+        "height": 197
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "583aa6ea4901e8334717d00fa170af65b50ce3bf5893234114f5c85bfce5043b"
+    },
+    {
+      "id": "equipment-weapons-staff-purple",
+      "name": "staff-purple",
+      "path": "assets/equipment/weapons/staff-purple.png",
+      "width": 39,
+      "height": 193,
+      "category": "equipment/weapons",
+      "sourceRect": {
+        "x": 1371,
+        "y": 569,
+        "width": 39,
+        "height": 193
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "0472fcd3c98a315da3c7af8033f304a35a19bd5244dda35f7c5c91f662432ad7"
+    },
+    {
+      "id": "equipment-weapons-staff-blue",
+      "name": "staff-blue",
+      "path": "assets/equipment/weapons/staff-blue.png",
+      "width": 38,
+      "height": 198,
+      "category": "equipment/weapons",
+      "sourceRect": {
+        "x": 1411,
+        "y": 569,
+        "width": 38,
+        "height": 198
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "9de89515b2b351bdf2eb3c8bd3ffff63f07b6d128c056a371d8306e31f4688c1"
+    },
+    {
+      "id": "equipment-weapons-staff-red",
+      "name": "staff-red",
+      "path": "assets/equipment/weapons/staff-red.png",
+      "width": 35,
+      "height": 196,
+      "category": "equipment/weapons",
+      "sourceRect": {
+        "x": 1450,
+        "y": 570,
+        "width": 35,
+        "height": 196
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "b4f3a503c929f98a1091551266312cb954c9b21debf5c16d638acc0d7a690269"
+    },
+    {
+      "id": "equipment-weapons-staff-gold",
+      "name": "staff-gold",
+      "path": "assets/equipment/weapons/staff-gold.png",
+      "width": 30,
+      "height": 196,
+      "category": "equipment/weapons",
+      "sourceRect": {
+        "x": 1485,
+        "y": 570,
+        "width": 30,
+        "height": 196
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "49b4552ad2a9d7bf5c3db31a2c29f85df2862d5ff59e01be62441bae38376839"
+    },
+    {
+      "id": "equipment-weapons-arrows",
+      "name": "arrows",
+      "path": "assets/equipment/weapons/arrows.png",
+      "width": 79,
+      "height": 76,
+      "category": "equipment/weapons",
+      "sourceRect": {
+        "x": 1131,
+        "y": 681,
+        "width": 79,
+        "height": 76
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "5d747086650dd6971e5801aa0ed87eb3ccb0410f7aa2eee2407c45f7a123a56c"
+    },
+    {
+      "id": "equipment-weapons-bow-small",
+      "name": "bow-small",
+      "path": "assets/equipment/weapons/bow-small.png",
+      "width": 61,
+      "height": 83,
+      "category": "equipment/weapons",
+      "sourceRect": {
+        "x": 1237,
+        "y": 681,
+        "width": 61,
+        "height": 83
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "9bf67c4ffe6ec6a5e2a46c8e00b68126b5d34f701d6e28e80506c33a587635f2"
+    },
+    {
+      "id": "equipment-armor-shield-a",
+      "name": "shield-a",
+      "path": "assets/equipment/armor/shield-a.png",
+      "width": 45,
+      "height": 58,
+      "category": "equipment/armor",
+      "sourceRect": {
+        "x": 21,
+        "y": 802,
+        "width": 45,
+        "height": 58
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "b9b86ec4d628f5c686193a400e39c8998011992a19dc3be13c8f446b0b30531c"
+    },
+    {
+      "id": "equipment-armor-shield-b",
+      "name": "shield-b",
+      "path": "assets/equipment/armor/shield-b.png",
+      "width": 50,
+      "height": 61,
+      "category": "equipment/armor",
+      "sourceRect": {
+        "x": 83,
+        "y": 802,
+        "width": 50,
+        "height": 61
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "9731c6aa9b6d717dc6770047c99a336cad6977cc929b4f57678bd2d98814de47"
+    },
+    {
+      "id": "equipment-armor-shield-round",
+      "name": "shield-round",
+      "path": "assets/equipment/armor/shield-round.png",
+      "width": 58,
+      "height": 58,
+      "category": "equipment/armor",
+      "sourceRect": {
+        "x": 149,
+        "y": 802,
+        "width": 58,
+        "height": 58
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "4e5bed806d95a4dd32180f5fb49e6ce9383318692b6734023ce926c1d7a71562"
+    },
+    {
+      "id": "equipment-armor-armor-r1-c1",
+      "name": "armor-r1-c1",
+      "path": "assets/equipment/armor/armor-r1-c1.png",
+      "width": 35,
+      "height": 44,
+      "category": "equipment/armor",
+      "sourceRect": {
+        "x": 224,
+        "y": 802,
+        "width": 35,
+        "height": 44
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "092f16b45c15f8c77905b1d983542b6a57f868997255e9201d3bad91541866df"
+    },
+    {
+      "id": "equipment-armor-armor-r1-c2",
+      "name": "armor-r1-c2",
+      "path": "assets/equipment/armor/armor-r1-c2.png",
+      "width": 26,
+      "height": 44,
+      "category": "equipment/armor",
+      "sourceRect": {
+        "x": 274,
+        "y": 802,
+        "width": 26,
+        "height": 44
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "5ef7419d40e4a353c1271dc1fac84522c4c7a832e52afe59b88eaacd9f7db728"
+    },
+    {
+      "id": "equipment-armor-armor-r1-c3",
+      "name": "armor-r1-c3",
+      "path": "assets/equipment/armor/armor-r1-c3.png",
+      "width": 25,
+      "height": 43,
+      "category": "equipment/armor",
+      "sourceRect": {
+        "x": 317,
+        "y": 802,
+        "width": 25,
+        "height": 43
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "a508b0fb757f4931468808fdf41f64b978bbe5eb4ce70fe64e5151b4346e5a00"
+    },
+    {
+      "id": "equipment-armor-armor-r1-c4",
+      "name": "armor-r1-c4",
+      "path": "assets/equipment/armor/armor-r1-c4.png",
+      "width": 30,
+      "height": 44,
+      "category": "equipment/armor",
+      "sourceRect": {
+        "x": 353,
+        "y": 802,
+        "width": 30,
+        "height": 44
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "75a9eb0784ffe1c80bc53f6af2752d23b41c4a28b4c789cf4801dcf6805b1d4d"
+    },
+    {
+      "id": "equipment-armor-armor-r2-c1",
+      "name": "armor-r2-c1",
+      "path": "assets/equipment/armor/armor-r2-c1.png",
+      "width": 30,
+      "height": 38,
+      "category": "equipment/armor",
+      "sourceRect": {
+        "x": 225,
+        "y": 854,
+        "width": 30,
+        "height": 38
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "f890221ec9d5467e39dfea965a507f2e8f652d5caaf9cbe1716ad506176bee4d"
+    },
+    {
+      "id": "equipment-armor-armor-r2-c2",
+      "name": "armor-r2-c2",
+      "path": "assets/equipment/armor/armor-r2-c2.png",
+      "width": 29,
+      "height": 38,
+      "category": "equipment/armor",
+      "sourceRect": {
+        "x": 267,
+        "y": 853,
+        "width": 29,
+        "height": 38
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "7db8a19695cde4253b49b11472c70487e70fdb4988a53ba453f77ddf1c264966"
+    },
+    {
+      "id": "equipment-armor-armor-r2-c3",
+      "name": "armor-r2-c3",
+      "path": "assets/equipment/armor/armor-r2-c3.png",
+      "width": 30,
+      "height": 37,
+      "category": "equipment/armor",
+      "sourceRect": {
+        "x": 308,
+        "y": 854,
+        "width": 30,
+        "height": 37
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "618c4654d0f4ba195888cc97bd73be4d720ad7378fd011ebd8091d51f5fa7b72"
+    },
+    {
+      "id": "equipment-armor-armor-r2-c4",
+      "name": "armor-r2-c4",
+      "path": "assets/equipment/armor/armor-r2-c4.png",
+      "width": 28,
+      "height": 38,
+      "category": "equipment/armor",
+      "sourceRect": {
+        "x": 350,
+        "y": 854,
+        "width": 28,
+        "height": 38
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "6ee35f5cbbfa574f667e3e44b5d571b89c835c60eac9ce18bb8f472e9b0099ac"
+    },
+    {
+      "id": "equipment-armor-armor-r3-c1",
+      "name": "armor-r3-c1",
+      "path": "assets/equipment/armor/armor-r3-c1.png",
+      "width": 25,
+      "height": 46,
+      "category": "equipment/armor",
+      "sourceRect": {
+        "x": 226,
+        "y": 904,
+        "width": 25,
+        "height": 46
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "807405e1f20df41d9ce49950eef6ee86aaa72fb66940c1ea2dcf29313ed800fa"
+    },
+    {
+      "id": "equipment-armor-armor-r3-c2",
+      "name": "armor-r3-c2",
+      "path": "assets/equipment/armor/armor-r3-c2.png",
+      "width": 39,
+      "height": 46,
+      "category": "equipment/armor",
+      "sourceRect": {
+        "x": 263,
+        "y": 904,
+        "width": 39,
+        "height": 46
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "e3a1e1e5b21d32c2d926ecf5d8502a2ce82e96b6f9745bde5878b7767764c316"
+    },
+    {
+      "id": "equipment-armor-armor-r3-c3",
+      "name": "armor-r3-c3",
+      "path": "assets/equipment/armor/armor-r3-c3.png",
+      "width": 41,
+      "height": 46,
+      "category": "equipment/armor",
+      "sourceRect": {
+        "x": 304,
+        "y": 904,
+        "width": 41,
+        "height": 46
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "0f91e1d3740cb0056fe0ab5e4d92394d76b1c607757c3244159d12bcb1e32920"
+    },
+    {
+      "id": "equipment-armor-armor-r3-c4",
+      "name": "armor-r3-c4",
+      "path": "assets/equipment/armor/armor-r3-c4.png",
+      "width": 42,
+      "height": 50,
+      "category": "equipment/armor",
+      "sourceRect": {
+        "x": 346,
+        "y": 900,
+        "width": 42,
+        "height": 50
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "b75972323a0b4fd0c9b49f970a2969b630df8e1a1a300a23ca52a02e063e9ad5"
+    },
+    {
+      "id": "equipment-armor-armor-r4-c1",
+      "name": "armor-r4-c1",
+      "path": "assets/equipment/armor/armor-r4-c1.png",
+      "width": 38,
+      "height": 44,
+      "category": "equipment/armor",
+      "sourceRect": {
+        "x": 222,
+        "y": 961,
+        "width": 38,
+        "height": 44
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "f1c6b417b48def412764d8eb8e9345862330991941f7df319378b458e11e55ce"
+    },
+    {
+      "id": "equipment-armor-armor-r4-c2",
+      "name": "armor-r4-c2",
+      "path": "assets/equipment/armor/armor-r4-c2.png",
+      "width": 40,
+      "height": 37,
+      "category": "equipment/armor",
+      "sourceRect": {
+        "x": 262,
+        "y": 963,
+        "width": 40,
+        "height": 37
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "d660b7b8c4fb08120039d4a17e398d79ea222feb5cae5396e0a983b857eabb82"
+    },
+    {
+      "id": "equipment-armor-armor-r4-c3",
+      "name": "armor-r4-c3",
+      "path": "assets/equipment/armor/armor-r4-c3.png",
+      "width": 28,
+      "height": 30,
+      "category": "equipment/armor",
+      "sourceRect": {
+        "x": 313,
+        "y": 969,
+        "width": 28,
+        "height": 30
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "50e5b51537a53603b8c693f3957e70b49825220955ef1ef63031efcda514a113"
+    },
+    {
+      "id": "equipment-armor-armor-r4-c4",
+      "name": "armor-r4-c4",
+      "path": "assets/equipment/armor/armor-r4-c4.png",
+      "width": 38,
+      "height": 40,
+      "category": "equipment/armor",
+      "sourceRect": {
+        "x": 350,
+        "y": 957,
+        "width": 38,
+        "height": 40
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "5fd34cab4c86a5868a790f98df6f5f19d991bfe9e5d32259ba0bb82b1e484d96"
+    },
+    {
+      "id": "equipment-clothing-clothing-r1-c1",
+      "name": "clothing-r1-c1",
+      "path": "assets/equipment/clothing/clothing-r1-c1.png",
+      "width": 46,
+      "height": 50,
+      "category": "equipment/clothing",
+      "sourceRect": {
+        "x": 391,
+        "y": 797,
+        "width": 46,
+        "height": 50
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "766e2921302f0fa56b6b5f7a40258e4c59fd6e3923e0004088b418c94fe64316"
+    },
+    {
+      "id": "equipment-clothing-clothing-r1-c2",
+      "name": "clothing-r1-c2",
+      "path": "assets/equipment/clothing/clothing-r1-c2.png",
+      "width": 42,
+      "height": 52,
+      "category": "equipment/clothing",
+      "sourceRect": {
+        "x": 441,
+        "y": 797,
+        "width": 42,
+        "height": 52
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "e09abb24d8a6ca974dcfd55bb80d6a3bf4d0edb43d1340d451a0c2d075cb6611"
+    },
+    {
+      "id": "equipment-clothing-clothing-r1-c3",
+      "name": "clothing-r1-c3",
+      "path": "assets/equipment/clothing/clothing-r1-c3.png",
+      "width": 50,
+      "height": 51,
+      "category": "equipment/clothing",
+      "sourceRect": {
+        "x": 484,
+        "y": 798,
+        "width": 50,
+        "height": 51
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "4cfb65b526fb76a984c547808f893c795dc82c2021f366d390db6fa48c4a1581"
+    },
+    {
+      "id": "equipment-clothing-clothing-r1-c4",
+      "name": "clothing-r1-c4",
+      "path": "assets/equipment/clothing/clothing-r1-c4.png",
+      "width": 43,
+      "height": 54,
+      "category": "equipment/clothing",
+      "sourceRect": {
+        "x": 540,
+        "y": 798,
+        "width": 43,
+        "height": 54
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "e529c9bd5f19f95ade8b06d56d8f086377a2d0a5386d1c411512b2ffdd9c4d09"
+    },
+    {
+      "id": "equipment-clothing-clothing-r2-c1",
+      "name": "clothing-r2-c1",
+      "path": "assets/equipment/clothing/clothing-r2-c1.png",
+      "width": 49,
+      "height": 59,
+      "category": "equipment/clothing",
+      "sourceRect": {
+        "x": 389,
+        "y": 854,
+        "width": 49,
+        "height": 59
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "1ec4f9614bc595f883c344834b25db9a2cdb165494b077a5a765891376c8f42f"
+    },
+    {
+      "id": "equipment-clothing-clothing-r2-c2",
+      "name": "clothing-r2-c2",
+      "path": "assets/equipment/clothing/clothing-r2-c2.png",
+      "width": 40,
+      "height": 56,
+      "category": "equipment/clothing",
+      "sourceRect": {
+        "x": 443,
+        "y": 859,
+        "width": 40,
+        "height": 56
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "8386242d28335323c1e4670f338a44fb004a7492e95ee3695f3b7b1770611776"
+    },
+    {
+      "id": "equipment-clothing-clothing-r2-c3",
+      "name": "clothing-r2-c3",
+      "path": "assets/equipment/clothing/clothing-r2-c3.png",
+      "width": 48,
+      "height": 59,
+      "category": "equipment/clothing",
+      "sourceRect": {
+        "x": 484,
+        "y": 858,
+        "width": 48,
+        "height": 59
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "0ad383fe89729a1bb32b7c647bdc68ee3c00f5fd090ed170976bc9e5fe8ef64d"
+    },
+    {
+      "id": "equipment-clothing-clothing-r2-c4",
+      "name": "clothing-r2-c4",
+      "path": "assets/equipment/clothing/clothing-r2-c4.png",
+      "width": 41,
+      "height": 55,
+      "category": "equipment/clothing",
+      "sourceRect": {
+        "x": 540,
+        "y": 864,
+        "width": 41,
+        "height": 55
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "8c3c69de546ab977fa20c598f3172ed4918c2d6aec2f67224a1978be33af2be3"
+    },
+    {
+      "id": "equipment-clothing-clothing-r3-c1",
+      "name": "clothing-r3-c1",
+      "path": "assets/equipment/clothing/clothing-r3-c1.png",
+      "width": 49,
+      "height": 35,
+      "category": "equipment/clothing",
+      "sourceRect": {
+        "x": 389,
+        "y": 925,
+        "width": 49,
+        "height": 35
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "b1f2c9e43822f153fd8693349779c40174fa164c1ca33fd249ebe3ba2ae5e1fe"
+    },
+    {
+      "id": "equipment-clothing-clothing-r3-c2",
+      "name": "clothing-r3-c2",
+      "path": "assets/equipment/clothing/clothing-r3-c2.png",
+      "width": 44,
+      "height": 26,
+      "category": "equipment/clothing",
+      "sourceRect": {
+        "x": 439,
+        "y": 926,
+        "width": 44,
+        "height": 26
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "7f0f2ba1a58b5b4d3491f50e099a25c95d5adc39070bc2e519987626baef23bc"
+    },
+    {
+      "id": "equipment-clothing-clothing-r3-c3",
+      "name": "clothing-r3-c3",
+      "path": "assets/equipment/clothing/clothing-r3-c3.png",
+      "width": 50,
+      "height": 27,
+      "category": "equipment/clothing",
+      "sourceRect": {
+        "x": 484,
+        "y": 928,
+        "width": 50,
+        "height": 27
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "dff3bfc0fd4e9d2d53a7ef2dafa5c0a09d0a1818ee7c3863f78b81115e5a60bf"
+    },
+    {
+      "id": "equipment-clothing-clothing-r3-c4",
+      "name": "clothing-r3-c4",
+      "path": "assets/equipment/clothing/clothing-r3-c4.png",
+      "width": 47,
+      "height": 30,
+      "category": "equipment/clothing",
+      "sourceRect": {
+        "x": 535,
+        "y": 929,
+        "width": 47,
+        "height": 30
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "2be442d6dc65f2925f6dc1b94c85c70a667d16af4bd17fa66cec3920be642552"
+    },
+    {
+      "id": "equipment-clothing-clothing-r4-c1",
+      "name": "clothing-r4-c1",
+      "path": "assets/equipment/clothing/clothing-r4-c1.png",
+      "width": 46,
+      "height": 31,
+      "category": "equipment/clothing",
+      "sourceRect": {
+        "x": 389,
+        "y": 961,
+        "width": 46,
+        "height": 31
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "63384c334a5f02c50dc7247138ce71bded0d4d7bc804851102e6fb1cc161c2e5"
+    },
+    {
+      "id": "equipment-clothing-clothing-r4-c2",
+      "name": "clothing-r4-c2",
+      "path": "assets/equipment/clothing/clothing-r4-c2.png",
+      "width": 39,
+      "height": 35,
+      "category": "equipment/clothing",
+      "sourceRect": {
+        "x": 444,
+        "y": 961,
+        "width": 39,
+        "height": 35
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "0dd528eec3d1fdd2553f2b058590b5f991c783b4234f761d988930f7f2a2eb2c"
+    },
+    {
+      "id": "equipment-clothing-clothing-r4-c3",
+      "name": "clothing-r4-c3",
+      "path": "assets/equipment/clothing/clothing-r4-c3.png",
+      "width": 50,
+      "height": 38,
+      "category": "equipment/clothing",
+      "sourceRect": {
+        "x": 484,
+        "y": 965,
+        "width": 50,
+        "height": 38
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "06605a7e485c4bd58d21a2803783a09aca4eff45c68a5188c321a6d778d75484"
+    },
+    {
+      "id": "equipment-clothing-clothing-r4-c4",
+      "name": "clothing-r4-c4",
+      "path": "assets/equipment/clothing/clothing-r4-c4.png",
+      "width": 45,
+      "height": 36,
+      "category": "equipment/clothing",
+      "sourceRect": {
+        "x": 535,
+        "y": 967,
+        "width": 45,
+        "height": 36
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "64fa31c610248ad28c65a2183818cb28f6e6560423efc47e4df0353062122597"
+    },
+    {
+      "id": "equipment-armor-boots-gloves-r1-c1",
+      "name": "boots-gloves-r1-c1",
+      "path": "assets/equipment/armor/boots-gloves-r1-c1.png",
+      "width": 31,
+      "height": 47,
+      "category": "equipment/armor",
+      "sourceRect": {
+        "x": 21,
+        "y": 875,
+        "width": 31,
+        "height": 47
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "05877ffcca575c64bcae94ac4212c50db8b542ac43c6bdaeed5fb74446492ea2"
+    },
+    {
+      "id": "equipment-armor-boots-gloves-r1-c2",
+      "name": "boots-gloves-r1-c2",
+      "path": "assets/equipment/armor/boots-gloves-r1-c2.png",
+      "width": 30,
+      "height": 46,
+      "category": "equipment/armor",
+      "sourceRect": {
+        "x": 58,
+        "y": 875,
+        "width": 30,
+        "height": 46
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "9c2e6ae76b0d157c726148c0821a92bcc2f3c18bb57430f515d12355d2240fc8"
+    },
+    {
+      "id": "equipment-armor-boots-gloves-r1-c3",
+      "name": "boots-gloves-r1-c3",
+      "path": "assets/equipment/armor/boots-gloves-r1-c3.png",
+      "width": 30,
+      "height": 46,
+      "category": "equipment/armor",
+      "sourceRect": {
+        "x": 97,
+        "y": 876,
+        "width": 30,
+        "height": 46
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "9eedf85e71516055ceedb5020895464255d58126442105cf358fc52e757e5cf7"
+    },
+    {
+      "id": "equipment-armor-boots-gloves-r1-c4",
+      "name": "boots-gloves-r1-c4",
+      "path": "assets/equipment/armor/boots-gloves-r1-c4.png",
+      "width": 28,
+      "height": 41,
+      "category": "equipment/armor",
+      "sourceRect": {
+        "x": 138,
+        "y": 879,
+        "width": 28,
+        "height": 41
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "2e308aaac19aedbc8b1bcf3a869a0e28a1c4e54ede7edd4e4957eeb22caa69c1"
+    },
+    {
+      "id": "equipment-armor-boots-gloves-r1-c5",
+      "name": "boots-gloves-r1-c5",
+      "path": "assets/equipment/armor/boots-gloves-r1-c5.png",
+      "width": 26,
+      "height": 42,
+      "category": "equipment/armor",
+      "sourceRect": {
+        "x": 182,
+        "y": 877,
+        "width": 26,
+        "height": 42
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "6e56c0e2a874cdb59b2360af2eeef834a19e924a68ffdbf4ffa5c8817268ef3e"
+    },
+    {
+      "id": "equipment-armor-boots-gloves-r2-c1",
+      "name": "boots-gloves-r2-c1",
+      "path": "assets/equipment/armor/boots-gloves-r2-c1.png",
+      "width": 27,
+      "height": 58,
+      "category": "equipment/armor",
+      "sourceRect": {
+        "x": 30,
+        "y": 939,
+        "width": 27,
+        "height": 58
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "dd9749f8f376aefc17431a177528cf1df546efaadbb1e2985ac7b8df69cf4465"
+    },
+    {
+      "id": "equipment-armor-boots-gloves-r2-c2",
+      "name": "boots-gloves-r2-c2",
+      "path": "assets/equipment/armor/boots-gloves-r2-c2.png",
+      "width": 38,
+      "height": 65,
+      "category": "equipment/armor",
+      "sourceRect": {
+        "x": 58,
+        "y": 934,
+        "width": 38,
+        "height": 65
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "80d9116e37a8b173641cf9a740958bc6bbe5e7a0790acb2c4910efb202c5bce5"
+    },
+    {
+      "id": "equipment-armor-boots-gloves-r2-c3",
+      "name": "boots-gloves-r2-c3",
+      "path": "assets/equipment/armor/boots-gloves-r2-c3.png",
+      "width": 39,
+      "height": 67,
+      "category": "equipment/armor",
+      "sourceRect": {
+        "x": 97,
+        "y": 934,
+        "width": 39,
+        "height": 67
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "4488d74eec7ff842684d41bc13bdce0223be22fe9085dcbad92b730b4dd84dc8"
+    },
+    {
+      "id": "equipment-armor-boots-gloves-r2-c4",
+      "name": "boots-gloves-r2-c4",
+      "path": "assets/equipment/armor/boots-gloves-r2-c4.png",
+      "width": 23,
+      "height": 63,
+      "category": "equipment/armor",
+      "sourceRect": {
+        "x": 137,
+        "y": 936,
+        "width": 23,
+        "height": 63
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "87df94e6928f0b69038a88541441bf3a541dfcd0febd9e514d131da6183412dd"
+    },
+    {
+      "id": "equipment-armor-boots-gloves-r2-c5",
+      "name": "boots-gloves-r2-c5",
+      "path": "assets/equipment/armor/boots-gloves-r2-c5.png",
+      "width": 31,
+      "height": 63,
+      "category": "equipment/armor",
+      "sourceRect": {
+        "x": 176,
+        "y": 936,
+        "width": 31,
+        "height": 63
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "debe1096bbca0726a1343b14948af70bb1566a588101657b331f60953b879b45"
+    },
+    {
+      "id": "items-potions-potion-01",
+      "name": "potion-01",
+      "path": "assets/items/potions/potion-01.png",
+      "width": 28,
+      "height": 44,
+      "category": "items/potions",
+      "sourceRect": {
+        "x": 613,
+        "y": 804,
+        "width": 28,
+        "height": 44
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "2b9013630a9c0c36c0df9105a725335fc2c0a9b91feb45da24528f61331c4e3b"
+    },
+    {
+      "id": "items-potions-potion-02",
+      "name": "potion-02",
+      "path": "assets/items/potions/potion-02.png",
+      "width": 26,
+      "height": 44,
+      "category": "items/potions",
+      "sourceRect": {
+        "x": 652,
+        "y": 804,
+        "width": 26,
+        "height": 44
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "5cb5e2b2f8d5c9c980c3fb8aebf8aff49c56ad145dd234ee56b7b73cd0477153"
+    },
+    {
+      "id": "items-potions-potion-03",
+      "name": "potion-03",
+      "path": "assets/items/potions/potion-03.png",
+      "width": 25,
+      "height": 43,
+      "category": "items/potions",
+      "sourceRect": {
+        "x": 691,
+        "y": 805,
+        "width": 25,
+        "height": 43
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "e67da03c5214247c791b304290dd4ad0651be5d73f0d18275289cf333e5b951f"
+    },
+    {
+      "id": "items-potions-potion-04",
+      "name": "potion-04",
+      "path": "assets/items/potions/potion-04.png",
+      "width": 24,
+      "height": 43,
+      "category": "items/potions",
+      "sourceRect": {
+        "x": 730,
+        "y": 805,
+        "width": 24,
+        "height": 43
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "27cf53d1cd233276443fb5e580d38f989e82d6703bf6c409f7b632e919cdf8ba"
+    },
+    {
+      "id": "items-potions-potion-05",
+      "name": "potion-05",
+      "path": "assets/items/potions/potion-05.png",
+      "width": 23,
+      "height": 43,
+      "category": "items/potions",
+      "sourceRect": {
+        "x": 767,
+        "y": 805,
+        "width": 23,
+        "height": 43
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "0925135ad9ed45c6a99e56a279167d37edb218a00d7d80ca2952955cfac0c076"
+    },
+    {
+      "id": "items-potions-potion-06",
+      "name": "potion-06",
+      "path": "assets/items/potions/potion-06.png",
+      "width": 26,
+      "height": 45,
+      "category": "items/potions",
+      "sourceRect": {
+        "x": 802,
+        "y": 803,
+        "width": 26,
+        "height": 45
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "e00b47048060fb98e429487678499332e0fa34d39a647f752f5957f4714f7299"
+    },
+    {
+      "id": "items-materials-scroll-a",
+      "name": "scroll-a",
+      "path": "assets/items/materials/scroll-a.png",
+      "width": 39,
+      "height": 38,
+      "category": "items/materials",
+      "sourceRect": {
+        "x": 847,
+        "y": 806,
+        "width": 39,
+        "height": 38
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "51aa15512d8666b9d25b77b66193f4474f8cbd103b94a4d2bdf4cce5e580b47c"
+    },
+    {
+      "id": "items-materials-scroll-b",
+      "name": "scroll-b",
+      "path": "assets/items/materials/scroll-b.png",
+      "width": 39,
+      "height": 37,
+      "category": "items/materials",
+      "sourceRect": {
+        "x": 887,
+        "y": 806,
+        "width": 39,
+        "height": 37
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "902adb888c1fc580b6c56dd93a606b0ee7fd2f4664d3311fd8ffcbdb714a1d96"
+    },
+    {
+      "id": "items-materials-scroll-c",
+      "name": "scroll-c",
+      "path": "assets/items/materials/scroll-c.png",
+      "width": 40,
+      "height": 38,
+      "category": "items/materials",
+      "sourceRect": {
+        "x": 927,
+        "y": 806,
+        "width": 40,
+        "height": 38
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "e99b3079497510ec97eeceddf8d0da1c9893a332d3e931b702f936656e594fdf"
+    },
+    {
+      "id": "items-materials-pouch",
+      "name": "pouch",
+      "path": "assets/items/materials/pouch.png",
+      "width": 40,
+      "height": 44,
+      "category": "items/materials",
+      "sourceRect": {
+        "x": 967,
+        "y": 804,
+        "width": 40,
+        "height": 44
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Exact-pixel crop; inspect black edges in game.",
+      "sha256": "8b307b1e586f17d0ea4cb2ef91aabde5998053955383a189dc1522c2de66e893"
+    },
+    {
+      "id": "items-materials-material-r1-c1",
+      "name": "material-r1-c1",
+      "path": "assets/items/materials/material-r1-c1.png",
+      "width": 37,
+      "height": 42,
+      "category": "items/materials",
+      "sourceRect": {
+        "x": 610,
+        "y": 859,
+        "width": 37,
+        "height": 42
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Small items may remain grouped; inspect before assigning gameplay semantics.",
+      "sha256": "8f08f147152334a11d0da40c821a74c2809f7787da93f11c9fc3691000609179"
+    },
+    {
+      "id": "items-materials-material-r1-c2",
+      "name": "material-r1-c2",
+      "path": "assets/items/materials/material-r1-c2.png",
+      "width": 31,
+      "height": 43,
+      "category": "items/materials",
+      "sourceRect": {
+        "x": 657,
+        "y": 858,
+        "width": 31,
+        "height": 43
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Small items may remain grouped; inspect before assigning gameplay semantics.",
+      "sha256": "8beb63969d23dc32f0c3d8436059a3ed390e6fb493072001e4d7361a910ce57e"
+    },
+    {
+      "id": "items-materials-material-r1-c3",
+      "name": "material-r1-c3",
+      "path": "assets/items/materials/material-r1-c3.png",
+      "width": 31,
+      "height": 43,
+      "category": "items/materials",
+      "sourceRect": {
+        "x": 694,
+        "y": 858,
+        "width": 31,
+        "height": 43
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Small items may remain grouped; inspect before assigning gameplay semantics.",
+      "sha256": "fb8017ba4ad51423153c504ee5e0e2d1339272a8e368e60324b7368a5da96819"
+    },
+    {
+      "id": "items-materials-material-r1-c4",
+      "name": "material-r1-c4",
+      "path": "assets/items/materials/material-r1-c4.png",
+      "width": 29,
+      "height": 34,
+      "category": "items/materials",
+      "sourceRect": {
+        "x": 732,
+        "y": 860,
+        "width": 29,
+        "height": 34
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Small items may remain grouped; inspect before assigning gameplay semantics.",
+      "sha256": "04fa596f9fc8735ed82b073d0b2a861c6f2218d6041fc648a2e744e4d4ff3203"
+    },
+    {
+      "id": "items-materials-material-r1-c5",
+      "name": "material-r1-c5",
+      "path": "assets/items/materials/material-r1-c5.png",
+      "width": 36,
+      "height": 31,
+      "category": "items/materials",
+      "sourceRect": {
+        "x": 766,
+        "y": 863,
+        "width": 36,
+        "height": 31
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Small items may remain grouped; inspect before assigning gameplay semantics.",
+      "sha256": "06df606157959ef59ab59c3fd04c7e96580694cf7d0edfe9cb5ab6a90dbe71d2"
+    },
+    {
+      "id": "items-materials-material-r1-c6",
+      "name": "material-r1-c6",
+      "path": "assets/items/materials/material-r1-c6.png",
+      "width": 26,
+      "height": 30,
+      "category": "items/materials",
+      "sourceRect": {
+        "x": 808,
+        "y": 862,
+        "width": 26,
+        "height": 30
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Small items may remain grouped; inspect before assigning gameplay semantics.",
+      "sha256": "a32849baa44d99af3ee6d5a335a3ad2ebec1c45030ff38688e785b928e549376"
+    },
+    {
+      "id": "items-materials-material-r1-c7",
+      "name": "material-r1-c7",
+      "path": "assets/items/materials/material-r1-c7.png",
+      "width": 29,
+      "height": 46,
+      "category": "items/materials",
+      "sourceRect": {
+        "x": 842,
+        "y": 855,
+        "width": 29,
+        "height": 46
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Small items may remain grouped; inspect before assigning gameplay semantics.",
+      "sha256": "59ea2ae30713b63fa64416ab8aee7c328868d96284123c7415a2d4a494c8dfc3"
+    },
+    {
+      "id": "items-materials-material-r1-c8",
+      "name": "material-r1-c8",
+      "path": "assets/items/materials/material-r1-c8.png",
+      "width": 29,
+      "height": 47,
+      "category": "items/materials",
+      "sourceRect": {
+        "x": 879,
+        "y": 854,
+        "width": 29,
+        "height": 47
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Small items may remain grouped; inspect before assigning gameplay semantics.",
+      "sha256": "b3aa4b024726b2bbd5586a607549ec948007e8194833be7657e4cdcaed7db0fc"
+    },
+    {
+      "id": "items-materials-material-r1-c9",
+      "name": "material-r1-c9",
+      "path": "assets/items/materials/material-r1-c9.png",
+      "width": 41,
+      "height": 43,
+      "category": "items/materials",
+      "sourceRect": {
+        "x": 917,
+        "y": 858,
+        "width": 41,
+        "height": 43
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Small items may remain grouped; inspect before assigning gameplay semantics.",
+      "sha256": "5fd6e8376ef6ecf1d360ef0090cc9225ae0b27cff93b32f89b84f105fad72025"
+    },
+    {
+      "id": "items-materials-material-r1-c10",
+      "name": "material-r1-c10",
+      "path": "assets/items/materials/material-r1-c10.png",
+      "width": 34,
+      "height": 39,
+      "category": "items/materials",
+      "sourceRect": {
+        "x": 966,
+        "y": 857,
+        "width": 34,
+        "height": 39
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Small items may remain grouped; inspect before assigning gameplay semantics.",
+      "sha256": "d9f3cdb91ecb8c2a9f9d04826fea3e5218cad7dc94be0bac5d0bc500ba7d0fd4"
+    },
+    {
+      "id": "items-materials-material-r2-c1",
+      "name": "material-r2-c1",
+      "path": "assets/items/materials/material-r2-c1.png",
+      "width": 47,
+      "height": 45,
+      "category": "items/materials",
+      "sourceRect": {
+        "x": 609,
+        "y": 902,
+        "width": 47,
+        "height": 45
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Small items may remain grouped; inspect before assigning gameplay semantics.",
+      "sha256": "66320b5a099eb0550c3f839d9d8d3ada11cdd3a2c65d64682d7ff17a443d368a"
+    },
+    {
+      "id": "items-materials-material-r2-c2",
+      "name": "material-r2-c2",
+      "path": "assets/items/materials/material-r2-c2.png",
+      "width": 29,
+      "height": 41,
+      "category": "items/materials",
+      "sourceRect": {
+        "x": 664,
+        "y": 902,
+        "width": 29,
+        "height": 41
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Small items may remain grouped; inspect before assigning gameplay semantics.",
+      "sha256": "9e0d5700105b6b0edfb8dcb6ca6528c4c34fb61b577a0054cc7a3860f8da4cb4"
+    },
+    {
+      "id": "items-materials-material-r2-c3",
+      "name": "material-r2-c3",
+      "path": "assets/items/materials/material-r2-c3.png",
+      "width": 36,
+      "height": 42,
+      "category": "items/materials",
+      "sourceRect": {
+        "x": 702,
+        "y": 902,
+        "width": 36,
+        "height": 42
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Small items may remain grouped; inspect before assigning gameplay semantics.",
+      "sha256": "9bb15ffce3490c633774103dc8e8cac38923c067753e1b7304a2c39b3b87adef"
+    },
+    {
+      "id": "items-materials-material-r2-c4",
+      "name": "material-r2-c4",
+      "path": "assets/items/materials/material-r2-c4.png",
+      "width": 36,
+      "height": 45,
+      "category": "items/materials",
+      "sourceRect": {
+        "x": 745,
+        "y": 902,
+        "width": 36,
+        "height": 45
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Small items may remain grouped; inspect before assigning gameplay semantics.",
+      "sha256": "f34a91858b0ef39c02968048fe5ddbd8cfe547673150bcee78951f410de07ab4"
+    },
+    {
+      "id": "items-materials-material-r2-c5",
+      "name": "material-r2-c5",
+      "path": "assets/items/materials/material-r2-c5.png",
+      "width": 40,
+      "height": 40,
+      "category": "items/materials",
+      "sourceRect": {
+        "x": 785,
+        "y": 906,
+        "width": 40,
+        "height": 40
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Small items may remain grouped; inspect before assigning gameplay semantics.",
+      "sha256": "1675b81e961ff5df6b31ac99d32be655568a70c87afb12f9ec770008556f3638"
+    },
+    {
+      "id": "items-materials-material-r2-c6",
+      "name": "material-r2-c6",
+      "path": "assets/items/materials/material-r2-c6.png",
+      "width": 38,
+      "height": 38,
+      "category": "items/materials",
+      "sourceRect": {
+        "x": 834,
+        "y": 902,
+        "width": 38,
+        "height": 38
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Small items may remain grouped; inspect before assigning gameplay semantics.",
+      "sha256": "8226c72d547c45ebe47cf2e753e5b8e7550db1c5e45cd50005dfc7e1a8f31877"
+    },
+    {
+      "id": "items-materials-material-r2-c7",
+      "name": "material-r2-c7",
+      "path": "assets/items/materials/material-r2-c7.png",
+      "width": 37,
+      "height": 39,
+      "category": "items/materials",
+      "sourceRect": {
+        "x": 882,
+        "y": 902,
+        "width": 37,
+        "height": 39
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Small items may remain grouped; inspect before assigning gameplay semantics.",
+      "sha256": "6edf292ed8870f0f08c12036c44e1e72b562f5c55294e66f2d878954ca0cec86"
+    },
+    {
+      "id": "items-materials-material-r2-c8",
+      "name": "material-r2-c8",
+      "path": "assets/items/materials/material-r2-c8.png",
+      "width": 42,
+      "height": 45,
+      "category": "items/materials",
+      "sourceRect": {
+        "x": 926,
+        "y": 902,
+        "width": 42,
+        "height": 45
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Small items may remain grouped; inspect before assigning gameplay semantics.",
+      "sha256": "04d678e5e14bfab793f929f430c2fb1f5e47a87dad9b490bae46e0a689fd9186"
+    },
+    {
+      "id": "items-materials-material-r2-c9",
+      "name": "material-r2-c9",
+      "path": "assets/items/materials/material-r2-c9.png",
+      "width": 29,
+      "height": 32,
+      "category": "items/materials",
+      "sourceRect": {
+        "x": 972,
+        "y": 908,
+        "width": 29,
+        "height": 32
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Small items may remain grouped; inspect before assigning gameplay semantics.",
+      "sha256": "fa7f19dd2d9b15592626191e06d2731133c875133d44b521e92297103c8e90a4"
+    },
+    {
+      "id": "items-materials-material-r3-c1",
+      "name": "material-r3-c1",
+      "path": "assets/items/materials/material-r3-c1.png",
+      "width": 42,
+      "height": 49,
+      "category": "items/materials",
+      "sourceRect": {
+        "x": 609,
+        "y": 954,
+        "width": 42,
+        "height": 49
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Small items may remain grouped; inspect before assigning gameplay semantics.",
+      "sha256": "7a7409ace0b3167d8113704def73063e74c4d5b728a46de474ba37977e4872ca"
+    },
+    {
+      "id": "items-materials-material-r3-c2",
+      "name": "material-r3-c2",
+      "path": "assets/items/materials/material-r3-c2.png",
+      "width": 36,
+      "height": 44,
+      "category": "items/materials",
+      "sourceRect": {
+        "x": 652,
+        "y": 955,
+        "width": 36,
+        "height": 44
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Small items may remain grouped; inspect before assigning gameplay semantics.",
+      "sha256": "338f23b92599ddeb5201dcc7f639bcc09ddd1e209bd7e9723a91b5f2308647b3"
+    },
+    {
+      "id": "items-materials-material-r3-c3",
+      "name": "material-r3-c3",
+      "path": "assets/items/materials/material-r3-c3.png",
+      "width": 36,
+      "height": 31,
+      "category": "items/materials",
+      "sourceRect": {
+        "x": 694,
+        "y": 957,
+        "width": 36,
+        "height": 31
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Small items may remain grouped; inspect before assigning gameplay semantics.",
+      "sha256": "7d45d6e68085208ec0ddf4202aae94256fe8e011899a592f0aeb257065cbea57"
+    },
+    {
+      "id": "items-materials-material-r3-c4",
+      "name": "material-r3-c4",
+      "path": "assets/items/materials/material-r3-c4.png",
+      "width": 51,
+      "height": 46,
+      "category": "items/materials",
+      "sourceRect": {
+        "x": 731,
+        "y": 948,
+        "width": 51,
+        "height": 46
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Small items may remain grouped; inspect before assigning gameplay semantics.",
+      "sha256": "cde099a6a0cb41e2ebf332fa7ba4c310fac5a21c7400d8149f34627603d4c0a1"
+    },
+    {
+      "id": "items-materials-material-r3-c5",
+      "name": "material-r3-c5",
+      "path": "assets/items/materials/material-r3-c5.png",
+      "width": 38,
+      "height": 37,
+      "category": "items/materials",
+      "sourceRect": {
+        "x": 783,
+        "y": 956,
+        "width": 38,
+        "height": 37
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Small items may remain grouped; inspect before assigning gameplay semantics.",
+      "sha256": "cb1da4dbc6a2cd57cdcf69a5b19e40b1ec904d0bde719ba63a20f878a1649ecf"
+    },
+    {
+      "id": "items-materials-material-r3-c6",
+      "name": "material-r3-c6",
+      "path": "assets/items/materials/material-r3-c6.png",
+      "width": 41,
+      "height": 40,
+      "category": "items/materials",
+      "sourceRect": {
+        "x": 831,
+        "y": 950,
+        "width": 41,
+        "height": 40
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Small items may remain grouped; inspect before assigning gameplay semantics.",
+      "sha256": "2457d5386a5bb3a75409dc7d054a84d85ff3f43f044a07785af3e4764a203b87"
+    },
+    {
+      "id": "items-materials-material-r3-c7",
+      "name": "material-r3-c7",
+      "path": "assets/items/materials/material-r3-c7.png",
+      "width": 30,
+      "height": 41,
+      "category": "items/materials",
+      "sourceRect": {
+        "x": 883,
+        "y": 949,
+        "width": 30,
+        "height": 41
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Small items may remain grouped; inspect before assigning gameplay semantics.",
+      "sha256": "bcea731b27415c3624270d9f3e0c30d7c524a958e6bb2c10a8040269acb2675e"
+    },
+    {
+      "id": "items-materials-material-r3-c8",
+      "name": "material-r3-c8",
+      "path": "assets/items/materials/material-r3-c8.png",
+      "width": 20,
+      "height": 42,
+      "category": "items/materials",
+      "sourceRect": {
+        "x": 924,
+        "y": 948,
+        "width": 20,
+        "height": 42
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Small items may remain grouped; inspect before assigning gameplay semantics.",
+      "sha256": "dc819e240243d4dfca73f2de78a2e9c93818d9273fa312cc897445e49c3f1803"
+    },
+    {
+      "id": "items-materials-material-r3-c9",
+      "name": "material-r3-c9",
+      "path": "assets/items/materials/material-r3-c9.png",
+      "width": 25,
+      "height": 48,
+      "category": "items/materials",
+      "sourceRect": {
+        "x": 950,
+        "y": 948,
+        "width": 25,
+        "height": 48
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Small items may remain grouped; inspect before assigning gameplay semantics.",
+      "sha256": "ef6ef9f8b60fca68ec045a90e9b7d07243eb6be73670907bb3e7083d087349c4"
+    },
+    {
+      "id": "items-materials-material-r3-c10",
+      "name": "material-r3-c10",
+      "path": "assets/items/materials/material-r3-c10.png",
+      "width": 23,
+      "height": 32,
+      "category": "items/materials",
+      "sourceRect": {
+        "x": 977,
+        "y": 954,
+        "width": 23,
+        "height": 32
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Small items may remain grouped; inspect before assigning gameplay semantics.",
+      "sha256": "90e1cfda3b38a43250dddae456dea31c941e1b2e47dc607cf49dedd8674d2a3f"
+    },
+    {
+      "id": "effects-static-effect-r1-c1",
+      "name": "effect-r1-c1",
+      "path": "assets/effects/static/effect-r1-c1.png",
+      "width": 90,
+      "height": 67,
+      "category": "effects/static",
+      "sourceRect": {
+        "x": 1028,
+        "y": 799,
+        "width": 90,
+        "height": 67
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Static illustration, not an animation frame sequence. Glow was flattened onto black; transparency cannot recover original glow.",
+      "sha256": "5de640b0adb24cd6186f0b6cdc5a43e25a1004af1c17db02638d4ee6c160ef65"
+    },
+    {
+      "id": "effects-static-effect-r1-c2",
+      "name": "effect-r1-c2",
+      "path": "assets/effects/static/effect-r1-c2.png",
+      "width": 74,
+      "height": 58,
+      "category": "effects/static",
+      "sourceRect": {
+        "x": 1119,
+        "y": 802,
+        "width": 74,
+        "height": 58
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Static illustration, not an animation frame sequence. Glow was flattened onto black; transparency cannot recover original glow.",
+      "sha256": "e8022b51f81e85b01649968862983fa678fa770678328332859d16944c660b71"
+    },
+    {
+      "id": "effects-static-effect-r1-c3",
+      "name": "effect-r1-c3",
+      "path": "assets/effects/static/effect-r1-c3.png",
+      "width": 59,
+      "height": 57,
+      "category": "effects/static",
+      "sourceRect": {
+        "x": 1207,
+        "y": 803,
+        "width": 59,
+        "height": 57
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Static illustration, not an animation frame sequence. Glow was flattened onto black; transparency cannot recover original glow.",
+      "sha256": "049ef89f90770775527745b2172ae7713773a69f1a394f2095c36ace38813131"
+    },
+    {
+      "id": "effects-static-effect-r1-c4",
+      "name": "effect-r1-c4",
+      "path": "assets/effects/static/effect-r1-c4.png",
+      "width": 66,
+      "height": 69,
+      "category": "effects/static",
+      "sourceRect": {
+        "x": 1277,
+        "y": 796,
+        "width": 66,
+        "height": 69
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Static illustration, not an animation frame sequence. Glow was flattened onto black; transparency cannot recover original glow.",
+      "sha256": "8760822d9e0d43aacbf64cfefee86cf70d294d21ffa6f83b37d97aac7dc48bee"
+    },
+    {
+      "id": "effects-static-effect-r1-c5",
+      "name": "effect-r1-c5",
+      "path": "assets/effects/static/effect-r1-c5.png",
+      "width": 60,
+      "height": 71,
+      "category": "effects/static",
+      "sourceRect": {
+        "x": 1344,
+        "y": 795,
+        "width": 60,
+        "height": 71
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Static illustration, not an animation frame sequence. Glow was flattened onto black; transparency cannot recover original glow.",
+      "sha256": "94dc7ba5874f94069e0442fa39b05b198edb8e48fd12f8f311b006393d36ff66"
+    },
+    {
+      "id": "effects-static-effect-r1-c6",
+      "name": "effect-r1-c6",
+      "path": "assets/effects/static/effect-r1-c6.png",
+      "width": 65,
+      "height": 71,
+      "category": "effects/static",
+      "sourceRect": {
+        "x": 1408,
+        "y": 795,
+        "width": 65,
+        "height": 71
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Static illustration, not an animation frame sequence. Glow was flattened onto black; transparency cannot recover original glow.",
+      "sha256": "f45eb02b8c4a6668d5a2586ceaaf57a9e142642d2a20539adc180fd873721058"
+    },
+    {
+      "id": "effects-static-effect-r1-c7",
+      "name": "effect-r1-c7",
+      "path": "assets/effects/static/effect-r1-c7.png",
+      "width": 40,
+      "height": 71,
+      "category": "effects/static",
+      "sourceRect": {
+        "x": 1474,
+        "y": 795,
+        "width": 40,
+        "height": 71
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Static illustration, not an animation frame sequence. Glow was flattened onto black; transparency cannot recover original glow.",
+      "sha256": "4b65c3ab13e66ffb577900dae3a295962f766e03540b87798da3fca8f34b5931"
+    },
+    {
+      "id": "effects-static-effect-r2-c1",
+      "name": "effect-r2-c1",
+      "path": "assets/effects/static/effect-r2-c1.png",
+      "width": 89,
+      "height": 59,
+      "category": "effects/static",
+      "sourceRect": {
+        "x": 1029,
+        "y": 870,
+        "width": 89,
+        "height": 59
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Static illustration, not an animation frame sequence. Glow was flattened onto black; transparency cannot recover original glow.",
+      "sha256": "ac77facbdab5226335913f5ab2dcad92549a1381676529a671a52dcebb5669c9"
+    },
+    {
+      "id": "effects-static-effect-r2-c2",
+      "name": "effect-r2-c2",
+      "path": "assets/effects/static/effect-r2-c2.png",
+      "width": 79,
+      "height": 59,
+      "category": "effects/static",
+      "sourceRect": {
+        "x": 1126,
+        "y": 870,
+        "width": 79,
+        "height": 59
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Static illustration, not an animation frame sequence. Glow was flattened onto black; transparency cannot recover original glow.",
+      "sha256": "c396335686a72dd2a363af4d04c5dc8040fe3b0bdbe219c5020fe3606eb1e3ea"
+    },
+    {
+      "id": "effects-static-effect-r2-c3",
+      "name": "effect-r2-c3",
+      "path": "assets/effects/static/effect-r2-c3.png",
+      "width": 69,
+      "height": 55,
+      "category": "effects/static",
+      "sourceRect": {
+        "x": 1207,
+        "y": 874,
+        "width": 69,
+        "height": 55
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Static illustration, not an animation frame sequence. Glow was flattened onto black; transparency cannot recover original glow.",
+      "sha256": "86d5a426d37e49247de1370d8f3d00c4ac8257b34c53fe33055592337c79b953"
+    },
+    {
+      "id": "effects-static-effect-r2-c4",
+      "name": "effect-r2-c4",
+      "path": "assets/effects/static/effect-r2-c4.png",
+      "width": 66,
+      "height": 54,
+      "category": "effects/static",
+      "sourceRect": {
+        "x": 1277,
+        "y": 875,
+        "width": 66,
+        "height": 54
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Static illustration, not an animation frame sequence. Glow was flattened onto black; transparency cannot recover original glow.",
+      "sha256": "059b4465976341ce2f560cb1ae90d5396a2431c1667c03b1120bcb56ea574d0f"
+    },
+    {
+      "id": "effects-static-effect-r2-c5",
+      "name": "effect-r2-c5",
+      "path": "assets/effects/static/effect-r2-c5.png",
+      "width": 63,
+      "height": 59,
+      "category": "effects/static",
+      "sourceRect": {
+        "x": 1344,
+        "y": 870,
+        "width": 63,
+        "height": 59
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Static illustration, not an animation frame sequence. Glow was flattened onto black; transparency cannot recover original glow.",
+      "sha256": "c659a02b03f85c5ae5e7927ee3a57cecd79ae28cab9f02ab0b98a2f78afbad49"
+    },
+    {
+      "id": "effects-static-effect-r2-c6",
+      "name": "effect-r2-c6",
+      "path": "assets/effects/static/effect-r2-c6.png",
+      "width": 65,
+      "height": 59,
+      "category": "effects/static",
+      "sourceRect": {
+        "x": 1408,
+        "y": 870,
+        "width": 65,
+        "height": 59
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Static illustration, not an animation frame sequence. Glow was flattened onto black; transparency cannot recover original glow.",
+      "sha256": "7dbcb0a58363274e807290ffabbd6439976e02df45d7a6f830c963c1f54a9cc3"
+    },
+    {
+      "id": "effects-static-effect-r2-c7",
+      "name": "effect-r2-c7",
+      "path": "assets/effects/static/effect-r2-c7.png",
+      "width": 44,
+      "height": 59,
+      "category": "effects/static",
+      "sourceRect": {
+        "x": 1474,
+        "y": 870,
+        "width": 44,
+        "height": 59
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Static illustration, not an animation frame sequence. Glow was flattened onto black; transparency cannot recover original glow.",
+      "sha256": "a9556e73fca4f07aeaad7960e73ccbaa331c7e51d32914ab93bc3e98a04c4cd4"
+    },
+    {
+      "id": "effects-static-effect-r3-c1",
+      "name": "effect-r3-c1",
+      "path": "assets/effects/static/effect-r3-c1.png",
+      "width": 92,
+      "height": 64,
+      "category": "effects/static",
+      "sourceRect": {
+        "x": 1026,
+        "y": 932,
+        "width": 92,
+        "height": 64
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Static illustration, not an animation frame sequence. Glow was flattened onto black; transparency cannot recover original glow.",
+      "sha256": "b158c44d04b652e8f177cb44dfaeac0054adf42268726c12f7983a94092e28d2"
+    },
+    {
+      "id": "effects-static-effect-r3-c2",
+      "name": "effect-r3-c2",
+      "path": "assets/effects/static/effect-r3-c2.png",
+      "width": 87,
+      "height": 62,
+      "category": "effects/static",
+      "sourceRect": {
+        "x": 1119,
+        "y": 932,
+        "width": 87,
+        "height": 62
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Static illustration, not an animation frame sequence. Glow was flattened onto black; transparency cannot recover original glow.",
+      "sha256": "ec72662741aa07f3cc30d71cc7636646a9e92693d976bff31d608c5db99f96e4"
+    },
+    {
+      "id": "effects-static-effect-r3-c3",
+      "name": "effect-r3-c3",
+      "path": "assets/effects/static/effect-r3-c3.png",
+      "width": 53,
+      "height": 62,
+      "category": "effects/static",
+      "sourceRect": {
+        "x": 1207,
+        "y": 932,
+        "width": 53,
+        "height": 62
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Static illustration, not an animation frame sequence. Glow was flattened onto black; transparency cannot recover original glow.",
+      "sha256": "1000c891d8fee7c69b3247fbc3bfa97dfd2b5d4834820c5b7c1b5ed83a49c459"
+    },
+    {
+      "id": "effects-static-effect-r3-c4",
+      "name": "effect-r3-c4",
+      "path": "assets/effects/static/effect-r3-c4.png",
+      "width": 77,
+      "height": 64,
+      "category": "effects/static",
+      "sourceRect": {
+        "x": 1261,
+        "y": 932,
+        "width": 77,
+        "height": 64
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Static illustration, not an animation frame sequence. Glow was flattened onto black; transparency cannot recover original glow.",
+      "sha256": "decf192a32a8b50c55c0ba1f66b1469213c22c58032c6caf9571ce36e3fddee1"
+    },
+    {
+      "id": "effects-static-effect-r3-c5",
+      "name": "effect-r3-c5",
+      "path": "assets/effects/static/effect-r3-c5.png",
+      "width": 71,
+      "height": 65,
+      "category": "effects/static",
+      "sourceRect": {
+        "x": 1339,
+        "y": 932,
+        "width": 71,
+        "height": 65
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Static illustration, not an animation frame sequence. Glow was flattened onto black; transparency cannot recover original glow.",
+      "sha256": "f11cfb88db7de9cd0601af37bb22dd2bb7c0bc1671bffeeddc5351b116b8bdd8"
+    },
+    {
+      "id": "effects-static-effect-r3-c6",
+      "name": "effect-r3-c6",
+      "path": "assets/effects/static/effect-r3-c6.png",
+      "width": 35,
+      "height": 58,
+      "category": "effects/static",
+      "sourceRect": {
+        "x": 1411,
+        "y": 935,
+        "width": 35,
+        "height": 58
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Static illustration, not an animation frame sequence. Glow was flattened onto black; transparency cannot recover original glow.",
+      "sha256": "47f7be757ca921f78c0d864ad0c5b47be6f77ad2617890f3367a69eb0bc6057a"
+    },
+    {
+      "id": "effects-static-effect-r3-c7",
+      "name": "effect-r3-c7",
+      "path": "assets/effects/static/effect-r3-c7.png",
+      "width": 32,
+      "height": 51,
+      "category": "effects/static",
+      "sourceRect": {
+        "x": 1447,
+        "y": 935,
+        "width": 32,
+        "height": 51
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Static illustration, not an animation frame sequence. Glow was flattened onto black; transparency cannot recover original glow.",
+      "sha256": "7bd678cb7cc6f1f2d3dec30f2ecacb439242e08be8f8ea6851ba9071fd98494a"
+    },
+    {
+      "id": "effects-static-effect-r3-c8",
+      "name": "effect-r3-c8",
+      "path": "assets/effects/static/effect-r3-c8.png",
+      "width": 31,
+      "height": 64,
+      "category": "effects/static",
+      "sourceRect": {
+        "x": 1483,
+        "y": 932,
+        "width": 31,
+        "height": 64
+      },
+      "seamless": null,
+      "status": "needs-visual-review",
+      "notes": "Static illustration, not an animation frame sequence. Glow was flattened onto black; transparency cannot recover original glow.",
+      "sha256": "446e1f6a7d4157d80ae936274f4c7fab0c4eb62c1a421044d0eeacbbcdf10dc7"
+    }
+  ]
+}

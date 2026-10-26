@@ -1,0 +1,295 @@
+{
+  "schemaVersion": 1,
+  "source": "original/props-sheet.png",
+  "sourceSize": {
+    "width": 1280,
+    "height": 399
+  },
+  "notes": [
+    "Static assets, not animation frames.",
+    "Background-cleaned from JPEG source; subtle edge artifacts may remain. Review at intended game scale.",
+    "Source rights must be confirmed by the user."
+  ],
+  "assets": [
+    {
+      "id": "sword-glowing",
+      "category": "weapon",
+      "path": "sprites/sword-glowing.png",
+      "referencePath": "crops/sword-glowing.png",
+      "width": 331,
+      "height": 80,
+      "sourceRect": {
+        "x": 36,
+        "y": 0,
+        "width": 331,
+        "height": 80
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "animation": false,
+      "transparency": "background-cleaned"
+    },
+    {
+      "id": "sword-long",
+      "category": "weapon",
+      "path": "sprites/sword-long.png",
+      "referencePath": "crops/sword-long.png",
+      "width": 327,
+      "height": 59,
+      "sourceRect": {
+        "x": 37,
+        "y": 82,
+        "width": 327,
+        "height": 59
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "animation": false,
+      "transparency": "background-cleaned"
+    },
+    {
+      "id": "sword-curved",
+      "category": "weapon",
+      "path": "sprites/sword-curved.png",
+      "referencePath": "crops/sword-curved.png",
+      "width": 266,
+      "height": 75,
+      "sourceRect": {
+        "x": 377,
+        "y": 2,
+        "width": 266,
+        "height": 75
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "animation": false,
+      "transparency": "background-cleaned"
+    },
+    {
+      "id": "sword-cleaver",
+      "category": "weapon",
+      "path": "sprites/sword-cleaver.png",
+      "referencePath": "crops/sword-cleaver.png",
+      "width": 263,
+      "height": 60,
+      "sourceRect": {
+        "x": 378,
+        "y": 81,
+        "width": 263,
+        "height": 60
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "animation": false,
+      "transparency": "background-cleaned"
+    },
+    {
+      "id": "sword-rusted",
+      "category": "weapon",
+      "path": "sprites/sword-rusted.png",
+      "referencePath": "crops/sword-rusted.png",
+      "width": 242,
+      "height": 66,
+      "sourceRect": {
+        "x": 655,
+        "y": 9,
+        "width": 242,
+        "height": 66
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "animation": false,
+      "transparency": "background-cleaned"
+    },
+    {
+      "id": "sword-barbed",
+      "category": "weapon",
+      "path": "sprites/sword-barbed.png",
+      "referencePath": "crops/sword-barbed.png",
+      "width": 242,
+      "height": 61,
+      "sourceRect": {
+        "x": 655,
+        "y": 79,
+        "width": 242,
+        "height": 61
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "animation": false,
+      "transparency": "background-cleaned"
+    },
+    {
+      "id": "potion-purple",
+      "category": "item",
+      "path": "sprites/potion-purple.png",
+      "referencePath": "crops/potion-purple.png",
+      "width": 80,
+      "height": 130,
+      "sourceRect": {
+        "x": 950,
+        "y": 7,
+        "width": 80,
+        "height": 130
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "animation": false,
+      "transparency": "background-cleaned"
+    },
+    {
+      "id": "potion-teal",
+      "category": "item",
+      "path": "sprites/potion-teal.png",
+      "referencePath": "crops/potion-teal.png",
+      "width": 87,
+      "height": 129,
+      "sourceRect": {
+        "x": 1049,
+        "y": 10,
+        "width": 87,
+        "height": 129
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "animation": false,
+      "transparency": "background-cleaned"
+    },
+    {
+      "id": "potion-red",
+      "category": "item",
+      "path": "sprites/potion-red.png",
+      "referencePath": "crops/potion-red.png",
+      "width": 90,
+      "height": 129,
+      "sourceRect": {
+        "x": 1149,
+        "y": 10,
+        "width": 90,
+        "height": 129
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "animation": false,
+      "transparency": "background-cleaned"
+    },
+    {
+      "id": "ruins-stone",
+      "category": "scenery",
+      "path": "sprites/ruins-stone.png",
+      "referencePath": "crops/ruins-stone.png",
+      "width": 248,
+      "height": 238,
+      "sourceRect": {
+        "x": 15,
+        "y": 154,
+        "width": 248,
+        "height": 238
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "animation": false,
+      "transparency": "background-cleaned"
+    },
+    {
+      "id": "ruins-brick",
+      "category": "scenery",
+      "path": "sprites/ruins-brick.png",
+      "referencePath": "crops/ruins-brick.png",
+      "width": 238,
+      "height": 235,
+      "sourceRect": {
+        "x": 269,
+        "y": 155,
+        "width": 238,
+        "height": 235
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "animation": false,
+      "transparency": "background-cleaned"
+    },
+    {
+      "id": "arch-stone",
+      "category": "scenery",
+      "path": "sprites/arch-stone.png",
+      "referencePath": "crops/arch-stone.png",
+      "width": 171,
+      "height": 235,
+      "sourceRect": {
+        "x": 514,
+        "y": 155,
+        "width": 171,
+        "height": 235
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "animation": false,
+      "transparency": "background-cleaned"
+    },
+    {
+      "id": "arch-ornate",
+      "category": "scenery",
+      "path": "sprites/arch-ornate.png",
+      "referencePath": "crops/arch-ornate.png",
+      "width": 182,
+      "height": 235,
+      "sourceRect": {
+        "x": 690,
+        "y": 155,
+        "width": 182,
+        "height": 235
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "animation": false,
+      "transparency": "background-cleaned"
+    },
+    {
+      "id": "camp",
+      "category": "scenery",
+      "path": "sprites/camp.png",
+      "referencePath": "crops/camp.png",
+      "width": 365,
+      "height": 196,
+      "sourceRect": {
+        "x": 883,
+        "y": 203,
+        "width": 365,
+        "height": 196
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "animation": false,
+      "transparency": "background-cleaned"
+    }
+  ]
+}

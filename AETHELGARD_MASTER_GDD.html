@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>AETHELGARD: THE ASHEN THRESHOLD — TÀI LIỆU THIẾT KẾ TRÒ CHƠI TOÀN DIỆN (MASTER GDD v2.5)</title>
+  <style>
+    /* Google Docs & Print Ready Clean Styling */
+    @page {
+      size: A4;
+      margin: 20mm;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 11pt;
+      line-height: 1.65;
+      color: #242124;
+      background-color: #ffffff;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 30px 40px;
+    }
+    h1, h2, h3, h4 {
+      font-family: "Georgia", "Times New Roman", serif;
+      color: #1a1622;
+      font-weight: 700;
+      margin-top: 1.5em;
+      margin-bottom: 0.5em;
+    }
+    h1 {
+      font-size: 26pt;
+      border-bottom: 2px solid #8c6d37;
+      padding-bottom: 12px;
+      margin-top: 0.5em;
+      text-align: center;
+      color: #2c2214;
+    }
+    .doc-subtitle {
+      text-align: center;
+      font-style: italic;
+      color: #635848;
+      font-size: 13pt;
+      margin-top: -8px;
+      margin-bottom: 25px;
+    }
+    .meta-box {
+      background-color: #f7f4ed;
+      border: 1px solid #dfd7c5;
+      border-radius: 6px;
+      padding: 16px 20px;
+      margin-bottom: 30px;
+      font-size: 10pt;
+    }
+    .meta-box table {
+      width: 100%;
+      border: none;
+      margin: 0;
+    }
+    .meta-box td {
+      padding: 4px 8px;
+      border: none;
+    }
+    h2 {
+      font-size: 18pt;
+      border-bottom: 1px solid #d4c8b0;
+      padding-bottom: 6px;
+      color: #4a3618;
+      margin-top: 2em;
+    }
+    h3 {
+      font-size: 14pt;
+      color: #2b2738;
+      margin-top: 1.3em;
+    }
+    h4 {
+      font-size: 11.5pt;
+      color: #524734;
+      margin-top: 1em;
+    }
+    p {
+      margin-bottom: 1em;
+      text-align: justify;
+    }
+    ul, ol {
+      margin-top: 0.5em;
+      margin-bottom: 1em;
+      padding-left: 28px;
+    }
+    li {
+      margin-bottom: 0.4em;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5em 0;
+      font-size: 10pt;
+    }
+    th, td {
+      border: 1px solid #cfc7b4;
+      padding: 9px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background-color: #ede6d4;
+      color: #2c2314;
+      font-weight: 700;
+    }
+    tr:nth-child(even) td {
+      background-color: #faf7f0;
+    }
+    .callout {
+      background-color: #f6f3eb;
+      border-left: 5px solid #8c6d37;
+      padding: 14px 18px;
+      margin: 1.5em 0;
+      border-radius: 0 6px 6px 0;
+    }
+    .callout-title {
+      font-weight: bold;
+      color: #634b1f;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      font-size: 9pt;
+      letter-spacing: 0.05em;
+    }
+    .quote-block {
+      background-color: #fbf9f4;
+      border-left: 4px solid #5a4b6e;
+      padding: 12px 18px;
+      margin: 1.2em 0;
+      font-style: italic;
+      color: #3b324a;
+    }
+    code {
+      font-family: "Consolas", "Courier New", monospace;
+      font-size: 9.5pt;
+      background-color: #eee9dc;
+      padding: 2px 5px;
+      border-radius: 3px;
+      color: #4a2810;
+    }
+    .badge {
+      display: inline-block;
+      padding: 2px 7px;
+      font-size: 8.5pt;
+      font-weight: 600;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+    .badge-gold { background: #ecdca5; color: #574108; }
+    .badge-blue { background: #cce1f2; color: #10426b; }
+    .badge-green { background: #d0ebd2; color: #16541b; }
+    .badge-red { background: #f2cfce; color: #6e1513; }
+    .badge-purple { background: #e3d2f2; color: #481a6e; }
+  </style>
+</head>
+<body>
+
+  <h1>⚔️ AETHELGARD: THE ASHEN THRESHOLD</h1>
+  <div class="doc-subtitle">TÀI LIỆU THIẾT KẾ TRÒ CHƠI TOÀN DIỆN (MASTER GDD — BẢN PHÊ DUYỆT SẢN XUẤT)</div>
+
+  <div class="meta-box">
+    <table>
+      <tr>
+        <td><strong>Thể loại:</strong> Stealth Self-Improvement 2.5D Dark Fantasy Isekai MMORPG</td>
+        <td><strong>Engine phát triển:</strong> Phaser 3 (ES6 Modular, Custom 2.5D Belt-Scroller Engine)</td>
+      </tr>
+      <tr>
+        <td><strong>Nền tảng mục tiêu:</strong> Web Browser (PC & Mobile Responsive), Steam (Tauri/Chromium)</td>
+        <td><strong>Tiêu chuẩn hình ảnh:</strong> Commercial Indie Crisp Pixel Art (16-bit Gothic Aesthetic)</td>
+      </tr>
+      <tr>
+        <td><strong>Hệ thống điều khiển:</strong> PC (WASD + [F] Tương tác + [M] Atlas + [N] Mini-map) & Mobile Virtual Touch</td>
+        <td><strong>Trạng thái dự án:</strong> Đã hoàn thành Giai đoạn Khởi động & Mở rộng Oakhaven</td>
+      </tr>
+    </table>
+  </div>
+
+  <hr style="border: 0; border-top: 1px solid #d4c8b0; margin: 25px 0;">
+
+  <!-- SECTION 1 -->
+  <h2>1. TỔNG QUAN & TRIẾT LÝ THIẾT KẾ (VISION & COMMERCIAL STANDARD)</h2>
+
+  <h3>1.1. Triết lý "Stealth Self-Improvement" (Cơ chế kỷ luật ngầm)</h3>
+  <p>
+    Khác biệt hoàn toàn với các tựa game MMORPG thông thường lạm dụng vòng lặp cày cuốc vô nghĩa (grinding) gây lãng phí thời gian và thui chột nhận thức, <strong>Aethelgard</strong> được thiết kế theo nguyên lý <em>"Stealth Self-Improvement"</em>:
+  </p>
+  <ul>
+    <li><strong>Vỏ bọc bên ngoài:</strong> Một siêu phẩm nhập vai Indie thương mại chuẩn mực mang không khí Dark Fantasy tăm tối, u tịch và tráng lệ (lấy cảm hứng từ <em>Dark Souls</em>, <em>Ender Lilies</em>, <em>Blasphemous</em>). Người ngoài nhìn vào sẽ chỉ thấy một tựa game hiệp sĩ trừ tà thời trung cổ với lối chơi parry phản xạ đỉnh cao, đồ họa Pixel Art sắc nét và cốt truyện Isekai hấp dẫn.</li>
+    <li><strong>Lõi vận hành bên trong:</strong> Một cỗ máy rèn luyện kỷ luật, chống lại sự xói mòn khả năng tập trung (Anti-Brain-Rot) và huấn luyện tư duy Giải quyết vấn đề (Problem Solving) cấp cao. Toàn bộ tài nguyên quý giá trong thế giới—từ <em>Chronos Embers</em> (Tàn tích thời gian), <em>Travel Permits</em> (Giấy thông hành lục địa), đến độ bền vũ khí và chỉ số Tỉnh táo (Sanity)—đều được quy đổi trực tiếp từ sản lượng tập trung sâu, đọc hiểu tài liệu, giải quyết tình huống thực tế và rèn luyện thể chất của người chơi ngoài đời thực.</li>
+  </ul>
+
+  <div class="callout">
+    <div class="callout-title">Tuyên ngôn Thiết kế Cốt lõi</div>
+    <p style="margin:0;">
+      <em>"Aethelgard không ban phát sức mạnh thông qua việc cày cuốc điểm số ảo. Ngươi chỉ có thể vượt qua Abyssal Gate và tiến sâu vào lục địa khi chính bộ não và ý chí của ngươi ngoài đời thực được trui rèn sắc bén."</em>
+    </p>
+  </div>
+
+  <h3>1.2. Tiêu chuẩn Thương mại Indie (Commercial Indie Quality)</h3>
+  <p>
+    Trò chơi loại bỏ triệt để cảm giác của một "ứng dụng năng suất giả mạo game" (gamified app) bằng việc xây dựng một bộ engine vật lý và không gian 2.5D hoàn chỉnh:
+  </p>
+  <ul>
+    <li><strong>Góc nhìn 2.5D Belt-Scroller chân thực:</strong> Mặt phẳng di chuyển có độ sâu trục Y linh hoạt (người chơi có thể tự do đi lại trên làn đường đá, tiến sát lên mép trên hoặc lùi xuống mép dưới).</li>
+    <li><strong>Phân tầng trục sâu thông minh (`sortY`):</strong> Khắc phục lỗi kinh điển của đồ họa 2.5D (vùng chân sprite bị đè lên nhân vật) bằng công thức tính toán `sortY` chuẩn xác cho từng vật thể. Người chơi sẽ đi khuất sau lều trại khi ở trên lửa trại, và hiển thị nổi bật phía trước vệt đất khi đứng ở đường đi.</li>
+    <li><strong>Vật lý va chạm chân thực (Solid Footprint Colliders):</strong> Mỗi tòa nhà, giếng nước, bia đá, bàn bản đồ đều sở hữu một hộp va chạm chân đế (footprint box) vô hình. Nhân vật tuyệt đối không thể xuyên tường hay đi xuyên vật thể; cơ chế trượt đa hướng (tangent collision sliding) giữ cho chuyển động luôn mượt mà.</li>
+    <li><strong>Văn phong Cổ điển (Archaic Early Modern English):</strong> Toàn bộ hội thoại và văn bản trong game sử dụng ngôi thứ hai trang nghiêm (<em>Thou</em>, <em>Thy</em>, <em>Wherefore</em>, <em>Hark</em>), tạo nên cảm giác huyền bí, bi tráng của thời kỳ Phục hưng và Hiệp sĩ dòng đền.</li>
+    <li><strong>Hỗ trợ đa nền tảng toàn diện:</strong>
+      <ul>
+        <li><strong>PC / Desktop:</strong> Di chuyển mượt mà bằng cụm phím <code>WASD</code> hoặc <code>Mũi tên</code>; phím tương tác duy nhất <code>[F]</code>; mở Bản đồ Lục địa bằng <code>[M]</code>; ẩn/hiện Mini-map bằng <code>[N]</code>.</li>
+        <li><strong>Mobile / Tablet:</strong> Cần điều khiển ảo (Virtual Thumbstick) nhạy bén theo cử chỉ ngón tay cái bên trái; phím tương tác nổi bật bên phải màn hình.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <hr style="border: 0; border-top: 1px solid #d4c8b0; margin: 25px 0;">
+
+  <!-- SECTION 2 -->
+  <h2>2. HIỆN TRẠNG KỸ THUẬT & TÍNH NĂNG ĐÃ HOÀN THÀNH (CURRENT IMPLEMENTATION AUDIT)</h2>
+
+  <p>
+    Toàn bộ mã nguồn dự án được tổ chức theo kiến trúc module hóa chuẩn ES6, chia tách rõ ràng giữa Quản lý Trạng thái (Services), Cấu hình (Config), Giao diện (UI) và Màn chơi (Scenes).
+  </p>
+
+  <h3>2.1. Cấu trúc Module Hệ thống (`/dist/src/...`)</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 28%;">Tệp tin Module</th>
+        <th style="width: 22%;">Nhóm Chức năng</th>
+        <th>Nhiệm vụ & Cơ chế Thực thi</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>src/main.js</code></td>
+        <td>Khởi tạo Engine</td>
+        <td>Khởi động Phaser Game instance, xử lý tham số điều hướng URL (<code>?scene=camp</code>, <code>?scene=oakhaven</code>), phân luồng thiết bị PC/Mobile.</td>
+      </tr>
+      <tr>
+        <td><code>src/scenes/Boot.js</code></td>
+        <td>Nạp Tài nguyên (Preloader)</td>
+        <td>Nạp trước toàn bộ 65 asset hình ảnh/JSON từ disk với kiểm toán 0 lỗi 404; kiểm tra dữ liệu nhân vật và điều hướng thẳng vào màn chơi tương ứng.</td>
+      </tr>
+      <tr>
+        <td><code>src/scenes/Awakening.js</code></td>
+        <td>Màn Mở đầu (Prologue)</td>
+        <td>Hoạt cảnh thức tỉnh bên bờ vực tro tàn; nhập danh tính lữ khách (Player Name); lưu trữ phiên chơi đầu tiên.</td>
+      </tr>
+      <tr>
+        <td><code>src/scenes/Camp.js</code></td>
+        <td>Màn 0: The Ashen Hamlet</td>
+        <td>Màn chơi căn cứ trung tâm rộng 2400px; điều khiển nhân vật, lửa trại tập trung Pomodoro, rương Vault of Echoes, NPC The Ashen Watcher, bảng bản đồ.</td>
+      </tr>
+      <tr>
+        <td><code>src/scenes/Oakhaven.js</code></td>
+        <td>Màn 1: Oakhaven Outpost</td>
+        <td>Thị trấn tiền đồn rộng 2400px; 7 công trình kiến trúc vững chãi, NPC Đại pháp sư Malakor, Thương nhân Brand, Bảng tiền thưởng, Cổng thành Tây.</td>
+      </tr>
+      <tr>
+        <td><code>src/services/playerFactory.js</code></td>
+        <td>Tạo hình Nhân vật</td>
+        <td>Tạo hình ảnh sprite nhân vật Hiệp sĩ lữ khách (Adventurer) và NPC Watcher trực tiếp trong bộ nhớ bằng Canvas Procedural Textures trước khi spawn; tạo chuỗi animation <code>player-idle</code> và <code>player-walk</code>.</td>
+      </tr>
+      <tr>
+        <td><code>src/services/gameState.js</code></td>
+        <td>Quản lý Trạng thái</td>
+        <td>Lưu trữ chỉ số cấp độ (LVL), điểm Tỉnh táo (Sanity), Vàng (Gold), Danh vọng Lục địa (Renown), trang bị và tiến trình nhiệm vụ.</td>
+      </tr>
+      <tr>
+        <td><code>src/services/firebase.js</code></td>
+        <td>Lưu trữ Đám mây</td>
+        <td>Đồng bộ dữ liệu nhân vật lên Firebase Firestore (Cloud Save: <code>users/{uid}</code>); tự động lưu trữ sau mỗi phiên tập trung hoặc hoàn thành nhiệm vụ.</td>
+      </tr>
+      <tr>
+        <td><code>src/services/chronos.js</code></td>
+        <td>Đồng hồ Tập trung</td>
+        <td>Cơ chế đếm giờ chuyên sâu (Focus Stopwatch / Pomodoro); tích lũy Chronos Embers dựa trên số phút làm việc sâu thực tế.</td>
+      </tr>
+      <tr>
+        <td><code>src/services/assetRegistry.js</code></td>
+        <td>Tra cứu Asset Tự động</td>
+        <td>Ánh xạ định danh hình ảnh sang đường dẫn tương đối; bảo đảm không bao giờ bị lỗi sai đường dẫn thư mục.</td>
+      </tr>
+      <tr>
+        <td><code>src/ui/WorldMapOverlay.js</code></td>
+        <td>Bản đồ Lục địa [M]</td>
+        <td>Giao diện bản đồ da dê cổ xưa hiển thị 9 địa danh; tính toán khoảng cách chuột và cho phép Fast Travel trực tiếp bằng cách nhấp chuột lên địa danh mở khóa.</td>
+      </tr>
+      <tr>
+        <td><code>src/ui/InventoryOverlay.js</code></td>
+        <td>Túi đồ & Hòm đồ</td>
+        <td>Quản lý trang bị trên người và vật phẩm cất trong rương an toàn (Safe Stash).</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>2.2. Điểm Tương tác Hoàn chỉnh tại The Ashen Hamlet</h3>
+  <ul>
+    <li><strong>Lửa trại Hồi tâm (Hearth of Focus — <code>camp.png</code>):</strong> Nơi trú ẩn an toàn tuyệt đối. Mở giao diện Đồng hồ Pomodoro tập trung sâu (25 phút, 50 phút, 90 phút). Mỗi phiên hoàn thành phục hồi 100% điểm Tỉnh táo (Sanity) và thưởng Vàng/Tàn tích thời gian.</li>
+    <li><strong>Rương Vọng Âm (Vault of Echoes):</strong> Kho lưu trữ vĩnh cửu. Mọi trang bị cất giữ tại đây sẽ an toàn tuyệt đối trước mọi hình phạt tử vong trong ngục tối.</li>
+    <li><strong>Cổ thụ & Bia đá Cổ xưa (Sanctuary Boundary Runestones):</strong> Khắc ghi văn tự cổ hé lộ nguyên nhân sự sụp đổ của đế chế Aethelgard.</li>
+    <li><strong>The Ashen Watcher (NPC Người Canh Tro):</strong> Người bảo hộ cổng Đông. Cây hội thoại 5 nhánh chuyên sâu; trao tặng gói vật phẩm khởi đầu (Kiếm gỉ <code>sword-rusted</code>, Bình máu <code>potion-red</code>, và Bản đồ cổ <code>scroll-a</code>) khi người chơi chọn nhánh 3 (<em>"I am unarmed..."</em>).</li>
+    <li><strong>Cổng Làng (Hamlet Gate):</strong> Cổng vòm đá mở thông suốt sang Oakhaven Outpost mà không yêu cầu giấy phép hay danh vọng.</li>
+  </ul>
+
+  <h3>2.3. Tích hợp Hai Bộ Asset Pixel Art Toàn diện</h3>
+  <ol>
+    <li><strong>Pack 1 (14 Sprites Cốt lõi):</strong> Lửa trại nguyên bản (<code>camp.png</code>), Cổng vòm đá (<code>arch-stone.png</code>), Cổng chạm khắc gothic (<code>arch-ornate.png</code>), Tàn tích đá (<code>ruins-stone.png</code>), Tường gạch cổ (<code>ruins-brick.png</code>), Bộ 6 thanh kiếm cổ (rusted, barbed, cleaver, curved, glowing, long), Bộ 3 bình dược thảo (red, teal, purple).</li>
+    <li><strong>Pack 2 (160+ Dark Fantasy RPG Tileset Collection):</strong> 7 công trình kiến trúc đồ sộ (Đại giáo đường, Quán rượu, Nhà gỗ, Nhà cao tầng, Nhà tranh, Quầy buôn, Chòi gác); thiên nhiên (cây khô, thông tuyết, dây leo, dương xỉ, bụi rậm, đá tảng); đạo cụ (giếng nước, xe thồ, biển chỉ đường, đèn bão, hòm gỗ, bệ thờ hiến tế, vạc lửa dungeon, ngọn đuốc).</li>
+  </ol>
+
+  <hr style="border: 0; border-top: 1px solid #d4c8b0; margin: 25px 0;">
+
+  <!-- SECTION 3 -->
+  <h2>3. LỘ TRÌNH THẾ GIỚI 9 ĐỊA DANH & CỐT TRUYỆN (9-NODE WORLD PROGRESSION)</h2>
+
+  <p>
+    Thế giới của Aethelgard trải dài theo trục Đông - Tây dọc theo Imperial Highway (Đại lộ Đế quốc). Để di chuyển qua từng vùng đất, người chơi phải tích lũy đủ điểm <strong>DANH VỌNG VÙNG (REGIONAL RENOWN)</strong> để được cấp Giấy Thông Hành (Travel Permit).
+  </p>
+
+  <div class="callout">
+    <div class="callout-title">Quy tắc Vận hành Danh vọng & Thông hành</div>
+    <p style="margin:0;">
+      Điểm Renown đại diện cho uy tín và chiến tích của bạn tại vùng đất hiện tại. Khi bước qua cổng thành mới, Renown vùng của bạn bắt đầu từ con số 0 để bạn chứng minh thực lực với thị trấn mới. Tuy nhiên, nếu quay trở lại các thị trấn cũ, danh vọng đã đạt được tại đó vẫn được bảo toàn nguyên vẹn.
+    </p>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 8%;">Node</th>
+        <th style="width: 20%;">Tên Địa danh</th>
+        <th style="width: 14%;">Yêu cầu Renown</th>
+        <th style="width: 25%;">Bối cảnh & Sinh thái</th>
+        <th>Chức năng & Trọng tâm Tri thức</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>0</strong></td>
+        <td><strong>The Ashen Hamlet</strong><br><span class="badge badge-gold">Starter Sanctuary</span></td>
+        <td><strong>0 Renown</strong><br><em>(Không cần giấy phép)</em></td>
+        <td>Vùng tàn tích biên viễn hoang vu phủ đầy tro bụi núi lửa. Không gian yên bình, tĩnh mịch.</td>
+        <td>Nơi thức tỉnh; gặp gỡ The Ashen Watcher; nhận vũ khí đầu tiên và Bản đồ Lục địa. Tự do di chuyển sang Oakhaven bất cứ lúc nào.</td>
+      </tr>
+      <tr>
+        <td><strong>1</strong></td>
+        <td><strong>Oakhaven Outpost</strong><br><span class="badge badge-green">Frontier Town</span></td>
+        <td><strong>0 Renown</strong><br><em>(Mở khóa từ Node 0)</em></td>
+        <td>Tiền đồn biên ải sầm uất nằm giữa rừng sương mù Gray Thickets; quy tụ lính đánh thuê và thương buôn.</td>
+        <td>Trụ sở Adventurers' Guild; diện kiến Đại pháp sư AI Malakor; nhận nhiệm vụ giải quyết tình huống (Case Method) và Báo cáo kinh doanh.</td>
+      </tr>
+      <tr>
+        <td><strong>2</strong></td>
+        <td><strong>Bastion of Iron</strong><br><span class="badge badge-blue">Military Stronghold</span></td>
+        <td><strong>100 Renown</strong><br>+ Oakhaven Permit</td>
+        <td>Pháo đài hắc thạch kiên cố xây dựng trên vách núi răng rồng Wyrmtooth Peaks quanh năm băng giá.</td>
+        <td>Lò rèn đại đế; huấn luyện tư duy Kỹ thuật & Cơ học; giải các bài toán Tối ưu hóa cấu trúc chịu tải và Logic chuỗi cung ứng.</td>
+      </tr>
+      <tr>
+        <td><strong>3</strong></td>
+        <td><strong>Port Azure</strong><br><span class="badge badge-blue">Maritime Hub</span></td>
+        <td><strong>250 Renown</strong><br>+ Bastion Permit</td>
+        <td>Thành phố cảng biển sầm uất với những con tàu buôn khổng lồ, chợ đen và làn gió biển mặn mòi.</td>
+        <td>Giao dịch thị trường tài chính quốc tế; giải mã các bài toán Định giá tài sản, Mô hình rủi ro dòng tiền và Chênh lệch giá (Arbitrage).</td>
+      </tr>
+      <tr>
+        <td><strong>4</strong></td>
+        <td><strong>Spire of Babel</strong><br><span class="badge badge-purple">Monolithic Academy</span></td>
+        <td><strong>500 Renown</strong><br>+ Azure Permit</td>
+        <td>Ngọn tháp hắc ngọc vút tận trời mây, lưu giữ hàng triệu cuộn da dê chứa cổ ngữ loài Rồng và Tinh linh.</td>
+        <td>Học viện Ngôn ngữ Cổ; giải mã các văn bản tiếng Pháp, tiếng Trung cổ điển; rèn luyện Toán học Thuần túy & Lý thuyết Đồ thị.</td>
+      </tr>
+      <tr>
+        <td><strong>5</strong></td>
+        <td><strong>The Gilded Nexus</strong><br><span class="badge badge-gold">Sovereign Capital</span></td>
+        <td><strong>800 Renown</strong><br>+ Babel Permit</td>
+        <td>Đại đô thị ngân hàng tráng lệ với các cung điện bằng đá cẩm thạch trắng và đại lộ lát vàng ròng.</td>
+        <td>Hội đồng Quản lý Danh mục Đầu tư & Lý thuyết Trò chơi (Game Theory); đối đầu với các bài kiểm tra đàm phán thương vụ phức tạp.</td>
+      </tr>
+      <tr>
+        <td><strong>6</strong></td>
+        <td><strong>Shadowfen Citadel</strong><br><span class="badge badge-green">Cursed Marshes</span></td>
+        <td><strong>1200 Renown</strong><br>+ Nexus Permit</td>
+        <td>Pháo đài chìm trong đầm lầy độc địa; sương mù ảo giác và nấm phát quang nguy hiểm tột độ.</td>
+        <td>Khủng hoảng & Quản trị Rủi ro (Crisis Management); xử lý các tình huống bất ngờ với áp lực thời gian cực ngắn trong hầm ngục tối.</td>
+      </tr>
+      <tr>
+        <td><strong>7</strong></td>
+        <td><strong>Sanctum of the Astral</strong><br><span class="badge badge-purple">Rift Observatory</span></td>
+        <td><strong>1800 Renown</strong><br>+ Shadowfen Permit</td>
+        <td>Đài thiên văn không gian lơ lửng giữa các vết rách vũ trụ; ánh sáng sao tím huyền ảo bẻ cong thực tại.</td>
+        <td>Triết học Cấp cao & Trừu tượng hóa Logic; giải quyết các nghịch lý nhận thức và tổng hợp tư duy đa chiều.</td>
+      </tr>
+      <tr>
+        <td><strong>8</strong></td>
+        <td><strong>The Imperial Capital: Aethelgard</strong><br><span class="badge badge-red">Apex Empire</span></td>
+        <td><strong>2500 Renown</strong><br>+ Astral Permit</td>
+        <td>Hoàng thành vĩ đại ngập tràn ánh hoàng hôn vĩnh cửu; ngai vàng ngự trị của Đấng Sáng Tạo Chronos.</td>
+        <td>Vũ đài Đỉnh cao: Bảo vệ luận án chiến lược tối thượng; đối đầu trực diện với Trùm Cuối (Boss Chronos) trong trận chiến Deflect thời gian thực.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr style="border: 0; border-top: 1px solid #d4c8b0; margin: 25px 0;">
+
+  <!-- SECTION 4 -->
+  <h2>4. HỆ THỐNG ÁNH XẠ KỸ NĂNG ĐỜI THỰC SANG CLASS ISEKAI (REAL-LIFE SKILL MAPPING)</h2>
+
+  <p>
+    Trò chơi nói <strong>KHÔNG</strong> với các kỹ năng lập trình (Coding). Toàn bộ cây thuộc tính nhân vật tập trung 100% vào việc rèn luyện não bộ, năng lực giải quyết vấn đề và sự dẻo dai thể chất thực tế:
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 22%;">Lĩnh vực Đời thực</th>
+        <th style="width: 22%;">Class Isekai Tương ứng</th>
+        <th style="width: 18%;">Chỉ số Thuộc tính</th>
+        <th>Biểu hiện Cơ chế & Ứng dụng Chiến đấu</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Business Case & Problem Solving</strong><br><em>(Phân tích tình huống & Chiến lược)</em></td>
+        <td><strong>Grand Tactician</strong><br>(Đại Binh Pháp Sư)</td>
+        <td><strong>Strategic Renown (SR)</strong><br>Uy Quyền Chiến Lược</td>
+        <td>Đọc tình huống hầm ngục, phân tích cấu trúc tấn công của Boss; gia tăng sát thương chí mạng khi Boss rơi vào trạng thái gãy tư thế (Posture Break); tăng hiệu suất phần thưởng nhiệm vụ thị trấn.</td>
+      </tr>
+      <tr>
+        <td><strong>Toán học Thuần túy & Tư duy Logic</strong><br><em>(Pure Mathematics & Logic)</em></td>
+        <td><strong>Arcane Scholar</strong><br>(Hiền Triết Ma Pháp)</td>
+        <td><strong>Logic Weaver (LW)</strong><br>Tâm Thức Hình Học</td>
+        <td>Tạo các ma trận chắn sát thương (Geometry Shields); giải các câu đố khóa cổ tự mở đường tắt trong ngục; kéo dài thời gian cửa sổ phản xạ (Deflect Window) trong giao tranh thời gian thực.</td>
+      </tr>
+      <tr>
+        <td><strong>Tài chính, Kinh tế & Định giá</strong><br><em>(Finance, Valuation & Economics)</em></td>
+        <td><strong>High Alchemist</strong><br>(Đại Giả Kim Thuật Sư)</td>
+        <td><strong>Arbitrage Edge (AE)</strong><br>Trực Giác Cân Bằng</td>
+        <td>Chế tạo dược phẩm cao cấp từ thảo mộc; giao dịch trao đổi vật phẩm với giá ưu đãi tại thương hội; bảo toàn tỷ lệ Vàng không bị rơi rụng khi tử nạn trong ngục tối.</td>
+      </tr>
+      <tr>
+        <td><strong>Ngoại ngữ (Tiếng Pháp, Tiếng Trung)</strong><br><em>(Foreign Languages)</em></td>
+        <td><strong>Ancient Runesmith</strong><br>(Ký Tự Sư Cổ Đại)</td>
+        <td><strong>Linguistic Resonance</strong><br>Cộng Hưởng Cổ Ngữ</td>
+        <td>Đọc hiểu các văn tự cổ trên bia đá và cuộn da dê; mở khóa các Chuỗi Nhiệm Vụ Ẩn (Hidden Quests) độc quyền của giới quý tộc; miễn nhiễm với các bùa chú ru ngủ/mê hoặc của quái vật.</td>
+      </tr>
+      <tr>
+        <td><strong>Thể chất, Thể thao & Tập luyện</strong><br><em>(Physical Fitness & Athletics)</em></td>
+        <td><strong>Spellblade Vanguard</strong><br>(Ma Kiếm Tiên Phong)</td>
+        <td><strong>Vigor & Fortitude</strong><br>Sinh Lực & Thể Phách</td>
+        <td>Gia tăng thanh Máu tối đa (Max HP), thanh Thể lực (Stamina) và chỉ số Giảm sát thương vật lý (Physical DEF); cho phép nhân vật lướt né (Dash) liên tục trong các trận đánh trùm dài hơi.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr style="border: 0; border-top: 1px solid #d4c8b0; margin: 25px 0;">
+
+  <!-- SECTION 5 -->
+  <h2>5. CƠ CHẾ AI GUILD MASTER, COMBAT DEFLECT & HÌNH PHẠT TỬ VONG (FUTURE CORE SYSTEMS)</h2>
+
+  <h3>5.1. Đại Pháp Sư AI Malakor — Giám sát Bang hội Trào phúng</h3>
+  <p>
+    Tại Oakhaven Outpost, người chơi sẽ chính thức diện kiến <strong>Archmage Malakor</strong>—một vị Guild Master thiên tài nhưng cực kỳ cay nghiệt, mỉa mai và căm ghét thói lười biếng. Malakor được kết nối trực tiếp với API Trí tuệ Nhân tạo thông minh:
+  </p>
+  <ul>
+    <li><strong>Giao nhiệm vụ cá nhân hóa:</strong> Căn cứ vào ngành học và mục tiêu rèn luyện của người chơi, Malakor sẽ đưa ra các hợp đồng (Quests): Nhiệm vụ hàng ngày (Daily), Biến cố ngẫu nhiên (Random Encounters), hoặc Nhiệm vụ ẩn hoàng gia (Imperial Edicts).</li>
+    <li><strong>Cơ chế Nộp Hồ sơ Báo cáo Thực tế (Report File Upload):</strong>
+      <p>
+        Người chơi không chỉ bấm một nút là xong nhiệm vụ. Để báo công, người chơi phải <strong>tải lên tệp tài liệu thực tế</strong> (file PDF phân tích Case Study, bảng tính tài chính Excel/CSV, bài dịch văn học tiếng Pháp/tiếng Trung, bản chứng minh toán học).
+      </p>
+    </li>
+    <li><strong>Hệ thống Phê bình & Đánh giá (AI Roast & Grading):</strong>
+      <p>
+        AI Malakor sẽ đọc nội dung tệp, phân tích chất lượng lập luận và phản hồi lại bằng giọng điệu trào phúng, thâm thúy chuẩn Dark Fantasy:
+      </p>
+      <div class="quote-block">
+        "Ngươi gọi cái bảng phân tích dòng tiền chắp vá này là chiến lược kinh doanh sao, Lữ khách? Lũ chuột đầm lầy dưới chân ta còn tính toán chi phí rủi ro chặt chẽ hơn thế này! Tuy nhiên... cấu trúc luận điểm của ngươi không đến nỗi vô phương cứu chữa. Ta tạm chấm điểm B+. Cầm lấy 120 Vàng và 40 Danh vọng Oakhaven này rồi khuất mắt ta mau!"
+      </div>
+    </li>
+    <li><strong>Phần thưởng thăng cấp:</strong> Điểm đánh giá (A, B, C) quyết định lượng EXP nhận được, cấp độ uy tín vùng, và số vé quay vòng quay Giả Kim (Gacha Rolls) để tìm kiếm các thánh di vật huyền thoại.</li>
+  </ul>
+
+  <h3>5.2. Phân tách Túi đồ: Trang bị Mang theo (Equipped) vs. Hòm An toàn (Safe Stash)</h3>
+  <p>
+    Nhằm tạo áp lực cân nhắc rủi ro trong mỗi chuyến thám hiểm hầm ngục, trò chơi áp dụng quy tắc quản lý túi đồ nghiêm ngặt:
+  </p>
+  <ul>
+    <li><strong>Equipped / Carried Inventory (Túi đồ Dã ngoại):</strong> Các món vũ khí đang cầm trên tay, giáp đang mặc, bình máu và số tiền vàng người chơi mang theo khi bước qua cổng ngục tối. <em>Vùng rủi ro cao: Sẽ rơi toàn bộ nếu tử nạn!</em></li>
+    <li><strong>Vault Safe Stash (Rương An toàn trong Thị trấn):</strong> Toàn bộ trang bị dự phòng, sách cổ, tàn tích thời gian và tài sản gửi trong Vault of Echoes tại các thị trấn. <em>Vùng an toàn vĩnh viễn: Không bao giờ bị mất mát dù người chơi có chết bao nhiêu lần trong ngục.</em></li>
+  </ul>
+
+  <h3>5.3. Độ Tỉnh Táo & Hình Phạt Thoái Hóa Thời Gian (Sanity Decay System)</h3>
+  <p>
+    Thanh Tỉnh táo (Sanity: 0 - 100) phản ánh trạng thái tinh thần và sự duy trì kỷ luật của người chơi:
+  </p>
+  <ul>
+    <li><strong>Hồi phục Tỉnh táo:</strong> Ngồi thiền tại ngọn lửa trại ở The Ashen Hamlet hoặc quán rượu Oakhaven thông qua các phiên tập trung sâu Chronos Focus.</li>
+    <li><strong>Sự thoái hóa khi bỏ bê (Sanity Decay):</strong> Nếu người chơi không vào game rèn luyện trong nhiều ngày, điểm Sanity sẽ bị suy giảm tự nhiên theo thời gian thực (Offline Penalty).</li>
+    <li><strong>Hiệu ứng Mê muội (Low Sanity Debuffs):</strong>
+      <ul>
+        <li><strong>Thu hẹp tầm nhìn:</strong> Màn hình bị bao phủ bởi lớp viền đen ảo giác (Dark Vignette), khiến việc quan sát đòn đánh của quái vật trở nên cực kỳ khó khăn.</li>
+        <li><strong>Suy giảm sức mạnh:</strong> Giảm 30% tốc độ di chuyển và sát thương; tăng 50% thời gian hồi chiêu của các kỹ năng.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h3>5.4. Cơ chế Đấu Trùm: Phản đòn Thời gian thực (Real-Time Deflect Combat)</h3>
+  <p>
+    Trận chiến với các Đại Trùm (Boss) ngục tối đòi hỏi sự kết hợp hoàn hảo giữa phản xạ tay và tư duy não bộ:
+  </p>
+  <ul>
+    <li><strong>Cảnh báo Đòn Tất sát (Lethal Attack Telegraph):</strong> Khi Boss vận sức tung ra đòn sát thủ, một luồng tử khí đỏ rực xuất hiện cùng đồng hồ đếm ngược sinh tử (ví dụ: 8 - 15 giây).</li>
+    <li><strong>Thử thách Não bộ Cấp tốc:</strong> Màn hình hiện lên một câu hỏi tư duy logic, tính nhẩm tài chính hoặc điền từ ngoại ngữ tốc độ cao.</li>
+    <li><strong>Phản đòn Hoàn hảo (Perfect Deflect):</strong> Nếu người chơi chọn đáp án chính xác trước khi hết giờ, nhân vật sẽ thực hiện một cú gạt kiếm tóe lửa (Deflect Sparks), triệt tiêu hoàn toàn 100% sát thương đòn đánh và làm sụp đổ 40% thanh Tư thế (Posture) của Boss, mở ra cơ hội Tung đòn Trừng phạt (Critical Riposte).</li>
+    <li><strong>Thất bại (Failed Deflect):</strong> Nếu trả lời sai hoặc hết thời gian, người chơi sẽ hứng chịu toàn bộ đòn chí mạng, dẫn đến nguy cơ tử vong ngay tức khắc.</li>
+  </ul>
+
+  <h3>5.5. Hình phạt Tử vong Khắc nghiệt (Hardcore Permadeath Penalty)</h3>
+  <p>
+    Khi thanh Máu (HP) rơi về 0 trong ngục tối:
+  </p>
+  <ol>
+    <li><strong>Mất trắng Túi đồ Dã ngoại:</strong> Toàn bộ trang bị trên người, vũ khí mang theo và số vàng nhặt được trong ngục sẽ bị văng ra tại vị trí tử nạn.</li>
+    <li><strong>Reset Danh vọng Vùng về 0:</strong> Bạn bị tống cổ về thị trấn gần nhất trong tình trạng kiệt quệ; điểm Renown của thị trấn hiện tại bị xóa sạch về 0 (buộc người chơi phải rèn luyện lại từ đầu nếu muốn nhận lại Giấy thông hành).</li>
+    <li><strong>Vật phẩm Bất tử (Soulbound Items):</strong> Chỉ có cuốn Bản đồ Cổ (Weathered Atlas), những món đồ cất trong Rương An toàn (Safe Stash) và điểm danh vọng ở các thị trấn cũ là tồn tại vĩnh viễn với linh hồn người chơi.</li>
+  </ol>
+
+  <hr style="border: 0; border-top: 1px solid #d4c8b0; margin: 30px 0;">
+
+  <div style="text-align: center; color: #736756; font-size: 10pt; font-style: italic;">
+    Tài liệu này được phê duyệt làm kim chỉ nam phát triển chính thức cho toàn bộ đội ngũ dự án Aethelgard.<br>
+    Mọi cơ chế mã nguồn, thiết kế màn chơi và nội dung cập nhật tiếp theo phải tuân thủ nghiêm ngặt các quy chuẩn trên.
+  </div>
+
+</body>
+</html>

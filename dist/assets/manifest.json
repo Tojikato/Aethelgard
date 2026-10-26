@@ -1,0 +1,4758 @@
+{
+  "schemaVersion": 2,
+  "pack": "aethelgard-unified",
+  "description": "Unified Asset Manifest for Aethelgard: Ashen Hamlet, Scenery, Equipment, Architecture & Props",
+  "totalAssets": 250,
+  "assets": [
+    {
+      "id": "sword-glowing",
+      "name": "Sword Glowing",
+      "category": "weapon",
+      "path": "sprites/sword-glowing.png",
+      "width": 331,
+      "height": 80,
+      "sourceRect": {
+        "x": 36,
+        "y": 0,
+        "width": 331,
+        "height": 80
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "pack": "pack1_sprites"
+    },
+    {
+      "id": "sword-long",
+      "name": "Sword Long",
+      "category": "weapon",
+      "path": "sprites/sword-long.png",
+      "width": 327,
+      "height": 59,
+      "sourceRect": {
+        "x": 37,
+        "y": 82,
+        "width": 327,
+        "height": 59
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "pack": "pack1_sprites"
+    },
+    {
+      "id": "sword-curved",
+      "name": "Sword Curved",
+      "category": "weapon",
+      "path": "sprites/sword-curved.png",
+      "width": 266,
+      "height": 75,
+      "sourceRect": {
+        "x": 377,
+        "y": 2,
+        "width": 266,
+        "height": 75
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "pack": "pack1_sprites"
+    },
+    {
+      "id": "sword-cleaver",
+      "name": "Sword Cleaver",
+      "category": "weapon",
+      "path": "sprites/sword-cleaver.png",
+      "width": 263,
+      "height": 60,
+      "sourceRect": {
+        "x": 378,
+        "y": 81,
+        "width": 263,
+        "height": 60
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "pack": "pack1_sprites"
+    },
+    {
+      "id": "sword-rusted",
+      "name": "Sword Rusted",
+      "category": "weapon",
+      "path": "sprites/sword-rusted.png",
+      "width": 242,
+      "height": 66,
+      "sourceRect": {
+        "x": 655,
+        "y": 9,
+        "width": 242,
+        "height": 66
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "pack": "pack1_sprites"
+    },
+    {
+      "id": "sword-barbed",
+      "name": "Sword Barbed",
+      "category": "weapon",
+      "path": "sprites/sword-barbed.png",
+      "width": 242,
+      "height": 61,
+      "sourceRect": {
+        "x": 655,
+        "y": 79,
+        "width": 242,
+        "height": 61
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "pack": "pack1_sprites"
+    },
+    {
+      "id": "potion-purple",
+      "name": "Potion Purple",
+      "category": "item",
+      "path": "sprites/potion-purple.png",
+      "width": 80,
+      "height": 130,
+      "sourceRect": {
+        "x": 950,
+        "y": 7,
+        "width": 80,
+        "height": 130
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "pack": "pack1_sprites"
+    },
+    {
+      "id": "potion-teal",
+      "name": "Potion Teal",
+      "category": "item",
+      "path": "sprites/potion-teal.png",
+      "width": 87,
+      "height": 129,
+      "sourceRect": {
+        "x": 1049,
+        "y": 10,
+        "width": 87,
+        "height": 129
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "pack": "pack1_sprites"
+    },
+    {
+      "id": "potion-red",
+      "name": "Potion Red",
+      "category": "item",
+      "path": "sprites/potion-red.png",
+      "width": 90,
+      "height": 129,
+      "sourceRect": {
+        "x": 1149,
+        "y": 10,
+        "width": 90,
+        "height": 129
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "pack": "pack1_sprites"
+    },
+    {
+      "id": "ruins-stone",
+      "name": "Ruins Stone",
+      "category": "scenery",
+      "path": "sprites/ruins-stone.png",
+      "width": 248,
+      "height": 238,
+      "sourceRect": {
+        "x": 15,
+        "y": 154,
+        "width": 248,
+        "height": 238
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "pack": "pack1_sprites"
+    },
+    {
+      "id": "ruins-brick",
+      "name": "Ruins Brick",
+      "category": "scenery",
+      "path": "sprites/ruins-brick.png",
+      "width": 238,
+      "height": 235,
+      "sourceRect": {
+        "x": 269,
+        "y": 155,
+        "width": 238,
+        "height": 235
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "pack": "pack1_sprites"
+    },
+    {
+      "id": "arch-stone",
+      "name": "Arch Stone",
+      "category": "scenery",
+      "path": "sprites/arch-stone.png",
+      "width": 171,
+      "height": 235,
+      "sourceRect": {
+        "x": 514,
+        "y": 155,
+        "width": 171,
+        "height": 235
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "pack": "pack1_sprites"
+    },
+    {
+      "id": "arch-ornate",
+      "name": "Arch Ornate",
+      "category": "scenery",
+      "path": "sprites/arch-ornate.png",
+      "width": 182,
+      "height": 235,
+      "sourceRect": {
+        "x": 690,
+        "y": 155,
+        "width": 182,
+        "height": 235
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "pack": "pack1_sprites"
+    },
+    {
+      "id": "camp",
+      "name": "Camp",
+      "category": "scenery",
+      "path": "sprites/camp.png",
+      "width": 365,
+      "height": 196,
+      "sourceRect": {
+        "x": 883,
+        "y": 203,
+        "width": 365,
+        "height": 196
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "pack": "pack1_sprites"
+    },
+    {
+      "id": "terrain-stone-stone-r01-c01",
+      "name": "stone-r01-c01",
+      "category": "terrain/stone",
+      "path": "terrain/stone/stone-r01-c01.png",
+      "width": 53,
+      "height": 54,
+      "sourceRect": {
+        "x": 19,
+        "y": 29,
+        "width": 53,
+        "height": 54
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "terrain-stone-stone-r01-c02",
+      "name": "stone-r01-c02",
+      "category": "terrain/stone",
+      "path": "terrain/stone/stone-r01-c02.png",
+      "width": 53,
+      "height": 54,
+      "sourceRect": {
+        "x": 78,
+        "y": 29,
+        "width": 53,
+        "height": 54
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "terrain-stone-stone-r01-c03",
+      "name": "stone-r01-c03",
+      "category": "terrain/stone",
+      "path": "terrain/stone/stone-r01-c03.png",
+      "width": 54,
+      "height": 55,
+      "sourceRect": {
+        "x": 137,
+        "y": 29,
+        "width": 54,
+        "height": 55
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "terrain-stone-stone-r01-c04",
+      "name": "stone-r01-c04",
+      "category": "terrain/stone",
+      "path": "terrain/stone/stone-r01-c04.png",
+      "width": 54,
+      "height": 56,
+      "sourceRect": {
+        "x": 195,
+        "y": 28,
+        "width": 54,
+        "height": 56
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "terrain-stone-stone-r01-c05",
+      "name": "stone-r01-c05",
+      "category": "terrain/stone",
+      "path": "terrain/stone/stone-r01-c05.png",
+      "width": 52,
+      "height": 55,
+      "sourceRect": {
+        "x": 253,
+        "y": 29,
+        "width": 52,
+        "height": 55
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "terrain-stone-stone-r01-c06",
+      "name": "stone-r01-c06",
+      "category": "terrain/stone",
+      "path": "terrain/stone/stone-r01-c06.png",
+      "width": 49,
+      "height": 55,
+      "sourceRect": {
+        "x": 308,
+        "y": 29,
+        "width": 49,
+        "height": 55
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "terrain-stone-stone-r01-c07",
+      "name": "stone-r01-c07",
+      "category": "terrain/stone",
+      "path": "terrain/stone/stone-r01-c07.png",
+      "width": 49,
+      "height": 55,
+      "sourceRect": {
+        "x": 361,
+        "y": 29,
+        "width": 49,
+        "height": 55
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "terrain-stone-stone-r01-c08",
+      "name": "stone-r01-c08",
+      "category": "terrain/stone",
+      "path": "terrain/stone/stone-r01-c08.png",
+      "width": 53,
+      "height": 56,
+      "sourceRect": {
+        "x": 414,
+        "y": 28,
+        "width": 53,
+        "height": 56
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "terrain-stone-stone-r02-c01",
+      "name": "stone-r02-c01",
+      "category": "terrain/stone",
+      "path": "terrain/stone/stone-r02-c01.png",
+      "width": 53,
+      "height": 54,
+      "sourceRect": {
+        "x": 19,
+        "y": 88,
+        "width": 53,
+        "height": 54
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "terrain-stone-stone-r02-c02",
+      "name": "stone-r02-c02",
+      "category": "terrain/stone",
+      "path": "terrain/stone/stone-r02-c02.png",
+      "width": 53,
+      "height": 54,
+      "sourceRect": {
+        "x": 78,
+        "y": 88,
+        "width": 53,
+        "height": 54
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "terrain-stone-stone-r02-c03",
+      "name": "stone-r02-c03",
+      "category": "terrain/stone",
+      "path": "terrain/stone/stone-r02-c03.png",
+      "width": 54,
+      "height": 55,
+      "sourceRect": {
+        "x": 137,
+        "y": 87,
+        "width": 54,
+        "height": 55
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "terrain-stone-stone-r02-c04",
+      "name": "stone-r02-c04",
+      "category": "terrain/stone",
+      "path": "terrain/stone/stone-r02-c04.png",
+      "width": 55,
+      "height": 55,
+      "sourceRect": {
+        "x": 194,
+        "y": 87,
+        "width": 55,
+        "height": 55
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "terrain-stone-stone-r02-c05",
+      "name": "stone-r02-c05",
+      "category": "terrain/stone",
+      "path": "terrain/stone/stone-r02-c05.png",
+      "width": 52,
+      "height": 53,
+      "sourceRect": {
+        "x": 253,
+        "y": 90,
+        "width": 52,
+        "height": 53
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "terrain-stone-stone-r02-c06",
+      "name": "stone-r02-c06",
+      "category": "terrain/stone",
+      "path": "terrain/stone/stone-r02-c06.png",
+      "width": 49,
+      "height": 53,
+      "sourceRect": {
+        "x": 308,
+        "y": 90,
+        "width": 49,
+        "height": 53
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "terrain-stone-stone-r02-c07",
+      "name": "stone-r02-c07",
+      "category": "terrain/stone",
+      "path": "terrain/stone/stone-r02-c07.png",
+      "width": 50,
+      "height": 53,
+      "sourceRect": {
+        "x": 360,
+        "y": 90,
+        "width": 50,
+        "height": 53
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "terrain-stone-stone-r02-c08",
+      "name": "stone-r02-c08",
+      "category": "terrain/stone",
+      "path": "terrain/stone/stone-r02-c08.png",
+      "width": 54,
+      "height": 53,
+      "sourceRect": {
+        "x": 413,
+        "y": 90,
+        "width": 54,
+        "height": 53
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "terrain-mixed-earth",
+      "name": "earth",
+      "category": "terrain/mixed",
+      "path": "terrain/mixed/earth.png",
+      "width": 112,
+      "height": 51,
+      "sourceRect": {
+        "x": 19,
+        "y": 147,
+        "width": 112,
+        "height": 51
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "terrain-mixed-snow-a",
+      "name": "snow-a",
+      "category": "terrain/mixed",
+      "path": "terrain/mixed/snow-a.png",
+      "width": 54,
+      "height": 54,
+      "sourceRect": {
+        "x": 137,
+        "y": 146,
+        "width": 54,
+        "height": 54
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "terrain-mixed-snow-b",
+      "name": "snow-b",
+      "category": "terrain/mixed",
+      "path": "terrain/mixed/snow-b.png",
+      "width": 54,
+      "height": 54,
+      "sourceRect": {
+        "x": 195,
+        "y": 146,
+        "width": 54,
+        "height": 54
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "terrain-mixed-moss-a",
+      "name": "moss-a",
+      "category": "terrain/mixed",
+      "path": "terrain/mixed/moss-a.png",
+      "width": 52,
+      "height": 54,
+      "sourceRect": {
+        "x": 253,
+        "y": 146,
+        "width": 52,
+        "height": 54
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "terrain-mixed-moss-b",
+      "name": "moss-b",
+      "category": "terrain/mixed",
+      "path": "terrain/mixed/moss-b.png",
+      "width": 44,
+      "height": 54,
+      "sourceRect": {
+        "x": 308,
+        "y": 146,
+        "width": 44,
+        "height": 54
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "terrain-mixed-grass-strip",
+      "name": "grass-strip",
+      "category": "terrain/mixed",
+      "path": "terrain/mixed/grass-strip.png",
+      "width": 113,
+      "height": 53,
+      "sourceRect": {
+        "x": 19,
+        "y": 203,
+        "width": 113,
+        "height": 53
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "terrain-mixed-grass-a",
+      "name": "grass-a",
+      "category": "terrain/mixed",
+      "path": "terrain/mixed/grass-a.png",
+      "width": 55,
+      "height": 53,
+      "sourceRect": {
+        "x": 137,
+        "y": 203,
+        "width": 55,
+        "height": 53
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "terrain-mixed-bush-tile",
+      "name": "bush-tile",
+      "category": "terrain/mixed",
+      "path": "terrain/mixed/bush-tile.png",
+      "width": 54,
+      "height": 48,
+      "sourceRect": {
+        "x": 195,
+        "y": 207,
+        "width": 54,
+        "height": 48
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "terrain-mixed-cliff-grass-a",
+      "name": "cliff-grass-a",
+      "category": "terrain/mixed",
+      "path": "terrain/mixed/cliff-grass-a.png",
+      "width": 53,
+      "height": 52,
+      "sourceRect": {
+        "x": 253,
+        "y": 204,
+        "width": 53,
+        "height": 52
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "terrain-mixed-cliff-grass-b",
+      "name": "cliff-grass-b",
+      "category": "terrain/mixed",
+      "path": "terrain/mixed/cliff-grass-b.png",
+      "width": 48,
+      "height": 51,
+      "sourceRect": {
+        "x": 309,
+        "y": 204,
+        "width": 48,
+        "height": 51
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "terrain-mixed-snow-c",
+      "name": "snow-c",
+      "category": "terrain/mixed",
+      "path": "terrain/mixed/snow-c.png",
+      "width": 54,
+      "height": 56,
+      "sourceRect": {
+        "x": 19,
+        "y": 260,
+        "width": 54,
+        "height": 56
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "terrain-mixed-water-a",
+      "name": "water-a",
+      "category": "terrain/mixed",
+      "path": "terrain/mixed/water-a.png",
+      "width": 53,
+      "height": 55,
+      "sourceRect": {
+        "x": 78,
+        "y": 260,
+        "width": 53,
+        "height": 55
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "terrain-mixed-waterfall",
+      "name": "waterfall",
+      "category": "terrain/mixed",
+      "path": "terrain/mixed/waterfall.png",
+      "width": 54,
+      "height": 108,
+      "sourceRect": {
+        "x": 137,
+        "y": 260,
+        "width": 54,
+        "height": 108
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "terrain-mixed-stone-c",
+      "name": "stone-c",
+      "category": "terrain/mixed",
+      "path": "terrain/mixed/stone-c.png",
+      "width": 52,
+      "height": 56,
+      "sourceRect": {
+        "x": 196,
+        "y": 260,
+        "width": 52,
+        "height": 56
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "terrain-mixed-cliff-large-a",
+      "name": "cliff-large-a",
+      "category": "terrain/mixed",
+      "path": "terrain/mixed/cliff-large-a.png",
+      "width": 65,
+      "height": 110,
+      "sourceRect": {
+        "x": 253,
+        "y": 260,
+        "width": 65,
+        "height": 110
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "terrain-mixed-cliff-large-b",
+      "name": "cliff-large-b",
+      "category": "terrain/mixed",
+      "path": "terrain/mixed/cliff-large-b.png",
+      "width": 66,
+      "height": 110,
+      "sourceRect": {
+        "x": 325,
+        "y": 260,
+        "width": 66,
+        "height": 110
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "terrain-mixed-water-b",
+      "name": "water-b",
+      "category": "terrain/mixed",
+      "path": "terrain/mixed/water-b.png",
+      "width": 54,
+      "height": 48,
+      "sourceRect": {
+        "x": 19,
+        "y": 320,
+        "width": 54,
+        "height": 48
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "terrain-mixed-water-c",
+      "name": "water-c",
+      "category": "terrain/mixed",
+      "path": "terrain/mixed/water-c.png",
+      "width": 53,
+      "height": 48,
+      "sourceRect": {
+        "x": 78,
+        "y": 320,
+        "width": 53,
+        "height": 48
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "terrain-mixed-cliff-small",
+      "name": "cliff-small",
+      "category": "terrain/mixed",
+      "path": "terrain/mixed/cliff-small.png",
+      "width": 46,
+      "height": 52,
+      "sourceRect": {
+        "x": 199,
+        "y": 320,
+        "width": 46,
+        "height": 52
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "terrain-mixed-rock-fragments",
+      "name": "rock-fragments",
+      "category": "terrain/mixed",
+      "path": "terrain/mixed/rock-fragments.png",
+      "width": 66,
+      "height": 111,
+      "sourceRect": {
+        "x": 399,
+        "y": 260,
+        "width": 66,
+        "height": 111
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "terrain-mixed-wall-fragments-a",
+      "name": "wall-fragments-a",
+      "category": "terrain/mixed",
+      "path": "terrain/mixed/wall-fragments-a.png",
+      "width": 108,
+      "height": 50,
+      "sourceRect": {
+        "x": 358,
+        "y": 147,
+        "width": 108,
+        "height": 50
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "terrain-mixed-wall-fragments-b",
+      "name": "wall-fragments-b",
+      "category": "terrain/mixed",
+      "path": "terrain/mixed/wall-fragments-b.png",
+      "width": 107,
+      "height": 49,
+      "sourceRect": {
+        "x": 358,
+        "y": 205,
+        "width": 107,
+        "height": 49
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "architecture-ruins-ruined-colonnade",
+      "name": "ruined-colonnade",
+      "category": "architecture/ruins",
+      "path": "architecture/ruins/ruined-colonnade.png",
+      "width": 245,
+      "height": 240,
+      "sourceRect": {
+        "x": 507,
+        "y": 32,
+        "width": 245,
+        "height": 240
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "architecture-ruins-wall-upper",
+      "name": "wall-upper",
+      "category": "architecture/ruins",
+      "path": "architecture/ruins/wall-upper.png",
+      "width": 98,
+      "height": 88,
+      "sourceRect": {
+        "x": 721,
+        "y": 30,
+        "width": 98,
+        "height": 88
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "architecture-ruins-wall-right",
+      "name": "wall-right",
+      "category": "architecture/ruins",
+      "path": "architecture/ruins/wall-right.png",
+      "width": 69,
+      "height": 96,
+      "sourceRect": {
+        "x": 752,
+        "y": 126,
+        "width": 69,
+        "height": 96
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "architecture-ruins-gothic-gateway",
+      "name": "gothic-gateway",
+      "category": "architecture/ruins",
+      "path": "architecture/ruins/gothic-gateway.png",
+      "width": 162,
+      "height": 214,
+      "sourceRect": {
+        "x": 842,
+        "y": 8,
+        "width": 162,
+        "height": 214
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "architecture-ruins-broken-wall",
+      "name": "broken-wall",
+      "category": "architecture/ruins",
+      "path": "architecture/ruins/broken-wall.png",
+      "width": 173,
+      "height": 111,
+      "sourceRect": {
+        "x": 508,
+        "y": 265,
+        "width": 173,
+        "height": 111
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "architecture-ruins-stairs",
+      "name": "stairs",
+      "category": "architecture/ruins",
+      "path": "architecture/ruins/stairs.png",
+      "width": 133,
+      "height": 141,
+      "sourceRect": {
+        "x": 690,
+        "y": 233,
+        "width": 133,
+        "height": 141
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "architecture-ruins-stone-arch",
+      "name": "stone-arch",
+      "category": "architecture/ruins",
+      "path": "architecture/ruins/stone-arch.png",
+      "width": 172,
+      "height": 139,
+      "sourceRect": {
+        "x": 841,
+        "y": 234,
+        "width": 172,
+        "height": 139
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "architecture-buildings-cottage",
+      "name": "cottage",
+      "category": "architecture/buildings",
+      "path": "architecture/buildings/cottage.png",
+      "width": 163,
+      "height": 155,
+      "sourceRect": {
+        "x": 1024,
+        "y": 31,
+        "width": 163,
+        "height": 155
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "architecture-buildings-tall-house",
+      "name": "tall-house",
+      "category": "architecture/buildings",
+      "path": "architecture/buildings/tall-house.png",
+      "width": 131,
+      "height": 169,
+      "sourceRect": {
+        "x": 1189,
+        "y": 17,
+        "width": 131,
+        "height": 169
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "architecture-buildings-timber-house",
+      "name": "timber-house",
+      "category": "architecture/buildings",
+      "path": "architecture/buildings/timber-house.png",
+      "width": 203,
+      "height": 169,
+      "sourceRect": {
+        "x": 1316,
+        "y": 17,
+        "width": 203,
+        "height": 169
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "architecture-buildings-tavern",
+      "name": "tavern",
+      "category": "architecture/buildings",
+      "path": "architecture/buildings/tavern.png",
+      "width": 164,
+      "height": 187,
+      "sourceRect": {
+        "x": 1029,
+        "y": 195,
+        "width": 164,
+        "height": 187
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "architecture-buildings-shop-stall",
+      "name": "shop-stall",
+      "category": "architecture/buildings",
+      "path": "architecture/buildings/shop-stall.png",
+      "width": 63,
+      "height": 74,
+      "sourceRect": {
+        "x": 1201,
+        "y": 310,
+        "width": 63,
+        "height": 74
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "architecture-buildings-watchtower",
+      "name": "watchtower",
+      "category": "architecture/buildings",
+      "path": "architecture/buildings/watchtower.png",
+      "width": 63,
+      "height": 196,
+      "sourceRect": {
+        "x": 1270,
+        "y": 194,
+        "width": 63,
+        "height": 196
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "architecture-buildings-cathedral",
+      "name": "cathedral",
+      "category": "architecture/buildings",
+      "path": "architecture/buildings/cathedral.png",
+      "width": 174,
+      "height": 203,
+      "sourceRect": {
+        "x": 1346,
+        "y": 193,
+        "width": 174,
+        "height": 203
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "nature-trees-dead-tree",
+      "name": "dead-tree",
+      "category": "nature/trees",
+      "path": "nature/trees/dead-tree.png",
+      "width": 155,
+      "height": 140,
+      "sourceRect": {
+        "x": 19,
+        "y": 409,
+        "width": 155,
+        "height": 140
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "nature-trees-green-tree",
+      "name": "green-tree",
+      "category": "nature/trees",
+      "path": "nature/trees/green-tree.png",
+      "width": 132,
+      "height": 139,
+      "sourceRect": {
+        "x": 164,
+        "y": 404,
+        "width": 132,
+        "height": 139
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "nature-trees-red-tree",
+      "name": "red-tree",
+      "category": "nature/trees",
+      "path": "nature/trees/red-tree.png",
+      "width": 101,
+      "height": 102,
+      "sourceRect": {
+        "x": 298,
+        "y": 406,
+        "width": 101,
+        "height": 102
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "nature-trees-pine",
+      "name": "pine",
+      "category": "nature/trees",
+      "path": "nature/trees/pine.png",
+      "width": 82,
+      "height": 123,
+      "sourceRect": {
+        "x": 404,
+        "y": 395,
+        "width": 82,
+        "height": 123
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "nature-plants-ivy",
+      "name": "ivy",
+      "category": "nature/plants",
+      "path": "nature/plants/ivy.png",
+      "width": 71,
+      "height": 92,
+      "sourceRect": {
+        "x": 496,
+        "y": 429,
+        "width": 71,
+        "height": 92
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "nature-plants-bush",
+      "name": "bush",
+      "category": "nature/plants",
+      "path": "nature/plants/bush.png",
+      "width": 85,
+      "height": 44,
+      "sourceRect": {
+        "x": 262,
+        "y": 497,
+        "width": 85,
+        "height": 44
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "nature-plants-white-flowers",
+      "name": "white-flowers",
+      "category": "nature/plants",
+      "path": "nature/plants/white-flowers.png",
+      "width": 59,
+      "height": 37,
+      "sourceRect": {
+        "x": 356,
+        "y": 507,
+        "width": 59,
+        "height": 37
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "nature-plants-fern",
+      "name": "fern",
+      "category": "nature/plants",
+      "path": "nature/plants/fern.png",
+      "width": 61,
+      "height": 27,
+      "sourceRect": {
+        "x": 427,
+        "y": 517,
+        "width": 61,
+        "height": 27
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "nature-plants-shrubs",
+      "name": "shrubs",
+      "category": "nature/plants",
+      "path": "nature/plants/shrubs.png",
+      "width": 68,
+      "height": 47,
+      "sourceRect": {
+        "x": 19,
+        "y": 560,
+        "width": 68,
+        "height": 47
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "nature-plants-log",
+      "name": "log",
+      "category": "nature/plants",
+      "path": "nature/plants/log.png",
+      "width": 93,
+      "height": 50,
+      "sourceRect": {
+        "x": 120,
+        "y": 553,
+        "width": 93,
+        "height": 50
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "nature-plants-grass",
+      "name": "grass",
+      "category": "nature/plants",
+      "path": "nature/plants/grass.png",
+      "width": 66,
+      "height": 41,
+      "sourceRect": {
+        "x": 220,
+        "y": 558,
+        "width": 66,
+        "height": 41
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "nature-plants-flowers",
+      "name": "flowers",
+      "category": "nature/plants",
+      "path": "nature/plants/flowers.png",
+      "width": 56,
+      "height": 50,
+      "sourceRect": {
+        "x": 285,
+        "y": 555,
+        "width": 56,
+        "height": 50
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "nature-plants-purple-flowers",
+      "name": "purple-flowers",
+      "category": "nature/plants",
+      "path": "nature/plants/purple-flowers.png",
+      "width": 38,
+      "height": 41,
+      "sourceRect": {
+        "x": 342,
+        "y": 559,
+        "width": 38,
+        "height": 41
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "nature-plants-grass-border",
+      "name": "grass-border",
+      "category": "nature/plants",
+      "path": "nature/plants/grass-border.png",
+      "width": 191,
+      "height": 31,
+      "sourceRect": {
+        "x": 19,
+        "y": 732,
+        "width": 191,
+        "height": 31
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "props-outdoor-well",
+      "name": "well",
+      "category": "props/outdoor",
+      "path": "props/outdoor/well.png",
+      "width": 103,
+      "height": 117,
+      "sourceRect": {
+        "x": 384,
+        "y": 557,
+        "width": 103,
+        "height": 117
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "props-outdoor-sign-lantern",
+      "name": "sign-lantern",
+      "category": "props/outdoor",
+      "path": "props/outdoor/sign-lantern.png",
+      "width": 53,
+      "height": 154,
+      "sourceRect": {
+        "x": 491,
+        "y": 513,
+        "width": 53,
+        "height": 154
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "props-outdoor-fence-a",
+      "name": "fence-a",
+      "category": "props/outdoor",
+      "path": "props/outdoor/fence-a.png",
+      "width": 62,
+      "height": 48,
+      "sourceRect": {
+        "x": 211,
+        "y": 608,
+        "width": 62,
+        "height": 48
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "props-outdoor-fence-b",
+      "name": "fence-b",
+      "category": "props/outdoor",
+      "path": "props/outdoor/fence-b.png",
+      "width": 98,
+      "height": 47,
+      "sourceRect": {
+        "x": 274,
+        "y": 615,
+        "width": 98,
+        "height": 47
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "props-outdoor-hay",
+      "name": "hay",
+      "category": "props/outdoor",
+      "path": "props/outdoor/hay.png",
+      "width": 69,
+      "height": 73,
+      "sourceRect": {
+        "x": 338,
+        "y": 663,
+        "width": 69,
+        "height": 73
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "props-outdoor-cart",
+      "name": "cart",
+      "category": "props/outdoor",
+      "path": "props/outdoor/cart.png",
+      "width": 126,
+      "height": 71,
+      "sourceRect": {
+        "x": 422,
+        "y": 668,
+        "width": 126,
+        "height": 71
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "props-outdoor-fence-c",
+      "name": "fence-c",
+      "category": "props/outdoor",
+      "path": "props/outdoor/fence-c.png",
+      "width": 117,
+      "height": 51,
+      "sourceRect": {
+        "x": 216,
+        "y": 712,
+        "width": 117,
+        "height": 51
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "props-outdoor-wooden-crate",
+      "name": "wooden-crate",
+      "category": "props/outdoor",
+      "path": "props/outdoor/wooden-crate.png",
+      "width": 61,
+      "height": 38,
+      "sourceRect": {
+        "x": 241,
+        "y": 666,
+        "width": 61,
+        "height": 38
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "props-outdoor-signpost",
+      "name": "signpost",
+      "category": "props/outdoor",
+      "path": "props/outdoor/signpost.png",
+      "width": 25,
+      "height": 42,
+      "sourceRect": {
+        "x": 308,
+        "y": 662,
+        "width": 25,
+        "height": 42
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "nature-rocks-rocks-a",
+      "name": "rocks-a",
+      "category": "nature/rocks",
+      "path": "nature/rocks/rocks-a.png",
+      "width": 66,
+      "height": 45,
+      "sourceRect": {
+        "x": 22,
+        "y": 617,
+        "width": 66,
+        "height": 45
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "nature-rocks-rocks-b",
+      "name": "rocks-b",
+      "category": "nature/rocks",
+      "path": "nature/rocks/rocks-b.png",
+      "width": 52,
+      "height": 53,
+      "sourceRect": {
+        "x": 91,
+        "y": 609,
+        "width": 52,
+        "height": 53
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "nature-rocks-crystals",
+      "name": "crystals",
+      "category": "nature/rocks",
+      "path": "nature/rocks/crystals.png",
+      "width": 53,
+      "height": 54,
+      "sourceRect": {
+        "x": 149,
+        "y": 608,
+        "width": 53,
+        "height": 54
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "nature-rocks-rocks-c",
+      "name": "rocks-c",
+      "category": "nature/rocks",
+      "path": "nature/rocks/rocks-c.png",
+      "width": 50,
+      "height": 39,
+      "sourceRect": {
+        "x": 20,
+        "y": 685,
+        "width": 50,
+        "height": 39
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "nature-rocks-rocks-d",
+      "name": "rocks-d",
+      "category": "nature/rocks",
+      "path": "nature/rocks/rocks-d.png",
+      "width": 67,
+      "height": 66,
+      "sourceRect": {
+        "x": 72,
+        "y": 662,
+        "width": 67,
+        "height": 66
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "nature-rocks-rocks-e",
+      "name": "rocks-e",
+      "category": "nature/rocks",
+      "path": "nature/rocks/rocks-e.png",
+      "width": 66,
+      "height": 69,
+      "sourceRect": {
+        "x": 141,
+        "y": 660,
+        "width": 66,
+        "height": 69
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "props-interior-door",
+      "name": "door",
+      "category": "props/interior",
+      "path": "props/interior/door.png",
+      "width": 40,
+      "height": 72,
+      "sourceRect": {
+        "x": 596,
+        "y": 424,
+        "width": 40,
+        "height": 72
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "props-interior-noticeboard",
+      "name": "noticeboard",
+      "category": "props/interior",
+      "path": "props/interior/noticeboard.png",
+      "width": 88,
+      "height": 78,
+      "sourceRect": {
+        "x": 627,
+        "y": 521,
+        "width": 88,
+        "height": 78
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "props-interior-bench",
+      "name": "bench",
+      "category": "props/interior",
+      "path": "props/interior/bench.png",
+      "width": 88,
+      "height": 57,
+      "sourceRect": {
+        "x": 585,
+        "y": 607,
+        "width": 88,
+        "height": 57
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "props-interior-bookcase",
+      "name": "bookcase",
+      "category": "props/interior",
+      "path": "props/interior/bookcase.png",
+      "width": 78,
+      "height": 81,
+      "sourceRect": {
+        "x": 682,
+        "y": 615,
+        "width": 78,
+        "height": 81
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "props-interior-alchemy-shelf",
+      "name": "alchemy-shelf",
+      "category": "props/interior",
+      "path": "props/interior/alchemy-shelf.png",
+      "width": 63,
+      "height": 82,
+      "sourceRect": {
+        "x": 768,
+        "y": 616,
+        "width": 63,
+        "height": 82
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "props-interior-coffin",
+      "name": "coffin",
+      "category": "props/interior",
+      "path": "props/interior/coffin.png",
+      "width": 42,
+      "height": 69,
+      "sourceRect": {
+        "x": 591,
+        "y": 658,
+        "width": 42,
+        "height": 69
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "props-interior-map-table",
+      "name": "map-table",
+      "category": "props/interior",
+      "path": "props/interior/map-table.png",
+      "width": 115,
+      "height": 72,
+      "sourceRect": {
+        "x": 645,
+        "y": 682,
+        "width": 115,
+        "height": 72
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "props-interior-stool",
+      "name": "stool",
+      "category": "props/interior",
+      "path": "props/interior/stool.png",
+      "width": 45,
+      "height": 47,
+      "sourceRect": {
+        "x": 773,
+        "y": 700,
+        "width": 45,
+        "height": 47
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "props-interior-bed",
+      "name": "bed",
+      "category": "props/interior",
+      "path": "props/interior/bed.png",
+      "width": 102,
+      "height": 90,
+      "sourceRect": {
+        "x": 820,
+        "y": 674,
+        "width": 102,
+        "height": 90
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "props-interior-barrel",
+      "name": "barrel",
+      "category": "props/interior",
+      "path": "props/interior/barrel.png",
+      "width": 31,
+      "height": 37,
+      "sourceRect": {
+        "x": 552,
+        "y": 690,
+        "width": 31,
+        "height": 37
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "props-interior-chest-wood",
+      "name": "chest-wood",
+      "category": "props/interior",
+      "path": "props/interior/chest-wood.png",
+      "width": 53,
+      "height": 28,
+      "sourceRect": {
+        "x": 434,
+        "y": 737,
+        "width": 53,
+        "height": 28
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "props-interior-chest-small",
+      "name": "chest-small",
+      "category": "props/interior",
+      "path": "props/interior/chest-small.png",
+      "width": 42,
+      "height": 35,
+      "sourceRect": {
+        "x": 502,
+        "y": 729,
+        "width": 42,
+        "height": 35
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "props-interior-chest-long",
+      "name": "chest-long",
+      "category": "props/interior",
+      "path": "props/interior/chest-long.png",
+      "width": 61,
+      "height": 33,
+      "sourceRect": {
+        "x": 561,
+        "y": 731,
+        "width": 61,
+        "height": 33
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "props-dungeon-brazier-orange",
+      "name": "brazier-orange",
+      "category": "props/dungeon",
+      "path": "props/dungeon/brazier-orange.png",
+      "width": 36,
+      "height": 97,
+      "sourceRect": {
+        "x": 651,
+        "y": 416,
+        "width": 36,
+        "height": 97
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "props-dungeon-brazier-purple",
+      "name": "brazier-purple",
+      "category": "props/dungeon",
+      "path": "props/dungeon/brazier-purple.png",
+      "width": 48,
+      "height": 93,
+      "sourceRect": {
+        "x": 711,
+        "y": 414,
+        "width": 48,
+        "height": 93
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "props-dungeon-hanging-brazier",
+      "name": "hanging-brazier",
+      "category": "props/dungeon",
+      "path": "props/dungeon/hanging-brazier.png",
+      "width": 42,
+      "height": 83,
+      "sourceRect": {
+        "x": 787,
+        "y": 415,
+        "width": 42,
+        "height": 83
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "props-dungeon-angel-statue",
+      "name": "angel-statue",
+      "category": "props/dungeon",
+      "path": "props/dungeon/angel-statue.png",
+      "width": 95,
+      "height": 189,
+      "sourceRect": {
+        "x": 840,
+        "y": 404,
+        "width": 95,
+        "height": 189
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "props-dungeon-portal",
+      "name": "portal",
+      "category": "props/dungeon",
+      "path": "props/dungeon/portal.png",
+      "width": 72,
+      "height": 95,
+      "sourceRect": {
+        "x": 756,
+        "y": 504,
+        "width": 72,
+        "height": 95
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "props-dungeon-grave-a",
+      "name": "grave-a",
+      "category": "props/dungeon",
+      "path": "props/dungeon/grave-a.png",
+      "width": 35,
+      "height": 77,
+      "sourceRect": {
+        "x": 941,
+        "y": 540,
+        "width": 35,
+        "height": 77
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "props-dungeon-grave-b",
+      "name": "grave-b",
+      "category": "props/dungeon",
+      "path": "props/dungeon/grave-b.png",
+      "width": 48,
+      "height": 75,
+      "sourceRect": {
+        "x": 992,
+        "y": 543,
+        "width": 48,
+        "height": 75
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "props-dungeon-altar",
+      "name": "altar",
+      "category": "props/dungeon",
+      "path": "props/dungeon/altar.png",
+      "width": 80,
+      "height": 72,
+      "sourceRect": {
+        "x": 937,
+        "y": 621,
+        "width": 80,
+        "height": 72
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "props-dungeon-cross-grave",
+      "name": "cross-grave",
+      "category": "props/dungeon",
+      "path": "props/dungeon/cross-grave.png",
+      "width": 61,
+      "height": 91,
+      "sourceRect": {
+        "x": 1031,
+        "y": 602,
+        "width": 61,
+        "height": 91
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "props-dungeon-chest-iron",
+      "name": "chest-iron",
+      "category": "props/dungeon",
+      "path": "props/dungeon/chest-iron.png",
+      "width": 62,
+      "height": 49,
+      "sourceRect": {
+        "x": 940,
+        "y": 708,
+        "width": 62,
+        "height": 49
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "props-dungeon-chest-gold",
+      "name": "chest-gold",
+      "category": "props/dungeon",
+      "path": "props/dungeon/chest-gold.png",
+      "width": 56,
+      "height": 45,
+      "sourceRect": {
+        "x": 1027,
+        "y": 708,
+        "width": 56,
+        "height": 45
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "props-banners-red-pennant",
+      "name": "red-pennant",
+      "category": "props/banners",
+      "path": "props/banners/red-pennant.png",
+      "width": 39,
+      "height": 66,
+      "sourceRect": {
+        "x": 1208,
+        "y": 231,
+        "width": 39,
+        "height": 66
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "props-banners-wall-banner",
+      "name": "wall-banner",
+      "category": "props/banners",
+      "path": "props/banners/wall-banner.png",
+      "width": 48,
+      "height": 89,
+      "sourceRect": {
+        "x": 564,
+        "y": 509,
+        "width": 48,
+        "height": 89
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "props-banners-red-banner",
+      "name": "red-banner",
+      "category": "props/banners",
+      "path": "props/banners/red-banner.png",
+      "width": 47,
+      "height": 141,
+      "sourceRect": {
+        "x": 960,
+        "y": 403,
+        "width": 47,
+        "height": 141
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "props-banners-dark-banner",
+      "name": "dark-banner",
+      "category": "props/banners",
+      "path": "props/banners/dark-banner.png",
+      "width": 45,
+      "height": 76,
+      "sourceRect": {
+        "x": 1054,
+        "y": 518,
+        "width": 45,
+        "height": 76
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-weapons-weapon-top-01",
+      "name": "weapon-top-01",
+      "category": "equipment/weapons",
+      "path": "equipment/weapons/weapon-top-01.png",
+      "width": 35,
+      "height": 140,
+      "sourceRect": {
+        "x": 1120,
+        "y": 428,
+        "width": 35,
+        "height": 140
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-weapons-weapon-top-02",
+      "name": "weapon-top-02",
+      "category": "equipment/weapons",
+      "path": "equipment/weapons/weapon-top-02.png",
+      "width": 40,
+      "height": 138,
+      "sourceRect": {
+        "x": 1156,
+        "y": 430,
+        "width": 40,
+        "height": 138
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-weapons-weapon-top-03",
+      "name": "weapon-top-03",
+      "category": "equipment/weapons",
+      "path": "equipment/weapons/weapon-top-03.png",
+      "width": 39,
+      "height": 140,
+      "sourceRect": {
+        "x": 1197,
+        "y": 428,
+        "width": 39,
+        "height": 140
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-weapons-weapon-top-04",
+      "name": "weapon-top-04",
+      "category": "equipment/weapons",
+      "path": "equipment/weapons/weapon-top-04.png",
+      "width": 32,
+      "height": 134,
+      "sourceRect": {
+        "x": 1237,
+        "y": 434,
+        "width": 32,
+        "height": 134
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-weapons-weapon-top-05",
+      "name": "weapon-top-05",
+      "category": "equipment/weapons",
+      "path": "equipment/weapons/weapon-top-05.png",
+      "width": 31,
+      "height": 138,
+      "sourceRect": {
+        "x": 1279,
+        "y": 430,
+        "width": 31,
+        "height": 138
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-weapons-weapon-top-06",
+      "name": "weapon-top-06",
+      "category": "equipment/weapons",
+      "path": "equipment/weapons/weapon-top-06.png",
+      "width": 30,
+      "height": 138,
+      "sourceRect": {
+        "x": 1321,
+        "y": 430,
+        "width": 30,
+        "height": 138
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-weapons-weapon-top-07",
+      "name": "weapon-top-07",
+      "category": "equipment/weapons",
+      "path": "equipment/weapons/weapon-top-07.png",
+      "width": 36,
+      "height": 147,
+      "sourceRect": {
+        "x": 1353,
+        "y": 421,
+        "width": 36,
+        "height": 147
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-weapons-weapon-top-08",
+      "name": "weapon-top-08",
+      "category": "equipment/weapons",
+      "path": "equipment/weapons/weapon-top-08.png",
+      "width": 34,
+      "height": 139,
+      "sourceRect": {
+        "x": 1402,
+        "y": 426,
+        "width": 34,
+        "height": 139
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-weapons-weapon-top-09",
+      "name": "weapon-top-09",
+      "category": "equipment/weapons",
+      "path": "equipment/weapons/weapon-top-09.png",
+      "width": 22,
+      "height": 139,
+      "sourceRect": {
+        "x": 1447,
+        "y": 426,
+        "width": 22,
+        "height": 139
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-weapons-weapon-top-10",
+      "name": "weapon-top-10",
+      "category": "equipment/weapons",
+      "path": "equipment/weapons/weapon-top-10.png",
+      "width": 33,
+      "height": 139,
+      "sourceRect": {
+        "x": 1479,
+        "y": 425,
+        "width": 33,
+        "height": 139
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-weapons-axe",
+      "name": "axe",
+      "category": "equipment/weapons",
+      "path": "equipment/weapons/axe.png",
+      "width": 48,
+      "height": 113,
+      "sourceRect": {
+        "x": 1117,
+        "y": 559,
+        "width": 48,
+        "height": 113
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-weapons-mace",
+      "name": "mace",
+      "category": "equipment/weapons",
+      "path": "equipment/weapons/mace.png",
+      "width": 39,
+      "height": 112,
+      "sourceRect": {
+        "x": 1173,
+        "y": 559,
+        "width": 39,
+        "height": 112
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-weapons-hammer",
+      "name": "hammer",
+      "category": "equipment/weapons",
+      "path": "equipment/weapons/hammer.png",
+      "width": 43,
+      "height": 111,
+      "sourceRect": {
+        "x": 1220,
+        "y": 560,
+        "width": 43,
+        "height": 111
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-weapons-sickle",
+      "name": "sickle",
+      "category": "equipment/weapons",
+      "path": "equipment/weapons/sickle.png",
+      "width": 39,
+      "height": 108,
+      "sourceRect": {
+        "x": 1267,
+        "y": 562,
+        "width": 39,
+        "height": 108
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-weapons-bow",
+      "name": "bow",
+      "category": "equipment/weapons",
+      "path": "equipment/weapons/bow.png",
+      "width": 57,
+      "height": 197,
+      "sourceRect": {
+        "x": 1313,
+        "y": 566,
+        "width": 57,
+        "height": 197
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-weapons-staff-purple",
+      "name": "staff-purple",
+      "category": "equipment/weapons",
+      "path": "equipment/weapons/staff-purple.png",
+      "width": 39,
+      "height": 193,
+      "sourceRect": {
+        "x": 1371,
+        "y": 569,
+        "width": 39,
+        "height": 193
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-weapons-staff-blue",
+      "name": "staff-blue",
+      "category": "equipment/weapons",
+      "path": "equipment/weapons/staff-blue.png",
+      "width": 38,
+      "height": 198,
+      "sourceRect": {
+        "x": 1411,
+        "y": 569,
+        "width": 38,
+        "height": 198
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-weapons-staff-red",
+      "name": "staff-red",
+      "category": "equipment/weapons",
+      "path": "equipment/weapons/staff-red.png",
+      "width": 35,
+      "height": 196,
+      "sourceRect": {
+        "x": 1450,
+        "y": 570,
+        "width": 35,
+        "height": 196
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-weapons-staff-gold",
+      "name": "staff-gold",
+      "category": "equipment/weapons",
+      "path": "equipment/weapons/staff-gold.png",
+      "width": 30,
+      "height": 196,
+      "sourceRect": {
+        "x": 1485,
+        "y": 570,
+        "width": 30,
+        "height": 196
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-weapons-arrows",
+      "name": "arrows",
+      "category": "equipment/weapons",
+      "path": "equipment/weapons/arrows.png",
+      "width": 79,
+      "height": 76,
+      "sourceRect": {
+        "x": 1131,
+        "y": 681,
+        "width": 79,
+        "height": 76
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-weapons-bow-small",
+      "name": "bow-small",
+      "category": "equipment/weapons",
+      "path": "equipment/weapons/bow-small.png",
+      "width": 61,
+      "height": 83,
+      "sourceRect": {
+        "x": 1237,
+        "y": 681,
+        "width": 61,
+        "height": 83
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-armor-shield-a",
+      "name": "shield-a",
+      "category": "equipment/armor",
+      "path": "equipment/armor/shield-a.png",
+      "width": 45,
+      "height": 58,
+      "sourceRect": {
+        "x": 21,
+        "y": 802,
+        "width": 45,
+        "height": 58
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-armor-shield-b",
+      "name": "shield-b",
+      "category": "equipment/armor",
+      "path": "equipment/armor/shield-b.png",
+      "width": 50,
+      "height": 61,
+      "sourceRect": {
+        "x": 83,
+        "y": 802,
+        "width": 50,
+        "height": 61
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-armor-shield-round",
+      "name": "shield-round",
+      "category": "equipment/armor",
+      "path": "equipment/armor/shield-round.png",
+      "width": 58,
+      "height": 58,
+      "sourceRect": {
+        "x": 149,
+        "y": 802,
+        "width": 58,
+        "height": 58
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-armor-armor-r1-c1",
+      "name": "armor-r1-c1",
+      "category": "equipment/armor",
+      "path": "equipment/armor/armor-r1-c1.png",
+      "width": 35,
+      "height": 44,
+      "sourceRect": {
+        "x": 224,
+        "y": 802,
+        "width": 35,
+        "height": 44
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-armor-armor-r1-c2",
+      "name": "armor-r1-c2",
+      "category": "equipment/armor",
+      "path": "equipment/armor/armor-r1-c2.png",
+      "width": 26,
+      "height": 44,
+      "sourceRect": {
+        "x": 274,
+        "y": 802,
+        "width": 26,
+        "height": 44
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-armor-armor-r1-c3",
+      "name": "armor-r1-c3",
+      "category": "equipment/armor",
+      "path": "equipment/armor/armor-r1-c3.png",
+      "width": 25,
+      "height": 43,
+      "sourceRect": {
+        "x": 317,
+        "y": 802,
+        "width": 25,
+        "height": 43
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-armor-armor-r1-c4",
+      "name": "armor-r1-c4",
+      "category": "equipment/armor",
+      "path": "equipment/armor/armor-r1-c4.png",
+      "width": 30,
+      "height": 44,
+      "sourceRect": {
+        "x": 353,
+        "y": 802,
+        "width": 30,
+        "height": 44
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-armor-armor-r2-c1",
+      "name": "armor-r2-c1",
+      "category": "equipment/armor",
+      "path": "equipment/armor/armor-r2-c1.png",
+      "width": 30,
+      "height": 38,
+      "sourceRect": {
+        "x": 225,
+        "y": 854,
+        "width": 30,
+        "height": 38
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-armor-armor-r2-c2",
+      "name": "armor-r2-c2",
+      "category": "equipment/armor",
+      "path": "equipment/armor/armor-r2-c2.png",
+      "width": 29,
+      "height": 38,
+      "sourceRect": {
+        "x": 267,
+        "y": 853,
+        "width": 29,
+        "height": 38
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-armor-armor-r2-c3",
+      "name": "armor-r2-c3",
+      "category": "equipment/armor",
+      "path": "equipment/armor/armor-r2-c3.png",
+      "width": 30,
+      "height": 37,
+      "sourceRect": {
+        "x": 308,
+        "y": 854,
+        "width": 30,
+        "height": 37
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-armor-armor-r2-c4",
+      "name": "armor-r2-c4",
+      "category": "equipment/armor",
+      "path": "equipment/armor/armor-r2-c4.png",
+      "width": 28,
+      "height": 38,
+      "sourceRect": {
+        "x": 350,
+        "y": 854,
+        "width": 28,
+        "height": 38
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-armor-armor-r3-c1",
+      "name": "armor-r3-c1",
+      "category": "equipment/armor",
+      "path": "equipment/armor/armor-r3-c1.png",
+      "width": 25,
+      "height": 46,
+      "sourceRect": {
+        "x": 226,
+        "y": 904,
+        "width": 25,
+        "height": 46
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-armor-armor-r3-c2",
+      "name": "armor-r3-c2",
+      "category": "equipment/armor",
+      "path": "equipment/armor/armor-r3-c2.png",
+      "width": 39,
+      "height": 46,
+      "sourceRect": {
+        "x": 263,
+        "y": 904,
+        "width": 39,
+        "height": 46
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-armor-armor-r3-c3",
+      "name": "armor-r3-c3",
+      "category": "equipment/armor",
+      "path": "equipment/armor/armor-r3-c3.png",
+      "width": 41,
+      "height": 46,
+      "sourceRect": {
+        "x": 304,
+        "y": 904,
+        "width": 41,
+        "height": 46
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-armor-armor-r3-c4",
+      "name": "armor-r3-c4",
+      "category": "equipment/armor",
+      "path": "equipment/armor/armor-r3-c4.png",
+      "width": 42,
+      "height": 50,
+      "sourceRect": {
+        "x": 346,
+        "y": 900,
+        "width": 42,
+        "height": 50
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-armor-armor-r4-c1",
+      "name": "armor-r4-c1",
+      "category": "equipment/armor",
+      "path": "equipment/armor/armor-r4-c1.png",
+      "width": 38,
+      "height": 44,
+      "sourceRect": {
+        "x": 222,
+        "y": 961,
+        "width": 38,
+        "height": 44
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-armor-armor-r4-c2",
+      "name": "armor-r4-c2",
+      "category": "equipment/armor",
+      "path": "equipment/armor/armor-r4-c2.png",
+      "width": 40,
+      "height": 37,
+      "sourceRect": {
+        "x": 262,
+        "y": 963,
+        "width": 40,
+        "height": 37
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-armor-armor-r4-c3",
+      "name": "armor-r4-c3",
+      "category": "equipment/armor",
+      "path": "equipment/armor/armor-r4-c3.png",
+      "width": 28,
+      "height": 30,
+      "sourceRect": {
+        "x": 313,
+        "y": 969,
+        "width": 28,
+        "height": 30
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-armor-armor-r4-c4",
+      "name": "armor-r4-c4",
+      "category": "equipment/armor",
+      "path": "equipment/armor/armor-r4-c4.png",
+      "width": 38,
+      "height": 40,
+      "sourceRect": {
+        "x": 350,
+        "y": 957,
+        "width": 38,
+        "height": 40
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-clothing-clothing-r1-c1",
+      "name": "clothing-r1-c1",
+      "category": "equipment/clothing",
+      "path": "equipment/clothing/clothing-r1-c1.png",
+      "width": 46,
+      "height": 50,
+      "sourceRect": {
+        "x": 391,
+        "y": 797,
+        "width": 46,
+        "height": 50
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-clothing-clothing-r1-c2",
+      "name": "clothing-r1-c2",
+      "category": "equipment/clothing",
+      "path": "equipment/clothing/clothing-r1-c2.png",
+      "width": 42,
+      "height": 52,
+      "sourceRect": {
+        "x": 441,
+        "y": 797,
+        "width": 42,
+        "height": 52
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-clothing-clothing-r1-c3",
+      "name": "clothing-r1-c3",
+      "category": "equipment/clothing",
+      "path": "equipment/clothing/clothing-r1-c3.png",
+      "width": 50,
+      "height": 51,
+      "sourceRect": {
+        "x": 484,
+        "y": 798,
+        "width": 50,
+        "height": 51
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-clothing-clothing-r1-c4",
+      "name": "clothing-r1-c4",
+      "category": "equipment/clothing",
+      "path": "equipment/clothing/clothing-r1-c4.png",
+      "width": 43,
+      "height": 54,
+      "sourceRect": {
+        "x": 540,
+        "y": 798,
+        "width": 43,
+        "height": 54
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-clothing-clothing-r2-c1",
+      "name": "clothing-r2-c1",
+      "category": "equipment/clothing",
+      "path": "equipment/clothing/clothing-r2-c1.png",
+      "width": 49,
+      "height": 59,
+      "sourceRect": {
+        "x": 389,
+        "y": 854,
+        "width": 49,
+        "height": 59
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-clothing-clothing-r2-c2",
+      "name": "clothing-r2-c2",
+      "category": "equipment/clothing",
+      "path": "equipment/clothing/clothing-r2-c2.png",
+      "width": 40,
+      "height": 56,
+      "sourceRect": {
+        "x": 443,
+        "y": 859,
+        "width": 40,
+        "height": 56
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-clothing-clothing-r2-c3",
+      "name": "clothing-r2-c3",
+      "category": "equipment/clothing",
+      "path": "equipment/clothing/clothing-r2-c3.png",
+      "width": 48,
+      "height": 59,
+      "sourceRect": {
+        "x": 484,
+        "y": 858,
+        "width": 48,
+        "height": 59
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-clothing-clothing-r2-c4",
+      "name": "clothing-r2-c4",
+      "category": "equipment/clothing",
+      "path": "equipment/clothing/clothing-r2-c4.png",
+      "width": 41,
+      "height": 55,
+      "sourceRect": {
+        "x": 540,
+        "y": 864,
+        "width": 41,
+        "height": 55
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-clothing-clothing-r3-c1",
+      "name": "clothing-r3-c1",
+      "category": "equipment/clothing",
+      "path": "equipment/clothing/clothing-r3-c1.png",
+      "width": 49,
+      "height": 35,
+      "sourceRect": {
+        "x": 389,
+        "y": 925,
+        "width": 49,
+        "height": 35
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-clothing-clothing-r3-c2",
+      "name": "clothing-r3-c2",
+      "category": "equipment/clothing",
+      "path": "equipment/clothing/clothing-r3-c2.png",
+      "width": 44,
+      "height": 26,
+      "sourceRect": {
+        "x": 439,
+        "y": 926,
+        "width": 44,
+        "height": 26
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-clothing-clothing-r3-c3",
+      "name": "clothing-r3-c3",
+      "category": "equipment/clothing",
+      "path": "equipment/clothing/clothing-r3-c3.png",
+      "width": 50,
+      "height": 27,
+      "sourceRect": {
+        "x": 484,
+        "y": 928,
+        "width": 50,
+        "height": 27
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-clothing-clothing-r3-c4",
+      "name": "clothing-r3-c4",
+      "category": "equipment/clothing",
+      "path": "equipment/clothing/clothing-r3-c4.png",
+      "width": 47,
+      "height": 30,
+      "sourceRect": {
+        "x": 535,
+        "y": 929,
+        "width": 47,
+        "height": 30
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-clothing-clothing-r4-c1",
+      "name": "clothing-r4-c1",
+      "category": "equipment/clothing",
+      "path": "equipment/clothing/clothing-r4-c1.png",
+      "width": 46,
+      "height": 31,
+      "sourceRect": {
+        "x": 389,
+        "y": 961,
+        "width": 46,
+        "height": 31
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-clothing-clothing-r4-c2",
+      "name": "clothing-r4-c2",
+      "category": "equipment/clothing",
+      "path": "equipment/clothing/clothing-r4-c2.png",
+      "width": 39,
+      "height": 35,
+      "sourceRect": {
+        "x": 444,
+        "y": 961,
+        "width": 39,
+        "height": 35
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-clothing-clothing-r4-c3",
+      "name": "clothing-r4-c3",
+      "category": "equipment/clothing",
+      "path": "equipment/clothing/clothing-r4-c3.png",
+      "width": 50,
+      "height": 38,
+      "sourceRect": {
+        "x": 484,
+        "y": 965,
+        "width": 50,
+        "height": 38
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-clothing-clothing-r4-c4",
+      "name": "clothing-r4-c4",
+      "category": "equipment/clothing",
+      "path": "equipment/clothing/clothing-r4-c4.png",
+      "width": 45,
+      "height": 36,
+      "sourceRect": {
+        "x": 535,
+        "y": 967,
+        "width": 45,
+        "height": 36
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-armor-boots-gloves-r1-c1",
+      "name": "boots-gloves-r1-c1",
+      "category": "equipment/armor",
+      "path": "equipment/armor/boots-gloves-r1-c1.png",
+      "width": 31,
+      "height": 47,
+      "sourceRect": {
+        "x": 21,
+        "y": 875,
+        "width": 31,
+        "height": 47
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-armor-boots-gloves-r1-c2",
+      "name": "boots-gloves-r1-c2",
+      "category": "equipment/armor",
+      "path": "equipment/armor/boots-gloves-r1-c2.png",
+      "width": 30,
+      "height": 46,
+      "sourceRect": {
+        "x": 58,
+        "y": 875,
+        "width": 30,
+        "height": 46
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-armor-boots-gloves-r1-c3",
+      "name": "boots-gloves-r1-c3",
+      "category": "equipment/armor",
+      "path": "equipment/armor/boots-gloves-r1-c3.png",
+      "width": 30,
+      "height": 46,
+      "sourceRect": {
+        "x": 97,
+        "y": 876,
+        "width": 30,
+        "height": 46
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-armor-boots-gloves-r1-c4",
+      "name": "boots-gloves-r1-c4",
+      "category": "equipment/armor",
+      "path": "equipment/armor/boots-gloves-r1-c4.png",
+      "width": 28,
+      "height": 41,
+      "sourceRect": {
+        "x": 138,
+        "y": 879,
+        "width": 28,
+        "height": 41
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-armor-boots-gloves-r1-c5",
+      "name": "boots-gloves-r1-c5",
+      "category": "equipment/armor",
+      "path": "equipment/armor/boots-gloves-r1-c5.png",
+      "width": 26,
+      "height": 42,
+      "sourceRect": {
+        "x": 182,
+        "y": 877,
+        "width": 26,
+        "height": 42
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-armor-boots-gloves-r2-c1",
+      "name": "boots-gloves-r2-c1",
+      "category": "equipment/armor",
+      "path": "equipment/armor/boots-gloves-r2-c1.png",
+      "width": 27,
+      "height": 58,
+      "sourceRect": {
+        "x": 30,
+        "y": 939,
+        "width": 27,
+        "height": 58
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-armor-boots-gloves-r2-c2",
+      "name": "boots-gloves-r2-c2",
+      "category": "equipment/armor",
+      "path": "equipment/armor/boots-gloves-r2-c2.png",
+      "width": 38,
+      "height": 65,
+      "sourceRect": {
+        "x": 58,
+        "y": 934,
+        "width": 38,
+        "height": 65
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-armor-boots-gloves-r2-c3",
+      "name": "boots-gloves-r2-c3",
+      "category": "equipment/armor",
+      "path": "equipment/armor/boots-gloves-r2-c3.png",
+      "width": 39,
+      "height": 67,
+      "sourceRect": {
+        "x": 97,
+        "y": 934,
+        "width": 39,
+        "height": 67
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-armor-boots-gloves-r2-c4",
+      "name": "boots-gloves-r2-c4",
+      "category": "equipment/armor",
+      "path": "equipment/armor/boots-gloves-r2-c4.png",
+      "width": 23,
+      "height": 63,
+      "sourceRect": {
+        "x": 137,
+        "y": 936,
+        "width": 23,
+        "height": 63
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "equipment-armor-boots-gloves-r2-c5",
+      "name": "boots-gloves-r2-c5",
+      "category": "equipment/armor",
+      "path": "equipment/armor/boots-gloves-r2-c5.png",
+      "width": 31,
+      "height": 63,
+      "sourceRect": {
+        "x": 176,
+        "y": 936,
+        "width": 31,
+        "height": 63
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "items-potions-potion-01",
+      "name": "potion-01",
+      "category": "items/potions",
+      "path": "items/potions/potion-01.png",
+      "width": 28,
+      "height": 44,
+      "sourceRect": {
+        "x": 613,
+        "y": 804,
+        "width": 28,
+        "height": 44
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "items-potions-potion-02",
+      "name": "potion-02",
+      "category": "items/potions",
+      "path": "items/potions/potion-02.png",
+      "width": 26,
+      "height": 44,
+      "sourceRect": {
+        "x": 652,
+        "y": 804,
+        "width": 26,
+        "height": 44
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "items-potions-potion-03",
+      "name": "potion-03",
+      "category": "items/potions",
+      "path": "items/potions/potion-03.png",
+      "width": 25,
+      "height": 43,
+      "sourceRect": {
+        "x": 691,
+        "y": 805,
+        "width": 25,
+        "height": 43
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "items-potions-potion-04",
+      "name": "potion-04",
+      "category": "items/potions",
+      "path": "items/potions/potion-04.png",
+      "width": 24,
+      "height": 43,
+      "sourceRect": {
+        "x": 730,
+        "y": 805,
+        "width": 24,
+        "height": 43
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "items-potions-potion-05",
+      "name": "potion-05",
+      "category": "items/potions",
+      "path": "items/potions/potion-05.png",
+      "width": 23,
+      "height": 43,
+      "sourceRect": {
+        "x": 767,
+        "y": 805,
+        "width": 23,
+        "height": 43
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "items-potions-potion-06",
+      "name": "potion-06",
+      "category": "items/potions",
+      "path": "items/potions/potion-06.png",
+      "width": 26,
+      "height": 45,
+      "sourceRect": {
+        "x": 802,
+        "y": 803,
+        "width": 26,
+        "height": 45
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "items-materials-scroll-a",
+      "name": "scroll-a",
+      "category": "items/materials",
+      "path": "items/materials/scroll-a.png",
+      "width": 39,
+      "height": 38,
+      "sourceRect": {
+        "x": 847,
+        "y": 806,
+        "width": 39,
+        "height": 38
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "items-materials-scroll-b",
+      "name": "scroll-b",
+      "category": "items/materials",
+      "path": "items/materials/scroll-b.png",
+      "width": 39,
+      "height": 37,
+      "sourceRect": {
+        "x": 887,
+        "y": 806,
+        "width": 39,
+        "height": 37
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "items-materials-scroll-c",
+      "name": "scroll-c",
+      "category": "items/materials",
+      "path": "items/materials/scroll-c.png",
+      "width": 40,
+      "height": 38,
+      "sourceRect": {
+        "x": 927,
+        "y": 806,
+        "width": 40,
+        "height": 38
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "items-materials-pouch",
+      "name": "pouch",
+      "category": "items/materials",
+      "path": "items/materials/pouch.png",
+      "width": 40,
+      "height": 44,
+      "sourceRect": {
+        "x": 967,
+        "y": 804,
+        "width": 40,
+        "height": 44
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "items-materials-material-r1-c1",
+      "name": "material-r1-c1",
+      "category": "items/materials",
+      "path": "items/materials/material-r1-c1.png",
+      "width": 37,
+      "height": 42,
+      "sourceRect": {
+        "x": 610,
+        "y": 859,
+        "width": 37,
+        "height": 42
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "items-materials-material-r1-c2",
+      "name": "material-r1-c2",
+      "category": "items/materials",
+      "path": "items/materials/material-r1-c2.png",
+      "width": 31,
+      "height": 43,
+      "sourceRect": {
+        "x": 657,
+        "y": 858,
+        "width": 31,
+        "height": 43
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "items-materials-material-r1-c3",
+      "name": "material-r1-c3",
+      "category": "items/materials",
+      "path": "items/materials/material-r1-c3.png",
+      "width": 31,
+      "height": 43,
+      "sourceRect": {
+        "x": 694,
+        "y": 858,
+        "width": 31,
+        "height": 43
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "items-materials-material-r1-c4",
+      "name": "material-r1-c4",
+      "category": "items/materials",
+      "path": "items/materials/material-r1-c4.png",
+      "width": 29,
+      "height": 34,
+      "sourceRect": {
+        "x": 732,
+        "y": 860,
+        "width": 29,
+        "height": 34
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "items-materials-material-r1-c5",
+      "name": "material-r1-c5",
+      "category": "items/materials",
+      "path": "items/materials/material-r1-c5.png",
+      "width": 36,
+      "height": 31,
+      "sourceRect": {
+        "x": 766,
+        "y": 863,
+        "width": 36,
+        "height": 31
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "items-materials-material-r1-c6",
+      "name": "material-r1-c6",
+      "category": "items/materials",
+      "path": "items/materials/material-r1-c6.png",
+      "width": 26,
+      "height": 30,
+      "sourceRect": {
+        "x": 808,
+        "y": 862,
+        "width": 26,
+        "height": 30
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "items-materials-material-r1-c7",
+      "name": "material-r1-c7",
+      "category": "items/materials",
+      "path": "items/materials/material-r1-c7.png",
+      "width": 29,
+      "height": 46,
+      "sourceRect": {
+        "x": 842,
+        "y": 855,
+        "width": 29,
+        "height": 46
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "items-materials-material-r1-c8",
+      "name": "material-r1-c8",
+      "category": "items/materials",
+      "path": "items/materials/material-r1-c8.png",
+      "width": 29,
+      "height": 47,
+      "sourceRect": {
+        "x": 879,
+        "y": 854,
+        "width": 29,
+        "height": 47
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "items-materials-material-r1-c9",
+      "name": "material-r1-c9",
+      "category": "items/materials",
+      "path": "items/materials/material-r1-c9.png",
+      "width": 41,
+      "height": 43,
+      "sourceRect": {
+        "x": 917,
+        "y": 858,
+        "width": 41,
+        "height": 43
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "items-materials-material-r1-c10",
+      "name": "material-r1-c10",
+      "category": "items/materials",
+      "path": "items/materials/material-r1-c10.png",
+      "width": 34,
+      "height": 39,
+      "sourceRect": {
+        "x": 966,
+        "y": 857,
+        "width": 34,
+        "height": 39
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "items-materials-material-r2-c1",
+      "name": "material-r2-c1",
+      "category": "items/materials",
+      "path": "items/materials/material-r2-c1.png",
+      "width": 47,
+      "height": 45,
+      "sourceRect": {
+        "x": 609,
+        "y": 902,
+        "width": 47,
+        "height": 45
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "items-materials-material-r2-c2",
+      "name": "material-r2-c2",
+      "category": "items/materials",
+      "path": "items/materials/material-r2-c2.png",
+      "width": 29,
+      "height": 41,
+      "sourceRect": {
+        "x": 664,
+        "y": 902,
+        "width": 29,
+        "height": 41
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "items-materials-material-r2-c3",
+      "name": "material-r2-c3",
+      "category": "items/materials",
+      "path": "items/materials/material-r2-c3.png",
+      "width": 36,
+      "height": 42,
+      "sourceRect": {
+        "x": 702,
+        "y": 902,
+        "width": 36,
+        "height": 42
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "items-materials-material-r2-c4",
+      "name": "material-r2-c4",
+      "category": "items/materials",
+      "path": "items/materials/material-r2-c4.png",
+      "width": 36,
+      "height": 45,
+      "sourceRect": {
+        "x": 745,
+        "y": 902,
+        "width": 36,
+        "height": 45
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "items-materials-material-r2-c5",
+      "name": "material-r2-c5",
+      "category": "items/materials",
+      "path": "items/materials/material-r2-c5.png",
+      "width": 40,
+      "height": 40,
+      "sourceRect": {
+        "x": 785,
+        "y": 906,
+        "width": 40,
+        "height": 40
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "items-materials-material-r2-c6",
+      "name": "material-r2-c6",
+      "category": "items/materials",
+      "path": "items/materials/material-r2-c6.png",
+      "width": 38,
+      "height": 38,
+      "sourceRect": {
+        "x": 834,
+        "y": 902,
+        "width": 38,
+        "height": 38
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "items-materials-material-r2-c7",
+      "name": "material-r2-c7",
+      "category": "items/materials",
+      "path": "items/materials/material-r2-c7.png",
+      "width": 37,
+      "height": 39,
+      "sourceRect": {
+        "x": 882,
+        "y": 902,
+        "width": 37,
+        "height": 39
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "items-materials-material-r2-c8",
+      "name": "material-r2-c8",
+      "category": "items/materials",
+      "path": "items/materials/material-r2-c8.png",
+      "width": 42,
+      "height": 45,
+      "sourceRect": {
+        "x": 926,
+        "y": 902,
+        "width": 42,
+        "height": 45
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "items-materials-material-r2-c9",
+      "name": "material-r2-c9",
+      "category": "items/materials",
+      "path": "items/materials/material-r2-c9.png",
+      "width": 29,
+      "height": 32,
+      "sourceRect": {
+        "x": 972,
+        "y": 908,
+        "width": 29,
+        "height": 32
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "items-materials-material-r3-c1",
+      "name": "material-r3-c1",
+      "category": "items/materials",
+      "path": "items/materials/material-r3-c1.png",
+      "width": 42,
+      "height": 49,
+      "sourceRect": {
+        "x": 609,
+        "y": 954,
+        "width": 42,
+        "height": 49
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "items-materials-material-r3-c2",
+      "name": "material-r3-c2",
+      "category": "items/materials",
+      "path": "items/materials/material-r3-c2.png",
+      "width": 36,
+      "height": 44,
+      "sourceRect": {
+        "x": 652,
+        "y": 955,
+        "width": 36,
+        "height": 44
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "items-materials-material-r3-c3",
+      "name": "material-r3-c3",
+      "category": "items/materials",
+      "path": "items/materials/material-r3-c3.png",
+      "width": 36,
+      "height": 31,
+      "sourceRect": {
+        "x": 694,
+        "y": 957,
+        "width": 36,
+        "height": 31
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "items-materials-material-r3-c4",
+      "name": "material-r3-c4",
+      "category": "items/materials",
+      "path": "items/materials/material-r3-c4.png",
+      "width": 51,
+      "height": 46,
+      "sourceRect": {
+        "x": 731,
+        "y": 948,
+        "width": 51,
+        "height": 46
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "items-materials-material-r3-c5",
+      "name": "material-r3-c5",
+      "category": "items/materials",
+      "path": "items/materials/material-r3-c5.png",
+      "width": 38,
+      "height": 37,
+      "sourceRect": {
+        "x": 783,
+        "y": 956,
+        "width": 38,
+        "height": 37
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "items-materials-material-r3-c6",
+      "name": "material-r3-c6",
+      "category": "items/materials",
+      "path": "items/materials/material-r3-c6.png",
+      "width": 41,
+      "height": 40,
+      "sourceRect": {
+        "x": 831,
+        "y": 950,
+        "width": 41,
+        "height": 40
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "items-materials-material-r3-c7",
+      "name": "material-r3-c7",
+      "category": "items/materials",
+      "path": "items/materials/material-r3-c7.png",
+      "width": 30,
+      "height": 41,
+      "sourceRect": {
+        "x": 883,
+        "y": 949,
+        "width": 30,
+        "height": 41
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "items-materials-material-r3-c8",
+      "name": "material-r3-c8",
+      "category": "items/materials",
+      "path": "items/materials/material-r3-c8.png",
+      "width": 20,
+      "height": 42,
+      "sourceRect": {
+        "x": 924,
+        "y": 948,
+        "width": 20,
+        "height": 42
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "items-materials-material-r3-c9",
+      "name": "material-r3-c9",
+      "category": "items/materials",
+      "path": "items/materials/material-r3-c9.png",
+      "width": 25,
+      "height": 48,
+      "sourceRect": {
+        "x": 950,
+        "y": 948,
+        "width": 25,
+        "height": 48
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "items-materials-material-r3-c10",
+      "name": "material-r3-c10",
+      "category": "items/materials",
+      "path": "items/materials/material-r3-c10.png",
+      "width": 23,
+      "height": 32,
+      "sourceRect": {
+        "x": 977,
+        "y": 954,
+        "width": 23,
+        "height": 32
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "effects-static-effect-r1-c1",
+      "name": "effect-r1-c1",
+      "category": "effects/static",
+      "path": "effects/static/effect-r1-c1.png",
+      "width": 90,
+      "height": 67,
+      "sourceRect": {
+        "x": 1028,
+        "y": 799,
+        "width": 90,
+        "height": 67
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "effects-static-effect-r1-c2",
+      "name": "effect-r1-c2",
+      "category": "effects/static",
+      "path": "effects/static/effect-r1-c2.png",
+      "width": 74,
+      "height": 58,
+      "sourceRect": {
+        "x": 1119,
+        "y": 802,
+        "width": 74,
+        "height": 58
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "effects-static-effect-r1-c3",
+      "name": "effect-r1-c3",
+      "category": "effects/static",
+      "path": "effects/static/effect-r1-c3.png",
+      "width": 59,
+      "height": 57,
+      "sourceRect": {
+        "x": 1207,
+        "y": 803,
+        "width": 59,
+        "height": 57
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "effects-static-effect-r1-c4",
+      "name": "effect-r1-c4",
+      "category": "effects/static",
+      "path": "effects/static/effect-r1-c4.png",
+      "width": 66,
+      "height": 69,
+      "sourceRect": {
+        "x": 1277,
+        "y": 796,
+        "width": 66,
+        "height": 69
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "effects-static-effect-r1-c5",
+      "name": "effect-r1-c5",
+      "category": "effects/static",
+      "path": "effects/static/effect-r1-c5.png",
+      "width": 60,
+      "height": 71,
+      "sourceRect": {
+        "x": 1344,
+        "y": 795,
+        "width": 60,
+        "height": 71
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "effects-static-effect-r1-c6",
+      "name": "effect-r1-c6",
+      "category": "effects/static",
+      "path": "effects/static/effect-r1-c6.png",
+      "width": 65,
+      "height": 71,
+      "sourceRect": {
+        "x": 1408,
+        "y": 795,
+        "width": 65,
+        "height": 71
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "effects-static-effect-r1-c7",
+      "name": "effect-r1-c7",
+      "category": "effects/static",
+      "path": "effects/static/effect-r1-c7.png",
+      "width": 40,
+      "height": 71,
+      "sourceRect": {
+        "x": 1474,
+        "y": 795,
+        "width": 40,
+        "height": 71
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "effects-static-effect-r2-c1",
+      "name": "effect-r2-c1",
+      "category": "effects/static",
+      "path": "effects/static/effect-r2-c1.png",
+      "width": 89,
+      "height": 59,
+      "sourceRect": {
+        "x": 1029,
+        "y": 870,
+        "width": 89,
+        "height": 59
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "effects-static-effect-r2-c2",
+      "name": "effect-r2-c2",
+      "category": "effects/static",
+      "path": "effects/static/effect-r2-c2.png",
+      "width": 79,
+      "height": 59,
+      "sourceRect": {
+        "x": 1126,
+        "y": 870,
+        "width": 79,
+        "height": 59
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "effects-static-effect-r2-c3",
+      "name": "effect-r2-c3",
+      "category": "effects/static",
+      "path": "effects/static/effect-r2-c3.png",
+      "width": 69,
+      "height": 55,
+      "sourceRect": {
+        "x": 1207,
+        "y": 874,
+        "width": 69,
+        "height": 55
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "effects-static-effect-r2-c4",
+      "name": "effect-r2-c4",
+      "category": "effects/static",
+      "path": "effects/static/effect-r2-c4.png",
+      "width": 66,
+      "height": 54,
+      "sourceRect": {
+        "x": 1277,
+        "y": 875,
+        "width": 66,
+        "height": 54
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "effects-static-effect-r2-c5",
+      "name": "effect-r2-c5",
+      "category": "effects/static",
+      "path": "effects/static/effect-r2-c5.png",
+      "width": 63,
+      "height": 59,
+      "sourceRect": {
+        "x": 1344,
+        "y": 870,
+        "width": 63,
+        "height": 59
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "effects-static-effect-r2-c6",
+      "name": "effect-r2-c6",
+      "category": "effects/static",
+      "path": "effects/static/effect-r2-c6.png",
+      "width": 65,
+      "height": 59,
+      "sourceRect": {
+        "x": 1408,
+        "y": 870,
+        "width": 65,
+        "height": 59
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "effects-static-effect-r2-c7",
+      "name": "effect-r2-c7",
+      "category": "effects/static",
+      "path": "effects/static/effect-r2-c7.png",
+      "width": 44,
+      "height": 59,
+      "sourceRect": {
+        "x": 1474,
+        "y": 870,
+        "width": 44,
+        "height": 59
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "effects-static-effect-r3-c1",
+      "name": "effect-r3-c1",
+      "category": "effects/static",
+      "path": "effects/static/effect-r3-c1.png",
+      "width": 92,
+      "height": 64,
+      "sourceRect": {
+        "x": 1026,
+        "y": 932,
+        "width": 92,
+        "height": 64
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "effects-static-effect-r3-c2",
+      "name": "effect-r3-c2",
+      "category": "effects/static",
+      "path": "effects/static/effect-r3-c2.png",
+      "width": 87,
+      "height": 62,
+      "sourceRect": {
+        "x": 1119,
+        "y": 932,
+        "width": 87,
+        "height": 62
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "effects-static-effect-r3-c3",
+      "name": "effect-r3-c3",
+      "category": "effects/static",
+      "path": "effects/static/effect-r3-c3.png",
+      "width": 53,
+      "height": 62,
+      "sourceRect": {
+        "x": 1207,
+        "y": 932,
+        "width": 53,
+        "height": 62
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "effects-static-effect-r3-c4",
+      "name": "effect-r3-c4",
+      "category": "effects/static",
+      "path": "effects/static/effect-r3-c4.png",
+      "width": 77,
+      "height": 64,
+      "sourceRect": {
+        "x": 1261,
+        "y": 932,
+        "width": 77,
+        "height": 64
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "effects-static-effect-r3-c5",
+      "name": "effect-r3-c5",
+      "category": "effects/static",
+      "path": "effects/static/effect-r3-c5.png",
+      "width": 71,
+      "height": 65,
+      "sourceRect": {
+        "x": 1339,
+        "y": 932,
+        "width": 71,
+        "height": 65
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "effects-static-effect-r3-c6",
+      "name": "effect-r3-c6",
+      "category": "effects/static",
+      "path": "effects/static/effect-r3-c6.png",
+      "width": 35,
+      "height": 58,
+      "sourceRect": {
+        "x": 1411,
+        "y": 935,
+        "width": 35,
+        "height": 58
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "effects-static-effect-r3-c7",
+      "name": "effect-r3-c7",
+      "category": "effects/static",
+      "path": "effects/static/effect-r3-c7.png",
+      "width": 32,
+      "height": 51,
+      "sourceRect": {
+        "x": 1447,
+        "y": 935,
+        "width": 32,
+        "height": 51
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    },
+    {
+      "id": "effects-static-effect-r3-c8",
+      "name": "effect-r3-c8",
+      "category": "effects/static",
+      "path": "effects/static/effect-r3-c8.png",
+      "width": 31,
+      "height": 64,
+      "sourceRect": {
+        "x": 1483,
+        "y": 932,
+        "width": 31,
+        "height": 64
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "pack": "aethelgard_collection"
+    }
+  ]
+}
