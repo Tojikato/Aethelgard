@@ -510,10 +510,14 @@ export default class Scene_Oakhaven extends Phaser.Scene {
       (this.cursors && this.cursors.shift && this.cursors.shift.isDown)
     );
 
-    const baseSpeedX = 280;
-    const baseSpeedY = 210;
-    const speedX = isSprinting ? 420 : baseSpeedX;
-    const speedY = isSprinting ? 315 : baseSpeedY;
+    const baseSpeedX = 175;
+    const baseSpeedY = 130;
+    const speedX = isSprinting ? 260 : baseSpeedX;
+    const speedY = isSprinting ? 190 : baseSpeedY;
+
+    if (this.playerGroundY === undefined) {
+      this.playerGroundY = this.player.y;
+    }
 
     if (isMoving) {
       const mag = Math.hypot(moveX, moveY);
@@ -523,61 +527,75 @@ export default class Scene_Oakhaven extends Phaser.Scene {
       const stepX = normX * speedX * dt;
       const stepY = normY * speedY * dt;
 
-      let nextX = this.player.x + stepX;
-      let nextY = this.player.y + stepY;
+      const oldX = this.player.x;
+      const oldY = this.playerGroundY;
+
+      let nextX = oldX + stepX;
+      let nextY = oldY + stepY;
 
       // Bounds clamping
-      const H = this.scale.height;
-      const minX = 45;
-      const maxX = this.worldWidth - 45;
-      const minY = H * 0.54;
-      const maxY = H * 0.94;
-
-      nextX = Phaser.Math.Clamp(nextX, minX, maxX);
-      nextY = Phaser.Math.Clamp(nextY, minY, maxY);
+      const bounds = this.getWalkBounds();
+      nextX = Phaser.Math.Clamp(nextX, bounds.minX, bounds.maxX);
+      nextY = Phaser.Math.Clamp(nextY, bounds.minY, bounds.maxY);
 
       // Obstacle collision testing
-      if (!this.isObstacleBlocked(nextX, this.player.y)) {
+      if (!this.isObstacleBlocked(nextX, oldY)) {
         this.player.x = nextX;
       }
       if (!this.isObstacleBlocked(this.player.x, nextY)) {
-        this.player.y = nextY;
-      }
-
-      if (this.playerShadow) {
-        this.playerShadow.setPosition(this.player.x, this.player.y);
+        this.playerGroundY = nextY;
       }
 
       // Sprite flip
       if (normX < -0.1) this.player.setFlipX(true);
       else if (normX > 0.1) this.player.setFlipX(false);
 
-      if (this.anims.exists('player-walk')) {
-        this.player.anims.timeScale = isSprinting ? 1.6 : 1.0;
-        if (this.player.anims.currentAnim?.key !== 'player-walk') {
-          this.player.play('player-walk');
-        }
-      }
+      // Distance-driven grounded footstep cadence (one distinct footstep every 20px)
+      const actualMoved = Math.hypot(this.player.x - oldX, this.playerGroundY - oldY);
+      if (actualMoved > 0.001) {
+        const prevStep = Math.floor((this.stepDistanceAccumulator || 0) / 20);
+        this.stepDistanceAccumulator = (this.stepDistanceAccumulator || 0) + actualMoved;
+        const currentStep = Math.floor(this.stepDistanceAccumulator / 20);
 
-      // Subtle dust / ash kick-up particles when sprinting
-      if (isSprinting && this.sprintDustEmitter) {
-        this.sprintDustTimer = (this.sprintDustTimer || 0) + delta;
-        if (this.sprintDustTimer > 65) {
-          this.sprintDustTimer = 0;
-          this.sprintDustEmitter.emitParticleAt(this.player.x, this.player.y - 1, 2);
+        // Advance 4-frame walk cycle strictly driven by distance (20px per footstep, 40px full stride)
+        const strideProgress = (this.stepDistanceAccumulator % 40) / 40;
+        const frameIndex = Math.floor(strideProgress * 4); // 0, 1, 2, 3
+        if (this.player.anims && this.player.anims.isPlaying) {
+          this.player.anims.stop();
         }
-      }
-    } else {
-      if (this.anims.exists('player-idle')) {
-        this.player.anims.timeScale = 1.0;
-        if (this.player.anims.currentAnim?.key !== 'player-idle') {
+        this.player.setTexture(`player_walk_${frameIndex}`);
+
+        // Crisp 1.5px vertical step hop during swing phase, firmly planting at 0px on contact
+        const stepPhase = (this.stepDistanceAccumulator % 20) / 20; // 0 to 1
+        const stepHop = -Math.sin(stepPhase * Math.PI) * 1.5;
+        this.player.y = this.playerGroundY + stepHop;
+
+        // Dust kick-up on sprint footstep strike
+        if (isSprinting && this.sprintDustEmitter && currentStep > prevStep) {
+          this.sprintDustEmitter.emitParticleAt(this.player.x, this.playerGroundY - 1, 2);
+        }
+      } else {
+        // Pushing against solid collision: grounded idle stance
+        this.player.y = this.playerGroundY;
+        if (this.player.anims && (this.player.anims.currentAnim?.key !== 'player-idle' || !this.player.anims.isPlaying)) {
           this.player.play('player-idle');
         }
       }
+    } else {
+      // Instantaneous zero-momentum stop: velocity snaps cleanly to 0, immediate grounded idle stance
+      this.stepDistanceAccumulator = 0;
+      this.player.y = this.playerGroundY;
+      if (this.player.anims && (this.player.anims.currentAnim?.key !== 'player-idle' || !this.player.anims.isPlaying)) {
+        this.player.play('player-idle');
+      }
+    }
+
+    if (this.playerShadow) {
+      this.playerShadow.setPosition(this.player.x, this.playerGroundY);
     }
 
     // 2.5D Dynamic Y-Sorting
-    this.player.sortY = this.player.y;
+    this.player.sortY = this.playerGroundY;
     this.player.setDepth(Math.floor(this.player.sortY));
     if (this.playerShadow) {
       this.playerShadow.setDepth(this.player.depth - 1);

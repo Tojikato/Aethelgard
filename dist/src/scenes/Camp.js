@@ -933,7 +933,9 @@ export default class Scene_Camp extends Phaser.Scene {
 
   getWalkBounds() {
     const W = this.worldWidth || 2400;
-    const H = this.scale.height;
+    const H = (this.scale.height && this.scale.height > 100)
+      ? this.scale.height
+      : (window.innerHeight > 100 ? window.innerHeight : 720);
     return {
       minX: 45,
       maxX: W - 45,
@@ -1594,10 +1596,14 @@ export default class Scene_Camp extends Phaser.Scene {
       (this.wasd && this.wasd.shift && this.wasd.shift.isDown)
     );
 
-    const baseSpeedX = 280;
-    const baseSpeedY = 210;
-    const speedX = isSprinting ? 420 : baseSpeedX;
-    const speedY = isSprinting ? 315 : baseSpeedY;
+    const baseSpeedX = 175;
+    const baseSpeedY = 130;
+    const speedX = isSprinting ? 260 : baseSpeedX;
+    const speedY = isSprinting ? 190 : baseSpeedY;
+
+    if (this.playerGroundY === undefined) {
+      this.playerGroundY = this.player.y;
+    }
 
     if (moveX !== 0 || moveY !== 0) {
       const len = Math.hypot(moveX, moveY);
@@ -1610,13 +1616,16 @@ export default class Scene_Camp extends Phaser.Scene {
       const obstacles = this.staticObstacleBoxes || this.getObstacleBoxes();
       const bounds = this.getWalkBounds();
 
+      const oldX = this.player.x;
+      const oldY = this.playerGroundY;
+
       // Separate X and Y collision resolution against solid footprints
       // 1. Resolve X movement (Feet AABB)
-      const targetX = Phaser.Math.Clamp(this.player.x + dx, bounds.minX, bounds.maxX);
+      const targetX = Phaser.Math.Clamp(oldX + dx, bounds.minX, bounds.maxX);
       const fXMin = targetX - 10;
       const fXMax = targetX + 10;
-      const fYMin = this.player.y - 10;
-      const fYMax = this.player.y;
+      const fYMin = oldY - 10;
+      const fYMax = oldY;
 
       let collidesX = false;
       for (let i = 0; i < obstacles.length; i++) {
@@ -1631,7 +1640,7 @@ export default class Scene_Camp extends Phaser.Scene {
       }
 
       // 2. Resolve Y movement (Feet AABB)
-      const targetY = Phaser.Math.Clamp(this.player.y + dy, bounds.minY, bounds.maxY);
+      const targetY = Phaser.Math.Clamp(oldY + dy, bounds.minY, bounds.maxY);
       const fyXMin = this.player.x - 10;
       const fyXMax = this.player.x + 10;
       const fyYMin = targetY - 10;
@@ -1646,30 +1655,62 @@ export default class Scene_Camp extends Phaser.Scene {
         }
       }
       if (!collidesY) {
-        this.player.y = targetY;
+        this.playerGroundY = targetY;
       }
 
-      // Sprite orientation & walk cycle
+      // Sprite orientation
       if (moveX < 0) this.player.setFlipX(true);
       else if (moveX > 0) this.player.setFlipX(false);
 
-      this.player.anims.timeScale = isSprinting ? 1.6 : 1.0;
-      this.player.anims.play('player-walk', true);
+      // Distance-driven grounded footstep cadence (one distinct footstep every 20px)
+      const actualMoved = Math.hypot(this.player.x - oldX, this.playerGroundY - oldY);
+      if (actualMoved > 0.001) {
+        const prevStep = Math.floor((this.stepDistanceAccumulator || 0) / 20);
+        this.stepDistanceAccumulator = (this.stepDistanceAccumulator || 0) + actualMoved;
+        const currentStep = Math.floor(this.stepDistanceAccumulator / 20);
 
-      // Subtle dust / ash kick-up particles when sprinting
-      if (isSprinting && this.sprintDustEmitter) {
-        this.sprintDustTimer = (this.sprintDustTimer || 0) + delta;
-        if (this.sprintDustTimer > 65) {
-          this.sprintDustTimer = 0;
-          this.sprintDustEmitter.emitParticleAt(this.player.x, this.player.y - 1, 2);
+        // Advance 4-frame walk cycle strictly driven by distance (20px per footstep, 40px full stride)
+        const strideProgress = (this.stepDistanceAccumulator % 40) / 40;
+        const frameIndex = Math.floor(strideProgress * 4); // 0, 1, 2, 3
+        if (this.player.anims && this.player.anims.isPlaying) {
+          this.player.anims.stop();
+        }
+        this.player.setTexture(`player_walk_${frameIndex}`);
+
+        // Crisp 1.5px vertical step hop during swing phase, firmly planting at 0px on contact
+        const stepPhase = (this.stepDistanceAccumulator % 20) / 20; // 0 to 1
+        const stepHop = -Math.sin(stepPhase * Math.PI) * 1.5;
+        this.player.y = this.playerGroundY + stepHop;
+
+        // Dust kick-up on sprint footstep strike
+        if (isSprinting && this.sprintDustEmitter && currentStep > prevStep) {
+          this.sprintDustEmitter.emitParticleAt(this.player.x, this.playerGroundY - 1, 2);
+        }
+      } else {
+        // Pushing against solid collision: grounded idle stance
+        this.player.y = this.playerGroundY;
+        if (this.player.anims && (this.player.anims.currentAnim?.key !== 'player-idle' || !this.player.anims.isPlaying)) {
+          this.player.play('player-idle');
         }
       }
     } else {
-      this.player.anims.timeScale = 1.0;
-      this.player.anims.play('player-idle', true);
+      // Instantaneous zero-momentum stop: velocity snaps cleanly to 0, immediate grounded idle stance
+      this.stepDistanceAccumulator = 0;
+      this.player.y = this.playerGroundY;
+      if (this.player.anims && (this.player.anims.currentAnim?.key !== 'player-idle' || !this.player.anims.isPlaying)) {
+        this.player.play('player-idle');
+      }
     }
 
-    this.player.sortY = this.player.y;
+    if (this.playerShadow) {
+      this.playerShadow.setPosition(this.player.x, this.playerGroundY);
+    }
+
+    this.player.sortY = this.playerGroundY;
+    this.player.setDepth(Math.floor(this.player.sortY));
+    if (this.playerShadow) {
+      this.playerShadow.setDepth(this.player.depth - 1);
+    }
   }
 
   handleDynamicYSorting() {

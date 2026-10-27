@@ -56,11 +56,11 @@ The player embodies **The Ashen Wayfarer**—a weary soul from our mundane world
 
 | Real-World Domain | RPG Class Archetype | Patron Deity | Primary Attribute | In-Game Manifestation & Combat Utility |
 | :--- | :--- | :--- | :--- | :--- |
-| **1. Business Case & Problem Solving** | **Grand Tactician** | **Athena** | *Strategic Renown (SR)* | Boss behavior decoding, critical damage amplification during Posture Break, regional quest bounty scaling, and extended time windows during Cognitive Deflect trials. |
-| **2. Pure Mathematics & Logic** | **Arcane Scholar / Logic Weaver** | **Apollo** | *Geometric Clarity (GC)* | Geometry barrier shielding, runic lock deciphering in dungeons, accelerated Sanity recovery at the Hearth, and cognitive anomaly dispelling. |
-| **3. Finance, Economics & Investment** | **High Alchemist / Shadow Broker** | **Hermes** | *Arbitrage Edge (AE)* | Advanced potion brewing, elite trading discounts at frontier stalls, increased gold yields from expeditions, and enhanced Gacha rarity luck (`LUK`) in the Vault of Echoes. |
-| **4. Foreign Languages (French, Chinese)** | **Runic Scholar** | **Hecate & Hermes Trismegistus** | *Linguistic Resonance (LR)* | Deciphering ancient stone tablets and cryptic vellum scrolls (`scroll-a/b/c`), unlocking imperial Hidden Quests, and total immunity against psychological charm/sleep hexes. |
-| **5. Physical Fitness & Sports** | **Spellblade / Vanguard** | **Ares & Heracles** | *Vigor & Fortitude (VF)* | Direct scaling of Maximum HP, physical defense (DEF), stamina recovery, and posture stability; allows chaining multiple dodge dashes without stumbling. |
+| **1. Business Case & Corporate Strategy** | **Grand Tactician** | **Athena** | *Strategic Renown (SR)* | Grants extra countdown time during Boss Deflect cognitive trials & +20% Regional Renown on strategic reports. Critical Riposte damage amplified by +30%. |
+| **2. Pure Mathematics & Symbolic Logic** | **Arcane Scholar / Logic Weaver** | **Apollo** | *Geometric Clarity (GC)* | Accelerates SANITY recovery at the Campfire Hearth (+50%) and wards off Void-rot blindness. Geometry barrier shielding and cognitive anomaly dispelling. |
+| **3. Quantitative Finance, Economics & Investment** | **High Alchemist / Shadow Broker** | **Hermes** | *Arbitrage Edge (AE)* | Boosts Gold yields (+30%) and Gacha rarity luck (`LUK`) in the Vault of Echoes. Reduced travel stamina exhaustion across the 9 Nodes. |
+| **4. Foreign Languages (French & Chinese) & Philology** | **Runic Scholar** | **Hecate & Hermes Trismegistus** | *Linguistic Resonance (LR)* | Unlocks deciphering of Runestones, ancient scrolls (`scroll-a/b/c`), and Hidden Quests. Immunity against psychological charm and sleep hexes. |
+| **5. Physical Fitness & Sports (Golf / Athletics)** | **Spellblade / Vanguard** | **Ares & Heracles** | *Vigor & Fortitude (VF)* | Boosts max HP (+25%), ATK (+15%), DEF (+20%), and Posture resilience. Allows chaining dodge dashes without stumbling. |
 
 ---
 
