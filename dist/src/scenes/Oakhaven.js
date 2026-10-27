@@ -9,6 +9,7 @@ import { CHRONOS } from '../services/chronos.js';
 import { getInventoryOverlay } from '../ui/InventoryOverlay.js';
 import { worldMapOverlay } from '../ui/WorldMapOverlay.js';
 import { createPlayer, ensureProceduralActorTextures } from '../services/playerFactory.js';
+import { OLYMPIAN_DEITIES } from './Camp.js';
 
 export default class Scene_Oakhaven extends Phaser.Scene {
   constructor() {
@@ -67,6 +68,28 @@ export default class Scene_Oakhaven extends Phaser.Scene {
 
     this.player = createPlayer(this, spawnX, spawnY);
     this.playerShadow = this.add.ellipse(this.player.x, this.player.y, 32, 9, 0x030305, 0.48);
+
+    // Ensure particle texture exists for sprint dust
+    if (!this.textures.exists('ash_particle')) {
+      const ashGfx = this.make.graphics({ x: 0, y: 0, add: false });
+      ashGfx.fillStyle(0xffffff, 1);
+      ashGfx.fillCircle(2, 2, 2);
+      ashGfx.generateTexture('ash_particle', 4, 4);
+      ashGfx.destroy();
+    }
+
+    // Dust / ash kick-up particle emitter for sprinting
+    this.sprintDustEmitter = this.add.particles(0, 0, 'ash_particle', {
+      speedX: { min: -25, max: 25 },
+      speedY: { min: -10, max: -30 },
+      lifespan: { min: 200, max: 350 },
+      scale: { start: 0.35, end: 0 },
+      alpha: { start: 0.55, end: 0 },
+      tint: [0xa89f91, 0x827768, 0xc5baa9],
+      blendMode: 'NORMAL',
+      emitting: false
+    });
+    this.sprintDustEmitter.setDepth(150);
 
     // Camera follow
     camera.startFollow(this.player, true, 0.1, 0.1);
@@ -213,13 +236,24 @@ export default class Scene_Oakhaven extends Phaser.Scene {
     const hud = document.getElementById('camp-hud');
     if (!hud) return;
     const p = getPlayer();
+
+    const covenantId = localStorage.getItem('aethelgard_patron_covenant');
+    const covData = covenantId && OLYMPIAN_DEITIES[covenantId];
+    const covenantPillHtml = covData
+      ? `<div id="covenant-hud-pill" class="stat-pill covenant ${covData.id}" title="${covData.title}: ${covData.shortDesc} (Click to change)"><span class="label">COVENANT</span><span class="value">${covData.name.toUpperCase()}</span></div>`
+      : `<div id="covenant-hud-pill" class="stat-pill covenant none" title="Click to view Divine Covenants"><span class="label">COVENANT</span><span class="value">PRAY [F]</span></div>`;
+
     hud.innerHTML = `
       <div class="stat-pill-row">
         <div class="stat-pill"><span class="label">LVL</span><span class="value">${p.level || 1}</span></div>
         <div class="stat-pill sanity"><span class="label">SANITY</span><span class="value">${p.sanity || 100}/${CHRONOS.MAX_SANITY || 100}</span></div>
         <div class="stat-pill gold"><span class="label">GOLD</span><span class="value">${p.gold || 0}</span></div>
         <div class="stat-pill"><span class="label">RENOWN</span><span class="value">${p.renown || 0}</span></div>
+        ${covenantPillHtml}
       </div>`;
+
+    const covBtn = document.getElementById('covenant-hud-pill');
+    if (covBtn) covBtn.onclick = () => this.openCovenantModal();
   }
 
   buildOakhavenEntities(W, H) {
@@ -433,6 +467,7 @@ export default class Scene_Oakhaven extends Phaser.Scene {
     this.keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
     this.keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
     this.keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
+    this.keyShift = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SHIFT);
     this.keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
     this.keyM = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.M);
     this.keyN = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.N);
@@ -469,17 +504,27 @@ export default class Scene_Oakhaven extends Phaser.Scene {
     }
 
     const isMoving = moveX !== 0 || moveY !== 0;
+    const dt = delta / 1000;
+    const isSprinting = Boolean(
+      (this.keyShift && this.keyShift.isDown) ||
+      (this.cursors && this.cursors.shift && this.cursors.shift.isDown)
+    );
+
+    const baseSpeedX = 280;
+    const baseSpeedY = 210;
+    const speedX = isSprinting ? 420 : baseSpeedX;
+    const speedY = isSprinting ? 315 : baseSpeedY;
 
     if (isMoving) {
       const mag = Math.hypot(moveX, moveY);
       const normX = moveX / mag;
       const normY = moveY / mag;
 
-      const speed = CAMP.movementSpeed || 288;
-      const step = (speed * delta) / 1000;
+      const stepX = normX * speedX * dt;
+      const stepY = normY * speedY * dt;
 
-      let nextX = this.player.x + normX * step;
-      let nextY = this.player.y + normY * step;
+      let nextX = this.player.x + stepX;
+      let nextY = this.player.y + stepY;
 
       // Bounds clamping
       const H = this.scale.height;
@@ -507,12 +552,27 @@ export default class Scene_Oakhaven extends Phaser.Scene {
       if (normX < -0.1) this.player.setFlipX(true);
       else if (normX > 0.1) this.player.setFlipX(false);
 
-      if (this.anims.exists('player-walk') && this.player.anims.currentAnim?.key !== 'player-walk') {
-        this.player.play('player-walk');
+      if (this.anims.exists('player-walk')) {
+        this.player.anims.timeScale = isSprinting ? 1.6 : 1.0;
+        if (this.player.anims.currentAnim?.key !== 'player-walk') {
+          this.player.play('player-walk');
+        }
+      }
+
+      // Subtle dust / ash kick-up particles when sprinting
+      if (isSprinting && this.sprintDustEmitter) {
+        this.sprintDustTimer = (this.sprintDustTimer || 0) + delta;
+        if (this.sprintDustTimer > 65) {
+          this.sprintDustTimer = 0;
+          this.sprintDustEmitter.emitParticleAt(this.player.x, this.player.y - 1, 2);
+        }
       }
     } else {
-      if (this.anims.exists('player-idle') && this.player.anims.currentAnim?.key !== 'player-idle') {
-        this.player.play('player-idle');
+      if (this.anims.exists('player-idle')) {
+        this.player.anims.timeScale = 1.0;
+        if (this.player.anims.currentAnim?.key !== 'player-idle') {
+          this.player.play('player-idle');
+        }
       }
     }
 
@@ -641,6 +701,7 @@ export default class Scene_Oakhaven extends Phaser.Scene {
   }
 
   openNoticeboardModal() {
+    document.getElementById('minimap-container')?.classList.add('hidden');
     let modal = document.getElementById('oakhaven-modal');
     if (!modal) modal = this.createTownModal();
     modal.classList.remove('hidden');
@@ -660,6 +721,7 @@ export default class Scene_Oakhaven extends Phaser.Scene {
   }
 
   openMerchantModal() {
+    document.getElementById('minimap-container')?.classList.add('hidden');
     let modal = document.getElementById('oakhaven-modal');
     if (!modal) modal = this.createTownModal();
     modal.classList.remove('hidden');
@@ -713,6 +775,7 @@ export default class Scene_Oakhaven extends Phaser.Scene {
   }
 
   openMalakorDialogue() {
+    document.getElementById('minimap-container')?.classList.add('hidden');
     let modal = document.getElementById('oakhaven-modal');
     if (!modal) modal = this.createTownModal();
     modal.classList.remove('hidden');
@@ -725,6 +788,84 @@ export default class Scene_Oakhaven extends Phaser.Scene {
         <p style="margin-top:10px;">“As Grand Overseer of the Oakhaven Guild, I hereby induct thee into our ranks. Keep thy sanity intact, consult thy <b>Atlas [M]</b>, and prepare for the road to the <b>Bastion of Iron</b> once thy Renown reaches 100.”</p>
       </div>
     `;
+  }
+
+  // ── Olympian Covenant System (Greek Mythology Religion) ────────────
+  openCovenantModal() {
+    document.getElementById('minimap-container')?.classList.add('hidden');
+
+    let modal = document.getElementById('covenant-modal');
+    if (!modal) {
+      modal = document.createElement('div');
+      modal.id = 'covenant-modal';
+      document.body.appendChild(modal);
+    }
+
+    const activeCovenantId = localStorage.getItem('aethelgard_patron_covenant') || 'none';
+
+    let cardsHtml = '';
+    for (const [key, d] of Object.entries(OLYMPIAN_DEITIES)) {
+      const isActive = (activeCovenantId === key);
+      const boonsList = d.boons.map(b => `<div class="covenant-boon-item">${b}</div>`).join('');
+      cardsHtml += `
+        <div class="covenant-card ${isActive ? 'active-covenant' : ''}" data-deity="${d.id}">
+          <div class="covenant-deity-name">${d.title}</div>
+          <div class="covenant-deity-domain">${d.domain}</div>
+          <div class="covenant-class-archetype">${d.archetype}</div>
+          <div class="covenant-boons">${boonsList}</div>
+          <button type="button" class="covenant-pledge-btn" data-deity="${d.id}">
+            ${isActive ? '✓ PLEDGED COVENANT' : '✦ SWEAR COVENANT'}
+          </button>
+        </div>`;
+    }
+
+    modal.innerHTML = `
+      <div class="covenant-dialog">
+        <button type="button" class="covenant-close" id="covenant-close-btn" aria-label="Close">✕</button>
+        <div class="covenant-header">
+          <div class="covenant-title">DIVINE COVENANT OF THE OLYMPIANS</div>
+          <div class="covenant-subtitle">
+            “Kneel before the consecrated altar, Wayfarer. Swear thy sacred oath to an Olympian Patron Deity.<br>
+            Only one divine covenant may guide thy soul across the 9 Nodes of Aethelgard.”
+          </div>
+        </div>
+        <div class="covenant-grid">${cardsHtml}</div>
+      </div>`;
+
+    modal.classList.add('active');
+
+    document.getElementById('covenant-close-btn').onclick = () => this.closeCovenantModal();
+
+    modal.onclick = (e) => {
+      if (e.target === modal) this.closeCovenantModal();
+    };
+
+    modal.querySelectorAll('.covenant-card').forEach(card => {
+      card.onclick = () => {
+        const deityKey = card.getAttribute('data-deity');
+        this.pledgeCovenant(deityKey);
+      };
+    });
+  }
+
+  pledgeCovenant(deityKey) {
+    const deity = OLYMPIAN_DEITIES[deityKey];
+    if (!deity) return;
+
+    localStorage.setItem('aethelgard_patron_covenant', deityKey);
+    const p = getPlayer();
+    if (p) p.covenant = deityKey;
+
+    this.showTownBanner(`🏛️ COVENANT SWORN: Pledged oath to ${deity.title}! (${deity.shortDesc})`);
+
+    this.refreshHud();
+    this.closeCovenantModal();
+  }
+
+  closeCovenantModal() {
+    const modal = document.getElementById('covenant-modal');
+    if (modal) modal.classList.remove('active');
+    document.getElementById('minimap-container')?.classList.remove('hidden');
   }
 
   createTownModal() {
@@ -745,8 +886,14 @@ export default class Scene_Oakhaven extends Phaser.Scene {
     `;
     document.body.appendChild(modal);
 
-    modal.querySelector('#town-modal-close-x').onclick = () => modal.classList.add('hidden');
-    modal.querySelector('#town-modal-return').onclick = () => modal.classList.add('hidden');
+    modal.querySelector('#town-modal-close-x').onclick = () => {
+      modal.classList.add('hidden');
+      document.getElementById('minimap-container')?.classList.remove('hidden');
+    };
+    modal.querySelector('#town-modal-return').onclick = () => {
+      modal.classList.add('hidden');
+      document.getElementById('minimap-container')?.classList.remove('hidden');
+    };
     return modal;
   }
 
@@ -773,7 +920,8 @@ export default class Scene_Oakhaven extends Phaser.Scene {
       container.id = 'minimap-container';
       document.body.appendChild(container);
     }
-    container.className = 'minimap-container';
+    container.className = 'minimap-container active-scene';
+    container.classList.remove('hidden');
     container.title = 'Click to open Continental Atlas [M]';
     container.innerHTML = `
       <div class="minimap-header">
@@ -917,6 +1065,7 @@ export default class Scene_Oakhaven extends Phaser.Scene {
     document.getElementById('minimap-container')?.remove();
     document.getElementById('hamlet-prompt')?.remove();
     document.getElementById('oakhaven-modal')?.remove();
+    document.getElementById('covenant-modal')?.remove();
     document.getElementById('travel-screen')?.remove();
     if (this.backdropGfx) {
       this.backdropGfx.destroy();

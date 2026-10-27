@@ -201,6 +201,9 @@ export class WorldMapOverlay {
     this.onTravelCallback = onTravel;
     this.isOpenState = true;
 
+    // Hide Mini-Map when World Map opens
+    document.getElementById('minimap-container')?.classList.add('hidden');
+
     // Update Renown display
     const player = getPlayer();
     const renownEl = document.getElementById('worldmap-renown');
@@ -221,6 +224,8 @@ export class WorldMapOverlay {
     if (this.container) {
       this.container.classList.add('hidden');
     }
+    // Restore Mini-Map when World Map closes
+    document.getElementById('minimap-container')?.classList.remove('hidden');
     window.removeEventListener('keydown', this.boundKeyDown);
   }
 

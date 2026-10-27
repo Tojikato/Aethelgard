@@ -47,6 +47,7 @@ export function mountDOM() {
 
   const html = `
 <main id="gate">
+  <canvas id="gate-ember-canvas" aria-hidden="true"></canvas>
   <header>
     <a class="brand" href="./">✧ <span>AETHELGARD</span></a>
     <span class="edition">A DARK FANTASY CHRONICLE</span>
@@ -151,6 +152,7 @@ export function selectMode(next) {
 }
 
 export function showGameShell() {
+  stopGateEmberVFX();
   $('session-label').textContent = isDemo() ? 'UNSAVED PREVIEW' : 'SOUL BOUND · CLOUD SAVE';
   $('gate').style.opacity = '0';
   setTimeout(() => {
@@ -161,16 +163,21 @@ export function showGameShell() {
 }
 
 export function showGate() {
+  document.getElementById('minimap-container')?.remove();
+  document.getElementById('camp-hud')?.remove();
   $('gate').hidden = false;
   $('gate').inert = false;
   $('gate').style.opacity = '1';
   $('game-shell').hidden = true;
+  startGateEmberVFX();
 }
 
 export async function returnToGate(logout = true) {
   destroyActiveInventoryOverlay();
   const campEl = document.getElementById('camp-overlay');
   if (campEl) campEl.remove();
+  document.getElementById('minimap-container')?.remove();
+  document.getElementById('camp-hud')?.remove();
 
   const game = getGame();
   if (game) {
@@ -196,8 +203,149 @@ export async function returnToGate(logout = true) {
   console.log('[returnToGate] Game destroyed, gate restored');
 }
 
+// ── Continuous Rising Ash & Glowing Cinders Particle Engine ──────────
+let emberCanvas = null;
+let emberCtx = null;
+let emberAnimationId = null;
+let emberParticles = [];
+
+class RisingParticle {
+  constructor(w, h, initialRandomY = false) {
+    this.reset(w, h, initialRandomY);
+  }
+
+  reset(w, h, initialRandomY = false) {
+    this.w = w;
+    this.h = h;
+    this.isEmber = Math.random() < 0.6;
+    this.x = Math.random() * w;
+    this.y = initialRandomY ? Math.random() * h : h + 10 + Math.random() * 25;
+    this.originX = this.x;
+    this.speedY = 28 + Math.random() * 45; // 28 - 73 px/s
+    this.driftFreq = 0.7 + Math.random() * 1.4;
+    this.driftAmp = 18 + Math.random() * 32;
+    this.driftPhase = Math.random() * Math.PI * 2;
+    this.windBias = (Math.random() - 0.46) * 15;
+    this.pulseFreq = 2 + Math.random() * 3;
+    this.pulsePhase = Math.random() * Math.PI * 2;
+
+    if (this.isEmber) {
+      this.size = 1.3 + Math.random() * 2.2;
+      const palette = ['#ff6b2b', '#ffaa44', '#ff7f32', '#ff5500', '#ffd060'];
+      this.color = palette[Math.floor(Math.random() * palette.length)];
+      this.glowColor = '#ff6b2b';
+      this.maxAlpha = 0.75 + Math.random() * 0.25;
+    } else {
+      this.size = 1.8 + Math.random() * 3.2;
+      const ashPalette = ['#6e655f', '#3d3530', '#827870', '#544c46', '#988e84'];
+      this.color = ashPalette[Math.floor(Math.random() * ashPalette.length)];
+      this.glowColor = null;
+      this.maxAlpha = 0.35 + Math.random() * 0.35;
+    }
+    this.alpha = 0;
+  }
+
+  update(dt, timeSec) {
+    this.y -= this.speedY * dt;
+    this.originX += this.windBias * dt;
+    this.x = this.originX + Math.sin(timeSec * this.driftFreq + this.driftPhase) * this.driftAmp;
+
+    // Relative progression from bottom (h) up to top (0)
+    const progress = Math.max(0, Math.min(1, 1 - (this.y / this.h)));
+
+    // Fade in over bottom 15% of screen; dissolve & fade out to 0 between 45% and 85% height
+    if (progress < 0.15) {
+      this.alpha = (progress / 0.15) * this.maxAlpha;
+    } else if (progress > 0.45) {
+      const fadeRatio = 1 - Math.min(1, (progress - 0.45) / 0.40);
+      this.alpha = this.maxAlpha * fadeRatio;
+    } else {
+      this.alpha = this.maxAlpha;
+    }
+
+    // Reset when completely faded or passed top threshold
+    if (this.y < 30 || this.alpha <= 0.005) {
+      this.reset(this.w, this.h, false);
+    }
+  }
+
+  draw(ctx, timeSec) {
+    if (this.alpha <= 0.01) return;
+    ctx.save();
+    ctx.globalAlpha = this.alpha;
+
+    if (this.isEmber) {
+      const pulse = 0.85 + 0.15 * Math.sin(timeSec * this.pulseFreq + this.pulsePhase);
+      ctx.shadowColor = this.glowColor;
+      ctx.shadowBlur = 8 * pulse;
+      ctx.fillStyle = this.color;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size * pulse, 0, Math.PI * 2);
+      ctx.fill();
+    } else {
+      ctx.fillStyle = this.color;
+      ctx.beginPath();
+      ctx.ellipse(this.x, this.y, this.size, this.size * 0.7, this.driftPhase, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.restore();
+  }
+}
+
+export function initGateEmberCanvas() {
+  emberCanvas = document.getElementById('gate-ember-canvas');
+  if (!emberCanvas) return;
+  emberCtx = emberCanvas.getContext('2d');
+
+  const resize = () => {
+    if (!emberCanvas) return;
+    emberCanvas.width = window.innerWidth;
+    emberCanvas.height = window.innerHeight;
+    const count = Math.min(95, Math.max(50, Math.floor(window.innerWidth / 16)));
+    emberParticles = [];
+    for (let i = 0; i < count; i++) {
+      emberParticles.push(new RisingParticle(emberCanvas.width, emberCanvas.height, true));
+    }
+  };
+  window.addEventListener('resize', resize);
+  resize();
+  startGateEmberVFX();
+}
+
+export function startGateEmberVFX() {
+  if (emberAnimationId || !emberCanvas || !emberCtx) return;
+  let lastTime = performance.now();
+
+  const loop = (now) => {
+    const dt = Math.min(0.1, (now - lastTime) / 1000);
+    lastTime = now;
+    const timeSec = now / 1000;
+
+    emberCtx.clearRect(0, 0, emberCanvas.width, emberCanvas.height);
+    for (let i = 0; i < emberParticles.length; i++) {
+      emberParticles[i].update(dt, timeSec);
+      emberParticles[i].draw(emberCtx, timeSec);
+    }
+    emberAnimationId = requestAnimationFrame(loop);
+  };
+  emberAnimationId = requestAnimationFrame(loop);
+}
+
+export function stopGateEmberVFX() {
+  if (emberAnimationId) {
+    cancelAnimationFrame(emberAnimationId);
+    emberAnimationId = null;
+  }
+  if (emberCtx && emberCanvas) {
+    emberCtx.clearRect(0, 0, emberCanvas.width, emberCanvas.height);
+  }
+}
+
 export function initGateUI({ onStartGame }) {
   mountDOM();
+  document.getElementById('minimap-container')?.remove();
+  document.getElementById('camp-hud')?.remove();
+  initGateEmberCanvas();
   onStartGameCallback = onStartGame;
 
   // Stash templates for dynamic reconstruction during scene transitions
@@ -207,17 +355,6 @@ export function initGateUI({ onStartGame }) {
     el.remove();
     return tmpl;
   });
-
-  // Embers animation
-  const embersEl = document.querySelector('.embers');
-  if (embersEl && embersEl.childElementCount === 0) {
-    for (let i = 0; i < 35; i++) {
-      const e = document.createElement('i');
-      e.className = 'ember';
-      e.style.cssText = `left:${Math.random() * 100}%;bottom:${Math.random() * 20}%;animation-duration:${7 + Math.random() * 11}s;animation-delay:-${Math.random() * 18}s`;
-      embersEl.append(e);
-    }
-  }
 
   // Tabs
   $('login-tab').onclick = () => selectMode('login');

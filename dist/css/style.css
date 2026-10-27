@@ -49,6 +49,7 @@ input::placeholder{color:#655d51}
 footer{display:flex;justify-content:space-between;padding:24px 5%;border-top:1px solid #a88c5d22;position:relative;color:#675f51;font-size:9px;gap:20px}
 footer b{font-weight:400;color:#a39278;margin-left:15px}
 .embers{position:absolute;inset:0;pointer-events:none}
+#gate-ember-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
 .ember{position:absolute;width:3px;height:3px;background:#bd5828;box-shadow:0 0 8px #ca5426;animation:rise linear infinite}
 @keyframes rise{from{transform:translateY(0);opacity:0}20%{opacity:.6}to{transform:translateY(-65vh) translateX(60px);opacity:0}}
 #game-shell{position:fixed;inset:0;background:#000;user-select:none;-webkit-user-select:none}
@@ -716,6 +717,7 @@ h2{font-family:Cinzel,serif;font-weight:400;font-size:clamp(30px,5vw,58px)}
    REAL-TIME DARK FANTASY MINI-MAP HUD
    ═══════════════════════════════════════════════════════════════════ */
 #minimap-container {
+  display: none; /* Hidden by default on Login & Awakening until active playable scene */
   position: fixed;
   top: 50px;
   right: 18px;
@@ -732,12 +734,16 @@ h2{font-family:Cinzel,serif;font-weight:400;font-size:clamp(30px,5vw,58px)}
   cursor: pointer;
   transition: opacity 0.3s ease, transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
+#minimap-container.active-scene {
+  display: block;
+}
 #minimap-container:hover {
   border-color: #ffd700;
   box-shadow: 0 10px 36px rgba(0,0,0,0.92), inset 0 0 20px rgba(255, 215, 0, 0.2), 0 0 14px rgba(255, 215, 0, 0.35);
   transform: translateY(-2px);
 }
 #minimap-container.hidden {
+  display: none !important;
   opacity: 0;
   pointer-events: none;
   transform: translateY(-10px);
@@ -1003,4 +1009,191 @@ h2{font-family:Cinzel,serif;font-weight:400;font-size:clamp(30px,5vw,58px)}
 @keyframes travelSpin {
   to { transform: rotate(360deg); }
 }
+
+/* ═══════════════════════════════════════════════════════════════════
+   OLYMPIAN COVENANT MODAL & HUD BLESSINGS
+   ═══════════════════════════════════════════════════════════════════ */
+#covenant-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  background: rgba(4, 3, 7, 0.88);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  padding: 20px;
+}
+#covenant-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+.covenant-dialog {
+  background: radial-gradient(ellipse at top, #1a1525 0%, #0d0a14 100%);
+  border: 2px solid #8c6d37;
+  border-radius: 6px;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.9), inset 0 0 30px rgba(140, 109, 55, 0.2);
+  width: 95%;
+  max-width: 860px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 28px 32px;
+  color: #e4dcce;
+  font-family: 'Cinzel', serif;
+  position: relative;
+}
+.covenant-close {
+  position: absolute;
+  top: 15px;
+  right: 18px;
+  background: none;
+  border: none;
+  color: #a88c5d;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 4px 8px;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+.covenant-close:hover {
+  color: #ffd700;
+  transform: scale(1.15);
+}
+.covenant-header {
+  text-align: center;
+  margin-bottom: 22px;
+}
+.covenant-title {
+  font-size: 23px;
+  letter-spacing: 0.12em;
+  color: #f7e6c4;
+  text-shadow: 0 0 14px rgba(212, 175, 55, 0.5);
+  margin-bottom: 6px;
+}
+.covenant-subtitle {
+  font-family: 'Crimson Text', serif;
+  font-style: italic;
+  font-size: 15px;
+  color: #9e8e75;
+  line-height: 1.5;
+}
+.covenant-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-top: 18px;
+}
+.covenant-card {
+  background: rgba(22, 18, 30, 0.7);
+  border: 1px solid rgba(168, 140, 93, 0.35);
+  border-radius: 5px;
+  padding: 16px 14px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+.covenant-card:hover {
+  border-color: #ffd700;
+  background: rgba(36, 28, 48, 0.9);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.6), inset 0 0 16px rgba(255, 215, 0, 0.15);
+}
+.covenant-card.active-covenant {
+  border: 2px solid #ffd700;
+  background: rgba(45, 34, 60, 0.95);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.4), inset 0 0 20px rgba(255, 215, 0, 0.2);
+}
+.covenant-card.active-covenant::after {
+  content: "ACTIVE PLEDGE";
+  position: absolute;
+  top: 8px;
+  right: -28px;
+  background: #ffd700;
+  color: #1a1202;
+  font-size: 8px;
+  font-weight: bold;
+  padding: 3px 28px;
+  transform: rotate(45deg);
+  letter-spacing: 0.05em;
+}
+.covenant-deity-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffd700;
+  margin-bottom: 3px;
+}
+.covenant-deity-domain {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #a88c5d;
+  margin-bottom: 8px;
+}
+.covenant-class-archetype {
+  font-size: 11px;
+  color: #89b4fa;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+.covenant-boons {
+  font-family: 'Crimson Text', serif;
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: #d1c7b7;
+  flex-grow: 1;
+  margin-bottom: 14px;
+}
+.covenant-boon-item {
+  margin-bottom: 5px;
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+}
+.covenant-boon-item::before {
+  content: "✦";
+  color: #ffd700;
+  font-size: 11px;
+  line-height: 1.4;
+}
+.covenant-pledge-btn {
+  background: linear-gradient(180deg, #3d2f1f 0%, #241b11 100%);
+  border: 1px solid #8c6d37;
+  color: #f7e6c4;
+  font-family: 'Cinzel', serif;
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  padding: 7px 12px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+.covenant-card:hover .covenant-pledge-btn {
+  background: linear-gradient(180deg, #8c6d37 0%, #5e461f 100%);
+  color: #ffffff;
+  border-color: #ffd700;
+}
+.stat-pill.covenant {
+  border-color: #a88c5d;
+  background: rgba(30, 24, 40, 0.85);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.stat-pill.covenant:hover {
+  border-color: #ffd700;
+  transform: translateY(-1px);
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.35);
+}
+.stat-pill.covenant .label {
+  color: #ffd700;
+}
+.stat-pill.covenant .value {
+  color: #f0e6d2;
+}
+
 

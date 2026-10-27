@@ -61,6 +61,9 @@ export default class Scene_Boot extends Phaser.Scene {
     this.load.image('sanctuary-wall-upper', './assets/aethelgard/architecture/ruins/wall-upper.png');
     this.load.image('sanctuary-stairs', './assets/aethelgard/architecture/ruins/stairs.png');
     this.load.image('sanctuary-altar', './assets/aethelgard/props/dungeon/altar.png');
+    this.load.image('altar', './assets/aethelgard/props/dungeon/altar.png');
+    this.load.image('angel-statue', './assets/aethelgard/props/dungeon/angel-statue.png');
+    this.load.image('sanctuary-angel-statue', './assets/aethelgard/props/dungeon/angel-statue.png');
     this.load.image('sanctuary-banner', './assets/aethelgard/props/banners/wall-banner.png');
     this.load.image('sanctuary-ivy', './assets/aethelgard/nature/plants/ivy.png');
     this.load.image('sanctuary-fern', './assets/aethelgard/nature/plants/fern.png');

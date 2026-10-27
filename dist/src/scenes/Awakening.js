@@ -52,6 +52,10 @@ export default class Scene_Awakening extends Phaser.Scene {
   }
 
   create() {
+    // Ensure Mini-Map and HUD are completely hidden on Awakening screen
+    document.getElementById('minimap-container')?.remove();
+    document.getElementById('camp-hud')?.remove();
+
     const player = getPlayer();
     // Saved data is loaded before game startup. Never build UI for a named soul.
     if (typeof player?.name === 'string' && player.name.trim().length > 0) {

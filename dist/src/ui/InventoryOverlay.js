@@ -141,8 +141,8 @@ export class InventoryOverlay {
     console.log('[InventoryOverlay] rendered', this.items.length, 'items');
   }
 
-  show()   { this.build(); this.render(); this.el.classList.remove('inv-hidden'); this.visible = true;  console.log('[InventoryOverlay] shown'); }
-  hide()   { if (this.el) this.el.classList.add('inv-hidden');     this.visible = false; console.log('[InventoryOverlay] hidden'); }
+  show()   { this.build(); this.render(); this.el.classList.remove('inv-hidden'); this.visible = true; document.getElementById('minimap-container')?.classList.add('hidden'); console.log('[InventoryOverlay] shown'); }
+  hide()   { if (this.el) this.el.classList.add('inv-hidden');     this.visible = false; document.getElementById('minimap-container')?.classList.remove('hidden'); console.log('[InventoryOverlay] hidden'); }
   toggle() { this.visible ? this.hide() : this.show(); }
 
   destroy() {

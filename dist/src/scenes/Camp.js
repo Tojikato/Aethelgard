@@ -28,6 +28,74 @@ import {
   destroyActiveInventoryOverlay
 } from '../ui/InventoryOverlay.js';
 
+export const OLYMPIAN_DEITIES = {
+  athena: {
+    id: 'athena',
+    name: 'Athena',
+    title: 'Pallas Athena',
+    domain: 'Wisdom, Tactical Warfare & Strategy',
+    archetype: 'Grand Tactician (Business Case & Problem Solving)',
+    boons: [
+      '+25% Countdown Time during Real-Time Boss Cognitive Deflect',
+      '+20% Bonus Regional Renown on Strategic Case Reports',
+      'Tactical Aegis: Critical Riposte damage amplified by +30%'
+    ],
+    shortDesc: '+25% Deflect Time · +20% Case Renown'
+  },
+  apollo: {
+    id: 'apollo',
+    name: 'Apollo',
+    title: 'Phœbus Apollo',
+    domain: 'Light, Truth, Order & Pure Mathematics',
+    archetype: 'Arcane Scholar (Pure Mathematics & Symbolic Logic)',
+    boons: [
+      '+50% SANITY recovery rate at the Hearth during focus sessions',
+      'Total Immunity to Void-rot Darkness & Tunnel-vision Vignettes',
+      'Logic Matrix Shield: Negates first environmental trap in dungeons'
+    ],
+    shortDesc: '+50% Sanity Regen · Void-rot Immunity'
+  },
+  hermes: {
+    id: 'hermes',
+    name: 'Hermes',
+    title: 'Hermes of Wayfarers',
+    domain: 'Commerce, Wealth, Travel & Quantitative Finance',
+    archetype: 'High Alchemist (Quantitative Finance & Valuation)',
+    boons: [
+      '+30% Bonus Gold from expeditions, bounties & trade stalls',
+      'Travel Fortune: Stamina drain reduced while traversing 9 Nodes',
+      'Vault Arbitrage: +LUK rating for legendary heirloom Gacha rolls'
+    ],
+    shortDesc: '+30% Gold Yield · +LUK Gacha Drops'
+  },
+  hecate: {
+    id: 'hecate',
+    name: 'Hecate',
+    title: 'Hecate of Crossroads',
+    domain: 'Ancient Tongues, Mystic Runes & Secret Mysteries',
+    archetype: 'Runic Scholar (Foreign Languages: French, Chinese & Runes)',
+    boons: [
+      'Decipher ancient stone tablets, crypt doors & scrolls (scroll-a/b/c)',
+      'Unlocks secret diplomatic dialogue & Hidden Imperial Quests',
+      'Psychic Ward: Total immunity against charm, sleep & confusion hexes'
+    ],
+    shortDesc: 'Decipher Runes & Scrolls · Unlock Hidden Quests'
+  },
+  ares: {
+    id: 'ares',
+    name: 'Ares & Heracles',
+    title: 'Ares & Heracles',
+    domain: 'Martial Valor, Physical Conditioning & Athletic Might',
+    archetype: 'Spellblade Vanguard (Physical Fitness, Sports & Combat)',
+    boons: [
+      '+25% Maximum Health Points (HP) & +15% Base Attack (ATK)',
+      '+20% Physical Defense (DEF) & Fortified Posture Gauge',
+      'Olympic Dash: Multiple dodge rolls without stumbling'
+    ],
+    shortDesc: '+25% HP · +15% ATK · Posture Resilience'
+  }
+};
+
 export default class Scene_Camp extends Phaser.Scene {
   constructor() {
     super('Scene_Camp');
@@ -486,8 +554,16 @@ export default class Scene_Camp extends Phaser.Scene {
         .setOrigin(0.5, 1).setScale(1.0);
     }
 
-    if (this.textures.exists('sanctuary-altar')) {
-      this.sanctuaryAltar = this.add.image(780, H * 0.67, 'sanctuary-altar')
+    // Ancient Olympian Shrine: Angel Statue & Sacred Altar
+    const statueKey = this.textures.exists('sanctuary-angel-statue') ? 'sanctuary-angel-statue' : (this.textures.exists('angel-statue') ? 'angel-statue' : null);
+    if (statueKey) {
+      this.shrineStatue = this.add.image(780, H * 0.61, statueKey)
+        .setOrigin(0.5, 1).setScale(1.1);
+    }
+
+    const altarKey = this.textures.exists('sanctuary-altar') ? 'sanctuary-altar' : (this.textures.exists('altar') ? 'altar' : null);
+    if (altarKey) {
+      this.sanctuaryAltar = this.add.image(780, H * 0.67, altarKey)
         .setOrigin(0.5, 1).setScale(1.05);
 
       // Celestial teal resonance particle emitter
@@ -499,7 +575,8 @@ export default class Scene_Camp extends Phaser.Scene {
         alpha: { start: 0.85, end: 0 },
         tint: [0x7fe0d4, 0x4dd0e1, 0x00bcd4, 0xffffff],
         blendMode: 'ADD',
-        emitting: false
+        frequency: 240,
+        quantity: 1
       });
       this.altarResonanceParticles.setDepth(160);
     }
@@ -621,6 +698,19 @@ export default class Scene_Camp extends Phaser.Scene {
 
     this.player = createPlayer(this, spawnX, spawnY);
 
+    // Dust / ash kick-up particle emitter for sprinting
+    this.sprintDustEmitter = this.add.particles(0, 0, 'ash_particle', {
+      speedX: { min: -25, max: 25 },
+      speedY: { min: -10, max: -30 },
+      lifespan: { min: 200, max: 350 },
+      scale: { start: 0.35, end: 0 },
+      alpha: { start: 0.55, end: 0 },
+      tint: [0xa89f91, 0x827768, 0xc5baa9],
+      blendMode: 'NORMAL',
+      emitting: false
+    });
+    this.sprintDustEmitter.setDepth(150);
+
     // Scenery list for Y-sorting on the ground plane
     this.ySortedObjects = [
       this.deadTree,
@@ -630,6 +720,7 @@ export default class Scene_Camp extends Phaser.Scene {
       this.vaultChest,
       this.ruinsRocks,
       this.well,
+      this.shrineStatue,
       this.sanctuaryAltar,
       this.ancientPlaque,
       this.cart,
@@ -651,8 +742,6 @@ export default class Scene_Camp extends Phaser.Scene {
     this.updateSortYProperties();
     this.rebuildStaticObstacleBoxes();
     this.rebuildInteractionTargets();
-    this.rebuildStaticObstacleBoxes();
-    this.rebuildInteractionTargets();
   }
 
   updateSortYProperties() {
@@ -672,6 +761,7 @@ export default class Scene_Camp extends Phaser.Scene {
     if (this.signpost) { this.signpost.sortY = this.signpost.y - 5; this.signpost.setDepth(Math.floor(this.signpost.sortY)); }
     if (this.cart) { this.cart.sortY = this.cart.y - 12; this.cart.setDepth(Math.floor(this.cart.sortY)); }
     if (this.mapTable) { this.mapTable.sortY = this.mapTable.y - 8; this.mapTable.setDepth(Math.floor(this.mapTable.sortY)); }
+    if (this.shrineStatue) { this.shrineStatue.sortY = this.shrineStatue.y - 4; this.shrineStatue.setDepth(Math.floor(this.shrineStatue.sortY)); }
     if (this.sanctuaryAltar) { this.sanctuaryAltar.sortY = this.sanctuaryAltar.y; this.sanctuaryAltar.setDepth(Math.floor(this.sanctuaryAltar.sortY)); }
     if (this.ancientPlaque) { this.ancientPlaque.sortY = this.ancientPlaque.y; this.ancientPlaque.setDepth(Math.floor(this.ancientPlaque.sortY)); }
     if (this.signLantern) { this.signLantern.sortY = this.signLantern.y; this.signLantern.setDepth(Math.floor(this.signLantern.sortY)); }
@@ -755,12 +845,12 @@ export default class Scene_Camp extends Phaser.Scene {
       },
       {
         id: 'altar',
-        title: 'Sanctuary Altar',
-        prompt: '[F] COMMUNE WITH RUNIC ALTAR',
+        title: 'Olympian Shrine',
+        prompt: '[F] PRAY AT OLYMPIAN SHRINE',
         x: this.sanctuaryAltar ? this.sanctuaryAltar.x : 780,
         y: this.sanctuaryAltar ? this.sanctuaryAltar.y - 15 : 480,
-        radius: 80,
-        action: () => this.openLoreModal('altar')
+        radius: 90,
+        action: () => this.openCovenantModal()
       },
       {
         id: 'banner',
@@ -803,6 +893,7 @@ export default class Scene_Camp extends Phaser.Scene {
     this.vaultChest.setPosition(380, H * 0.77);
     if (this.well) this.well.setPosition(620, H * 0.76);
 
+    if (this.shrineStatue) this.shrineStatue.setPosition(780, H * 0.61);
     if (this.sanctuaryAltar) {
       this.sanctuaryAltar.setPosition(780, H * 0.67);
       if (this.altarResonanceParticles) this.altarResonanceParticles.setPosition(this.sanctuaryAltar.x, this.sanctuaryAltar.y - 25);
@@ -1454,8 +1545,10 @@ export default class Scene_Camp extends Phaser.Scene {
       left: Phaser.Input.Keyboard.KeyCodes.A,
       right: Phaser.Input.Keyboard.KeyCodes.D,
       interactF: Phaser.Input.Keyboard.KeyCodes.F,     // Keybind updated to 'F'
-      interactSpace: Phaser.Input.Keyboard.KeyCodes.SPACE
+      interactSpace: Phaser.Input.Keyboard.KeyCodes.SPACE,
+      shift: Phaser.Input.Keyboard.KeyCodes.SHIFT
     });
+    this.keyShift = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SHIFT);
     this.keyM = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.M);
     this.keyM.on('down', () => this.toggleWorldMap());
     this.keyN = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.N);
@@ -1495,15 +1588,24 @@ export default class Scene_Camp extends Phaser.Scene {
     }
 
     const dt = delta / 1000;
-    const speed = 180;
+    const isSprinting = Boolean(
+      (this.keyShift && this.keyShift.isDown) ||
+      (this.cursors && this.cursors.shift && this.cursors.shift.isDown) ||
+      (this.wasd && this.wasd.shift && this.wasd.shift.isDown)
+    );
+
+    const baseSpeedX = 280;
+    const baseSpeedY = 210;
+    const speedX = isSprinting ? 420 : baseSpeedX;
+    const speedY = isSprinting ? 315 : baseSpeedY;
 
     if (moveX !== 0 || moveY !== 0) {
       const len = Math.hypot(moveX, moveY);
       const normX = moveX / len;
       const normY = moveY / len;
 
-      const dx = normX * speed * dt;
-      const dy = normY * speed * dt;
+      const dx = normX * speedX * dt;
+      const dy = normY * speedY * dt;
 
       const obstacles = this.staticObstacleBoxes || this.getObstacleBoxes();
       const bounds = this.getWalkBounds();
@@ -1551,8 +1653,19 @@ export default class Scene_Camp extends Phaser.Scene {
       if (moveX < 0) this.player.setFlipX(true);
       else if (moveX > 0) this.player.setFlipX(false);
 
+      this.player.anims.timeScale = isSprinting ? 1.6 : 1.0;
       this.player.anims.play('player-walk', true);
+
+      // Subtle dust / ash kick-up particles when sprinting
+      if (isSprinting && this.sprintDustEmitter) {
+        this.sprintDustTimer = (this.sprintDustTimer || 0) + delta;
+        if (this.sprintDustTimer > 65) {
+          this.sprintDustTimer = 0;
+          this.sprintDustEmitter.emitParticleAt(this.player.x, this.player.y - 1, 2);
+        }
+      }
     } else {
+      this.player.anims.timeScale = 1.0;
       this.player.anims.play('player-idle', true);
     }
 
@@ -1609,12 +1722,16 @@ export default class Scene_Camp extends Phaser.Scene {
     const gate = document.getElementById('gate-modal');
     const inv = document.getElementById('inventory-overlay');
     const lore = document.getElementById('lore-modal');
+    const covenant = document.getElementById('covenant-modal');
+    const worldmap = document.getElementById('worldmap-modal');
     return (
       (hearth && !hearth.classList.contains('hidden')) ||
       (dialogue && !dialogue.classList.contains('hidden')) ||
       (gate && !gate.classList.contains('hidden')) ||
       (inv && !inv.classList.contains('inv-hidden')) ||
-      (lore && !lore.classList.contains('hidden'))
+      (lore && !lore.classList.contains('hidden')) ||
+      (covenant && covenant.classList.contains('active')) ||
+      (worldmap && !worldmap.classList.contains('hidden'))
     );
   }
 
@@ -2131,6 +2248,96 @@ export default class Scene_Camp extends Phaser.Scene {
   closeLoreModal() {
     const modal = document.getElementById('lore-modal');
     if (modal) modal.classList.add('hidden');
+    document.getElementById('minimap-container')?.classList.remove('hidden');
+  }
+
+  // ── Olympian Covenant System (Greek Mythology Religion) ────────────
+  openCovenantModal() {
+    // Hide mini-map while modal is open
+    document.getElementById('minimap-container')?.classList.add('hidden');
+
+    let modal = document.getElementById('covenant-modal');
+    if (!modal) {
+      modal = document.createElement('div');
+      modal.id = 'covenant-modal';
+      document.body.appendChild(modal);
+    }
+
+    const activeCovenantId = localStorage.getItem('aethelgard_patron_covenant') || 'none';
+
+    let cardsHtml = '';
+    for (const [key, d] of Object.entries(OLYMPIAN_DEITIES)) {
+      const isActive = (activeCovenantId === key);
+      const boonsList = d.boons.map(b => `<div class="covenant-boon-item">${b}</div>`).join('');
+      cardsHtml += `
+        <div class="covenant-card ${isActive ? 'active-covenant' : ''}" data-deity="${d.id}">
+          <div class="covenant-deity-name">${d.title}</div>
+          <div class="covenant-deity-domain">${d.domain}</div>
+          <div class="covenant-class-archetype">${d.archetype}</div>
+          <div class="covenant-boons">${boonsList}</div>
+          <button type="button" class="covenant-pledge-btn" data-deity="${d.id}">
+            ${isActive ? '✓ PLEDGED COVENANT' : '✦ SWEAR COVENANT'}
+          </button>
+        </div>`;
+    }
+
+    modal.innerHTML = `
+      <div class="covenant-dialog">
+        <button type="button" class="covenant-close" id="covenant-close-btn" aria-label="Close">✕</button>
+        <div class="covenant-header">
+          <div class="covenant-title">DIVINE COVENANT OF THE OLYMPIANS</div>
+          <div class="covenant-subtitle">
+            “Kneel before the consecrated altar, Wayfarer. Swear thy sacred oath to an Olympian Patron Deity.<br>
+            Only one divine covenant may guide thy soul across the 9 Nodes of Aethelgard.”
+          </div>
+        </div>
+        <div class="covenant-grid">${cardsHtml}</div>
+      </div>`;
+
+    modal.classList.add('active');
+
+    // Close button
+    document.getElementById('covenant-close-btn').onclick = () => this.closeCovenantModal();
+
+    // Backdrop click to close
+    modal.onclick = (e) => {
+      if (e.target === modal) this.closeCovenantModal();
+    };
+
+    // Card click or pledge button click
+    modal.querySelectorAll('.covenant-card').forEach(card => {
+      card.onclick = () => {
+        const deityKey = card.getAttribute('data-deity');
+        this.pledgeCovenant(deityKey);
+      };
+    });
+  }
+
+  pledgeCovenant(deityKey) {
+    const deity = OLYMPIAN_DEITIES[deityKey];
+    if (!deity) return;
+
+    localStorage.setItem('aethelgard_patron_covenant', deityKey);
+    const p = getPlayer();
+    if (p) p.covenant = deityKey;
+
+    if (this.altarResonanceParticles && this.sanctuaryAltar) {
+      this.altarResonanceParticles.explode(35);
+    }
+
+    this.showItemAcquiredToast(
+      `🏛️ COVENANT SWORN: Thou hast pledged thy oath to <b>${deity.title}</b>!<br>` +
+      `<span style="color:#d4af37;font-size:12px;">Active Boon: ${deity.shortDesc}</span>`
+    );
+
+    this.refreshHud();
+    this.closeCovenantModal();
+  }
+
+  closeCovenantModal() {
+    const modal = document.getElementById('covenant-modal');
+    if (modal) modal.classList.remove('active');
+    document.getElementById('minimap-container')?.classList.remove('hidden');
   }
 
   // ═════════════════════════════════════════════════════════════════
@@ -2146,17 +2353,27 @@ export default class Scene_Camp extends Phaser.Scene {
       ? `<div id="mini-timer-badge" class="hearth-mini-badge" title="Click to view Hearth Focus">🔥 FOCUSING: ${this.formatTime(this.focusElapsed)}</div>`
       : '';
 
+    const covenantId = localStorage.getItem('aethelgard_patron_covenant');
+    const covData = covenantId && OLYMPIAN_DEITIES[covenantId];
+    const covenantPillHtml = covData
+      ? `<div id="covenant-hud-pill" class="stat-pill covenant ${covData.id}" title="${covData.title}: ${covData.shortDesc} (Click to change)"><span class="label">COVENANT</span><span class="value">${covData.name.toUpperCase()}</span></div>`
+      : `<div id="covenant-hud-pill" class="stat-pill covenant none" title="Click to swear a Divine Covenant at the Shrine"><span class="label">COVENANT</span><span class="value">PRAY [F]</span></div>`;
+
     hud.innerHTML = `
       <div class="stat-pill-row">
         <div class="stat-pill"><span class="label">LVL</span><span class="value">${p.level}</span></div>
         <div class="stat-pill sanity"><span class="label">SANITY</span><span class="value">${p.sanity}/${CHRONOS.MAX_SANITY}</span></div>
         <div class="stat-pill gold"><span class="label">GOLD</span><span class="value">${p.gold}</span></div>
         <div class="stat-pill"><span class="label">RENOWN</span><span class="value">${p.renown}</span></div>
+        ${covenantPillHtml}
         ${miniBadgeHtml}
       </div>`;
 
     const miniBtn = document.getElementById('mini-timer-badge');
     if (miniBtn) miniBtn.onclick = () => this.openHearthModal();
+
+    const covBtn = document.getElementById('covenant-hud-pill');
+    if (covBtn) covBtn.onclick = () => this.openCovenantModal();
   }
 
   formatTime(totalSec) {
@@ -2466,7 +2683,8 @@ export default class Scene_Camp extends Phaser.Scene {
       container.id = 'minimap-container';
       document.body.appendChild(container);
     }
-    container.className = 'minimap-container';
+    container.className = 'minimap-container active-scene';
+    container.classList.remove('hidden');
     container.title = 'Click to open Continental Atlas [M]';
     container.innerHTML = `
       <div class="minimap-header">
@@ -2641,6 +2859,8 @@ export default class Scene_Camp extends Phaser.Scene {
     document.getElementById('dialogue-modal')?.remove();
     document.getElementById('gate-modal')?.remove();
     document.getElementById('lore-modal')?.remove();
+    document.getElementById('covenant-modal')?.remove();
+    document.getElementById('minimap-container')?.remove();
     document.getElementById('mobile-controls')?.remove();
 
     if (this.backdropRT) {
