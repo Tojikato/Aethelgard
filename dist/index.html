@@ -8,6 +8,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="theme-color" content="#060606">
   <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="content-language" content="en">
   <title>The Gates of Aethelgard</title>
   <meta name="description" content="A dark fantasy RPG. Cross the Abyssal Gate and remember who you are.">
   <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
@@ -99,6 +100,60 @@
         }
         if (prevOnError) return prevOnError.apply(this, arguments);
       };
+
+      // 5. Intercept Chrome/Edge Built-in AI Summarizer API calls from extensions/browser features
+      const patchSummarizer = (target) => {
+        if (!target || typeof target.create !== 'function' || target.__safeLanguagePatched) return;
+        const _origCreate = target.create.bind(target);
+        target.create = function(options = {}) {
+          const safeOpts = (options && typeof options === 'object') ? { ...options } : {};
+          if (!safeOpts.outputLanguage) {
+            safeOpts.outputLanguage = 'en';
+          }
+          return _origCreate(safeOpts);
+        };
+        target.__safeLanguagePatched = true;
+      };
+
+      try {
+        if (typeof window !== 'undefined') {
+          if (window.ai && window.ai.summarizer) patchSummarizer(window.ai.summarizer);
+          if (window.Summarizer) patchSummarizer(window.Summarizer);
+
+          let _ai = window.ai;
+          Object.defineProperty(window, 'ai', {
+            configurable: true,
+            enumerable: true,
+            get() { return _ai; },
+            set(val) {
+              _ai = val;
+              if (_ai && _ai.summarizer) patchSummarizer(_ai.summarizer);
+            }
+          });
+
+          let _sum = window.Summarizer;
+          Object.defineProperty(window, 'Summarizer', {
+            configurable: true,
+            enumerable: true,
+            get() { return _sum; },
+            set(val) {
+              _sum = val;
+              patchSummarizer(_sum);
+            }
+          });
+
+          if (console && console.warn) {
+            const _origWarn = console.warn.bind(console);
+            console.warn = function(...args) {
+              const str = (args || []).map(a => (typeof a === 'string' ? a : (a?.message || ''))).join(' ');
+              if (str.includes('Summarizer API request') || str.includes('execution config available for the feature')) {
+                return;
+              }
+              return _origWarn(...args);
+            };
+          }
+        }
+      } catch (_) {}
 
       // Initial check when DOM is ready
       if (document.readyState === 'loading') {
