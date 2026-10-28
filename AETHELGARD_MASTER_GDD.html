@@ -719,6 +719,51 @@
     </tbody>
   </table>
 
+  <hr style="border: 0; border-top: 1px solid #d4c8b0; margin: 25px 0;">
+
+  <!-- SECTION 10 -->
+  <h2>10. QUY TẮC KIẾN TRÚC THƯ MỤC DỰ ÁN & QUẢN LÝ ASSET NGHIÊM NGẶT (MBL RULE)</h2>
+
+  <p>
+    Mọi module mã nguồn, scene, thành phần UI và asset đồ họa bổ sung vào Aethelgard trong tương lai <strong>BẮT BUỘC</strong> phải tuân thủ nghiêm ngặt cấu trúc phân tầng chuẩn hóa dưới đây. Tuyệt đối nghiêm cấm việc để file rác ở thư mục gốc, sao chép trùng lặp tệp manifest hoặc tự ý tạo thư mục tùy tiện:
+  </p>
+
+  <pre style="background: #201b18; color: #d4c8b0; padding: 16px; border-radius: 6px; font-family: 'Consolas', 'Courier New', monospace; font-size: 9.5pt; line-height: 1.5; overflow-x: auto; border: 1px solid #4a3c31;">
+/dist/
+├── index.html                  # Main game entry point & canvas mount
+├── css/                        # Global & modal stylesheets (dark fantasy theme)
+├── src/
+│   ├── main.js                 # Phaser initialization & device/scene routing
+│   ├── config/
+│   │   ├── AssetRegistry.js    # Single source of truth for all asset ID-to-path mappings
+│   │   └── items.js            # Database for weapons, armor, potions, and artifacts
+│   ├── scenes/
+│   │   ├── Boot.js             # Asset preloading via AssetRegistry & 404 audit
+│   │   ├── Awakening.js        # Prologue / Opening sequence
+│   │   ├── Camp.js             # Node 0: The Ashen Hamlet (starter sanctuary)
+│   │   └── Oakhaven.js         # Node 1: Oakhaven Outpost (frontier town)
+│   ├── services/               # Core services (playerFactory, gameState, firebase, chronos)
+│   └── ui/                     # UI Modals (WorldMapOverlay, MiniMap, FocusModal, GreekPantheonModal)
+└── assets/
+    ├── manifest.json           # Authoritative asset registry with category tags & metadata
+    ├── sprites/                # Pack 1 Core Sprites (camp.png, swords, potions, ruins)
+    └── aethelgard/             # Pack 2 160+ Master Tileset (transparent PNGs categorized)
+        ├── architecture/       # buildings, structures, walls, towers
+        ├── nature/             # trees, flora, rocks, dead trees
+        ├── props/              # dungeon, town, shrines, altars, statues
+        ├── equipment/          # weapons, shields, armors, staves
+        ├── items/              # alchemy, books, scrolls, curiosities
+        └── effects/            # portals, runes, magic markers
+  </pre>
+
+  <h3>Nguyên Tắc Thực Thi MBL (MBL Enforcement Rule):</h3>
+  <ol>
+    <li><strong>Không có file <code>.js</code> hoặc <code>.css</code> tự do</strong> trong thư mục gốc <code>/dist/</code>.</li>
+    <li><strong>Không có asset nằm ngoài</strong> <code>sprites/</code> hoặc <code>aethelgard/</code>.</li>
+    <li>Mọi lệnh import trong mã nguồn <strong>BẮT BUỘC</strong> phải định tuyến qua <code>AssetRegistry.js</code> hoặc đường dẫn thư mục con tiêu chuẩn.</li>
+    <li><strong>Chỉ duy nhất một tệp <code>manifest.json</code></strong> được phép tồn tại (tại <code>/dist/assets/manifest.json</code>).</li>
+  </ol>
+
   <hr style="border: 0; border-top: 1px solid #d4c8b0; margin: 30px 0;">
 
   <div style="text-align: center; color: #736756; font-size: 10pt; font-style: italic;">

@@ -10,6 +10,7 @@ import { getInventoryOverlay } from '../ui/InventoryOverlay.js';
 import { worldMapOverlay } from '../ui/WorldMapOverlay.js';
 import { createPlayer, ensureProceduralActorTextures } from '../services/playerFactory.js';
 import { OLYMPIAN_DEITIES } from './Camp.js';
+import { dayNightService } from '../services/dayNightService.js';
 
 export default class Scene_Oakhaven extends Phaser.Scene {
   constructor() {
@@ -56,8 +57,11 @@ export default class Scene_Oakhaven extends Phaser.Scene {
     // 0. Top-left HUD Stat Bars (LVL, SANITY, GOLD, RENOWN)
     this.buildHud();
 
-    // 1. Procedural Backdrop & Town Streets
+    // 1. Procedural/Image Backdrop & Town Streets
     this.renderOakhavenBackdrop(W, H);
+
+    // Real-Time 24-Hour Continuous Day/Night Lighting Engine
+    this.dayNight = dayNightService.attachToScene(this, 180);
 
     // 2. Build Town Entities & Buildings
     this.buildOakhavenEntities(W, H);
@@ -137,6 +141,18 @@ export default class Scene_Oakhaven extends Phaser.Scene {
   }
 
   renderOakhavenBackdrop(width, height) {
+    if (this.textures.exists('bg-oakhaven-outpost')) {
+      if (!this.bgImage) {
+        this.bgImage = this.add.image(0, 0, 'bg-oakhaven-outpost')
+          .setOrigin(0, 0)
+          .setDisplaySize(width, height)
+          .setDepth(-10);
+      } else {
+        this.bgImage.setDisplaySize(width, height);
+      }
+      return;
+    }
+
     if (!this.backdropGfx) {
       this.backdropGfx = this.add.graphics().setDepth(-10);
     } else {

@@ -28,6 +28,8 @@ import {
   destroyActiveInventoryOverlay
 } from '../ui/InventoryOverlay.js';
 
+import { dayNightService } from '../services/dayNightService.js';
+
 export const OLYMPIAN_DEITIES = {
   athena: {
     id: 'athena',
@@ -162,6 +164,9 @@ export default class Scene_Camp extends Phaser.Scene {
 
     // ── 6. Backdrop & Walkable Ground Plane (Cached Static Layer) ──
     this.renderBackdrop(this.scale.width, this.scale.height);
+
+    // Real-Time 24-Hour Continuous Day/Night Lighting Engine
+    this.dayNight = dayNightService.attachToScene(this, 180);
 
     // ── 7. Hamlet Scenery & Actors ──────────────────────────────────
     this.buildHamletEntities();
@@ -1160,6 +1165,18 @@ export default class Scene_Camp extends Phaser.Scene {
   // ═════════════════════════════════════════════════════════════════
 
   renderBackdrop(width, height) {
+    if (this.textures.exists('bg-ashen-hamlet')) {
+      if (!this.bgImage) {
+        this.bgImage = this.add.image(0, 0, 'bg-ashen-hamlet')
+          .setOrigin(0, 0)
+          .setDisplaySize(width, height)
+          .setDepth(-10);
+      } else {
+        this.bgImage.setDisplaySize(width, height);
+      }
+      return;
+    }
+
     if (!this.backdropGfx) {
       this.backdropGfx = this.add.graphics()
         .setDepth(-10);

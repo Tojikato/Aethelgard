@@ -18,6 +18,7 @@
 7. [Combat Mechanics: Real-Time Cognitive Deflect & Hardcore Permadeath](#7-combat-mechanics-real-time-cognitive-deflect--hardcore-permadeath)
 8. [Unified Asset Registry & Manifest Architecture](#8-unified-asset-registry--manifest-architecture)
 9. [Technical Roadmap & Milestone Delivery](#9-technical-roadmap--milestone-delivery)
+10. [Strict Project Directory & Asset Architecture Rules (MBL Rule)](#10-strict-project-directory--asset-architecture-rules-mbl-rule)
 
 ---
 
@@ -351,6 +352,46 @@ All asset lookups are routed through `resolveAssetPath(assetId)` and the pre-com
 | **M7** | **AI Malakor File Evaluator** | Report file upload modal, AI critique engine, grading rewards | *Next Sprint* |
 | **M8** | **Combat Deflect Alpha** | Real-time timed problem prompts, deflect sparks, posture break | *Next Sprint* |
 | **M9** | **Bastion of Iron (Node 2)** | Mountain fortress scene, 100 Renown gatekeeper, logic challenges | *Next Sprint* |
+
+---
+
+## 10. STRICT PROJECT DIRECTORY & ASSET ARCHITECTURE RULES (MBL RULE)
+
+Every future code module, scene, UI component, and asset added to Aethelgard MUST strictly adhere to this standardized hierarchy. Loose files, duplicate manifests, or ad-hoc root folders are strictly prohibited:
+
+```
+/dist/
+├── index.html                  # Main game entry point & canvas mount
+├── css/                        # Global & modal stylesheets (dark fantasy theme)
+├── src/
+│   ├── main.js                 # Phaser initialization & device/scene routing
+│   ├── config/
+│   │   ├── AssetRegistry.js    # Single source of truth for all asset ID-to-path mappings
+│   │   └── items.js            # Database for weapons, armor, potions, and artifacts
+│   ├── scenes/
+│   │   ├── Boot.js             # Asset preloading via AssetRegistry & 404 audit
+│   │   ├── Awakening.js        # Prologue / Opening sequence
+│   │   ├── Camp.js             # Node 0: The Ashen Hamlet (starter sanctuary)
+│   │   └── Oakhaven.js         # Node 1: Oakhaven Outpost (frontier town)
+│   ├── services/               # Core services (playerFactory, gameState, firebase, chronos)
+│   └── ui/                     # UI Modals (WorldMapOverlay, MiniMap, FocusModal, GreekPantheonModal)
+└── assets/
+    ├── manifest.json           # Authoritative asset registry with category tags & metadata
+    ├── sprites/                # Pack 1 Core Sprites (camp.png, swords, potions, ruins)
+    └── aethelgard/             # Pack 2 160+ Master Tileset (transparent PNGs categorized)
+        ├── architecture/       # buildings, structures, walls, towers
+        ├── nature/             # trees, flora, rocks, dead trees
+        ├── props/              # dungeon, town, shrines, altars, statues
+        ├── equipment/          # weapons, shields, armors, staves
+        ├── items/              # alchemy, books, scrolls, curiosities
+        └── effects/            # portals, runes, magic markers
+```
+
+### MBL Enforcement Rule:
+1. **No stray `.js` or `.css` files** in `/dist/` root.
+2. **No loose assets** outside `sprites/` or `aethelgard/`.
+3. All code imports **MUST** route through `AssetRegistry.js` or standard subfolder paths.
+4. **Only ONE `manifest.json`** may exist (at `/dist/assets/manifest.json`).
 
 ---
 

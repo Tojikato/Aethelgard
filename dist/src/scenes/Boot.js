@@ -12,12 +12,20 @@ export default class Scene_Boot extends Phaser.Scene {
   }
 
   preload() {
-    // Preload consolidated VFX and background assets from ./assets/
-    this.load.image('ash-scatter-tex', './assets/vfx/ash-scatter-verified.jpg');
-    this.load.image('fine-ash-tex', './assets/vfx/fine-ash-verified.jpg');
-    this.load.image('surface-ash-tex', './assets/vfx/surface-ash-verified.jpg');
-    this.load.image('camp-bg-tex', './assets/images/camp-verified.jpg');
-    this.load.image('fog-reveal-tex', './assets/images/fog-reveal-verified.jpg');
+    // Preload consolidated VFX and background assets from ./assets/aethelgard/
+    this.load.image('ash-scatter-tex', './assets/aethelgard/vfx/ash-scatter-verified.jpg');
+    this.load.image('fine-ash-tex', './assets/aethelgard/vfx/fine-ash-verified.jpg');
+    this.load.image('surface-ash-tex', './assets/aethelgard/vfx/surface-ash-verified.jpg');
+    this.load.image('camp-bg-tex', './assets/aethelgard/images/camp-verified.jpg');
+    this.load.image('fog-reveal-tex', './assets/aethelgard/images/fog-reveal-verified.jpg');
+
+    // Preload 2.5D Belt-Scroller World Backgrounds
+    this.load.image('bg-ashen-hamlet', './assets/aethelgard/backgrounds/bg-ashen-hamlet.png');
+    this.load.image('bg-oakhaven-outpost', './assets/aethelgard/backgrounds/bg-oakhaven-outpost.png');
+    this.load.image('bg-bastion-of-iron', './assets/aethelgard/backgrounds/bg-bastion-of-iron.png');
+    this.load.image('bg-port-azure', './assets/aethelgard/backgrounds/bg-port-azure.png');
+    this.load.image('bg-gilded-nexus', './assets/aethelgard/backgrounds/bg-gilded-nexus.png');
+    this.load.image('bg-shadowfen-citadel', './assets/aethelgard/backgrounds/bg-shadowfen-citadel.png');
 
     // Preload 2.5D Hamlet Scenery Pixel-Art Sprites
     this.load.image('scenery-camp', './assets/sprites/camp.png');
@@ -47,13 +55,13 @@ export default class Scene_Boot extends Phaser.Scene {
     this.load.image('potion-purple', './assets/sprites/potion-purple.png');
 
     // Preload Aethelgard Asset Pack Manifest & Ambient Props
-    this.load.json('aethelgard-manifest', './assets/aethelgard/manifest.json');
+    this.load.json('aethelgard-manifest', './assets/manifest.json');
     this.load.image('prop-dead-tree', './assets/aethelgard/nature/trees/dead-tree.png');
     this.load.image('prop-sign-lantern', './assets/aethelgard/props/outdoor/sign-lantern.png');
     this.load.image('prop-brazier-orange', './assets/aethelgard/props/dungeon/brazier-orange.png');
     this.load.image('brazier-orange', './assets/aethelgard/props/dungeon/brazier-orange.png');
-    this.load.image('brazier-body', './assets/vfx/hamlet-fire/brazier-body.png');
-    this.load.image('brazier-flame', './assets/vfx/hamlet-fire/brazier-flame.png');
+    this.load.image('brazier-body', './assets/aethelgard/vfx/hamlet-fire/brazier-body.png');
+    this.load.image('brazier-flame', './assets/aethelgard/vfx/hamlet-fire/brazier-flame.png');
     this.load.image('prop-wooden-crate', './assets/aethelgard/props/outdoor/wooden-crate.png');
 
     // Preload Sanctuary Architecture, Vegetation & Relic Scenery
