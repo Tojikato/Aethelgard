@@ -80,33 +80,90 @@ async function runTest(sceneName, url) {
 
   await sleep(4000);
 
-  const evalResult = await send('Runtime.evaluate', {
+  // Baseline audit
+  const baselineAudit = await send('Runtime.evaluate', {
     expression: `(() => {
       const game = window.__AETHELGARD_GAME__;
       if (!game) return { error: 'No game found' };
       const scenes = game.scene.getScenes(true);
-      const activeScene = scenes[0];
-      if (!activeScene) return { error: 'No active scene' };
+      const scene = scenes[0];
+      if (!scene) return { error: 'No active scene' };
 
-      const gameObjects = activeScene.children.list;
-      const missingObjects = gameObjects.filter(obj => obj.texture && obj.texture.key === '__MISSING');
-
+      const p = scene.player;
       return {
-        sceneKey: activeScene.scene.key,
-        totalGameObjects: gameObjects.length,
-        missingObjectCount: missingObjects.length,
-        missingObjectKeys: missingObjects.map(o => o.texture.key),
-        totalLoadedTextures: Object.keys(game.textures.list).length
+        sceneKey: scene.scene.key,
+        playerPos: { x: p.x, y: p.y, groundY: scene.playerGroundY },
+        hasShadow: !!scene.playerShadow,
+        shadowPos: scene.playerShadow ? { x: scene.playerShadow.x, y: scene.playerShadow.y } : null,
+        shadowDepth: scene.playerShadow ? scene.playerShadow.depth : null,
+        playerDepth: p.depth,
+        isObstacleBlockedDefined: typeof scene.isObstacleBlocked === 'function'
       };
     })()`,
     returnByValue: true
   });
 
-  console.log('Scene Audit Result:', JSON.stringify(evalResult.result.value, null, 2));
+  console.log('Baseline Audit:', JSON.stringify(baselineAudit.result.value, null, 2));
+
+  // Simulate walking right for 400ms
+  await send('Input.dispatchKeyEvent', { type: 'keyDown', code: 'KeyD', key: 'd' });
+  await sleep(400);
+  await send('Input.dispatchKeyEvent', { type: 'keyUp', code: 'KeyD', key: 'd' });
+
+  // Wait 100ms for zero-momentum snap
+  await sleep(100);
+
+  const walkAudit = await send('Runtime.evaluate', {
+    expression: `(() => {
+      const game = window.__AETHELGARD_GAME__;
+      const scene = game.scene.getScenes(true)[0];
+      const p = scene.player;
+      return {
+        postWalkPos: { x: p.x, y: p.y, groundY: scene.playerGroundY },
+        isGrounded: p.y === scene.playerGroundY,
+        animKey: p.anims?.currentAnim?.key,
+        stepAcc: scene.stepDistanceAccumulator
+      };
+    })()`,
+    returnByValue: true
+  });
+
+  console.log('Post-Walk Audit:', JSON.stringify(walkAudit.result.value, null, 2));
+
+  // Simulate sprinting right for 300ms
+  await send('Input.dispatchKeyEvent', { type: 'keyDown', code: 'ShiftLeft', key: 'Shift' });
+  await send('Input.dispatchKeyEvent', { type: 'keyDown', code: 'KeyD', key: 'd' });
+  await sleep(300);
+  await send('Input.dispatchKeyEvent', { type: 'keyUp', code: 'KeyD', key: 'd' });
+  await send('Input.dispatchKeyEvent', { type: 'keyUp', code: 'ShiftLeft', key: 'Shift' });
+
+  await sleep(100);
+
+  const sprintAudit = await send('Runtime.evaluate', {
+    expression: `(() => {
+      const game = window.__AETHELGARD_GAME__;
+      const scene = game.scene.getScenes(true)[0];
+      const p = scene.player;
+      return {
+        postSprintPos: { x: p.x, y: p.y, groundY: scene.playerGroundY },
+        isGrounded: p.y === scene.playerGroundY,
+        animKey: p.anims?.currentAnim?.key
+      };
+    })()`,
+    returnByValue: true
+  });
+
+  console.log('Post-Sprint Audit:', JSON.stringify(sprintAudit.result.value, null, 2));
   console.log(`404 Network Errors: ${network404s.length}`);
   console.log(`Console Errors: ${consoleErrors.length}`);
 
-  const passed = network404s.length === 0 && consoleErrors.length === 0 && evalResult.result.value.missingObjectCount === 0;
+  const passed = network404s.length === 0 &&
+    consoleErrors.length === 0 &&
+    baselineAudit.result.value.hasShadow === true &&
+    baselineAudit.result.value.isObstacleBlockedDefined === true &&
+    walkAudit.result.value.isGrounded === true &&
+    sprintAudit.result.value.isGrounded === true;
+
   console.log(`STATUS: ${passed ? '✅ 100% PASS' : '❌ FAIL'}`);
 
   ws.close();

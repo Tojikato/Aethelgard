@@ -702,6 +702,8 @@ export default class Scene_Camp extends Phaser.Scene {
     const spawnY = this.entryPosition ? this.entryPosition.y : defaultSpawnY;
 
     this.player = createPlayer(this, spawnX, spawnY);
+    this.playerGroundY = spawnY;
+    this.playerShadow = this.add.ellipse(this.player.x, this.playerGroundY, 32, 9, 0x030305, 0.48);
 
     // Dust / ash kick-up particle emitter for sprinting
     this.sprintDustEmitter = this.add.particles(0, 0, 'ash_particle', {
@@ -1558,32 +1560,52 @@ export default class Scene_Camp extends Phaser.Scene {
   setupControls() {
     if (!this.input.keyboard) return;
     this.cursors = this.input.keyboard.createCursorKeys();
-    this.wasd = this.input.keyboard.addKeys({
-      up: Phaser.Input.Keyboard.KeyCodes.W,
-      down: Phaser.Input.Keyboard.KeyCodes.S,
-      left: Phaser.Input.Keyboard.KeyCodes.A,
-      right: Phaser.Input.Keyboard.KeyCodes.D,
-      interactF: Phaser.Input.Keyboard.KeyCodes.F,     // Keybind updated to 'F'
-      interactSpace: Phaser.Input.Keyboard.KeyCodes.SPACE,
-      shift: Phaser.Input.Keyboard.KeyCodes.SHIFT
-    });
+    this.keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
+    this.keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
+    this.keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
+    this.keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
     this.keyShift = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SHIFT);
+    this.keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
     this.keyM = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.M);
-    this.keyM.on('down', () => this.toggleWorldMap());
     this.keyN = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.N);
+    this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+
+    this.wasd = {
+      up: this.keyW,
+      down: this.keyS,
+      left: this.keyA,
+      right: this.keyD,
+      interactF: this.keyF,
+      interactSpace: this.keySpace,
+      shift: this.keyShift
+    };
+
+    this.keyM.on('down', () => this.toggleWorldMap());
     this.keyN.on('down', () => this.toggleMiniMap());
   }
 
   update(time, delta) {
     if (this.isAnyModalOpen()) {
-      if (this.player) this.player.anims.play('player-idle', true);
+      if (this.player && this.player.anims) {
+        this.player.anims.play('player-idle', true);
+      }
       return;
     }
 
     this.handlePlayerMovement(delta);
     this.handleProximityAndInteraction();
     this.updateMiniMapHUD();
-    this.handleDynamicYSorting();
+  }
+
+  isObstacleBlocked(x, y) {
+    const obstacles = this.staticObstacleBoxes || this.getObstacleBoxes() || [];
+    for (let i = 0; i < obstacles.length; i++) {
+      const b = obstacles[i];
+      if (x + 10 > b.minX && x - 10 < b.maxX && y > b.minY && y - 10 < b.maxY) {
+        return true;
+      }
+    }
+    return false;
   }
 
   handlePlayerMovement(delta) {
@@ -1592,25 +1614,22 @@ export default class Scene_Camp extends Phaser.Scene {
     let moveX = 0;
     let moveY = 0;
 
-    // Desktop Keyboard
-    if (this.cursors && this.wasd) {
-      if (this.cursors.left.isDown || this.wasd.left.isDown) moveX -= 1;
-      if (this.cursors.right.isDown || this.wasd.right.isDown) moveX += 1;
-      if (this.cursors.up.isDown || this.wasd.up.isDown) moveY -= 1;
-      if (this.cursors.down.isDown || this.wasd.down.isDown) moveY += 1;
+    if (this.cursors.left.isDown || (this.keyA && this.keyA.isDown) || (this.wasd?.left?.isDown)) moveX -= 1;
+    if (this.cursors.right.isDown || (this.keyD && this.keyD.isDown) || (this.wasd?.right?.isDown)) moveX += 1;
+    if (this.cursors.up.isDown || (this.keyW && this.keyW.isDown) || (this.wasd?.up?.isDown)) moveY -= 1;
+    if (this.cursors.down.isDown || (this.keyS && this.keyS.isDown) || (this.wasd?.down?.isDown)) moveY += 1;
+
+    // Mobile joystick input
+    if (this.joystickVector && (Math.abs(this.joystickVector.x) > 0.1 || Math.abs(this.joystickVector.y) > 0.1)) {
+      moveX = this.joystickVector.x;
+      moveY = this.joystickVector.y;
     }
 
-    // Mobile Virtual Joystick
-    if (this.joystickVector.x !== 0 || this.joystickVector.y !== 0) {
-      moveX += this.joystickVector.x;
-      moveY += this.joystickVector.y;
-    }
-
+    const isMoving = moveX !== 0 || moveY !== 0;
     const dt = delta / 1000;
     const isSprinting = Boolean(
       (this.keyShift && this.keyShift.isDown) ||
-      (this.cursors && this.cursors.shift && this.cursors.shift.isDown) ||
-      (this.wasd && this.wasd.shift && this.wasd.shift.isDown)
+      (this.cursors && this.cursors.shift && this.cursors.shift.isDown)
     );
 
     const baseSpeedX = 175;
@@ -1622,62 +1641,36 @@ export default class Scene_Camp extends Phaser.Scene {
       this.playerGroundY = this.player.y;
     }
 
-    if (moveX !== 0 || moveY !== 0) {
-      const len = Math.hypot(moveX, moveY);
-      const normX = moveX / len;
-      const normY = moveY / len;
+    if (isMoving) {
+      const mag = Math.hypot(moveX, moveY);
+      const normX = moveX / mag;
+      const normY = moveY / mag;
 
-      const dx = normX * speedX * dt;
-      const dy = normY * speedY * dt;
-
-      const obstacles = this.staticObstacleBoxes || this.getObstacleBoxes();
-      const bounds = this.getWalkBounds();
+      const stepX = normX * speedX * dt;
+      const stepY = normY * speedY * dt;
 
       const oldX = this.player.x;
       const oldY = this.playerGroundY;
 
-      // Separate X and Y collision resolution against solid footprints
-      // 1. Resolve X movement (Feet AABB)
-      const targetX = Phaser.Math.Clamp(oldX + dx, bounds.minX, bounds.maxX);
-      const fXMin = targetX - 10;
-      const fXMax = targetX + 10;
-      const fYMin = oldY - 10;
-      const fYMax = oldY;
+      let nextX = oldX + stepX;
+      let nextY = oldY + stepY;
 
-      let collidesX = false;
-      for (let i = 0; i < obstacles.length; i++) {
-        const b = obstacles[i];
-        if (!(fXMax <= b.minX || fXMin >= b.maxX || fYMax <= b.minY || fYMin >= b.maxY)) {
-          collidesX = true;
-          break;
-        }
+      // Bounds clamping
+      const bounds = this.getWalkBounds();
+      nextX = Phaser.Math.Clamp(nextX, bounds.minX, bounds.maxX);
+      nextY = Phaser.Math.Clamp(nextY, bounds.minY, bounds.maxY);
+
+      // Obstacle collision testing (smooth sliding along surfaces)
+      if (!this.isObstacleBlocked(nextX, oldY)) {
+        this.player.x = nextX;
       }
-      if (!collidesX) {
-        this.player.x = targetX;
+      if (!this.isObstacleBlocked(this.player.x, nextY)) {
+        this.playerGroundY = nextY;
       }
 
-      // 2. Resolve Y movement (Feet AABB)
-      const targetY = Phaser.Math.Clamp(oldY + dy, bounds.minY, bounds.maxY);
-      const fyXMin = this.player.x - 10;
-      const fyXMax = this.player.x + 10;
-      const fyYMin = targetY - 10;
-      const fyYMax = targetY;
-
-      let collidesY = false;
-      for (let i = 0; i < obstacles.length; i++) {
-        const b = obstacles[i];
-        if (!(fyXMax <= b.minX || fyXMin >= b.maxX || fyYMax <= b.minY || fyYMin >= b.maxY)) {
-          collidesY = true;
-          break;
-        }
-      }
-      if (!collidesY) {
-        this.playerGroundY = targetY;
-      }
-
-      // Sprite orientation
-      if (moveX < 0) this.player.setFlipX(true);
-      else if (moveX > 0) this.player.setFlipX(false);
+      // Sprite flip
+      if (normX < -0.1) this.player.setFlipX(true);
+      else if (normX > 0.1) this.player.setFlipX(false);
 
       // Distance-driven grounded footstep cadence (one distinct footstep every 20px)
       const actualMoved = Math.hypot(this.player.x - oldX, this.playerGroundY - oldY);
@@ -1723,18 +1716,11 @@ export default class Scene_Camp extends Phaser.Scene {
       this.playerShadow.setPosition(this.player.x, this.playerGroundY);
     }
 
+    // 2.5D Dynamic Y-Sorting
     this.player.sortY = this.playerGroundY;
     this.player.setDepth(Math.floor(this.player.sortY));
     if (this.playerShadow) {
       this.playerShadow.setDepth(this.player.depth - 1);
-    }
-  }
-
-  handleDynamicYSorting() {
-    if (!this.player) return;
-    const playerDepth = Math.floor(this.player.y);
-    if (this.player.depth !== playerDepth) {
-      this.player.setDepth(playerDepth);
     }
   }
 
@@ -2650,14 +2636,20 @@ export default class Scene_Camp extends Phaser.Scene {
   showAwakeningSequence() {
     if (!this.player) return;
     this.player.setAlpha(0);
-    this.player.y += 14;
+    const targetGroundY = this.playerGroundY !== undefined ? this.playerGroundY : this.player.y;
+    this.player.y = targetGroundY + 14;
+    if (this.playerShadow) {
+      this.playerShadow.setPosition(this.player.x, targetGroundY);
+    }
     this.tweens.add({
       targets: this.player,
       alpha: 1,
-      y: this.player.y - 14,
+      y: targetGroundY,
       duration: 1400,
       ease: 'Cubic.easeOut',
       onComplete: () => {
+        this.playerGroundY = targetGroundY;
+        this.player.y = targetGroundY;
         this.player.play('player-idle');
       }
     });
