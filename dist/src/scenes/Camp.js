@@ -727,19 +727,19 @@ export default class Scene_Camp extends Phaser.Scene {
     const fireBaseX = this.campScenery.x - 0.5;
     const fireBaseY = this.campScenery.y - 58;
 
-    // 4a. Create campfire burn animation (snappy, energetic flame cadence)
+    // 4a. Create campfire burn animation (snappy, energetic flame cadence +25% speed)
     if (!this.anims.exists('campfire-burn') && this.textures.exists('camp-flame')) {
       this.anims.create({
         key: 'campfire-burn',
         frames: this.anims.generateFrameNumbers('camp-flame', { start: 0, end: 11 }),
-        frameRate: 20,
+        frameRate: 25,
         repeat: -1
       });
       // Asynchronous inner core flame animation for multi-layered organic turbulence
       this.anims.create({
         key: 'campfire-burn-inner',
         frames: this.anims.generateFrameNumbers('camp-flame', { frames: [3, 4, 5, 6, 7, 8, 9, 10, 11, 0, 1, 2] }),
-        frameRate: 22,
+        frameRate: 28,
         repeat: -1
       });
     }
@@ -804,30 +804,30 @@ export default class Scene_Camp extends Phaser.Scene {
       this.campfireInnerFlame.play('campfire-burn-inner');
     }
 
-    // 4f. Fast Crackling Micro-Sparks (Hot cinders shooting up rapidly from bursting wood)
+    // 4f. Fast Crackling Micro-Sparks (Hot cinders shooting up rapidly from bursting wood, +25% speed)
     this.campfireSparks = this.add.particles(fireBaseX, fireBaseY - 14, 'ash_particle', {
-      speedX: { min: -32, max: 32 },
-      speedY: { min: -120, max: -240 },
-      accelerationY: 35,
-      lifespan: { min: 350, max: 700 },
+      speedX: { min: -40, max: 40 },
+      speedY: { min: -150, max: -300 },
+      accelerationY: 44,
+      lifespan: { min: 280, max: 560 },
       scale: { start: 0.55, end: 0 },
       alpha: { start: 1, end: 0 },
       tint: [0xffffff, 0xfff0aa, 0xffaa22, 0xff6600],
       blendMode: 'ADD',
-      frequency: 65,
+      frequency: 52,
       quantity: 1
     });
 
-    // 4g. Gentle Floating Night Embers (Lively drift into the cold borderland sky)
+    // 4g. Gentle Floating Night Embers (Lively drift into the cold borderland sky, +25% speed)
     this.campfireEmbers = this.add.particles(fireBaseX, fireBaseY - 20, 'ash_particle', {
-      speedX: { min: -18, max: 22 },
-      speedY: { min: -45, max: -90 },
-      lifespan: { min: 1400, max: 2200 },
+      speedX: { min: -22, max: 28 },
+      speedY: { min: -56, max: -112 },
+      lifespan: { min: 1120, max: 1760 },
       scale: { start: 0.55, end: 0 },
       alpha: { start: 0.85, end: 0 },
       tint: [0xffd54f, 0xff8f00, 0xff3d00, 0xb71c1c],
       blendMode: 'ADD',
-      frequency: 95,
+      frequency: 76,
       quantity: 1
     });
 
@@ -1862,9 +1862,9 @@ export default class Scene_Camp extends Phaser.Scene {
       this.cameras.main.scrollY = Math.floor(this.cameras.main.scrollY);
     }
 
-    // Dynamic Campfire Flame & Light Organic Multi-frequency Flicker
+    // Dynamic Campfire Flame & Light Organic Multi-frequency Flicker (+25% speed)
     if (this.hearthLight && this.campfireFlame) {
-      const fireT = time * 0.018;
+      const fireT = time * 0.0225;
       const flicker = Math.sin(fireT) * 0.09
         + Math.sin(fireT * 2.37) * 0.06
         + Math.sin(fireT * 5.81) * 0.035
