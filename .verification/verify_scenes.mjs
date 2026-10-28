@@ -14,10 +14,10 @@ const edgeProc = spawn(EDGE_PATH, [
   '--no-sandbox',
   '--disable-extensions',
   '--window-size=1280,720',
-  'about:blank'
+  'http://localhost:8080/'
 ]);
 
-await sleep(1500);
+await sleep(2000);
 
 async function runTest(sceneName, url) {
   console.log(`\n==================================================`);
@@ -76,9 +76,34 @@ async function runTest(sceneName, url) {
   await send('Runtime.enable');
   await send('Network.enable');
 
-  await send('Page.navigate', { url });
+  const pageLoaded = new Promise(resolve => {
+    const handler = (event) => {
+      const msg = JSON.parse(event.data);
+      if (msg.method === 'Page.loadEventFired') {
+        ws.removeEventListener('message', handler);
+        resolve();
+      }
+    };
+    ws.addEventListener('message', handler);
+  });
 
-  await sleep(4000);
+  await send('Page.navigate', { url });
+  await Promise.race([pageLoaded, sleep(4000)]);
+
+  // Wait for playable scene to be active and player ready
+  for (let i = 0; i < 30; i++) {
+    const check = await send('Runtime.evaluate', {
+      expression: `(() => {
+        const game = window.__AETHELGARD_GAME__;
+        if (!game) return false;
+        const active = game.scene.getScenes(true);
+        return active.some(s => s.player && s.scene.key.startsWith('Scene_'));
+      })()`,
+      returnByValue: true
+    });
+    if (check.result?.value) break;
+    await sleep(300);
+  }
 
   // Baseline audit
   const baselineAudit = await send('Runtime.evaluate', {
@@ -86,8 +111,14 @@ async function runTest(sceneName, url) {
       const game = window.__AETHELGARD_GAME__;
       if (!game) return { error: 'No game found' };
       const scenes = game.scene.getScenes(true);
-      const scene = scenes[0];
-      if (!scene) return { error: 'No active scene' };
+      const scene = scenes.find(s => s.player && s.scene?.key?.startsWith('Scene_')) || scenes[0];
+      if (!scene || !scene.player) {
+        return {
+          error: 'No active playable scene',
+          runningScenes: scenes.map(s => ({ key: s.scene?.key, hasPlayer: !!s.player })),
+          allScenes: game.scene.scenes.map(s => ({ key: s.scene?.key, status: s.scene?.settings?.status }))
+        };
+      }
 
       const p = scene.player;
       return {
@@ -116,8 +147,10 @@ async function runTest(sceneName, url) {
   const walkAudit = await send('Runtime.evaluate', {
     expression: `(() => {
       const game = window.__AETHELGARD_GAME__;
-      const scene = game.scene.getScenes(true)[0];
-      const p = scene.player;
+      const scenes = game.scene.getScenes(true);
+      const scene = scenes.find(s => s.player && s.scene?.key?.startsWith('Scene_')) || scenes[0];
+      const p = scene?.player;
+      if (!p) return { error: 'No player' };
       return {
         postWalkPos: { x: p.x, y: p.y, groundY: scene.playerGroundY },
         isGrounded: p.y === scene.playerGroundY,
@@ -142,8 +175,10 @@ async function runTest(sceneName, url) {
   const sprintAudit = await send('Runtime.evaluate', {
     expression: `(() => {
       const game = window.__AETHELGARD_GAME__;
-      const scene = game.scene.getScenes(true)[0];
-      const p = scene.player;
+      const scenes = game.scene.getScenes(true);
+      const scene = scenes.find(s => s.player && s.scene?.key?.startsWith('Scene_')) || scenes[0];
+      const p = scene?.player;
+      if (!p) return { error: 'No player' };
       return {
         postSprintPos: { x: p.x, y: p.y, groundY: scene.playerGroundY },
         isGrounded: p.y === scene.playerGroundY,

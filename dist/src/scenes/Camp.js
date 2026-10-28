@@ -20,6 +20,8 @@ import {
 import { CHRONOS } from '../services/chronos.js';
 import { worldMapOverlay } from '../ui/WorldMapOverlay.js';
 import { createPlayer, ensureProceduralActorTextures } from '../services/playerFactory.js';
+import { preloadPlayerAssets, playPlayerIdle, setPlayerMotionFrame, playerReplyPortrait } from '../services/playerAppearance.js';
+import { claimStarterBundle } from '../services/wardrobe.js';
 
 import {
   InventoryOverlay,
@@ -106,9 +108,13 @@ export default class Scene_Camp extends Phaser.Scene {
 
   init(data = {}) {
     this.entryPosition = data.returnPosition ?? data.spawnPosition ?? data.position ?? null;
+    this.fromTravel = Boolean(data.fromTravel || data.returnPosition);
   }
 
+  preload() { preloadPlayerAssets(this); }
+
   create() {
+    this.claimingStarter = false;
     console.log('%c[Scene_Camp] create — entering 2.5D Ashen Hamlet', 'color:#a88c5d;font-weight:bold');
     setScene(this);
 
@@ -140,8 +146,12 @@ export default class Scene_Camp extends Phaser.Scene {
       campTop.hidden = false;
     }
 
-    // ── 2. Realistic Eyelid Blink Sequence ──────────────────────────
-    this.createEyelidBlinkSequence();
+    // ── 2. Realistic Eyelid Blink Sequence (Fresh login/awakening only) ──
+    if (!this.fromTravel) {
+      this.createEyelidBlinkSequence();
+    } else {
+      camera.fadeIn(800, 0, 0, 0);
+    }
 
     // ── 3. Internal State, Chronos & NPC Progress ───────────────────
     this.focusing = false;       // true while a focus session is active
@@ -152,7 +162,7 @@ export default class Scene_Camp extends Phaser.Scene {
 
     // Watcher NPC Quest & Gift Persistence State
     this.watcherState = {
-      giftClaimed: localStorage.getItem('aethelgard_watcher_gift') === 'true',
+      giftClaimed: Boolean(getPlayer().starterBundleClaimed),
       trialCompleted: localStorage.getItem('aethelgard_watcher_trial') === 'true'
     };
 
@@ -162,8 +172,8 @@ export default class Scene_Camp extends Phaser.Scene {
     // ── 5. Ambient Atmospheric Ash & Ground Mist ────────────────────
     this.createAmbientAsh();
 
-    // ── 6. Backdrop & Walkable Ground Plane (Cached Static Layer) ──
-    this.renderBackdrop(this.scale.width, this.scale.height);
+    // ── 6. Backdrop & Walkable Ground Plane (Cached Static Layer across full 2400px) ──
+    this.renderBackdrop(this.worldWidth, H);
 
     // Real-Time 24-Hour Continuous Day/Night Lighting Engine
     this.dayNight = dayNightService.attachToScene(this, 180);
@@ -179,9 +189,11 @@ export default class Scene_Camp extends Phaser.Scene {
     this.createMiniMapHUD();
 
     // ── 8c. Awakening Narrative Toast & Rising Sequence ────────────
-    if (!sessionStorage.getItem('aethelgard_awakening_toast_shown')) {
+    if (!this.fromTravel && !sessionStorage.getItem('aethelgard_awakening_toast_shown')) {
       sessionStorage.setItem('aethelgard_awakening_toast_shown', 'true');
       this.showAwakeningSequence();
+    } else if (this.fromTravel) {
+      this.showItemAcquiredToast('✦ ENTERING THE ASHEN HAMLET · SAFE HAVEN ✦');
     }
 
     // ── 9. DOM UI (HUD, Prompts, Modals & Mobile Controls) ──────────
@@ -488,6 +500,113 @@ export default class Scene_Camp extends Phaser.Scene {
 
       this.textures.addCanvas('vault_chest', c);
     }
+
+    // 5. Ancient Inscribed Greek Sanctuary Runestones
+    const greekDeities = [
+      { id: 'athena', color: '#7fe0d4', glow: '#4dd0e1', symbol: 'aegis' },
+      { id: 'apollo', color: '#ffdd55', glow: '#ffaa00', symbol: 'sun' },
+      { id: 'hermes', color: '#50e3c2', glow: '#1de9b6', symbol: 'caduceus' },
+      { id: 'hecate', color: '#c77dff', glow: '#9d4edd', symbol: 'torches' },
+      { id: 'ares', color: '#ff6b6b', glow: '#e63946', symbol: 'helm' }
+    ];
+
+    for (const d of greekDeities) {
+      const texKey = `runestone_${d.id}`;
+      if (!this.textures.exists(texKey)) {
+        const W = 26;
+        const H = 42;
+        const c = document.createElement('canvas');
+        c.width = W;
+        c.height = H;
+        const ctx = c.getContext('2d');
+
+        // Weathered Obelisk Monolith Body
+        ctx.fillStyle = '#1c1824';
+        ctx.beginPath();
+        ctx.moveTo(7, 3);
+        ctx.lineTo(19, 3);
+        ctx.lineTo(23, 40);
+        ctx.lineTo(3, 40);
+        ctx.closePath();
+        ctx.fill();
+
+        // Stone edge bevel
+        ctx.strokeStyle = '#383046';
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+
+        ctx.fillStyle = '#2b2436';
+        ctx.fillRect(8, 4, 10, 34);
+
+        // Weathering fissures
+        ctx.fillStyle = '#0f0c14';
+        ctx.fillRect(9, 12, 4, 1);
+        ctx.fillRect(14, 25, 5, 1);
+        ctx.fillRect(7, 32, 4, 1);
+
+        // Luminous Greek Sigil
+        ctx.fillStyle = d.glow;
+        ctx.shadowColor = d.color;
+        ctx.shadowBlur = 6;
+
+        if (d.symbol === 'aegis') {
+          // Athena Aegis / Owl Crest
+          ctx.beginPath();
+          ctx.moveTo(13, 10);
+          ctx.lineTo(18, 14);
+          ctx.lineTo(16, 22);
+          ctx.lineTo(13, 25);
+          ctx.lineTo(10, 22);
+          ctx.lineTo(8, 14);
+          ctx.closePath();
+          ctx.fill();
+          ctx.fillStyle = '#ffffff';
+          ctx.fillRect(12, 14, 2, 4);
+        } else if (d.symbol === 'sun') {
+          // Apollo Sun Lyre
+          ctx.beginPath();
+          ctx.arc(13, 17, 4.5, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.fillStyle = '#ffffff';
+          ctx.fillRect(12, 8, 2, 3);
+          ctx.fillRect(12, 23, 2, 3);
+          ctx.fillRect(5, 16, 3, 2);
+          ctx.fillRect(18, 16, 3, 2);
+        } else if (d.symbol === 'caduceus') {
+          // Hermes Caduceus
+          ctx.fillRect(12, 10, 2, 15);
+          ctx.beginPath();
+          ctx.arc(10, 15, 3, 0, Math.PI);
+          ctx.arc(16, 18, 3, Math.PI, 0);
+          ctx.fill();
+          ctx.fillStyle = '#ffffff';
+          ctx.fillRect(8, 11, 10, 2);
+        } else if (d.symbol === 'torches') {
+          // Hecate Twin Torches
+          ctx.beginPath();
+          ctx.moveTo(9, 11);
+          ctx.lineTo(17, 23);
+          ctx.moveTo(17, 11);
+          ctx.lineTo(9, 23);
+          ctx.stroke();
+          ctx.arc(13, 17, 3, 0, Math.PI * 2);
+          ctx.fill();
+        } else if (d.symbol === 'helm') {
+          // Ares Spartan Helm
+          ctx.beginPath();
+          ctx.arc(13, 16, 5, Math.PI, 0);
+          ctx.lineTo(18, 22);
+          ctx.lineTo(8, 22);
+          ctx.closePath();
+          ctx.fill();
+          ctx.fillStyle = '#ffffff';
+          ctx.fillRect(12, 9, 2, 4);
+        }
+
+        ctx.shadowBlur = 0;
+        this.textures.addCanvas(texKey, c);
+      }
+    }
   }
 
   // ═════════════════════════════════════════════════════════════════
@@ -559,35 +678,33 @@ export default class Scene_Camp extends Phaser.Scene {
         .setOrigin(0.5, 1).setScale(1.0);
     }
 
-    // Ancient Olympian Shrine: Angel Statue & Sacred Altar
-    const statueKey = this.textures.exists('sanctuary-angel-statue') ? 'sanctuary-angel-statue' : (this.textures.exists('angel-statue') ? 'angel-statue' : null);
-    if (statueKey) {
-      this.shrineStatue = this.add.image(780, H * 0.61, statueKey)
-        .setOrigin(0.5, 1).setScale(1.1);
-    }
+    // Ancient Olympian Shrine Complex: Central Stone Altar & 5 Flanking Greek Sanctuary Runestones
+    const altarKey = this.textures.exists('sanctuary-altar') ? 'sanctuary-altar' : (this.textures.exists('altar') ? 'altar' : 'sanctuary-altar');
+    this.sanctuaryAltar = this.add.image(780, baseLineY, altarKey)
+      .setOrigin(0.5, 1).setScale(1.1);
 
-    const altarKey = this.textures.exists('sanctuary-altar') ? 'sanctuary-altar' : (this.textures.exists('altar') ? 'altar' : null);
-    if (altarKey) {
-      this.sanctuaryAltar = this.add.image(780, H * 0.67, altarKey)
-        .setOrigin(0.5, 1).setScale(1.05);
+    this.runestoneAthena = this.add.image(710, baseLineY, 'runestone_athena').setOrigin(0.5, 1);
+    this.runestoneApollo = this.add.image(745, baseLineY, 'runestone_apollo').setOrigin(0.5, 1);
+    this.runestoneHermes = this.add.image(815, baseLineY, 'runestone_hermes').setOrigin(0.5, 1);
+    this.runestoneHecate = this.add.image(850, baseLineY, 'runestone_hecate').setOrigin(0.5, 1);
+    this.runestoneAres = this.add.image(885, baseLineY, 'runestone_ares').setOrigin(0.5, 1);
 
-      // Celestial teal resonance particle emitter
-      this.altarResonanceParticles = this.add.particles(this.sanctuaryAltar.x, this.sanctuaryAltar.y - 25, 'ash_particle', {
-        speedY: { min: -25, max: -65 },
-        speedX: { min: -15, max: 15 },
-        lifespan: { min: 800, max: 1400 },
-        scale: { start: 0.65, end: 0 },
-        alpha: { start: 0.85, end: 0 },
-        tint: [0x7fe0d4, 0x4dd0e1, 0x00bcd4, 0xffffff],
-        blendMode: 'ADD',
-        frequency: 240,
-        quantity: 1
-      });
-      this.altarResonanceParticles.setDepth(160);
-    }
+    // Celestial resonance particles (divine teal & radiant gold)
+    this.altarResonanceParticles = this.add.particles(this.sanctuaryAltar.x, this.sanctuaryAltar.y - 25, 'ash_particle', {
+      speedY: { min: -25, max: -65 },
+      speedX: { min: -15, max: 15 },
+      lifespan: { min: 800, max: 1400 },
+      scale: { start: 0.65, end: 0 },
+      alpha: { start: 0.85, end: 0 },
+      tint: [0x7fe0d4, 0xffd700, 0x4dd0e1, 0xffffff],
+      blendMode: 'ADD',
+      frequency: 220,
+      quantity: 1
+    });
+    this.altarResonanceParticles.setDepth(160);
 
     if (this.textures.exists('sanctuary-signpost')) {
-      this.ancientPlaque = this.add.image(920, H * 0.72, 'sanctuary-signpost')
+      this.ancientPlaque = this.add.image(950, baseLineY, 'sanctuary-signpost')
         .setOrigin(0.5, 1).setScale(1.25);
     }
 
@@ -603,21 +720,115 @@ export default class Scene_Camp extends Phaser.Scene {
         .setOrigin(0.5, 1).setScale(1.0);
     }
 
-    // ── 4. Center: PROTECTED Campsite & Hearth (UNTOUCHED) ──────────
+    // ── 4. Center: Campsite & Living Dynamic Campfire Hearth ──────────
     this.campScenery = this.add.image(1200, H * 0.75, 'camp')
       .setOrigin(0.5, 1).setScale(1.0);
 
-    // Campfire Hearth Rising Ember Particles
-    this.campfireEmbers = this.add.particles(this.campScenery.x - 22, this.campScenery.y - 25, 'ash_particle', {
-      speedY: { min: -30, max: -70 },
-      speedX: { min: -12, max: 12 },
-      lifespan: { min: 1400, max: 2400 },
+    const fireBaseX = this.campScenery.x - 0.5;
+    const fireBaseY = this.campScenery.y - 58;
+
+    // 4a. Create campfire burn animation (snappy, energetic flame cadence)
+    if (!this.anims.exists('campfire-burn') && this.textures.exists('camp-flame')) {
+      this.anims.create({
+        key: 'campfire-burn',
+        frames: this.anims.generateFrameNumbers('camp-flame', { start: 0, end: 11 }),
+        frameRate: 20,
+        repeat: -1
+      });
+      // Asynchronous inner core flame animation for multi-layered organic turbulence
+      this.anims.create({
+        key: 'campfire-burn-inner',
+        frames: this.anims.generateFrameNumbers('camp-flame', { frames: [3, 4, 5, 6, 7, 8, 9, 10, 11, 0, 1, 2] }),
+        frameRate: 22,
+        repeat: -1
+      });
+    }
+
+    // 4b. Dynamic Radial Hearth Light (Soft flickering illumination on ground & tents)
+    if (!this.textures.exists('hearth_radial_light')) {
+      const lc = document.createElement('canvas');
+      lc.width = 256;
+      lc.height = 256;
+      const lctx = lc.getContext('2d');
+      const grad = lctx.createRadialGradient(128, 128, 0, 128, 128, 128);
+      grad.addColorStop(0, 'rgba(255, 180, 50, 0.85)');
+      grad.addColorStop(0.35, 'rgba(255, 100, 20, 0.45)');
+      grad.addColorStop(0.7, 'rgba(220, 50, 10, 0.15)');
+      grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+      lctx.fillStyle = grad;
+      lctx.fillRect(0, 0, 256, 256);
+      this.textures.addCanvas('hearth_radial_light', lc);
+    }
+    this.hearthLight = this.add.image(fireBaseX, fireBaseY - 24, 'hearth_radial_light')
+      .setOrigin(0.5, 0.5)
+      .setScale(1.0)
+      .setBlendMode(Phaser.BlendModes.ADD)
+      .setAlpha(0.65);
+
+    // 4c. Ground Hot Embers Glow Ellipse (Pulsing orange heat bed on the firepit stones)
+    if (!this.textures.exists('hearth_ground_glow')) {
+      const gc = document.createElement('canvas');
+      gc.width = 128;
+      gc.height = 64;
+      const gctx = gc.getContext('2d');
+      const ggrad = gctx.createRadialGradient(64, 32, 0, 64, 32, 64);
+      ggrad.addColorStop(0, 'rgba(255, 90, 10, 0.9)');
+      ggrad.addColorStop(0.5, 'rgba(200, 40, 5, 0.4)');
+      ggrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+      gctx.fillStyle = ggrad;
+      gctx.fillRect(0, 0, 128, 64);
+      this.textures.addCanvas('hearth_ground_glow', gc);
+    }
+    this.hearthGroundGlow = this.add.image(fireBaseX, fireBaseY + 6, 'hearth_ground_glow')
+      .setOrigin(0.5, 0.5)
+      .setScale(0.9, 0.6)
+      .setBlendMode(Phaser.BlendModes.ADD)
+      .setAlpha(0.7);
+
+    // 4d. Primary Animated Flame (Natural dancing fire with rapid sway & licks)
+    if (this.textures.exists('camp-flame')) {
+      this.campfireFlame = this.add.sprite(fireBaseX, fireBaseY, 'camp-flame')
+        .setOrigin(0.5, 1.0)
+        .setScale(1.0);
+      this.campfireFlame.play('campfire-burn');
+    }
+
+    // 4e. Secondary Inner Blazing Core (Luminescent additive blend - intense heat)
+    if (this.textures.exists('camp-flame')) {
+      this.campfireInnerFlame = this.add.sprite(fireBaseX, fireBaseY, 'camp-flame')
+        .setOrigin(0.5, 1.0)
+        .setScale(0.92, 0.95)
+        .setBlendMode(Phaser.BlendModes.ADD)
+        .setTint(0xffeedd)
+        .setAlpha(0.75);
+      this.campfireInnerFlame.play('campfire-burn-inner');
+    }
+
+    // 4f. Fast Crackling Micro-Sparks (Hot cinders shooting up rapidly from bursting wood)
+    this.campfireSparks = this.add.particles(fireBaseX, fireBaseY - 14, 'ash_particle', {
+      speedX: { min: -32, max: 32 },
+      speedY: { min: -120, max: -240 },
+      accelerationY: 35,
+      lifespan: { min: 350, max: 700 },
+      scale: { start: 0.55, end: 0 },
+      alpha: { start: 1, end: 0 },
+      tint: [0xffffff, 0xfff0aa, 0xffaa22, 0xff6600],
+      blendMode: 'ADD',
+      frequency: 65,
+      quantity: 1
+    });
+
+    // 4g. Gentle Floating Night Embers (Lively drift into the cold borderland sky)
+    this.campfireEmbers = this.add.particles(fireBaseX, fireBaseY - 20, 'ash_particle', {
+      speedX: { min: -18, max: 22 },
+      speedY: { min: -45, max: -90 },
+      lifespan: { min: 1400, max: 2200 },
       scale: { start: 0.55, end: 0 },
       alpha: { start: 0.85, end: 0 },
-      tint: [0xffe680, 0xffaa33, 0xff5500, 0xff2200],
+      tint: [0xffd54f, 0xff8f00, 0xff3d00, 0xb71c1c],
       blendMode: 'ADD',
-      frequency: 90,
-      quantity: 2
+      frequency: 95,
+      quantity: 1
     });
 
     // ── 4b. East Approach & Map Table (x: 1400 - 1850) ─────────────
@@ -647,14 +858,31 @@ export default class Scene_Camp extends Phaser.Scene {
     }
 
     // Far Right Edge: Hamlet Gate flanked by Dungeon Braziers
-    if (this.textures.exists('prop-brazier-orange')) {
-      this.brazierGateLeft = this.add.image(2100, baseLineY, 'prop-brazier-orange')
+    const brazierKey = this.textures.exists('brazier-body') ? 'brazier-body' : 'prop-brazier-orange';
+    if (this.textures.exists(brazierKey)) {
+      this.brazierGateLeft = this.add.image(2100, baseLineY, brazierKey)
         .setOrigin(0.5, 1).setScale(0.9);
-      this.brazierGateRight = this.add.image(2360, baseLineY, 'prop-brazier-orange')
+      this.brazierGateRight = this.add.image(2360, baseLineY, brazierKey)
         .setOrigin(0.5, 1).setScale(0.9);
 
+      if (!this.anims.exists('brazier-burn') && this.textures.exists('brazier-flame')) {
+        this.anims.create({
+          key: 'brazier-burn',
+          frames: this.anims.generateFrameNumbers('brazier-flame', { start: 0, end: 11 }),
+          frameRate: 18,
+          repeat: -1
+        });
+      }
+
+      if (this.textures.exists('brazier-flame')) {
+        this.brazierFlameLeft = this.add.sprite(2100, baseLineY - 48, 'brazier-flame')
+          .setOrigin(0.5, 1).setScale(0.9).play('brazier-burn');
+        this.brazierFlameRight = this.add.sprite(2360, baseLineY - 48, 'brazier-flame')
+          .setOrigin(0.5, 1).setScale(0.9).play('brazier-burn');
+      }
+
       // Brazier ember particles
-      this.brazierEmbersLeft = this.add.particles(this.brazierGateLeft.x, this.brazierGateLeft.y - 70, 'ash_particle', {
+      this.brazierEmbersLeft = this.add.particles(this.brazierGateLeft.x, this.brazierGateLeft.y - 50, 'ash_particle', {
         speedY: { min: -18, max: -45 },
         speedX: { min: -8, max: 8 },
         lifespan: { min: 900, max: 1500 },
@@ -666,7 +894,7 @@ export default class Scene_Camp extends Phaser.Scene {
         quantity: 1
       });
 
-      this.brazierEmbersRight = this.add.particles(this.brazierGateRight.x, this.brazierGateRight.y - 70, 'ash_particle', {
+      this.brazierEmbersRight = this.add.particles(this.brazierGateRight.x, this.brazierGateRight.y - 50, 'ash_particle', {
         speedY: { min: -18, max: -45 },
         speedX: { min: -8, max: 8 },
         lifespan: { min: 900, max: 1500 },
@@ -727,8 +955,12 @@ export default class Scene_Camp extends Phaser.Scene {
       this.vaultChest,
       this.ruinsRocks,
       this.well,
-      this.shrineStatue,
+      this.runestoneAthena,
+      this.runestoneApollo,
       this.sanctuaryAltar,
+      this.runestoneHermes,
+      this.runestoneHecate,
+      this.runestoneAres,
       this.ancientPlaque,
       this.cart,
       this.campScenery,
@@ -765,11 +997,14 @@ export default class Scene_Camp extends Phaser.Scene {
     if (this.vaultChest) { this.vaultChest.sortY = this.vaultChest.y; this.vaultChest.setDepth(Math.floor(this.vaultChest.sortY)); }
     if (this.ruinsRocks) { this.ruinsRocks.sortY = this.ruinsRocks.y; this.ruinsRocks.setDepth(Math.floor(this.ruinsRocks.sortY)); }
     if (this.well) { this.well.sortY = this.well.y - 10; this.well.setDepth(Math.floor(this.well.sortY)); }
-    if (this.signpost) { this.signpost.sortY = this.signpost.y - 5; this.signpost.setDepth(Math.floor(this.signpost.sortY)); }
     if (this.cart) { this.cart.sortY = this.cart.y - 12; this.cart.setDepth(Math.floor(this.cart.sortY)); }
     if (this.mapTable) { this.mapTable.sortY = this.mapTable.y - 8; this.mapTable.setDepth(Math.floor(this.mapTable.sortY)); }
-    if (this.shrineStatue) { this.shrineStatue.sortY = this.shrineStatue.y - 4; this.shrineStatue.setDepth(Math.floor(this.shrineStatue.sortY)); }
+    if (this.runestoneAthena) { this.runestoneAthena.sortY = this.runestoneAthena.y; this.runestoneAthena.setDepth(Math.floor(this.runestoneAthena.sortY)); }
+    if (this.runestoneApollo) { this.runestoneApollo.sortY = this.runestoneApollo.y; this.runestoneApollo.setDepth(Math.floor(this.runestoneApollo.sortY)); }
     if (this.sanctuaryAltar) { this.sanctuaryAltar.sortY = this.sanctuaryAltar.y; this.sanctuaryAltar.setDepth(Math.floor(this.sanctuaryAltar.sortY)); }
+    if (this.runestoneHermes) { this.runestoneHermes.sortY = this.runestoneHermes.y; this.runestoneHermes.setDepth(Math.floor(this.runestoneHermes.sortY)); }
+    if (this.runestoneHecate) { this.runestoneHecate.sortY = this.runestoneHecate.y; this.runestoneHecate.setDepth(Math.floor(this.runestoneHecate.sortY)); }
+    if (this.runestoneAres) { this.runestoneAres.sortY = this.runestoneAres.y; this.runestoneAres.setDepth(Math.floor(this.runestoneAres.sortY)); }
     if (this.ancientPlaque) { this.ancientPlaque.sortY = this.ancientPlaque.y; this.ancientPlaque.setDepth(Math.floor(this.ancientPlaque.sortY)); }
     if (this.signLantern) { this.signLantern.sortY = this.signLantern.y; this.signLantern.setDepth(Math.floor(this.signLantern.sortY)); }
     if (this.gateBush) { this.gateBush.sortY = this.gateBush.y; this.gateBush.setDepth(Math.floor(this.gateBush.sortY)); }
@@ -782,9 +1017,18 @@ export default class Scene_Camp extends Phaser.Scene {
     if (this.brazierGateRight) { this.brazierGateRight.sortY = this.brazierGateRight.y; this.brazierGateRight.setDepth(Math.floor(this.brazierGateRight.sortY)); }
     if (this.gateRocks) { this.gateRocks.sortY = this.gateRocks.y; this.gateRocks.setDepth(Math.floor(this.gateRocks.sortY)); }
     if (this.player) { this.player.sortY = this.player.y; this.player.setDepth(Math.floor(this.player.sortY)); }
-    if (this.campfireEmbers && this.campScenery) {
-      this.campfireEmbers.setDepth(Math.floor(this.campScenery.sortY + 2));
-    }
+    const campDepth = Math.floor(this.campScenery.sortY);
+    if (this.hearthLight) this.hearthLight.setDepth(campDepth - 1);
+    if (this.hearthGroundGlow) this.hearthGroundGlow.setDepth(campDepth - 1);
+    if (this.campfireFlame) this.campfireFlame.setDepth(campDepth + 1);
+    if (this.campfireInnerFlame) this.campfireInnerFlame.setDepth(campDepth + 2);
+    if (this.campfireSparks) this.campfireSparks.setDepth(campDepth + 3);
+    if (this.campfireEmbers) this.campfireEmbers.setDepth(campDepth + 4);
+
+    if (this.brazierGateLeft && this.brazierFlameLeft) this.brazierFlameLeft.setDepth(this.brazierGateLeft.depth + 1);
+    if (this.brazierGateRight && this.brazierFlameRight) this.brazierFlameRight.setDepth(this.brazierGateRight.depth + 1);
+    if (this.brazierEmbersLeft && this.brazierGateLeft) this.brazierEmbersLeft.setDepth(this.brazierGateLeft.depth + 2);
+    if (this.brazierEmbersRight && this.brazierGateRight) this.brazierEmbersRight.setDepth(this.brazierGateRight.depth + 2);
   }
 
   rebuildStaticObstacleBoxes() {
@@ -796,16 +1040,16 @@ export default class Scene_Camp extends Phaser.Scene {
       {
         id: 'camp',
         title: 'Campfire Hearth',
-        prompt: '[F] MEDITATE AT HEARTH',
-        x: this.campScenery ? this.campScenery.x - 22 : 0,
-        y: this.campScenery ? this.campScenery.y - 15 : 0,
+        prompt: '[F] TAKE RESPITE AT THE HEARTH',
+        x: this.campScenery ? this.campScenery.x : 0,
+        y: this.campScenery ? this.campScenery.y - 45 : 0,
         radius: 110,
         action: () => this.openHearthModal()
       },
       {
         id: 'vault',
         title: 'Vault of Echoes',
-        prompt: '[F] INSPECT VAULT OF ECHOES',
+        prompt: '[F] SURVEY THE VAULT OF ECHOES',
         x: this.vaultChest ? this.vaultChest.x : 0,
         y: this.vaultChest ? this.vaultChest.y - 10 : 0,
         radius: 80,
@@ -817,7 +1061,7 @@ export default class Scene_Camp extends Phaser.Scene {
       {
         id: 'map-table',
         title: 'The Atlas Table',
-        prompt: '[F] EXAMINE ATLAS TABLE',
+        prompt: '[F] CONSULT THE ATLAS TABLE',
         x: this.mapTable ? this.mapTable.x : 1640,
         y: this.mapTable ? this.mapTable.y - 12 : 520,
         radius: 80,
@@ -826,7 +1070,7 @@ export default class Scene_Camp extends Phaser.Scene {
       {
         id: 'watcher',
         title: 'The Ashen Watcher',
-        prompt: '[F] SPEAK WITH THE STRANGER',
+        prompt: '[F] CONVERSE WITH THE ASHEN WATCHER',
         x: this.watcher ? this.watcher.x : 0,
         y: this.watcher ? this.watcher.y - 20 : 0,
         radius: 85,
@@ -835,7 +1079,7 @@ export default class Scene_Camp extends Phaser.Scene {
       {
         id: 'gate',
         title: 'Hamlet Gate',
-        prompt: '[F] EXAMINE HAMLET GATE',
+        prompt: '[F] SURVEY THE ANCIENT PASSAGE',
         x: this.archStone ? this.archStone.x : 0,
         y: this.archStone ? this.archStone.y - 20 : 0,
         radius: 95,
@@ -844,25 +1088,25 @@ export default class Scene_Camp extends Phaser.Scene {
       {
         id: 'plaque',
         title: 'Sanctuary Runestone',
-        prompt: '[F] READ RUNIC PLAQUE',
-        x: this.ancientPlaque ? this.ancientPlaque.x : 920,
+        prompt: '[F] DECIPHER THE RUNIC TABLET',
+        x: this.ancientPlaque ? this.ancientPlaque.x : 950,
         y: this.ancientPlaque ? this.ancientPlaque.y - 15 : 520,
         radius: 75,
         action: () => this.openLoreModal('plaque')
       },
       {
         id: 'altar',
-        title: 'Olympian Shrine',
-        prompt: '[F] PRAY AT OLYMPIAN SHRINE',
+        title: 'The Olympian Pantheon Altar',
+        prompt: '[F] COMMUNE WITH THE OLYMPIAN PANTHEON',
         x: this.sanctuaryAltar ? this.sanctuaryAltar.x : 780,
         y: this.sanctuaryAltar ? this.sanctuaryAltar.y - 15 : 480,
-        radius: 90,
+        radius: 95,
         action: () => this.openCovenantModal()
       },
       {
         id: 'banner',
         title: 'Tattered Crest',
-        prompt: '[F] EXAMINE TATTERED CREST',
+        prompt: '[F] GAZE UPON THE TATTERED CREST',
         x: this.tatteredBanner ? this.tatteredBanner.x : 2050,
         y: this.tatteredBanner ? this.tatteredBanner.y - 15 : 450,
         radius: 75,
@@ -892,27 +1136,37 @@ export default class Scene_Camp extends Phaser.Scene {
     if (this.fgFernLeft) this.fgFernLeft.setPosition(40, H * 0.97);
     if (this.fgFernRight) this.fgFernRight.setPosition(2360, H * 0.97);
 
-    // Playable layer
-    if (this.deadTree) this.deadTree.setPosition(90, H * 0.67);
+    // Playable layer firmly seated on the stone road plane
+    if (this.deadTree) this.deadTree.setPosition(90, baseLineY);
     this.ruinsBrick.setPosition(240, baseLineY);
     this.ruinsStone.setPosition(440, baseLineY);
-    if (this.woodenCrate) this.woodenCrate.setPosition(290, H * 0.79);
-    this.vaultChest.setPosition(380, H * 0.77);
-    if (this.well) this.well.setPosition(620, H * 0.76);
+    if (this.woodenCrate) this.woodenCrate.setPosition(290, baseLineY);
+    this.vaultChest.setPosition(380, baseLineY);
+    if (this.well) this.well.setPosition(620, baseLineY);
 
-    if (this.shrineStatue) this.shrineStatue.setPosition(780, H * 0.61);
+    if (this.runestoneAthena) this.runestoneAthena.setPosition(710, baseLineY);
+    if (this.runestoneApollo) this.runestoneApollo.setPosition(745, baseLineY);
     if (this.sanctuaryAltar) {
-      this.sanctuaryAltar.setPosition(780, H * 0.67);
+      this.sanctuaryAltar.setPosition(780, baseLineY);
       if (this.altarResonanceParticles) this.altarResonanceParticles.setPosition(this.sanctuaryAltar.x, this.sanctuaryAltar.y - 25);
     }
-    if (this.ancientPlaque) this.ancientPlaque.setPosition(920, H * 0.72);
-    if (this.cart) this.cart.setPosition(1060, H * 0.77);
+    if (this.runestoneHermes) this.runestoneHermes.setPosition(815, baseLineY);
+    if (this.runestoneHecate) this.runestoneHecate.setPosition(850, baseLineY);
+    if (this.runestoneAres) this.runestoneAres.setPosition(885, baseLineY);
 
-    this.campScenery.setPosition(1200, H * 0.75);
+    if (this.ancientPlaque) this.ancientPlaque.setPosition(950, baseLineY);
+    if (this.cart) this.cart.setPosition(1060, baseLineY);
 
-    if (this.campfireEmbers) {
-      this.campfireEmbers.setPosition(this.campScenery.x - 22, this.campScenery.y - 25);
-    }
+    this.campScenery.setPosition(1200, baseLineY);
+    const fireBaseX = this.campScenery.x - 0.5;
+    const fireBaseY = this.campScenery.y - 58;
+
+    if (this.campfireFlame) this.campfireFlame.setPosition(fireBaseX, fireBaseY);
+    if (this.campfireInnerFlame) this.campfireInnerFlame.setPosition(fireBaseX, fireBaseY);
+    if (this.hearthLight) this.hearthLight.setPosition(fireBaseX, fireBaseY - 24);
+    if (this.hearthGroundGlow) this.hearthGroundGlow.setPosition(fireBaseX, fireBaseY + 6);
+    if (this.campfireSparks) this.campfireSparks.setPosition(fireBaseX, fireBaseY - 14);
+    if (this.campfireEmbers) this.campfireEmbers.setPosition(fireBaseX, fireBaseY - 20);
 
     if (this.signLantern) this.signLantern.setPosition(1420, baseLineY);
     if (this.mapTable) this.mapTable.setPosition(1640, baseLineY);
@@ -921,12 +1175,14 @@ export default class Scene_Camp extends Phaser.Scene {
 
     if (this.brazierGateLeft) {
       this.brazierGateLeft.setPosition(2100, baseLineY);
-      if (this.brazierEmbersLeft) this.brazierEmbersLeft.setPosition(this.brazierGateLeft.x, this.brazierGateLeft.y - 70);
+      if (this.brazierFlameLeft) this.brazierFlameLeft.setPosition(2100, baseLineY - 48);
+      if (this.brazierEmbersLeft) this.brazierEmbersLeft.setPosition(2100, baseLineY - 50);
     }
     this.archStone.setPosition(2240, baseLineY);
     if (this.brazierGateRight) {
       this.brazierGateRight.setPosition(2360, baseLineY);
-      if (this.brazierEmbersRight) this.brazierEmbersRight.setPosition(this.brazierGateRight.x, this.brazierGateRight.y - 70);
+      if (this.brazierFlameRight) this.brazierFlameRight.setPosition(2360, baseLineY - 48);
+      if (this.brazierEmbersRight) this.brazierEmbersRight.setPosition(2360, baseLineY - 50);
     }
 
     this.updateSortYProperties();
@@ -1036,10 +1292,10 @@ export default class Scene_Camp extends Phaser.Scene {
       });
       // Central Fire Pit rocks (cannot walk through the fire, but can walk all around it)
       boxes.push({
-        minX: cx - 36,
-        maxX: cx - 8,
-        minY: cy - 38,
-        maxY: cy - 14
+        minX: cx - 24,
+        maxX: cx + 24,
+        minY: cy - 70,
+        maxY: cy - 42
       });
     }
 
@@ -1124,11 +1380,22 @@ export default class Scene_Camp extends Phaser.Scene {
     }
     if (this.sanctuaryAltar) {
       boxes.push({
-        minX: this.sanctuaryAltar.x - 24,
-        maxX: this.sanctuaryAltar.x + 24,
-        minY: this.sanctuaryAltar.y - 14,
-        maxY: this.sanctuaryAltar.y + 4
+        minX: this.sanctuaryAltar.x - 30,
+        maxX: this.sanctuaryAltar.x + 30,
+        minY: this.sanctuaryAltar.y - 16,
+        maxY: this.sanctuaryAltar.y + 6
       });
+    }
+    const greekStones = [this.runestoneAthena, this.runestoneApollo, this.runestoneHermes, this.runestoneHecate, this.runestoneAres];
+    for (const r of greekStones) {
+      if (r) {
+        boxes.push({
+          minX: r.x - 12,
+          maxX: r.x + 12,
+          minY: r.y - 12,
+          maxY: r.y + 4
+        });
+      }
     }
     if (this.ancientPlaque) {
       boxes.push({
@@ -1167,18 +1434,22 @@ export default class Scene_Camp extends Phaser.Scene {
   // ═════════════════════════════════════════════════════════════════
 
   renderBackdrop(width, height) {
+    const W = this.worldWidth || width || 2400;
+    const H = height || (this.scale && this.scale.height) || 720;
+
+    // 1. Panoramic atmospheric background (sky & mountains stretched across full 2400px width)
     if (this.textures.exists('bg-ashen-hamlet')) {
       if (!this.bgImage) {
         this.bgImage = this.add.image(0, 0, 'bg-ashen-hamlet')
           .setOrigin(0, 0)
-          .setDisplaySize(width, height)
-          .setDepth(-10);
+          .setDisplaySize(W, H)
+          .setDepth(-20);
       } else {
-        this.bgImage.setDisplaySize(width, height);
+        this.bgImage.setDisplaySize(W, H);
       }
-      return;
     }
 
+    // 2. Procedural panoramic ground plane, thoroughfare & cobblestones spanning full 2400px width
     if (!this.backdropGfx) {
       this.backdropGfx = this.add.graphics()
         .setDepth(-10);
@@ -1186,15 +1457,16 @@ export default class Scene_Camp extends Phaser.Scene {
       this.backdropGfx.clear();
     }
 
-    this.drawStaticBackdrop(this.backdropGfx, width, height);
+    this.drawStaticBackdrop(this.backdropGfx, W, H);
     this.backdropRT = this.backdropGfx;
   }
 
   drawStaticBackdrop(gfx, width, height) {
     const horizonY = height * 0.54;
+    const hasBg = this.textures.exists('bg-ashen-hamlet');
 
     // ── 1. Restrained Midnight-Blue to Muted-Violet Night Sky ─────────
-    gfx.fillGradientStyle(0x04060e, 0x04060e, 0x16122d, 0x1e183a, 1);
+    gfx.fillGradientStyle(0x04060e, 0x04060e, 0x16122d, 0x1e183a, hasBg ? 0.45 : 1);
     gfx.fillRect(0, 0, width, horizonY);
 
     // ── 2. Natural Seeded Starfield (Organic Poisson-like Distribution) ──
@@ -1526,14 +1798,14 @@ export default class Scene_Camp extends Phaser.Scene {
 
     // ── 11. Campfire Hearth Ground Shadow & Warm Ember Underglow ────
     // ABSOLUTE RULE: PROTECT THE ENTIRE CAMPFIRE & HEARTH!
-    const campX = width * 0.50 - 22;
-    const campY = height * 0.75 - 12;
+    const campX = width * 0.50;
+    const campY = height * 0.75 - 58;
     gfx.fillStyle(0x000000, 0.5);
-    gfx.fillEllipse(campX, campY, 115, 46);
-    gfx.fillStyle(0x421b0d, 0.38);
-    gfx.fillEllipse(campX, campY, 80, 30);
-    gfx.fillStyle(0x662912, 0.2);
-    gfx.fillEllipse(campX, campY, 48, 18);
+    gfx.fillEllipse(campX, campY + 8, 88, 28);
+    gfx.fillStyle(0x421b0d, 0.4);
+    gfx.fillEllipse(campX, campY + 6, 64, 20);
+    gfx.fillStyle(0x662912, 0.25);
+    gfx.fillEllipse(campX, campY + 4, 42, 14);
   }
 
   createAmbientAsh() {
@@ -1585,9 +1857,36 @@ export default class Scene_Camp extends Phaser.Scene {
   }
 
   update(time, delta) {
+    if (this.cameras && this.cameras.main) {
+      this.cameras.main.scrollX = Math.floor(this.cameras.main.scrollX);
+      this.cameras.main.scrollY = Math.floor(this.cameras.main.scrollY);
+    }
+
+    // Dynamic Campfire Flame & Light Organic Multi-frequency Flicker
+    if (this.hearthLight && this.campfireFlame) {
+      const fireT = time * 0.018;
+      const flicker = Math.sin(fireT) * 0.09
+        + Math.sin(fireT * 2.37) * 0.06
+        + Math.sin(fireT * 5.81) * 0.035
+        + (Math.sin(fireT * 11.13) * 0.02);
+
+      this.hearthLight.setAlpha(Phaser.Math.Clamp(0.62 + flicker * 1.3, 0.40, 0.85));
+      this.hearthLight.setScale(1.0 + flicker * 0.28);
+
+      if (this.hearthGroundGlow) {
+        this.hearthGroundGlow.setAlpha(Phaser.Math.Clamp(0.65 + flicker * 0.9, 0.45, 0.88));
+      }
+
+      if (this.campfireInnerFlame) {
+        const coreScale = 0.92 + Math.sin(fireT * 2.4) * 0.05;
+        this.campfireInnerFlame.setScale(coreScale * 0.96, coreScale * 1.02);
+        this.campfireInnerFlame.setAlpha(Phaser.Math.Clamp(0.72 + flicker * 0.6, 0.55, 0.92));
+      }
+    }
+
     if (this.isAnyModalOpen()) {
       if (this.player && this.player.anims) {
-        this.player.anims.play('player-idle', true);
+        playPlayerIdle(this.player);
       }
       return;
     }
@@ -1632,10 +1931,10 @@ export default class Scene_Camp extends Phaser.Scene {
       (this.cursors && this.cursors.shift && this.cursors.shift.isDown)
     );
 
-    const baseSpeedX = 175;
-    const baseSpeedY = 130;
-    const speedX = isSprinting ? 260 : baseSpeedX;
-    const speedY = isSprinting ? 190 : baseSpeedY;
+    const baseSpeedX = 160;
+    const baseSpeedY = 120;
+    const speedX = isSprinting ? 240 : baseSpeedX;
+    const speedY = isSprinting ? 180 : baseSpeedY;
 
     if (this.playerGroundY === undefined) {
       this.playerGroundY = this.player.y;
@@ -1685,7 +1984,7 @@ export default class Scene_Camp extends Phaser.Scene {
         if (this.player.anims && this.player.anims.isPlaying) {
           this.player.anims.stop();
         }
-        this.player.setTexture(`player_walk_${frameIndex}`);
+        setPlayerMotionFrame(this.player, strideProgress, isSprinting);
 
         // Crisp 1.5px vertical step hop during swing phase, firmly planting at 0px on contact
         const stepPhase = (this.stepDistanceAccumulator % 20) / 20; // 0 to 1
@@ -1700,7 +1999,7 @@ export default class Scene_Camp extends Phaser.Scene {
         // Pushing against solid collision: grounded idle stance
         this.player.y = this.playerGroundY;
         if (this.player.anims && (this.player.anims.currentAnim?.key !== 'player-idle' || !this.player.anims.isPlaying)) {
-          this.player.play('player-idle');
+          playPlayerIdle(this.player);
         }
       }
     } else {
@@ -1708,7 +2007,7 @@ export default class Scene_Camp extends Phaser.Scene {
       this.stepDistanceAccumulator = 0;
       this.player.y = this.playerGroundY;
       if (this.player.anims && (this.player.anims.currentAnim?.key !== 'player-idle' || !this.player.anims.isPlaying)) {
-        this.player.play('player-idle');
+        playPlayerIdle(this.player);
       }
     }
 
@@ -1834,8 +2133,8 @@ export default class Scene_Camp extends Phaser.Scene {
           <div class="archaic-divider"><span class="crosshair">✧</span></div>
           <div id="camp-timer" style="font-family:'Cinzel',serif;font-size:42px;font-weight:700;letter-spacing:0.1em;color:var(--color-text-bone,#cfc7b8);margin:16px 0 22px;">00:00</div>
           <div style="display:flex;flex-direction:column;align-items:center;gap:12px;">
-            <button id="camp-focus-btn" class="btn-focus" type="button">START FOCUS</button>
-            <button id="hearth-return-btn" class="btn-vault" type="button">✕ RETURN TO HAMLET</button>
+            <button id="camp-focus-btn" class="btn-focus" type="button">COMMENCE CONTEMPLATION</button>
+            <button id="hearth-return-btn" class="btn-vault" type="button">✕ STEP ASIDE</button>
           </div>
           <div id="camp-toast" style="font-family:'Crimson Text',serif;font-size:16px;color:var(--color-gold-tarnished,#9d8a68);margin-top:20px;opacity:0;transition:opacity .5s;"></div>
         </div>`;
@@ -1862,6 +2161,7 @@ export default class Scene_Camp extends Phaser.Scene {
             <button id="diag-close-btn" class="hearth-modal-close" type="button">✕</button>
           </div>
           <div id="dialogue-text" class="dialogue-npc-text"></div>
+          ${playerReplyPortrait()}
           <div id="dialogue-choices" class="dialogue-choices"></div>
         </div>`;
       document.body.appendChild(diagModal);
@@ -1877,7 +2177,7 @@ export default class Scene_Camp extends Phaser.Scene {
       gateModal.innerHTML = `
         <div class="dialogue-modal-frame">
           <div class="dialogue-npc-header">
-            <span class="dialogue-npc-title">✧ THE HAMLET GATE ✧</span>
+            <span class="dialogue-npc-title">✧ THE ANCIENT PASSAGE ✧</span>
             <button id="gate-modal-close" class="hearth-modal-close" type="button">✕</button>
           </div>
           <div class="dialogue-npc-text">
@@ -1888,9 +2188,9 @@ export default class Scene_Camp extends Phaser.Scene {
             <em style="color:#c9a45c;">Status: UNLOCKED · Required Renown: 0 · Safe Passage to Oakhaven</em>
           </div>
           <div class="dialogue-choices">
-            <button id="gate-travel-btn" class="dialogue-choice-btn" style="color:#ffd700;" type="button">✦ [Depart to Oakhaven Outpost (0 Renown)] ⟶</button>
-            <button id="gate-map-btn" class="dialogue-choice-btn" type="button">✦ [Examine Continental Atlas [M]]</button>
-            <button id="gate-return-btn" class="dialogue-choice-btn" type="button">✦ [Step Back to Hamlet]</button>
+            <button id="gate-travel-btn" class="dialogue-choice-btn" style="color:#ffd700;" type="button">✦ [Journey to Oakhaven Outpost (0 Renown)] ⟶</button>
+            <button id="gate-map-btn" class="dialogue-choice-btn" type="button">✦ [Consult Continental Atlas [M]]</button>
+            <button id="gate-return-btn" class="dialogue-choice-btn" type="button">✦ [Step Aside]</button>
           </div>
         </div>`;
       document.body.appendChild(gateModal);
@@ -1920,7 +2220,7 @@ export default class Scene_Camp extends Phaser.Scene {
           </div>
           <div id="lore-text" class="dialogue-npc-text"></div>
           <div style="display:flex;justify-content:flex-end;margin-top:16px;">
-            <button id="lore-close-btn" class="dialogue-choice-btn" type="button">✦ [Return to Hamlet]</button>
+            <button id="lore-close-btn" class="dialogue-choice-btn" type="button">✦ [Step Aside]</button>
           </div>
         </div>`;
       document.body.appendChild(loreModal);
@@ -2052,6 +2352,18 @@ export default class Scene_Camp extends Phaser.Scene {
     el.classList.remove('hidden');
     const timerEl = document.getElementById('camp-timer');
     if (timerEl) timerEl.textContent = this.formatTime(this.focusElapsed);
+
+    if (this.campfireSparks) this.campfireSparks.explode(14);
+    if (this.hearthLight) {
+      this.tweens.add({
+        targets: this.hearthLight,
+        scale: 1.35,
+        alpha: 0.9,
+        duration: 320,
+        yoyo: true,
+        ease: 'Sine.easeInOut'
+      });
+    }
   }
 
   closeHearthModal() {
@@ -2136,41 +2448,39 @@ export default class Scene_Camp extends Phaser.Scene {
       );
     };
 
-    // Branch 3: Starter Equipment Grant Event
-    const showBranch3 = () => {
-      if (!this.watcherState.giftClaimed) {
-        // Grant starter equipment directly to inventory: sword, potion, and scroll-a (Atlas)
-        const inv = getInventoryOverlay();
-        if (inv) {
-          inv.addItem('sword-rusted', 1);
-          inv.addItem('potion-red', 1);
-          inv.addItem('scroll-a', 1);
-        }
+    // Branch 3: atomic starter bundle and cosmetic wardrobe progression.
+    const showBranch3 = async () => {
+      if (this.claimingStarter) return;
+      this.claimingStarter = true;
+      renderNode('<p>“What strange foreign weave is this? No loom in Aethelgard hath fashioned such cloth. Thy garments bear the wound of another world.”</p><p>The Watcher gathers a bundle from beneath his mantle…</p>', []);
+      try {
+        const result = await claimStarterBundle(getInventoryOverlay());
         this.watcherState.giftClaimed = true;
-        try {
-          localStorage.setItem('aethelgard_watcher_gift', 'true');
-        } catch (_) {}
-
-        this.showItemAcquiredToast('✦ ACQUIRED: Rusty Iron Blade, Crimson Vitality Draught & Weathered Atlas [M] ✦');
-
-        renderNode(
-          `<p>“To wander these wastes with empty hands is suicide. Take this steel, this restorative draught, and this parchment—the <b>Weathered Atlas of Aethelgard [M]</b>.”</p>
-           <div class="dialogue-reward-banner">✦ RECEIVED: Rusty Iron Blade, Crimson Vitality Draught & Weathered Atlas [M] ✦</div>
-           <p>“A rusty blade, but its edge still bites. Drink the crimson draught if thy sanity fractures. And unroll thy <b>Atlas [M]</b> to chart thy voyage across the nine continental realms. Examine the <b>Atlas Table [F]</b> beside my archway before venturing east toward <b>Oakhaven Outpost</b>.”</p>`,
-          [
+        if (!this.sys.isActive() || !modal.isConnected || modal.classList.contains('hidden')) return;
+        if (result.claimed) {
+          this.showItemAcquiredToast('✦ ACQUIRED: Rusty Iron Blade, Crimson Draught, Weathered Atlas & Tattered Wayfarer Garb ✦');
+          renderNode(
+            '<p>“No loom of this realm knoweth that foreign weave. Let these ash-worn leathers shelter thee, that the road may judge thy resolve before thy raiment.”</p>' +
+            '<div class="dialogue-reward-banner">✦ RECEIVED: Rusty Iron Blade · Crimson Vitality Draught · Weathered Atlas [M] · Tattered Wayfarer Garb</div>' +
+            '<p>“The garb is thine to wear. A rusty blade, yet its edge still bites. Unroll thy Atlas [M] to chart the nine realms, and examine the Atlas Table [F] before venturing east to Oakhaven.”</p>',
+            [
+              { label: '✦ [Ask something else...]', action: () => showRoot() },
+              { label: '✦ “My gratitude, Watcher. Farewell.”', action: () => this.closeWatcherDialogue() }
+            ]
+          );
+        } else {
+          renderNode('<p>“Thou hast already received my steel, draught, atlas and travel garb. Tend them well. Thou mayest change thy raiment within the Vault of Echoes.”</p>', [
             { label: '✦ [Ask something else...]', action: () => showRoot() },
-            { label: '✦ "My gratitude, Watcher. Farewell."', action: () => this.closeWatcherDialogue() }
-          ]
-        );
-      } else {
-        renderNode(
-          `<p>“Thou hast already received what little steel I could spare. Guard thy blade well, and seek the smithy at <b>Oakhaven Outpost</b> if thou desirest greater armaments.”</p>`,
-          [
-            { label: '✦ [Ask something else...]', action: () => showRoot() },
-            { label: '✦ "Farewell."', action: () => this.closeWatcherDialogue() }
-          ]
-        );
-      }
+            { label: '✦ “Farewell.”', action: () => this.closeWatcherDialogue() }
+          ]);
+        }
+      } catch (error) {
+        if (this.sys.isActive() && modal.isConnected) renderNode('<p>The archive could not seal the gift. Nothing has been marked as claimed. Restore thy connection and try again.</p>', [
+          { label: '✦ [Try the gift again]', action: () => showBranch3() },
+          { label: '✦ [Ask something else...]', action: () => showRoot() }
+        ]);
+        console.warn('[Wardrobe] Starter claim failed:', error.message);
+      } finally { this.claimingStarter = false; }
     };
 
     // Branch 4: Awakening Quest / Trial of the Mind
@@ -2394,7 +2704,7 @@ export default class Scene_Camp extends Phaser.Scene {
     const p = getPlayer();
 
     const miniBadgeHtml = this.focusing
-      ? `<div id="mini-timer-badge" class="hearth-mini-badge" title="Click to view Hearth Focus">🔥 FOCUSING: ${this.formatTime(this.focusElapsed)}</div>`
+      ? `<div id="mini-timer-badge" class="hearth-mini-badge" title="Click to view Contemplation">🔥 CONTEMPLATING: ${this.formatTime(this.focusElapsed)}</div>`
       : '';
 
     const covenantId = localStorage.getItem('aethelgard_patron_covenant');
@@ -2431,11 +2741,23 @@ export default class Scene_Camp extends Phaser.Scene {
 
     this.focusing = true;
     this.focusElapsed = 0;
-    console.log('%c[Chronos] ═══ FOCUS SESSION STARTED ═══', 'color:#4caf50;font-weight:bold');
+    console.log('%c[Chronos] ═══ CONTEMPLATION SESSION STARTED ═══', 'color:#4caf50;font-weight:bold');
+
+    if (this.campfireSparks) this.campfireSparks.explode(24);
+    if (this.hearthLight) {
+      this.tweens.add({
+        targets: this.hearthLight,
+        scale: 1.45,
+        alpha: 0.95,
+        duration: 450,
+        yoyo: true,
+        ease: 'Cubic.easeOut'
+      });
+    }
 
     const btn = document.getElementById('camp-focus-btn');
     if (btn) {
-      btn.textContent = 'STOP FOCUS';
+      btn.textContent = 'CONCLUDE CONTEMPLATION';
       btn.style.background = 'linear-gradient(180deg, #821c17 0%, #5c1411 100%)';
       btn.style.borderColor = '#b83b33';
     }
@@ -2455,7 +2777,7 @@ export default class Scene_Camp extends Phaser.Scene {
       this.focusElapsed++;
       if (timerEl) timerEl.textContent = this.formatTime(this.focusElapsed);
       const miniBadge = document.getElementById('mini-timer-badge');
-      if (miniBadge) miniBadge.textContent = `🔥 FOCUSING: ${this.formatTime(this.focusElapsed)}`;
+      if (miniBadge) miniBadge.textContent = `🔥 CONTEMPLATING: ${this.formatTime(this.focusElapsed)}`;
       if (this.focusElapsed % 30 === 0) {
         console.log(`[Chronos] Tick — ${this.focusElapsed}s`);
       }
@@ -2498,7 +2820,7 @@ export default class Scene_Camp extends Phaser.Scene {
 
     const btn = document.getElementById('camp-focus-btn');
     if (btn) {
-      btn.textContent = 'START FOCUS';
+      btn.textContent = 'COMMENCE CONTEMPLATION';
       btn.style.background = '';
       btn.style.borderColor = '';
     }
@@ -2650,7 +2972,7 @@ export default class Scene_Camp extends Phaser.Scene {
       onComplete: () => {
         this.playerGroundY = targetGroundY;
         this.player.y = targetGroundY;
-        this.player.play('player-idle');
+        playPlayerIdle(this.player);
       }
     });
 
@@ -2675,6 +2997,7 @@ export default class Scene_Camp extends Phaser.Scene {
       'OAKHAVEN OUTPOST',
       'Traveling the eastern road through the Gray Thickets toward the Imperial Frontier...',
       () => {
+        this.scene.stop('Scene_Camp');
         this.scene.start('Scene_Oakhaven', { entrySide: 'west' });
       }
     );
@@ -2738,7 +3061,7 @@ export default class Scene_Camp extends Phaser.Scene {
     container.title = 'Click to open Continental Atlas [M]';
     container.innerHTML = `
       <div class="minimap-header">
-        <span class="minimap-region-name">🔥 THE ASHEN HAMLET</span>
+        <span class="minimap-region-name">✧ ATLAS COMPASS [M] · THE ASHEN HAMLET ✧</span>
         <div style="display:flex;gap:4px;align-items:center;">
           <span class="minimap-key-badge atlas-badge" id="minimap-open-atlas" title="Open World Atlas [M]">[M] ATLAS</span>
           <span class="minimap-key-badge" id="minimap-toggle-key" title="Toggle Mini-Map [N]">[N]</span>
@@ -2912,11 +3235,24 @@ export default class Scene_Camp extends Phaser.Scene {
     document.getElementById('covenant-modal')?.remove();
     document.getElementById('minimap-container')?.remove();
     document.getElementById('mobile-controls')?.remove();
+    document.getElementById('travel-screen')?.remove();
+    document.getElementById('eyelid-overlay')?.remove();
 
     if (this.backdropRT) {
       this.backdropRT.destroy();
       this.backdropRT = null;
     }
+
+    if (this.campfireFlame) { this.campfireFlame.destroy(); this.campfireFlame = null; }
+    if (this.campfireInnerFlame) { this.campfireInnerFlame.destroy(); this.campfireInnerFlame = null; }
+    if (this.hearthLight) { this.hearthLight.destroy(); this.hearthLight = null; }
+    if (this.hearthGroundGlow) { this.hearthGroundGlow.destroy(); this.hearthGroundGlow = null; }
+    if (this.campfireSparks) { this.campfireSparks.destroy(); this.campfireSparks = null; }
+    if (this.campfireEmbers) { this.campfireEmbers.destroy(); this.campfireEmbers = null; }
+    if (this.brazierFlameLeft) { this.brazierFlameLeft.destroy(); this.brazierFlameLeft = null; }
+    if (this.brazierFlameRight) { this.brazierFlameRight.destroy(); this.brazierFlameRight = null; }
+    if (this.brazierEmbersLeft) { this.brazierEmbersLeft.destroy(); this.brazierEmbersLeft = null; }
+    if (this.brazierEmbersRight) { this.brazierEmbersRight.destroy(); this.brazierEmbersRight = null; }
 
     destroyActiveInventoryOverlay();
     console.log('[Scene_Camp] Teardown complete');

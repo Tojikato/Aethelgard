@@ -3,12 +3,13 @@
 //  Interactive 2.5D Belt-Scroller RPG Environment
 // ═══════════════════════════════════════════════════════════════════════════
 
-import { $, getPlayer } from '../services/gameState.js';
+import { $, getPlayer, getUser, isDemo, setScene } from '../services/gameState.js';
 import { CAMP } from '../config/camp.js';
 import { CHRONOS } from '../services/chronos.js';
-import { getInventoryOverlay } from '../ui/InventoryOverlay.js';
+import { getInventoryOverlay, InventoryOverlay, setInventoryOverlay, destroyActiveInventoryOverlay } from '../ui/InventoryOverlay.js';
 import { worldMapOverlay } from '../ui/WorldMapOverlay.js';
 import { createPlayer, ensureProceduralActorTextures } from '../services/playerFactory.js';
+import { preloadPlayerAssets, playPlayerIdle, setPlayerMotionFrame, playerReplyPortrait } from '../services/playerAppearance.js';
 import { OLYMPIAN_DEITIES } from './Camp.js';
 import { dayNightService } from '../services/dayNightService.js';
 
@@ -23,7 +24,16 @@ export default class Scene_Oakhaven extends Phaser.Scene {
     this.spawnPosition = data.position || null;
   }
 
+  preload() { preloadPlayerAssets(this); }
+
   create() {
+    setScene(this);
+    const inventory = getInventoryOverlay() || new InventoryOverlay();
+    setInventoryOverlay(inventory);
+    window.inventoryOverlay = inventory;
+    inventory.build();
+    if (!isDemo() && getUser() && !inventory.unsubscribe) inventory.subscribe(getUser().uid);
+
     // Generate procedural actor textures if not yet present
     ensureProceduralActorTextures(this);
 
@@ -335,10 +345,29 @@ export default class Scene_Oakhaven extends Phaser.Scene {
       : (this.textures.exists('brazier-orange') ? 'brazier-orange' : 'prop-brazier-orange');
     const brazierPositions = [140 - 55, 140 + 55, 380 + 70, 780 - 80, 1840 - 80, 2160 - 110, 2160 + 110];
     this.braziers = [];
+    this.brazierFlames = [];
+
     if (this.textures.exists(brazierKey)) {
+      if (!this.anims.exists('brazier-burn') && this.textures.exists('brazier-flame')) {
+        this.anims.create({
+          key: 'brazier-burn',
+          frames: this.anims.generateFrameNumbers('brazier-flame', { start: 0, end: 11 }),
+          frameRate: 18,
+          repeat: -1
+        });
+      }
+
       for (const bx of brazierPositions) {
         const br = this.add.image(bx, baseLineY + 10, brazierKey).setOrigin(0.5, 1).setScale(0.8);
         this.braziers.push(br);
+
+        if (this.textures.exists('brazier-flame')) {
+          const fl = this.add.sprite(bx, baseLineY + 10 - 42, 'brazier-flame')
+            .setOrigin(0.5, 1)
+            .setScale(0.8)
+            .play('brazier-burn');
+          this.brazierFlames.push(fl);
+        }
       }
     }
   }
@@ -362,6 +391,9 @@ export default class Scene_Oakhaven extends Phaser.Scene {
       const brazierPositions = [140 - 55, 140 + 55, 380 + 70, 780 - 80, 1840 - 80, 2160 - 110, 2160 + 110];
       this.braziers.forEach((br, idx) => {
         if (br && brazierPositions[idx]) br.setPosition(brazierPositions[idx], baseLineY + 10);
+        if (this.brazierFlames && this.brazierFlames[idx]) {
+          this.brazierFlames[idx].setPosition(brazierPositions[idx], baseLineY + 10 - 42);
+        }
       });
     }
 
@@ -398,6 +430,17 @@ export default class Scene_Oakhaven extends Phaser.Scene {
       this.player.sortY = this.player.y;
       this.player.setDepth(Math.floor(this.player.sortY));
     }
+    if (this.braziers) {
+      this.braziers.forEach((br, idx) => {
+        if (br) {
+          br.sortY = br.y;
+          br.setDepth(Math.floor(br.sortY));
+          if (this.brazierFlames && this.brazierFlames[idx]) {
+            this.brazierFlames[idx].setDepth(br.depth + 1);
+          }
+        }
+      });
+    }
   }
 
   rebuildObstacleBoxes() {
@@ -432,7 +475,7 @@ export default class Scene_Oakhaven extends Phaser.Scene {
       {
         id: 'west_gate',
         title: 'West Road Gate',
-        prompt: '[F] RETURN TO THE ASHEN HAMLET',
+        prompt: '[F] RETREAT TO THE ASHEN HAMLET',
         x: 140,
         y: baseLineY - 10,
         radius: 75,
@@ -441,7 +484,7 @@ export default class Scene_Oakhaven extends Phaser.Scene {
       {
         id: 'noticeboard',
         title: 'Frontier Noticeboard',
-        prompt: '[F] READ BOUNTY NOTICEBOARD',
+        prompt: '[F] INSPECT THE IMPERIAL BOUNTY BOARD',
         x: 540,
         y: baseLineY + 5,
         radius: 65,
@@ -450,7 +493,7 @@ export default class Scene_Oakhaven extends Phaser.Scene {
       {
         id: 'merchant',
         title: 'Merchant Brand',
-        prompt: '[F] TRADE WITH MERCHANT BRAND',
+        prompt: '[F] COMMUNE WITH MERCHANT BRAND',
         x: 780,
         y: baseLineY,
         radius: 75,
@@ -459,7 +502,7 @@ export default class Scene_Oakhaven extends Phaser.Scene {
       {
         id: 'tavern',
         title: 'The Ashen Flagon',
-        prompt: '[F] REST AT THE TAVERN (100 SANITY)',
+        prompt: '[F] TAKE RESPITE AT THE HEARTH',
         x: 1840,
         y: baseLineY,
         radius: 90,
@@ -468,7 +511,7 @@ export default class Scene_Oakhaven extends Phaser.Scene {
       {
         id: 'malakor',
         title: 'Archmage Malakor',
-        prompt: '[F] AUDIENCE WITH ARCHMAGE MALAKOR',
+        prompt: '[F] SEEK AUDIENCE WITH ARCHMAGE MALAKOR',
         x: 2160,
         y: baseLineY,
         radius: 85,
@@ -496,6 +539,10 @@ export default class Scene_Oakhaven extends Phaser.Scene {
   }
 
   update(time, delta) {
+    if (this.cameras && this.cameras.main) {
+      this.cameras.main.scrollX = Math.floor(this.cameras.main.scrollX);
+      this.cameras.main.scrollY = Math.floor(this.cameras.main.scrollY);
+    }
     if (this.isTransitioning) return;
     this.handlePlayerMovement(delta);
     this.handleProximityAndInteraction();
@@ -526,10 +573,10 @@ export default class Scene_Oakhaven extends Phaser.Scene {
       (this.cursors && this.cursors.shift && this.cursors.shift.isDown)
     );
 
-    const baseSpeedX = 175;
-    const baseSpeedY = 130;
-    const speedX = isSprinting ? 260 : baseSpeedX;
-    const speedY = isSprinting ? 190 : baseSpeedY;
+    const baseSpeedX = 160;
+    const baseSpeedY = 120;
+    const speedX = isSprinting ? 240 : baseSpeedX;
+    const speedY = isSprinting ? 180 : baseSpeedY;
 
     if (this.playerGroundY === undefined) {
       this.playerGroundY = this.player.y;
@@ -579,7 +626,7 @@ export default class Scene_Oakhaven extends Phaser.Scene {
         if (this.player.anims && this.player.anims.isPlaying) {
           this.player.anims.stop();
         }
-        this.player.setTexture(`player_walk_${frameIndex}`);
+        setPlayerMotionFrame(this.player, strideProgress, isSprinting);
 
         // Crisp 1.5px vertical step hop during swing phase, firmly planting at 0px on contact
         const stepPhase = (this.stepDistanceAccumulator % 20) / 20; // 0 to 1
@@ -594,7 +641,7 @@ export default class Scene_Oakhaven extends Phaser.Scene {
         // Pushing against solid collision: grounded idle stance
         this.player.y = this.playerGroundY;
         if (this.player.anims && (this.player.anims.currentAnim?.key !== 'player-idle' || !this.player.anims.isPlaying)) {
-          this.player.play('player-idle');
+          playPlayerIdle(this.player);
         }
       }
     } else {
@@ -602,7 +649,7 @@ export default class Scene_Oakhaven extends Phaser.Scene {
       this.stepDistanceAccumulator = 0;
       this.player.y = this.playerGroundY;
       if (this.player.anims && (this.player.anims.currentAnim?.key !== 'player-idle' || !this.player.anims.isPlaying)) {
-        this.player.play('player-idle');
+        playPlayerIdle(this.player);
       }
     }
 
@@ -691,8 +738,12 @@ export default class Scene_Oakhaven extends Phaser.Scene {
   // ═════════════════════════════════════════════════════════════════
 
   travelToHamlet() {
-    this.showTravelTransition('THE ASHEN HAMLET', 'Returning westward through the borderland wastes...', () => {
-      this.scene.start('Scene_Camp', { returnPosition: { x: 2150, y: this.scale.height * 0.77 } });
+    this.showTravelTransition('THE ASHEN HAMLET', 'Retreating westward through the borderland wastes...', () => {
+      this.scene.stop('Scene_Oakhaven');
+      this.scene.start('Scene_Camp', {
+        returnPosition: { x: 2150, y: this.scale.height * 0.76 },
+        fromTravel: true
+      });
     });
   }
 
@@ -814,14 +865,224 @@ export default class Scene_Oakhaven extends Phaser.Scene {
     if (!modal) modal = this.createTownModal();
     modal.classList.remove('hidden');
 
-    modal.querySelector('#town-modal-title').textContent = '✧ ARCHMAGE MALAKOR · ADVENTURERS’ GUILD ✧';
-    modal.querySelector('#town-modal-content').innerHTML = `
-      <div style="font-family:'Crimson Text',serif;font-size:16px;line-height:1.7;">
-        <p><em>Archmage Malakor tilts his ornate amethyst-inlaid staff, observing you with a piercing, analytical gaze.</em></p>
-        <p style="margin-top:10px;">“So. The Abyssal Gate spat out another living soul. The Ashen Watcher sent word of thy survival. Rare indeed.”</p>
-        <p style="margin-top:10px;">“As Grand Overseer of the Oakhaven Guild, I hereby induct thee into our ranks. Keep thy sanity intact, consult thy <b>Atlas [M]</b>, and prepare for the road to the <b>Bastion of Iron</b> once thy Renown reaches 100.”</p>
+    const renderMalakorNode = (textHtml, choices) => {
+      modal.querySelector('#town-modal-title').textContent = '✧ ARCHMAGE MALAKOR · ADVENTURERS’ GUILD ✧';
+      const contentEl = modal.querySelector('#town-modal-content');
+      contentEl.innerHTML = `
+        <div style="font-family:'Crimson Text',serif;font-size:16px;line-height:1.7;">
+          ${textHtml}
+        </div>
+        <div class="dialogue-choices" style="display:flex;flex-direction:column;gap:8px;margin-top:16px;">
+          ${choices.map((c, i) => `<button class="dialogue-choice-btn" data-cidx="${i}" type="button">${c.label}</button>`).join('')}
+        </div>
+      `;
+      contentEl.querySelectorAll('.dialogue-choice-btn').forEach(btn => {
+        btn.onclick = () => {
+          const idx = parseInt(btn.dataset.cidx, 10);
+          choices[idx].action();
+        };
+      });
+    };
+
+    const showRoot = () => {
+      renderMalakorNode(
+        `<p><em>Archmage Malakor tilts his ornate amethyst-inlaid staff, observing you with a piercing, analytical gaze. Luminous arcane motes drift silently around his silver robes.</em></p>
+         <p style="margin-top:12px;">“So. The Abyssal Gate spat out another wanderer who clings to life. The Ashen Watcher sent word of thy arrival, yet survival alone impresses no one on the frontier. The Adventurers' Guild requires razor-sharp discernment, not merely pulse and sinew. Speak thy query.”</p>`,
+        [
+          {
+            label: '✦ [1] “Tell me of the Ashen Sanctuary and the Olympian Covenant.”',
+            action: () => showBranchSanctuary()
+          },
+          {
+            label: '✦ [2] “What lies beyond Oakhaven Outpost toward the Bastion of Iron?”',
+            action: () => showBranchBastion()
+          },
+          {
+            label: '✦ [3] “I offer Proof of Intellect (Submit Strategic Case Report).”',
+            action: () => this.openReportUploadModal()
+          },
+          {
+            label: '✦ [4] “I have heard enough. Step aside.”',
+            action: () => {
+              modal.classList.add('hidden');
+              document.getElementById('minimap-container')?.classList.remove('hidden');
+            }
+          }
+        ]
+      );
+    };
+
+    const showBranchSanctuary = () => {
+      renderMalakorNode(
+        `<p>“The Ashen Hamlet was once the consecrated outer cloister of the Olympian Sanctuary before the void fractured our realm. The five runestones that stand beside the stone altar are remnants of the Pantheon—Athena, Apollo, Hermes, Hecate, and Ares.”</p>
+         <p style="margin-top:12px;">“If thou hast not yet sworn thy Covenant before the Altar, thou walkest the frontier blind. Divine favor is no mere superstition; it governs the clarity of thy thoughts and the weight of thy coin.”</p>`,
+        [
+          { label: '✦ [Ask another query...]', action: () => showRoot() },
+          {
+            label: '✦ “Understood, Archmage. Step aside.”',
+            action: () => {
+              modal.classList.add('hidden');
+              document.getElementById('minimap-container')?.classList.remove('hidden');
+            }
+          }
+        ]
+      );
+    };
+
+    const showBranchBastion = () => {
+      renderMalakorNode(
+        `<p>“Eastward across the jagged Black Ridge lies the <b>Bastion of Iron</b>—the Grand Citadel of Imperial Strategy. It is no haven for the faint-hearted. War councils and logic engines govern its halls.”</p>
+         <p style="margin-top:12px;">“The gates of the Bastion remain sealed to unproven recruits. Only when thy <b>Renown</b> reaches <b>100</b>—earned through disciplined contemplation at the hearth, trade fortune, or submitting rigorous case analyses—wilt thou receive safe passage through the Iron Pass.”</p>`,
+        [
+          { label: '✦ [Ask another query...]', action: () => showRoot() },
+          {
+            label: '✦ “I will forge my renown. Step aside.”',
+            action: () => {
+              modal.classList.add('hidden');
+              document.getElementById('minimap-container')?.classList.remove('hidden');
+            }
+          }
+        ]
+      );
+    };
+
+    showRoot();
+  }
+
+  openReportUploadModal() {
+    let modal = document.getElementById('oakhaven-modal');
+    if (!modal) modal = this.createTownModal();
+    modal.classList.remove('hidden');
+
+    const p = getPlayer();
+    const covenant = localStorage.getItem('aethelgard_patron_covenant') || 'none';
+    const athenaBonus = (covenant === 'athena') ? ' (+25 Renown Athena Boon)' : '';
+    const hermesBonus = (covenant === 'hermes') ? ' (+50 Gold Hermes Boon)' : '';
+
+    modal.querySelector('#town-modal-title').textContent = '✧ PROOF OF INTELLECT · STRATEGIC REPORT SUBMISSION ✧';
+    const contentEl = modal.querySelector('#town-modal-content');
+    contentEl.innerHTML = `
+      <div class="report-submission-card">
+        <p style="font-family:'Crimson Text',serif;font-size:15px;line-height:1.6;color:#cfc7b8;margin:0;">
+          “Archmage Malakor accepts rigorous strategic case memoranda, analytical reports, and quantitative problem-solving proofs. Present thy thesis for guild evaluation.”
+        </p>
+
+        <div class="report-dropzone" id="report-dropzone">
+          <input type="file" id="report-file-input" style="display:none;" accept=".pdf,.xlsx,.xls,.docx,.doc,.txt,.csv,.md,.json">
+          <div class="report-dropzone-icon">📜</div>
+          <div class="report-dropzone-text">DRAG & DROP THY STRATEGIC DISPATCH OR CLICK TO BROWSE</div>
+          <div class="report-dropzone-sub">Supported formats: PDF, XLSX, DOCX, TXT, CSV, MD, JSON (Max 25MB)</div>
+        </div>
+
+        <div class="report-selected-file" id="report-selected-file">
+          <span>📄</span>
+          <span id="report-file-name" style="font-weight:600;"></span>
+          <span id="report-file-size" style="color:#a89f91;font-size:10px;"></span>
+        </div>
+
+        <div class="report-criteria-box">
+          <div class="report-criteria-title">ACADEMIC & STRATEGIC RIGOR EVALUATION CRITERIA</div>
+          <div class="report-criteria-item">
+            <span>1. Problem Structuring & First-Principles Logic</span>
+            <span class="pts">40 PTS</span>
+          </div>
+          <div class="report-criteria-item">
+            <span>2. Quantitative Valuation & Financial Precision</span>
+            <span class="pts">30 PTS</span>
+          </div>
+          <div class="report-criteria-item">
+            <span>3. Strategic Feasibility & Actionable Roadmap</span>
+            <span class="pts">30 PTS</span>
+          </div>
+        </div>
+
+        <div class="report-reward-banner">
+          <span>✦ EVALUATION SPOILS:</span>
+          <span><b>+50 RENOWN${athenaBonus}</b> &nbsp;·&nbsp; <b>+100 GOLD${hermesBonus}</b></span>
+        </div>
+
+        <button type="button" class="report-submit-btn" id="report-submit-btn" disabled>
+          TRANSMIT DISPATCH TO ARCHMAGE MALAKOR
+        </button>
       </div>
     `;
+
+    const dropzone = modal.querySelector('#report-dropzone');
+    const fileInput = modal.querySelector('#report-file-input');
+    const selectedFileBox = modal.querySelector('#report-selected-file');
+    const fileNameSpan = modal.querySelector('#report-file-name');
+    const fileSizeSpan = modal.querySelector('#report-file-size');
+    const submitBtn = modal.querySelector('#report-submit-btn');
+
+    let currentFile = null;
+
+    dropzone.onclick = () => fileInput.click();
+
+    dropzone.ondragover = (e) => {
+      e.preventDefault();
+      dropzone.classList.add('dragover');
+    };
+    dropzone.ondragleave = () => dropzone.classList.remove('dragover');
+    dropzone.ondrop = (e) => {
+      e.preventDefault();
+      dropzone.classList.remove('dragover');
+      if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+        handleFile(e.dataTransfer.files[0]);
+      }
+    };
+
+    fileInput.onchange = (e) => {
+      if (e.target.files && e.target.files[0]) {
+        handleFile(e.target.files[0]);
+      }
+    };
+
+    const handleFile = (file) => {
+      currentFile = file;
+      fileNameSpan.textContent = file.name;
+      const sizeKb = (file.size / 1024).toFixed(1);
+      fileSizeSpan.textContent = `(${sizeKb} KB)`;
+      selectedFileBox.classList.add('show');
+      submitBtn.removeAttribute('disabled');
+      submitBtn.textContent = `TRANSMIT “${file.name.slice(0, 24)}${file.name.length > 24 ? '…' : ''}”`;
+    };
+
+    submitBtn.onclick = () => {
+      if (!currentFile) return;
+
+      submitBtn.setAttribute('disabled', 'true');
+      submitBtn.textContent = 'EVALUATING RIGOR & METHODOLOGY...';
+
+      setTimeout(() => {
+        let renownGained = 50;
+        let goldGained = 100;
+        if (covenant === 'athena') renownGained += 25;
+        if (covenant === 'hermes') goldGained += 50;
+
+        p.renown = (p.renown || 0) + renownGained;
+        p.gold = (p.gold || 0) + goldGained;
+        this.refreshHud();
+
+        this.showTownBanner(
+          `✦ DISPATCH ACCEPTED: +${renownGained} Renown · +${goldGained} Gold ✦`
+        );
+
+        contentEl.innerHTML = `
+          <div style="font-family:'Crimson Text',serif;font-size:16px;line-height:1.7;">
+            <p><em>Archmage Malakor unfurls thy parchment, perusing the analytical breakdown with a rare nod of approbation.</em></p>
+            <p style="margin-top:10px;">“Exemplary rigor. Thy logic is sound, thy valuation substantiated, and thy execution vector unclouded by fallacies. The Guild recognizes thy acumen.”</p>
+            <div class="report-reward-banner" style="margin:16px 0;">
+              <span>✦ PROOF VALIDATED:</span>
+              <span><b>+${renownGained} Renown</b> &nbsp;·&nbsp; <b>+${goldGained} Gold</b></span>
+            </div>
+            <div style="display:flex;justify-content:flex-end;margin-top:16px;">
+              <button id="report-done-btn" class="dialogue-choice-btn" type="button">✦ [Converse Further]</button>
+            </div>
+          </div>
+        `;
+        contentEl.querySelector('#report-done-btn').onclick = () => this.openMalakorDialogue();
+      }, 1200);
+    };
   }
 
   // ── Olympian Covenant System (Greek Mythology Religion) ────────────
@@ -913,8 +1174,9 @@ export default class Scene_Oakhaven extends Phaser.Scene {
           <button id="town-modal-close-x" class="hearth-modal-close" type="button">✕</button>
         </div>
         <div id="town-modal-content" class="dialogue-npc-text"></div>
+        ${playerReplyPortrait()}
         <div style="display:flex;justify-content:flex-end;margin-top:16px;">
-          <button id="town-modal-return" class="dialogue-choice-btn" type="button">✦ [Close]</button>
+          <button id="town-modal-return" class="dialogue-choice-btn" type="button">✦ [Step Aside]</button>
         </div>
       </div>
     `;
@@ -959,7 +1221,7 @@ export default class Scene_Oakhaven extends Phaser.Scene {
     container.title = 'Click to open Continental Atlas [M]';
     container.innerHTML = `
       <div class="minimap-header">
-        <span class="minimap-region-name">🏰 OAKHAVEN OUTPOST</span>
+        <span class="minimap-region-name">✧ ATLAS COMPASS [M] · OAKHAVEN OUTPOST ✧</span>
         <div style="display:flex;gap:4px;align-items:center;">
           <span class="minimap-key-badge atlas-badge" id="minimap-open-atlas" title="Open World Atlas [M]">[M] ATLAS</span>
           <span class="minimap-key-badge" id="minimap-toggle-key" title="Toggle Mini-Map [N]">[N]</span>
@@ -1094,6 +1356,7 @@ export default class Scene_Oakhaven extends Phaser.Scene {
   }
 
   teardown() {
+    destroyActiveInventoryOverlay();
     this.scale.off('resize', this.resizeCb);
     document.getElementById('camp-hud')?.remove();
     document.getElementById('minimap-container')?.remove();
@@ -1101,6 +1364,10 @@ export default class Scene_Oakhaven extends Phaser.Scene {
     document.getElementById('oakhaven-modal')?.remove();
     document.getElementById('covenant-modal')?.remove();
     document.getElementById('travel-screen')?.remove();
+    if (this.brazierFlames) {
+      this.brazierFlames.forEach(fl => fl?.destroy());
+      this.brazierFlames = [];
+    }
     if (this.backdropGfx) {
       this.backdropGfx.destroy();
       this.backdropGfx = null;

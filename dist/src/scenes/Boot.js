@@ -5,6 +5,7 @@
 import { $, getPlayer } from '../services/gameState.js';
 import { assetRegistry } from '../services/assetRegistry.js';
 import { ensureProceduralActorTextures } from '../services/playerFactory.js';
+import { preloadPlayerAssets } from '../services/playerAppearance.js';
 
 export default class Scene_Boot extends Phaser.Scene {
   constructor() {
@@ -12,6 +13,7 @@ export default class Scene_Boot extends Phaser.Scene {
   }
 
   preload() {
+    preloadPlayerAssets(this);
     // Preload consolidated VFX and background assets from ./assets/aethelgard/
     this.load.image('ash-scatter-tex', './assets/aethelgard/vfx/ash-scatter-verified.jpg');
     this.load.image('fine-ash-tex', './assets/aethelgard/vfx/fine-ash-verified.jpg');
@@ -28,8 +30,13 @@ export default class Scene_Boot extends Phaser.Scene {
     this.load.image('bg-shadowfen-citadel', './assets/aethelgard/backgrounds/bg-shadowfen-citadel.png');
 
     // Preload 2.5D Hamlet Scenery Pixel-Art Sprites
-    this.load.image('scenery-camp', './assets/sprites/camp.png');
-    this.load.image('camp', './assets/sprites/camp.png');
+    this.load.image('scenery-camp', './assets/aethelgard/vfx/hamlet-fire/camp-body.png');
+    this.load.image('camp', './assets/aethelgard/vfx/hamlet-fire/camp-body.png');
+    this.load.image('camp-body', './assets/aethelgard/vfx/hamlet-fire/camp-body.png');
+    this.load.spritesheet('camp-flame', './assets/aethelgard/vfx/hamlet-fire/camp-flame.png', {
+      frameWidth: 72,
+      frameHeight: 76
+    });
     this.load.image('scenery-ruins-stone', './assets/sprites/ruins-stone.png');
     this.load.image('ruins-stone', './assets/sprites/ruins-stone.png');
     this.load.image('scenery-ruins-brick', './assets/sprites/ruins-brick.png');
@@ -61,7 +68,10 @@ export default class Scene_Boot extends Phaser.Scene {
     this.load.image('prop-brazier-orange', './assets/aethelgard/props/dungeon/brazier-orange.png');
     this.load.image('brazier-orange', './assets/aethelgard/props/dungeon/brazier-orange.png');
     this.load.image('brazier-body', './assets/aethelgard/vfx/hamlet-fire/brazier-body.png');
-    this.load.image('brazier-flame', './assets/aethelgard/vfx/hamlet-fire/brazier-flame.png');
+    this.load.spritesheet('brazier-flame', './assets/aethelgard/vfx/hamlet-fire/brazier-flame.png', {
+      frameWidth: 48,
+      frameHeight: 62
+    });
     this.load.image('prop-wooden-crate', './assets/aethelgard/props/outdoor/wooden-crate.png');
 
     // Preload Sanctuary Architecture, Vegetation & Relic Scenery
@@ -70,8 +80,6 @@ export default class Scene_Boot extends Phaser.Scene {
     this.load.image('sanctuary-stairs', './assets/aethelgard/architecture/ruins/stairs.png');
     this.load.image('sanctuary-altar', './assets/aethelgard/props/dungeon/altar.png');
     this.load.image('altar', './assets/aethelgard/props/dungeon/altar.png');
-    this.load.image('angel-statue', './assets/aethelgard/props/dungeon/angel-statue.png');
-    this.load.image('sanctuary-angel-statue', './assets/aethelgard/props/dungeon/angel-statue.png');
     this.load.image('sanctuary-banner', './assets/aethelgard/props/banners/wall-banner.png');
     this.load.image('sanctuary-ivy', './assets/aethelgard/nature/plants/ivy.png');
     this.load.image('sanctuary-fern', './assets/aethelgard/nature/plants/fern.png');
