@@ -3,6 +3,10 @@
 //  Generates pixel-art Adventurer & NPC textures in memory before spawning
 // ═══════════════════════════════════════════════════════════════════════════
 
+import { getEquippedOutfit } from './gameState.js';
+import { OUTFITS } from '../config/outfits.js';
+import { bindPlayerAppearance } from './playerAppearance.js';
+
 export function ensureProceduralActorTextures(scene) {
   if (!scene || !scene.textures) return;
 
@@ -233,13 +237,11 @@ export function createPlayer(scene, spawnX, spawnY) {
   const safeX = (spawnX !== undefined && spawnX !== null && spawnX > 0) ? spawnX : 220;
   const safeY = (spawnY !== undefined && spawnY !== null && spawnY > 100) ? spawnY : H * 0.76;
 
-  const player = scene.add.sprite(safeX, safeY, 'player_idle_0')
-    .setOrigin(0.5, 31 / 32)
-    .setScale(2.4);
+  const player = scene.add.sprite(safeX, safeY, OUTFITS[getEquippedOutfit()].texture, 0)
+    .setOrigin(0.5, 60 / 64)
+    .setScale(1.6);
 
-  if (scene.anims.exists('player-idle')) {
-    player.play('player-idle');
-  }
+  bindPlayerAppearance(scene, player);
 
   player.sortY = player.y;
   return player;

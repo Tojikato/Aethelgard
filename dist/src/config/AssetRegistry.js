@@ -6,6 +6,15 @@
 export const ASSET_BASE_PATH = './assets/';
 
 export const ASSET_MAP = {
+  "player-modern": "aethelgard/characters/player-modern.png",
+  "player-wayfarer": "aethelgard/characters/player-wayfarer.png",
+  "player-modern-atlas": "aethelgard/characters/player-modern.json",
+  "player-wayfarer-atlas": "aethelgard/characters/player-wayfarer.json",
+  "portrait-modern": "aethelgard/characters/portrait-modern.png",
+  "portrait-wayfarer": "aethelgard/characters/portrait-wayfarer.png",
+  "armor-wayfarer-tattered": "aethelgard/characters/armor-wayfarer-tattered.png",
+  "concept-modern-stranger": "aethelgard/characters/concepts/modern-stranger-concept-01.png",
+  "concept-ashen-wayfarer": "aethelgard/characters/concepts/wayfarer-concept-01.png",
   "bg-ashen-hamlet": "aethelgard/backgrounds/bg-ashen-hamlet.png",
   "bg-oakhaven-outpost": "aethelgard/backgrounds/bg-oakhaven-outpost.png",
   "bg-bastion-of-iron": "aethelgard/backgrounds/bg-bastion-of-iron.png",

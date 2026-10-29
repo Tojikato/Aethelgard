@@ -2,9 +2,11 @@
 //  VAULT OF ECHOES — Inventory Overlay UI & Catalog
 // ═══════════════════════════════════════════════════════════════════════════
 
-import { isDemo, getUser } from '../services/gameState.js';
+import { isDemo, getUser, getPlayer, getEquippedOutfit, getEquippedWeapon, setEquipment, readDemoWardrobe } from '../services/gameState.js';
 import { firebase } from '../services/firebase.js';
 import { ITEM_DATABASE, getItem } from '../config/items.js';
+import { equipOutfit, equipStarterBlade, isEquipmentRecord, persistDemoWardrobe } from '../services/wardrobe.js';
+import { decodeEquipment, EQUIPMENT_DOC, STARTER_DOC } from '../config/outfits.js';
 
 export const ITEM_CATALOG = ITEM_DATABASE;
 
@@ -18,9 +20,11 @@ export class InventoryOverlay {
     // In demo mode, restore from localStorage if present
     if (isDemo()) {
       try {
-        const saved = localStorage.getItem('aethelgard_inventory');
+        const wardrobe = readDemoWardrobe();
+        const saved = wardrobe?.inventory ? JSON.stringify(wardrobe.inventory) : localStorage.getItem('aethelgard_inventory');
         if (saved) {
-          this.items = JSON.parse(saved);
+          const items = JSON.parse(saved);
+          this.items = Array.isArray(items) ? items.filter(i => i && typeof i.itemId === 'string' && !isEquipmentRecord(i)) : [];
         }
       } catch (_) {}
     }
@@ -39,6 +43,8 @@ export class InventoryOverlay {
           <span class="inv-title">✧ VAULT OF ECHOES ✧</span>
           <button class="inv-close quiet" aria-label="Close inventory">✕</button>
         </div>
+        <div class="wardrobe-strip"><span id="wardrobe-current"></span><button type="button" class="btn-vault" data-outfit="modern_stranger">Wear modern clothes</button></div>
+        <p id="wardrobe-error" role="status" aria-live="polite"></p>
         <div class="inv-body" id="inv-items">
           <p class="inv-empty">The vault is barren. Thy journey has yet to yield spoils.<br><span style="font-family:'Crimson Text',serif;font-size:15px;color:#9d8a68;margin-top:10px;display:block;">Speak with the Ashen Watcher [F] near the Eastern Arch to claim thy starter blade.</span></p>
         </div>
@@ -46,6 +52,20 @@ export class InventoryOverlay {
     document.body.appendChild(overlay);
     this.el = overlay;
     overlay.querySelector('.inv-close').onclick = () => this.hide();
+    overlay.addEventListener('click', async event => {
+      const button = event.target.closest('[data-outfit], [data-equip-blade]');
+      if (!button || button.disabled || this.equipping) return;
+      const status = overlay.querySelector('#wardrobe-error');
+      this.equipping = true;
+      button.disabled = true;
+      status.textContent = 'The weave settles…';
+      try {
+        if (button.dataset.outfit) await equipOutfit(button.dataset.outfit, this);
+        else await equipStarterBlade(this);
+        status.textContent = 'Thy equipment is remembered.';
+      } catch (error) { status.textContent = error.message || 'The archive could not remember this change. Try again.'; }
+      finally { this.equipping = false; this.render(); }
+    });
     console.log('[InventoryOverlay] DOM built and appended');
   }
 
@@ -57,7 +77,12 @@ export class InventoryOverlay {
     }
     const colRef = firebase.collection(firebase.db, 'users', uid, 'inventory');
     this.unsubscribe = firebase.onSnapshot(colRef, snap => {
-      this.items = snap.docs.map(d => ({ docId: d.id, ...d.data() }));
+      if (isDemo() || getUser()?.uid !== uid) return;
+      const records = snap.docs.map(d => ({ docId: d.id, ...d.data() }));
+      const equipment = records.find(i => i.docId === EQUIPMENT_DOC);
+      if (equipment) setEquipment(decodeEquipment(equipment.quantity));
+      if (records.some(i => i.docId === STARTER_DOC && i.quantity === 1)) getPlayer().starterBundleClaimed = true;
+      this.items = records.filter(i => !isEquipmentRecord(i) && i.quantity > 0);
       console.log(`[InventoryOverlay] snapshot received — ${this.items.length} item(s)`, this.items);
       this.render();
     }, err => {
@@ -87,7 +112,7 @@ export class InventoryOverlay {
 
     if (isDemo()) {
       try {
-        localStorage.setItem('aethelgard_inventory', JSON.stringify(this.items));
+        persistDemoWardrobe(this.items);
       } catch (_) {}
     } else {
       const user = getUser();
@@ -109,6 +134,10 @@ export class InventoryOverlay {
   render() {
     const container = document.getElementById('inv-items');
     if (!container) return;
+    const current = document.getElementById('wardrobe-current');
+    if (current) current.textContent = getEquippedOutfit() === 'ashen_wayfarer' ? 'GARB · ASHEN WAYFARER' : 'GARB · MODERN STRANGER';
+    const modernButton = this.el?.querySelector('[data-outfit="modern_stranger"]');
+    if (modernButton) modernButton.disabled = getEquippedOutfit() === 'modern_stranger';
 
     if (this.items.length === 0) {
       container.innerHTML = `<p class="inv-empty">The vault is barren. Thy journey has yet to yield spoils.<br><span style="font-family:'Crimson Text',serif;font-size:15px;color:#9d8a68;margin-top:10px;display:block;">Speak with the Ashen Watcher [F] near the Eastern Arch to claim thy starter blade.</span></p>`;
@@ -136,6 +165,8 @@ export class InventoryOverlay {
           ${statsHtml ? `<span class="inv-stats" style="font-family:'Cinzel',serif;font-size:11px;color:#9d8a68;margin-top:2px;display:block;">${statsHtml}</span>` : ''}
         </div>
         <span class="inv-qty">×${item.quantity ?? 1}</span>
+        ${item.itemId === 'armor-wayfarer-tattered' ? `<button type="button" class="btn-vault" data-outfit="ashen_wayfarer" ${getEquippedOutfit() === 'ashen_wayfarer' ? 'disabled' : ''}>${getEquippedOutfit() === 'ashen_wayfarer' ? 'Equipped' : 'Equip garb'}</button>` : ''}
+        ${item.itemId === 'sword-rusted' ? `<button type="button" class="btn-vault" data-equip-blade="true">${getEquippedWeapon() ? 'Sheathe blade' : 'Ready blade'}</button>` : ''}
       </div>`;
     }).join('');
     console.log('[InventoryOverlay] rendered', this.items.length, 'items');

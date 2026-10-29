@@ -2,7 +2,13 @@
 //  ITEM DATABASE — Weapons, Potions & Artifacts of Aethelgard
 // ═══════════════════════════════════════════════════════════════════════════
 
+import { resolveAssetPath } from './AssetRegistry.js';
 export const ITEM_DATABASE = {
+  'armor-wayfarer-tattered': {
+    id: 'armor-wayfarer-tattered', name: 'Tattered Wayfarer Garb', category: 'armor', rarity: 'common',
+    description: 'Ash-worn mantle, patched tunic and travel leathers offered by the Ashen Watcher. A familiar weave for an unfamiliar world.',
+    outfit: 'ashen_wayfarer', image: resolveAssetPath('armor-wayfarer-tattered'), icon: '🧥'
+  },
   // ── Weapons (from /assets/sprites/sword-*.png) ─────────────────────
   'sword-rusted': {
     id: 'sword-rusted',

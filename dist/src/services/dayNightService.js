@@ -94,18 +94,23 @@ export class DayNightService {
    * Attach dynamic real-time overlay to a Phaser scene.
    * Creates a camera-following ambient overlay rectangle with smooth real-time update.
    */
-  attachToScene(scene, depth = 350) {
-    const overlay = scene.add.rectangle(0, 0, scene.scale.width, scene.scale.height, 0x000000)
+  attachToScene(scene, depth = 900) {
+    const initialState = this.getLightingState();
+    const initialAlpha = Phaser.Math.Clamp(initialState.alpha * 0.35, 0, 0.35);
+    const viewW = (scene.scale && scene.scale.width > 200) ? scene.scale.width : (window.innerWidth || 1280);
+    const viewH = (scene.scale && scene.scale.height > 100) ? scene.scale.height : (window.innerHeight || 720);
+
+    const overlay = scene.add.rectangle(0, 0, viewW, viewH, initialState.color, initialAlpha)
       .setOrigin(0, 0)
       .setScrollFactor(0)
       .setDepth(depth);
 
-    overlay.setBlendMode(Phaser.BlendModes.MULTIPLY);
-
     const updateAmbient = () => {
-      if (!scene.sys || !scene.sys.isActive() || !overlay.active) return;
+      if (!overlay || !overlay.active) return;
       const state = this.getLightingState();
-      overlay.setFillStyle(state.color, state.alpha);
+      // Natural ambient darkness tinting without crushing WebGL framebuffer to pitch black
+      const ambientAlpha = Phaser.Math.Clamp(state.alpha * 0.35, 0, 0.35);
+      overlay.setFillStyle(state.color, ambientAlpha);
 
       // Notify scene if it tracks lanterns or braziers
       if (typeof scene.onDayNightUpdate === 'function') {
@@ -123,8 +128,16 @@ export class DayNightService {
       loop: true
     });
 
+    const resizeCb = size => {
+      if (overlay.active) {
+        overlay.setSize(size.width, size.height);
+      }
+    };
+    scene.scale.on('resize', resizeCb);
+
     scene.events.once('shutdown', () => {
       timer.remove();
+      scene.scale.off('resize', resizeCb);
       if (overlay.active) overlay.destroy();
     });
 

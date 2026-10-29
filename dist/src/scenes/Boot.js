@@ -21,11 +21,11 @@ export default class Scene_Boot extends Phaser.Scene {
     this.load.image('camp-bg-tex', './assets/aethelgard/images/camp-verified.jpg');
     this.load.image('fog-reveal-tex', './assets/aethelgard/images/fog-reveal-verified.jpg');
 
-    // Preload 2.5D Belt-Scroller World Background (Camp)
-    this.load.image('bg-ashen-hamlet', './assets/aethelgard/backgrounds/bg-ashen-hamlet.png');
+    // Preload 2.5D Belt-Scroller World Background (Camp - 355KB WebP for instant load)
+    this.load.image('bg-ashen-hamlet', './assets/aethelgard/backgrounds/bg-ashen-hamlet.webp');
     const directScene = typeof window !== 'undefined' ? new URLSearchParams(window.location.search).get('scene') : null;
     if (directScene === 'oakhaven') {
-      this.load.image('bg-oakhaven-outpost', './assets/aethelgard/backgrounds/bg-oakhaven-outpost.png');
+      this.load.image('bg-oakhaven-outpost', './assets/aethelgard/backgrounds/bg-oakhaven-outpost.webp');
     }
 
     // Preload 2.5D Hamlet Scenery Pixel-Art Sprites

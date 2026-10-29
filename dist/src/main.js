@@ -2,13 +2,13 @@
 //  AETHELGARD — MAIN GAME ENTRY POINT
 // ═══════════════════════════════════════════════════════════════════════════
 
-import { getPhaserConfig } from './config/phaser.js';
-import { loadFirebase } from './config/firebase.js';
+import { getPhaserConfig } from './config/phaser.js?v=2.3';
+import { loadFirebase } from './config/firebase.js?v=2.3';
 
-import Scene_Boot from './scenes/Boot.js';
-import Scene_Awakening from './scenes/Awakening.js';
-import Scene_Camp from './scenes/Camp.js';
-import Scene_Oakhaven from './scenes/Oakhaven.js';
+import Scene_Boot from './scenes/Boot.js?v=2.3';
+import Scene_Awakening from './scenes/Awakening.js?v=2.3';
+import Scene_Camp from './scenes/Camp.js?v=2.3';
+import Scene_Oakhaven from './scenes/Oakhaven.js?v=2.3';
 
 import { initGateUI, showGameShell, showGate } from './ui/GateUI.js';
 import { setGame } from './services/gameState.js';

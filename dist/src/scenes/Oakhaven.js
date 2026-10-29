@@ -27,7 +27,7 @@ export default class Scene_Oakhaven extends Phaser.Scene {
   preload() {
     preloadPlayerAssets(this);
     if (!this.textures.exists('bg-oakhaven-outpost')) {
-      this.load.image('bg-oakhaven-outpost', './assets/aethelgard/backgrounds/bg-oakhaven-outpost.png');
+      this.load.image('bg-oakhaven-outpost', './assets/aethelgard/backgrounds/bg-oakhaven-outpost.webp');
     }
     const buildings = [
       ['building-cathedral', './assets/aethelgard/architecture/buildings/cathedral.png'],
@@ -90,7 +90,7 @@ export default class Scene_Oakhaven extends Phaser.Scene {
     this.renderOakhavenBackdrop(W, H);
 
     // Real-Time 24-Hour Continuous Day/Night Lighting Engine
-    this.dayNight = dayNightService.attachToScene(this, 180);
+    this.dayNight = dayNightService.attachToScene(this, 900);
 
     // 2. Build Town Entities & Buildings
     this.buildOakhavenEntities(W, H);
@@ -180,6 +180,16 @@ export default class Scene_Oakhaven extends Phaser.Scene {
         this.bgImage.setDisplaySize(width, height);
       }
       return;
+    } else {
+      this.textures.once('addtexture-bg-oakhaven-outpost', () => {
+        if (!this.sys || !this.sys.isActive()) return;
+        if (!this.bgImage) {
+          this.bgImage = this.add.image(0, 0, 'bg-oakhaven-outpost')
+            .setOrigin(0, 0)
+            .setDisplaySize(width, height)
+            .setDepth(-10);
+        }
+      });
     }
 
     if (!this.backdropGfx) {

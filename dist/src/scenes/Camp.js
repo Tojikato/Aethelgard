@@ -111,7 +111,12 @@ export default class Scene_Camp extends Phaser.Scene {
     this.fromTravel = Boolean(data.fromTravel || data.returnPosition);
   }
 
-  preload() { preloadPlayerAssets(this); }
+  preload() {
+    preloadPlayerAssets(this);
+    if (!this.textures.exists('bg-ashen-hamlet')) {
+      this.load.image('bg-ashen-hamlet', './assets/aethelgard/backgrounds/bg-ashen-hamlet.webp');
+    }
+  }
 
   create() {
     this.claimingStarter = false;
@@ -123,6 +128,9 @@ export default class Scene_Camp extends Phaser.Scene {
 
     // ── 1. Camera & Shroud Setup ────────────────────────────────────
     this.worldWidth = 2400;
+    const viewW = (this.scale.width && this.scale.width > 200)
+      ? this.scale.width
+      : (window.innerWidth > 200 ? window.innerWidth : 1280);
     const H = (this.scale.height && this.scale.height > 100)
       ? this.scale.height
       : (window.innerHeight > 100 ? window.innerHeight : 720);
@@ -139,9 +147,12 @@ export default class Scene_Camp extends Phaser.Scene {
     const targetSpawnX = this.entryPosition ? this.entryPosition.x : defaultSpawnX;
     const targetSpawnY = this.entryPosition ? this.entryPosition.y : defaultSpawnY;
 
+    // Rigidly lock scrollX & scrollY on targetSpawnX from frame 0 (never clamp with width=0)
+    const initialScrollX = Math.floor(Phaser.Math.Clamp(targetSpawnX - viewW / 2, 0, this.worldWidth - viewW));
+    const initialScrollY = Math.floor(Phaser.Math.Clamp(targetSpawnY - H / 2, 0, H - H));
+    camera.scrollX = initialScrollX;
+    camera.scrollY = initialScrollY;
     camera.centerOn(targetSpawnX, targetSpawnY);
-    camera.scrollX = Math.floor(Phaser.Math.Clamp(targetSpawnX - camera.width / 2, 0, this.worldWidth - camera.width));
-    camera.scrollY = Math.floor(Phaser.Math.Clamp(targetSpawnY - camera.height / 2, 0, H - camera.height));
 
     $('dialogue')?.remove();
     $('name-form')?.remove();
@@ -195,14 +206,26 @@ export default class Scene_Camp extends Phaser.Scene {
     this.createAmbientAsh();
 
     // ── 6. Real-Time 24-Hour Continuous Day/Night Lighting Engine ──
-    this.dayNight = dayNightService.attachToScene(this, 180);
+    this.dayNight = dayNightService.attachToScene(this, 900);
 
     // ── 7. Hamlet Scenery & Actors ──────────────────────────────────
     this.buildHamletEntities();
+    const curW = (camera.width && camera.width > 200)
+      ? camera.width
+      : (window.innerWidth > 200 ? window.innerWidth : 1280);
+    const curH = (camera.height && camera.height > 100)
+      ? camera.height
+      : (window.innerHeight > 100 ? window.innerHeight : H);
     camera.centerOn(this.player.x, this.player.y);
-    camera.scrollX = Math.floor(Phaser.Math.Clamp(this.player.x - camera.width / 2, 0, this.worldWidth - camera.width));
-    camera.scrollY = Math.floor(Phaser.Math.Clamp(this.player.y - camera.height / 2, 0, H - camera.height));
-    camera.startFollow(this.player, true, 0.1, 0.1);
+    camera.scrollX = Math.floor(Phaser.Math.Clamp(this.player.x - curW / 2, 0, this.worldWidth - curW));
+    camera.scrollY = Math.floor(Phaser.Math.Clamp(this.player.y - curH / 2, 0, H - curH));
+    // Lock rigidly to player on frame 0 (zero drift, zero slow glide from the right side)
+    camera.startFollow(this.player, true, 1, 1);
+    this.time.delayedCall(2400, () => {
+      if (camera && this.player) {
+        camera.startFollow(this.player, true, 0.12, 0.12);
+      }
+    });
 
     // ── 8. Input Controls (Desktop WASD, F & Cursors) ───────────────
     this.setupControls();
@@ -235,15 +258,22 @@ export default class Scene_Camp extends Phaser.Scene {
     // ── 12. Responsive Resize Handling ──────────────────────────────
     this.resizeCb = size => {
       this.ashZone.width = size.width;
+      this.cameras.main.setBounds(0, 0, this.worldWidth, size.height);
       this.renderBackdrop(this.worldWidth, size.height);
       this.layoutHamlet(this.worldWidth, size.height);
+      if (this.player) {
+        const cam = this.cameras.main;
+        const curW = (cam.width && cam.width > 200) ? cam.width : size.width;
+        cam.centerOn(this.player.x, this.player.y);
+        cam.scrollX = Math.floor(Phaser.Math.Clamp(this.player.x - curW / 2, 0, this.worldWidth - curW));
+      }
     };
     this.scale.on('resize', this.resizeCb);
 
     // ── 12b. Background Prefetch for Oakhaven ───────────────────────
     this.time.delayedCall(2000, () => {
       if (!this.textures.exists('bg-oakhaven-outpost')) {
-        this.load.image('bg-oakhaven-outpost', './assets/aethelgard/backgrounds/bg-oakhaven-outpost.png');
+        this.load.image('bg-oakhaven-outpost', './assets/aethelgard/backgrounds/bg-oakhaven-outpost.webp');
         this.load.start();
       }
     });
@@ -1473,16 +1503,26 @@ export default class Scene_Camp extends Phaser.Scene {
         this.bgImage = this.add.image(0, 0, 'bg-ashen-hamlet')
           .setOrigin(0, 0)
           .setDisplaySize(W, H)
-          .setDepth(-20);
+          .setDepth(-10);
       } else {
         this.bgImage.setDisplaySize(W, H);
       }
+    } else {
+      this.textures.once('addtexture-bg-ashen-hamlet', () => {
+        if (!this.sys || !this.sys.isActive()) return;
+        if (!this.bgImage) {
+          this.bgImage = this.add.image(0, 0, 'bg-ashen-hamlet')
+            .setOrigin(0, 0)
+            .setDisplaySize(W, H)
+            .setDepth(-10);
+        }
+      });
     }
 
     // 2. Procedural panoramic ground plane, thoroughfare & cobblestones spanning full 2400px width
     if (!this.backdropGfx) {
       this.backdropGfx = this.add.graphics()
-        .setDepth(-10);
+        .setDepth(-5);
     } else {
       this.backdropGfx.clear();
     }
@@ -1495,9 +1535,10 @@ export default class Scene_Camp extends Phaser.Scene {
     const horizonY = height * 0.54;
     const hasBg = this.textures.exists('bg-ashen-hamlet');
 
-    // ── 1. Restrained Midnight-Blue to Muted-Violet Night Sky ─────────
-    gfx.fillGradientStyle(0x04060e, 0x04060e, 0x16122d, 0x1e183a, hasBg ? 0.45 : 1);
-    gfx.fillRect(0, 0, width, horizonY);
+    if (!hasBg) {
+      // ── 1. Restrained Midnight-Blue to Muted-Violet Night Sky ─────────
+      gfx.fillGradientStyle(0x04060e, 0x04060e, 0x16122d, 0x1e183a, 1);
+      gfx.fillRect(0, 0, width, horizonY);
 
     // ── 2. Natural Seeded Starfield (Organic Poisson-like Distribution) ──
     // Mulberry32 deterministic PRNG ensures 100% stable positions across frames and resizes
@@ -1717,9 +1758,10 @@ export default class Scene_Camp extends Phaser.Scene {
       gfx.closePath();
       gfx.fillPath();
     }
+  }
 
     // Atmospheric Low Mist along horizon seam (bridges distant world into playable ground)
-    gfx.fillGradientStyle(0x181328, 0x181328, 0x110e1c, 0x110e1c, 0.50);
+    gfx.fillGradientStyle(0x181328, 0x181328, 0x110e1c, 0x110e1c, hasBg ? 0.35 : 0.50);
     gfx.fillRect(0, horizonY - 8, width, 16);
 
     // ── 8. Walkable Ground Plane Base ──────────────────────────────
@@ -2931,21 +2973,18 @@ export default class Scene_Camp extends Phaser.Scene {
       background: #060608;
       pointer-events: none;
       will-change: mask-image, -webkit-mask-image;
+      -webkit-mask-image: radial-gradient(ellipse 135% 0% at 50% 50%, transparent 40%, black 55%);
+      mask-image: radial-gradient(ellipse 135% 0% at 50% 50%, transparent 40%, black 55%);
+      -webkit-mask-composite: destination-out;
+      mask-composite: exclude;
     `;
     document.body.appendChild(eyelids);
     this.eyelidOverlay = eyelids;
 
     const setAperture = yPercent => {
-      if (yPercent <= 0.5) {
-        eyelids.style.webkitMaskImage = 'none';
-        eyelids.style.maskImage = 'none';
-        eyelids.style.background = '#060608';
-      } else {
-        const maskVal = `radial-gradient(ellipse 150% ${yPercent}% at 50% 50%, transparent 45%, black 75%)`;
-        eyelids.style.webkitMaskImage = maskVal;
-        eyelids.style.maskImage = maskVal;
-        eyelids.style.background = '#060608';
-      }
+      const maskVal = `radial-gradient(ellipse 135% ${yPercent}% at 50% 50%, transparent 40%, black 55%)`;
+      eyelids.style.webkitMaskImage = maskVal;
+      eyelids.style.maskImage = maskVal;
     };
 
     setAperture(0);
@@ -2967,18 +3006,34 @@ export default class Scene_Camp extends Phaser.Scene {
       requestAnimationFrame(step);
     };
 
-    // Phase 1: Slit open to 55% over 180ms (first crisp glance of the ashen horizon and campfire)
-    animateAperture(0, 55, 180, () => {
-      // Phase 2: Natural flutter blink (dips to 35%, never goes back to pitch black) over 100ms
-      animateAperture(55, 35, 100, () => {
-        // Phase 3: Swift, confident awakening opening wide to 200% over 260ms
-        animateAperture(35, 200, 260, () => {
-          eyelids.remove();
-          this.eyelidOverlay = null;
-          console.log('[Scene_Camp] Eyelids fully opened to 2.5D Hamlet');
+    // Allow the main thread to complete synchronous create() & initial DOM layout before starting aperture motion
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        if (!this.sys || !this.sys.isActive() || !this.eyelidOverlay) return;
+        // Phase 1: Slit open to 16% over 400ms (groggily peering through the slit)
+        animateAperture(0, 16, 400, () => {
+          // Phase 2: Snap close back to 0% over 160ms (natural reflexive blink)
+          animateAperture(16, 0, 160, () => {
+            // Brief natural biological pause (60ms) before opening
+            setTimeout(() => {
+              // Phase 3: Open wide to 160% over 1500ms (majestic, smooth cinematic reveal)
+              animateAperture(0, 160, 1500, () => {
+                eyelids.remove();
+                this.eyelidOverlay = null;
+                console.log('[Scene_Camp] Eyelids fully opened to 2.5D Hamlet');
+              });
+            }, 60);
+          });
         });
       });
     });
+
+    // Safety fallback ensures overlay never remains even on throttled devices
+    setTimeout(() => {
+      const el = document.getElementById('eyelid-overlay');
+      if (el) el.remove();
+      this.eyelidOverlay = null;
+    }, 2800);
   }
 
   // ═════════════════════════════════════════════════════════════════
@@ -3272,6 +3327,7 @@ export default class Scene_Camp extends Phaser.Scene {
     document.getElementById('mobile-controls')?.remove();
     document.getElementById('travel-screen')?.remove();
     document.getElementById('eyelid-overlay')?.remove();
+    document.getElementById('awakening-toast')?.remove();
 
     if (this.backdropRT) {
       this.backdropRT.destroy();

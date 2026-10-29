@@ -94,8 +94,14 @@ class AssetRegistry {
   /* Preload an individual asset safely into a Phaser scene */
   preload(scene, id, key = null) {
     const textureKey = key || id;
+    const asset = this.get(id);
+    if (asset?.category === 'character-atlas') {
+      if (!scene.cache.json.exists(textureKey)) scene.load.json(textureKey, this.getUrl(id));
+      return;
+    }
     if (!scene.textures.exists(textureKey)) {
-      scene.load.image(textureKey, this.getUrl(id));
+      if (asset?.frameWidth && asset?.frameHeight) scene.load.spritesheet(textureKey, this.getUrl(id), { frameWidth: asset.frameWidth, frameHeight: asset.frameHeight });
+      else scene.load.image(textureKey, this.getUrl(id));
     }
   }
 
@@ -104,9 +110,7 @@ class AssetRegistry {
     const assets = this.getByCategory(category);
     assets.forEach(asset => {
       const key = idPrefix ? `${idPrefix}${asset.id}` : asset.id;
-      if (!scene.textures.exists(key)) {
-        scene.load.image(key, this.getUrl(asset.id));
-      }
+      this.preload(scene, asset.id, key);
     });
     console.log(`[AssetRegistry] Queued preload for ${assets.length} assets in '${category}'`);
   }

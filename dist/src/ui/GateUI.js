@@ -154,31 +154,47 @@ export function selectMode(next) {
 export function showGameShell() {
   stopGateEmberVFX();
   $('session-label').textContent = isDemo() ? 'UNSAVED PREVIEW' : 'SOUL BOUND · CLOUD SAVE';
-  $('game-shell').hidden = false;
-  $('game-shell').inert = false;
+  const shell = $('game-shell');
+  if (shell) {
+    shell.hidden = false;
+    shell.inert = false;
+    shell.style.display = '';
+  }
 
   const isDirect = Boolean(new URLSearchParams(window.location.search).get('scene'));
-  if (isDirect) {
-    $('gate').hidden = true;
-    $('gate').inert = true;
-    $('gate').style.display = 'none';
-  } else {
-    $('gate').style.opacity = '0';
-    setTimeout(() => {
-      $('gate').hidden = true;
-      $('gate').inert = true;
-      $('gate').style.display = 'none';
-    }, 400);
+  const gate = $('gate');
+  if (gate) {
+    if (isDirect) {
+      gate.hidden = true;
+      gate.inert = true;
+      gate.style.display = 'none';
+    } else {
+      gate.style.opacity = '0';
+      setTimeout(() => {
+        gate.hidden = true;
+        gate.inert = true;
+        gate.style.display = 'none';
+      }, 400);
+    }
   }
 }
 
 export function showGate() {
   document.getElementById('minimap-container')?.remove();
   document.getElementById('camp-hud')?.remove();
-  $('gate').hidden = false;
-  $('gate').inert = false;
-  $('gate').style.opacity = '1';
-  $('game-shell').hidden = true;
+  const gate = $('gate');
+  if (gate) {
+    gate.hidden = false;
+    gate.inert = false;
+    gate.style.display = 'flex';
+    gate.style.opacity = '1';
+  }
+  const shell = $('game-shell');
+  if (shell) {
+    shell.hidden = true;
+    shell.inert = true;
+    shell.style.display = 'none';
+  }
   startGateEmberVFX();
 }
 
@@ -188,17 +204,37 @@ export async function returnToGate(logout = true) {
   if (campEl) campEl.remove();
   document.getElementById('minimap-container')?.remove();
   document.getElementById('camp-hud')?.remove();
+  document.getElementById('hamlet-prompt')?.remove();
+  document.getElementById('item-toast-banner')?.remove();
+  document.getElementById('hearth-modal')?.remove();
+  document.getElementById('dialogue-modal')?.remove();
+  document.getElementById('gate-modal')?.remove();
+  document.getElementById('lore-modal')?.remove();
+  document.getElementById('covenant-modal')?.remove();
+  document.getElementById('mobile-controls')?.remove();
+  document.getElementById('travel-screen')?.remove();
+  document.getElementById('eyelid-overlay')?.remove();
+  document.getElementById('awakening-toast')?.remove();
+  document.getElementById('atlas-container')?.remove();
+  document.getElementById('report-submission-modal')?.remove();
 
   const game = getGame();
   if (game) {
-    game.destroy(true);
+    try {
+      game.destroy(true);
+    } catch (e) {
+      console.warn('[returnToGate] game destroy:', e);
+    }
     setGame(null);
   }
+  window.__AETHELGARD_GAME__ = null;
   setScene(null);
 
-  $('game-shell').hidden = true;
-  if ($('name-form')) $('name-form').hidden = true;
-  $('arrival').hidden = true;
+  // Clear query parameters so reloads stay on the Gate
+  if (typeof window !== 'undefined' && window.location.search) {
+    window.history.replaceState({}, document.title, window.location.pathname);
+  }
+
   showGate();
   if ($('password')) $('password').value = '';
 

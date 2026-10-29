@@ -3,6 +3,7 @@
 // ═══════════════════════════════════════════════════════════════════════════
 
 import { defaults, setUser } from '../services/gameState.js';
+import { decodeEquipment, EQUIPMENT_DOC, STARTER_DOC } from './outfits.js';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyCythBSmy4ZYQquOQHn5sZCdj42IQmMWzo',
@@ -84,12 +85,17 @@ ready.catch(() => {});
 export async function ensureProfile(uid) {
   const fb = await loadFirebase();
   const ref = fb.doc(fb.db, 'users', uid);
-  return fb.runTransaction(fb.db, async tx => {
+  const profile = await fb.runTransaction(fb.db, async tx => {
     const snap = await tx.get(ref);
     if (snap.exists()) return { ...defaults, ...snap.data() };
     tx.set(ref, defaults);
     return { ...defaults };
   });
+  const [equipment, starter] = await Promise.all([
+    fb.getDoc(fb.doc(fb.db, 'users', uid, 'inventory', EQUIPMENT_DOC)),
+    fb.getDoc(fb.doc(fb.db, 'users', uid, 'inventory', STARTER_DOC))
+  ]);
+  return { ...profile, ...decodeEquipment(equipment.exists() ? equipment.data().quantity : 0), starterBundleClaimed: starter.exists() && starter.data().quantity === 1 };
 }
 
 export async function signInUser(email, password) {

@@ -157,11 +157,11 @@ export class WorldMapOverlay {
         <div class="worldmap-header">
           <div class="worldmap-title-wrap">
             <h2>✧ CONTINENTAL ATLAS OF AETHELGARD ✧</h2>
-            <p>Charted by the Imperial Cartographers · Press [M] or [ESC] to close</p>
+            <p>Charted by the Imperial Cartographers · Press [M] or [ESC] to Dismiss</p>
           </div>
-          <div style="display:flex;align-items:center;gap:12px;">
+          <div class="worldmap-header-actions">
             <div id="worldmap-renown" class="worldmap-renown-badge">RENOWN: 0</div>
-            <button id="worldmap-close-btn" class="hearth-modal-close" type="button" aria-label="Close Map">✕</button>
+            <button id="worldmap-close-btn" class="worldmap-close-btn" type="button" aria-label="Close Map">✕</button>
           </div>
         </div>
 
@@ -175,7 +175,7 @@ export class WorldMapOverlay {
             <p id="worldmap-detail-desc">Frontier bastion and guild stronghold.</p>
           </div>
           <button id="worldmap-travel-action" class="worldmap-travel-btn" type="button">
-            ✦ Fast Travel ⟶
+            ✦ Undertake Journey ⟶
           </button>
         </div>
       </div>
@@ -271,10 +271,10 @@ export class WorldMapOverlay {
         btn.textContent = `✦ Locked (${node.requiredRenown} Renown)`;
         btn.disabled = true;
       } else if (!node.sceneKey) {
-        btn.textContent = '✦ Road In Dev';
+        btn.textContent = '✦ Realm Uncharted';
         btn.disabled = true;
       } else {
-        btn.textContent = `✦ Fast Travel to ${node.name} ⟶`;
+        btn.textContent = `✦ Journey to ${node.name} ⟶`;
         btn.disabled = false;
       }
     }

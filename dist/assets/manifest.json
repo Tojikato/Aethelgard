@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "pack": "aethelgard-unified",
   "description": "Unified Asset Manifest for Aethelgard: Ashen Hamlet, Scenery, Equipment, Architecture & Props",
-  "totalAssets": 256,
+  "totalAssets": 265,
   "assets": [
     {
       "id": "sword-glowing",
@@ -4831,6 +4831,112 @@
         "y": 0.0
       },
       "pack": "backgrounds_pack"
+    },
+    {
+      "id": "player-modern",
+      "name": "player-modern",
+      "path": "aethelgard/characters/player-modern.png",
+      "category": "character-spritesheet",
+      "width": 384,
+      "height": 192,
+      "sha256": "55363d2665e12600a5e6085d0865e8153c02c52128c67339ac6c3336d3464a2f",
+      "pack": "aethelgard-wardrobe",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "columns": 6,
+      "rows": 3,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9375
+      }
+    },
+    {
+      "id": "player-wayfarer",
+      "name": "player-wayfarer",
+      "path": "aethelgard/characters/player-wayfarer.png",
+      "category": "character-spritesheet",
+      "width": 384,
+      "height": 192,
+      "sha256": "e6fa29410e470a6d9c9d9951bca3872c0ef29c686c3360a3d9b7435e7afd9e24",
+      "pack": "aethelgard-wardrobe",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "columns": 6,
+      "rows": 3,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9375
+      }
+    },
+    {
+      "id": "portrait-modern",
+      "name": "portrait-modern",
+      "path": "aethelgard/characters/portrait-modern.png",
+      "category": "character-portrait",
+      "width": 256,
+      "height": 256,
+      "sha256": "b4a2b4f0259c17054226ffa72e733d4eeb1a3b5a6b4b2a7da1da82a2ecb4a602",
+      "pack": "aethelgard-wardrobe"
+    },
+    {
+      "id": "portrait-wayfarer",
+      "name": "portrait-wayfarer",
+      "path": "aethelgard/characters/portrait-wayfarer.png",
+      "category": "character-portrait",
+      "width": 256,
+      "height": 256,
+      "sha256": "6d1f08694bd29a211f14f4e68df520f75b4a584c4a6f392b3fdb66b58be0ed70",
+      "pack": "aethelgard-wardrobe"
+    },
+    {
+      "id": "armor-wayfarer-tattered",
+      "name": "armor-wayfarer-tattered",
+      "path": "aethelgard/characters/armor-wayfarer-tattered.png",
+      "category": "armor",
+      "width": 64,
+      "height": 64,
+      "sha256": "6804d8b16454523d655f266240d39d4aae46090e8ad0601800faf6a290cb4f76",
+      "pack": "aethelgard-wardrobe"
+    },
+    {
+      "id": "player-modern-atlas",
+      "name": "player-modern-atlas",
+      "path": "aethelgard/characters/player-modern.json",
+      "category": "character-atlas",
+      "width": 384,
+      "height": 192,
+      "sha256": "386237c370cc3e13b4d0ba7b201bfd6f6584522ccfefc45983c867afb1c4e312",
+      "pack": "aethelgard-wardrobe"
+    },
+    {
+      "id": "player-wayfarer-atlas",
+      "name": "player-wayfarer-atlas",
+      "path": "aethelgard/characters/player-wayfarer.json",
+      "category": "character-atlas",
+      "width": 384,
+      "height": 192,
+      "sha256": "8dc8838bb8dc47d937485b550cd2255f75041287af3f98afa31db58ba02f5103",
+      "pack": "aethelgard-wardrobe"
+    },
+    {
+      "id": "concept-modern-stranger",
+      "name": "concept-modern-stranger",
+      "path": "aethelgard/characters/concepts/modern-stranger-concept-01.png",
+      "category": "character-concept",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "b2d092c82cc18693e44c0df62ce20447123aabbe657ac9faa688344b72521f24",
+      "pack": "aethelgard-wardrobe"
+    },
+    {
+      "id": "concept-ashen-wayfarer",
+      "name": "concept-ashen-wayfarer",
+      "path": "aethelgard/characters/concepts/wayfarer-concept-01.png",
+      "category": "character-concept",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "b162113db64458169830a1eb2b309004438d1a917ca535814704faf9b8eae36f",
+      "pack": "aethelgard-wardrobe"
     }
   ]
 }
