@@ -96,7 +96,7 @@ export function mountDOM() {
   <div class="game-top">
     <span id="chapter-title">I · THE AWAKENING</span>
     <span id="session-label"></span>
-    <button id="leave" class="quiet nav-gate-link">Return to the gate</button>
+    <button id="leave" class="quiet nav-gate-link">Retreat to the Threshold</button>
   </div>
   <form id="name-form" hidden>
     <label for="soul-name">WHAT SHALL WE CALL THEE?</label>
@@ -154,12 +154,22 @@ export function selectMode(next) {
 export function showGameShell() {
   stopGateEmberVFX();
   $('session-label').textContent = isDemo() ? 'UNSAVED PREVIEW' : 'SOUL BOUND · CLOUD SAVE';
-  $('gate').style.opacity = '0';
-  setTimeout(() => {
+  $('game-shell').hidden = false;
+  $('game-shell').inert = false;
+
+  const isDirect = Boolean(new URLSearchParams(window.location.search).get('scene'));
+  if (isDirect) {
     $('gate').hidden = true;
     $('gate').inert = true;
-    $('game-shell').hidden = false;
-  }, 800);
+    $('gate').style.display = 'none';
+  } else {
+    $('gate').style.opacity = '0';
+    setTimeout(() => {
+      $('gate').hidden = true;
+      $('gate').inert = true;
+      $('gate').style.display = 'none';
+    }, 400);
+  }
 }
 
 export function showGate() {
@@ -410,8 +420,8 @@ export function initGateUI({ onStartGame }) {
         user = await signInUser(email, password);
       }
       const player = await ensureProfile(user.uid);
-      setPlayer(player);
       setDemo(false);
+      setPlayer(player);
       if (onStartGameCallback) await onStartGameCallback();
     } catch (err) {
       $('auth-error').textContent = errorText(err);

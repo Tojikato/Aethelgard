@@ -133,11 +133,30 @@ export default class Scene_Camp extends Phaser.Scene {
     camera.setZoom(1);
     camera.setBounds(0, 0, this.worldWidth, H);
 
+    // Initial camera center point: snap immediately to target spawn location
+    const defaultSpawnX = 1270;
+    const defaultSpawnY = H * 0.76;
+    const targetSpawnX = this.entryPosition ? this.entryPosition.x : defaultSpawnX;
+    const targetSpawnY = this.entryPosition ? this.entryPosition.y : defaultSpawnY;
+
+    camera.centerOn(targetSpawnX, targetSpawnY);
+    camera.scrollX = Math.floor(Phaser.Math.Clamp(targetSpawnX - camera.width / 2, 0, this.worldWidth - camera.width));
+    camera.scrollY = Math.floor(Phaser.Math.Clamp(targetSpawnY - camera.height / 2, 0, H - camera.height));
+
     $('dialogue')?.remove();
     $('name-form')?.remove();
     if ($('arrival')) $('arrival').hidden = true;
     if ($('chapter-title')) $('chapter-title').textContent = 'II · THE ASHEN HAMLET';
-    if ($('game-shell')) $('game-shell').inert = false;
+    if ($('game-shell')) {
+      $('game-shell').hidden = false;
+      $('game-shell').inert = false;
+    }
+    const gateEl = $('gate');
+    if (gateEl) {
+      gateEl.hidden = true;
+      gateEl.inert = true;
+      gateEl.style.display = 'none';
+    }
 
     const campTop = document.querySelector('.game-top');
     if (campTop) {
@@ -180,6 +199,9 @@ export default class Scene_Camp extends Phaser.Scene {
 
     // ── 7. Hamlet Scenery & Actors ──────────────────────────────────
     this.buildHamletEntities();
+    camera.centerOn(this.player.x, this.player.y);
+    camera.scrollX = Math.floor(Phaser.Math.Clamp(this.player.x - camera.width / 2, 0, this.worldWidth - camera.width));
+    camera.scrollY = Math.floor(Phaser.Math.Clamp(this.player.y - camera.height / 2, 0, H - camera.height));
     camera.startFollow(this.player, true, 0.1, 0.1);
 
     // ── 8. Input Controls (Desktop WASD, F & Cursors) ───────────────
@@ -2899,21 +2921,26 @@ export default class Scene_Camp extends Phaser.Scene {
       inset: 0;
       z-index: 9999;
       background: #060608;
-      pointer-events: auto;
+      pointer-events: none;
       will-change: mask-image, -webkit-mask-image;
-      -webkit-mask-image: radial-gradient(ellipse 120% 0% at 50% 50%, transparent 45%, black 55%);
-      mask-image: radial-gradient(ellipse 120% 0% at 50% 50%, transparent 45%, black 55%);
-      -webkit-mask-composite: destination-out;
-      mask-composite: exclude;
     `;
     document.body.appendChild(eyelids);
     this.eyelidOverlay = eyelids;
 
     const setAperture = yPercent => {
-      const maskVal = `radial-gradient(ellipse 135% ${yPercent}% at 50% 50%, transparent 40%, black 55%)`;
-      eyelids.style.webkitMaskImage = maskVal;
-      eyelids.style.maskImage = maskVal;
+      if (yPercent <= 0.5) {
+        eyelids.style.webkitMaskImage = 'none';
+        eyelids.style.maskImage = 'none';
+        eyelids.style.background = '#060608';
+      } else {
+        const maskVal = `radial-gradient(ellipse 140% ${yPercent}% at 50% 50%, transparent 38%, black 58%)`;
+        eyelids.style.webkitMaskImage = maskVal;
+        eyelids.style.maskImage = maskVal;
+        eyelids.style.background = '#060608';
+      }
     };
+
+    setAperture(0);
 
     const animateAperture = (fromY, toY, duration, onComplete) => {
       const start = performance.now();
@@ -2932,16 +2959,19 @@ export default class Scene_Camp extends Phaser.Scene {
       requestAnimationFrame(step);
     };
 
-    // Phase 1: Slit open to 16% over 400ms
-    animateAperture(0, 16, 400, () => {
-      // Phase 2: Snap close back to 0% over 150ms
-      animateAperture(16, 0, 150, () => {
-        // Phase 3: Open wide to 160% over 1500ms
-        animateAperture(0, 160, 1500, () => {
-          eyelids.remove();
-          this.eyelidOverlay = null;
-          console.log('[Scene_Camp] Eyelids fully opened to 2.5D Hamlet');
-        });
+    // Phase 1: Slit open to 18% over 480ms (eyes groggily crack open)
+    animateAperture(0, 18, 480, () => {
+      // Phase 2: Snap close back to 0% over 180ms (sensitive to light)
+      animateAperture(18, 0, 180, () => {
+        // Brief breath (80ms pause)
+        setTimeout(() => {
+          // Phase 3: Open wide to 160% over 1300ms (clear, smooth awakening)
+          animateAperture(0, 160, 1300, () => {
+            eyelids.remove();
+            this.eyelidOverlay = null;
+            console.log('[Scene_Camp] Eyelids fully opened to 2.5D Hamlet');
+          });
+        }, 80);
       });
     });
   }
