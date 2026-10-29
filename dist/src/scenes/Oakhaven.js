@@ -24,7 +24,26 @@ export default class Scene_Oakhaven extends Phaser.Scene {
     this.spawnPosition = data.position || null;
   }
 
-  preload() { preloadPlayerAssets(this); }
+  preload() {
+    preloadPlayerAssets(this);
+    if (!this.textures.exists('bg-oakhaven-outpost')) {
+      this.load.image('bg-oakhaven-outpost', './assets/aethelgard/backgrounds/bg-oakhaven-outpost.png');
+    }
+    const buildings = [
+      ['building-cathedral', './assets/aethelgard/architecture/buildings/cathedral.png'],
+      ['building-tavern', './assets/aethelgard/architecture/buildings/tavern.png'],
+      ['building-cottage', './assets/aethelgard/architecture/buildings/cottage.png'],
+      ['building-tall-house', './assets/aethelgard/architecture/buildings/tall-house.png'],
+      ['building-timber-house', './assets/aethelgard/architecture/buildings/timber-house.png'],
+      ['building-shop-stall', './assets/aethelgard/architecture/buildings/shop-stall.png'],
+      ['building-watchtower', './assets/aethelgard/architecture/buildings/watchtower.png']
+    ];
+    for (const [key, path] of buildings) {
+      if (!this.textures.exists(key)) {
+        this.load.image(key, path);
+      }
+    }
+  }
 
   create() {
     setScene(this);

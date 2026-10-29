@@ -21,13 +21,12 @@ export default class Scene_Boot extends Phaser.Scene {
     this.load.image('camp-bg-tex', './assets/aethelgard/images/camp-verified.jpg');
     this.load.image('fog-reveal-tex', './assets/aethelgard/images/fog-reveal-verified.jpg');
 
-    // Preload 2.5D Belt-Scroller World Backgrounds
+    // Preload 2.5D Belt-Scroller World Background (Camp)
     this.load.image('bg-ashen-hamlet', './assets/aethelgard/backgrounds/bg-ashen-hamlet.png');
-    this.load.image('bg-oakhaven-outpost', './assets/aethelgard/backgrounds/bg-oakhaven-outpost.png');
-    this.load.image('bg-bastion-of-iron', './assets/aethelgard/backgrounds/bg-bastion-of-iron.png');
-    this.load.image('bg-port-azure', './assets/aethelgard/backgrounds/bg-port-azure.png');
-    this.load.image('bg-gilded-nexus', './assets/aethelgard/backgrounds/bg-gilded-nexus.png');
-    this.load.image('bg-shadowfen-citadel', './assets/aethelgard/backgrounds/bg-shadowfen-citadel.png');
+    const directScene = typeof window !== 'undefined' ? new URLSearchParams(window.location.search).get('scene') : null;
+    if (directScene === 'oakhaven') {
+      this.load.image('bg-oakhaven-outpost', './assets/aethelgard/backgrounds/bg-oakhaven-outpost.png');
+    }
 
     // Preload 2.5D Hamlet Scenery Pixel-Art Sprites
     this.load.image('scenery-camp', './assets/aethelgard/vfx/hamlet-fire/camp-body.png');
@@ -103,14 +102,16 @@ export default class Scene_Boot extends Phaser.Scene {
     this.load.image('noticeboard', './assets/aethelgard/props/interior/noticeboard.png');
     this.load.image('prop-noticeboard', './assets/aethelgard/props/interior/noticeboard.png');
 
-    // Preload Oakhaven Outpost Architecture
-    this.load.image('building-cathedral', './assets/aethelgard/architecture/buildings/cathedral.png');
-    this.load.image('building-tavern', './assets/aethelgard/architecture/buildings/tavern.png');
-    this.load.image('building-cottage', './assets/aethelgard/architecture/buildings/cottage.png');
-    this.load.image('building-tall-house', './assets/aethelgard/architecture/buildings/tall-house.png');
-    this.load.image('building-timber-house', './assets/aethelgard/architecture/buildings/timber-house.png');
-    this.load.image('building-shop-stall', './assets/aethelgard/architecture/buildings/shop-stall.png');
-    this.load.image('building-watchtower', './assets/aethelgard/architecture/buildings/watchtower.png');
+    // Preload Oakhaven Outpost Architecture (if launching directly)
+    if (directScene === 'oakhaven') {
+      this.load.image('building-cathedral', './assets/aethelgard/architecture/buildings/cathedral.png');
+      this.load.image('building-tavern', './assets/aethelgard/architecture/buildings/tavern.png');
+      this.load.image('building-cottage', './assets/aethelgard/architecture/buildings/cottage.png');
+      this.load.image('building-tall-house', './assets/aethelgard/architecture/buildings/tall-house.png');
+      this.load.image('building-timber-house', './assets/aethelgard/architecture/buildings/timber-house.png');
+      this.load.image('building-shop-stall', './assets/aethelgard/architecture/buildings/shop-stall.png');
+      this.load.image('building-watchtower', './assets/aethelgard/architecture/buildings/watchtower.png');
+    }
   }
 
   create() {

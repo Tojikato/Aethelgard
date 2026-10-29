@@ -165,6 +165,9 @@ export default class Scene_Camp extends Phaser.Scene {
       campTop.hidden = false;
     }
 
+    // ── 1b. Backdrop & Walkable Ground Plane (Immediate Frame-0 Render) ──
+    this.renderBackdrop(this.worldWidth, H);
+
     // ── 2. Realistic Eyelid Blink Sequence (Fresh login/awakening only) ──
     if (!this.fromTravel) {
       this.createEyelidBlinkSequence();
@@ -191,10 +194,7 @@ export default class Scene_Camp extends Phaser.Scene {
     // ── 5. Ambient Atmospheric Ash & Ground Mist ────────────────────
     this.createAmbientAsh();
 
-    // ── 6. Backdrop & Walkable Ground Plane (Cached Static Layer across full 2400px) ──
-    this.renderBackdrop(this.worldWidth, H);
-
-    // Real-Time 24-Hour Continuous Day/Night Lighting Engine
+    // ── 6. Real-Time 24-Hour Continuous Day/Night Lighting Engine ──
     this.dayNight = dayNightService.attachToScene(this, 180);
 
     // ── 7. Hamlet Scenery & Actors ──────────────────────────────────
@@ -239,6 +239,14 @@ export default class Scene_Camp extends Phaser.Scene {
       this.layoutHamlet(this.worldWidth, size.height);
     };
     this.scale.on('resize', this.resizeCb);
+
+    // ── 12b. Background Prefetch for Oakhaven ───────────────────────
+    this.time.delayedCall(2000, () => {
+      if (!this.textures.exists('bg-oakhaven-outpost')) {
+        this.load.image('bg-oakhaven-outpost', './assets/aethelgard/backgrounds/bg-oakhaven-outpost.png');
+        this.load.start();
+      }
+    });
 
     // ── 13. Teardown & Cleanup ──────────────────────────────────────
     this.events.once('shutdown', () => {
@@ -2933,7 +2941,7 @@ export default class Scene_Camp extends Phaser.Scene {
         eyelids.style.maskImage = 'none';
         eyelids.style.background = '#060608';
       } else {
-        const maskVal = `radial-gradient(ellipse 140% ${yPercent}% at 50% 50%, transparent 38%, black 58%)`;
+        const maskVal = `radial-gradient(ellipse 150% ${yPercent}% at 50% 50%, transparent 45%, black 75%)`;
         eyelids.style.webkitMaskImage = maskVal;
         eyelids.style.maskImage = maskVal;
         eyelids.style.background = '#060608';
@@ -2959,19 +2967,16 @@ export default class Scene_Camp extends Phaser.Scene {
       requestAnimationFrame(step);
     };
 
-    // Phase 1: Slit open to 18% over 480ms (eyes groggily crack open)
-    animateAperture(0, 18, 480, () => {
-      // Phase 2: Snap close back to 0% over 180ms (sensitive to light)
-      animateAperture(18, 0, 180, () => {
-        // Brief breath (80ms pause)
-        setTimeout(() => {
-          // Phase 3: Open wide to 160% over 1300ms (clear, smooth awakening)
-          animateAperture(0, 160, 1300, () => {
-            eyelids.remove();
-            this.eyelidOverlay = null;
-            console.log('[Scene_Camp] Eyelids fully opened to 2.5D Hamlet');
-          });
-        }, 80);
+    // Phase 1: Slit open to 55% over 180ms (first crisp glance of the ashen horizon and campfire)
+    animateAperture(0, 55, 180, () => {
+      // Phase 2: Natural flutter blink (dips to 35%, never goes back to pitch black) over 100ms
+      animateAperture(55, 35, 100, () => {
+        // Phase 3: Swift, confident awakening opening wide to 200% over 260ms
+        animateAperture(35, 200, 260, () => {
+          eyelids.remove();
+          this.eyelidOverlay = null;
+          console.log('[Scene_Camp] Eyelids fully opened to 2.5D Hamlet');
+        });
       });
     });
   }
